@@ -1,12 +1,13 @@
 <script setup>
-import { ref, computed, watch, onMounted, nextTick } from 'vue';
+import { ref, computed } from 'vue';
 import { trans } from 'laravel-vue-i18n';
 import Swal from 'sweetalert2';
-import { Head, router, Link, useForm } from '@inertiajs/vue3';
+import { Head, useForm, router, Link } from '@inertiajs/vue3';
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
 import { 
     Trash2, BookOpen, Plus, ArrowLeft, FileText, 
     ExternalLink, X, Upload, GraduationCap, 
-    School, Book, Sparkles, ChevronRight, Link2, PlusCircle, FolderOpen, Calendar, ChevronDown, MoreVertical, Edit3, Settings, Info, Check
+    School, Book, Sparkles, ChevronRight, Link2, PlusCircle, FolderOpen, Calendar, ChevronDown, MoreVertical, Edit3
 } from 'lucide-vue-next';
 
 const props = defineProps({
@@ -14,6 +15,28 @@ const props = defineProps({
     academicStats: { type: Object, default: () => ({ ipk: 0, total_sks: 0, current_semester: 1, semesters: [] }) },
     user: { type: Object, required: true }
 });
+
+const localAcademicRecords = ref([]);
+const localAcademicStats = ref({ ipk: 0, total_sks: 0, current_semester: 1, semesters: [] });
+
+if (props.academicRecords) {
+    localAcademicRecords.value = JSON.parse(JSON.stringify(props.academicRecords));
+}
+if (props.academicStats) {
+    localAcademicStats.value = JSON.parse(JSON.stringify(props.academicStats));
+}
+
+watch(() => props.academicRecords, (newVal) => {
+    if (newVal) {
+        localAcademicRecords.value = JSON.parse(JSON.stringify(newVal));
+    }
+}, { deep: true });
+
+watch(() => props.academicStats, (newVal) => {
+    if (newVal) {
+        localAcademicStats.value = JSON.parse(JSON.stringify(newVal));
+    }
+}, { deep: true });
 
 // --- Dynamic Terminology & User Settings ---
 const userSettings = computed(() => props.user.settings || {});
@@ -36,10 +59,10 @@ const terms = computed(() => {
     };
 });
 
-// Global toast notifier
+
 const fireToast = (icon, message) => {
     Swal.fire({
-        toast: true, position: 'top-end', showConfirmButton: false, timer: 2500, timerProgressBar: true,
+        toast: true, position: 'top-end', showConfirmButton: false, timer: 3000, timerProgressBar: true,
         background: icon === 'error' ? '#ef4444' : '#4f46e5', iconColor: '#ffffff', icon: icon,
         title: `<span style="color: white; font-weight: 900; font-size: 14px; line-height: 1.2;">${message}</span>`,
         customClass: {
@@ -60,10 +83,6 @@ const setupForm = useForm({
 });
 
 const openSetup = () => {
-    setupForm.education_level = userSettings.value.education_level || 'kuliah';
-    setupForm.major = userSettings.value.major || '';
-    setupForm.student_id = userSettings.value.student_id || '';
-    setupForm.current_semester = userSettings.value.current_semester || 1;
     showSetupModal.value = true;
 };
 
@@ -80,17 +99,14 @@ const submitSetup = () => {
         preserveState: true,
         onSuccess: () => {
             showSetupModal.value = false;
-            fireToast('success', trans('success_saved', 'Tersimpan!'));
         }
     });
 };
 
-// --- Semester Navigation State ---
+// --- Dashboard Logic (Semester Dropdown & Courses) ---
 const maxSemesterAdded = ref(0);
-const selectedSemester = ref(1);
-
 const availableSemesters = computed(() => {
-    const semsFromRecords = props.academicStats.semesters.map(s => s.semester);
+    const semsFromRecords = localAcademicStats.value.semesters.map(s => s.semester);
     const semsFromSetup = parseInt(userSettings.value.current_semester) || 1;
     let maxSem = Math.max(semsFromSetup, maxSemesterAdded.value, ...semsFromRecords, 1);
     
@@ -99,51 +115,16 @@ const availableSemesters = computed(() => {
     return sems;
 });
 
-// Calculate semester SKS / IPS locally
-const getSemesterStatsSummary = (sem) => {
-    const semData = props.academicStats.semesters.find(s => s.semester === sem);
-    if (!semData) return `0 ${terms.value.sks} • ${terms.value.ips} 0.00`;
-    return `${semData.total_sks} ${terms.value.sks} • ${terms.value.ips} ${semData.ips.toFixed(2)}`;
-};
+const selectedSemester = ref(userSettings.value.current_semester || 1);
 
-const deleteSpecificSemester = (sem) => {
-    Swal.fire({
-        title: `<span class="text-xl font-black text-slate-800 dark:text-white">${trans('study_delete_semester_title', { num: sem })}</span>`,
-        html: `<p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-2">${trans('study_delete_semester_text')}</p>`,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: trans('study_delete_confirm_yes'),
-        cancelButtonText: trans('study_delete_confirm_cancel'),
-        customClass: {
-            popup: '!rounded-[2rem] !p-8 !border !border-slate-100 dark:!border-slate-800 !shadow-2xl dark:!shadow-none dark:!bg-slate-900 transition-colors duration-500',
-            confirmButton: '!bg-rose-500 !text-white !font-bold !py-3.5 !px-6 !rounded-xl !shadow-lg dark:!shadow-none shadow-rose-200 dark:!shadow-rose-900/20 !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
-            cancelButton: '!bg-slate-100 dark:!bg-slate-800 !text-slate-500 dark:!text-slate-400 !font-bold !py-3.5 !px-6 !rounded-xl !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
-            actions: '!mt-8 flex flex-col-reverse sm:flex-row !gap-3'
-        },
-        backdrop: `rgba(15, 23, 42, 0.6) `,
-        buttonsStyling: false
-    }).then((res) => {
-        if (res.isConfirmed) {
-            router.delete(route('study.academic.semester.destroy', sem), {
-                preserveScroll: true,
-                onSuccess: () => {
-                    fireToast('success', trans('study_delete_success', 'Berhasil dihapus!'));
-                    if (selectedSemester.value === sem) {
-                        selectedSemester.value = Math.max(1, sem - 1);
-                    }
-                }
-            });
-        }
-    });
+
+
+const deleteSemester = () => {
+    deleteSpecificSemester(selectedSemester.value);
 };
 
 const isAddSemesterModalOpen = ref(false);
 const newSemesterValue = ref('');
-
-const promptNewSemester = () => {
-    newSemesterValue.value = '';
-    isAddSemesterModalOpen.value = true;
-};
 
 const submitNewSemester = () => {
     const val = parseInt(newSemesterValue.value);
@@ -151,208 +132,352 @@ const submitNewSemester = () => {
         maxSemesterAdded.value = Math.max(maxSemesterAdded.value, val);
         selectedSemester.value = val;
         isAddSemesterModalOpen.value = false;
-        fireToast('success', trans('success_saved', 'Tersimpan!'));
     }
 };
 
-// --- Course Inline CRUD Logic ---
-const localCourses = ref([]);
-const showArchivesMap = ref({});
-const newArchiveForms = ref({});
-
-watch(() => props.academicRecords, (newRecords) => {
-    localCourses.value = JSON.parse(JSON.stringify(newRecords || []));
-}, { immediate: true, deep: true });
-
-const filteredCourses = computed(() => {
-    return localCourses.value.filter(r => r.semester === selectedSemester.value);
-});
-
-const activeSemesterStats = computed(() => {
-    const sem = selectedSemester.value;
-    const semData = props.academicStats.semesters.find(s => s.semester === sem);
-    return semData || { total_sks: 0, ips: 0 };
-});
-
-const addCourseRow = () => {
-    router.post(route('study.academic.store'), {
-        course_name: trans('study_new_course_placeholder', 'Mata Kuliah Baru'),
-        sks: 2,
-        grade: 'A',
-        semester: selectedSemester.value
-    }, {
-        preserveScroll: true,
-        preserveState: true,
-        onSuccess: () => {
-            fireToast('success', trans('success_saved', 'Tersimpan!'));
-        }
-    });
-};
-
-const saveCourseSilent = (course) => {
-    if (!course.course_name || !course.course_name.trim()) {
-        fireToast('error', trans('study_course_name_empty_alert', { course: terms.value.course }));
-        return;
-    }
-    if (course.grade) {
-        course.grade = course.grade.toUpperCase().trim();
-    }
-    
-    router.put(route('study.academic.update', course.id), {
-        course_name: course.course_name,
-        sks: course.sks,
-        grade: course.grade,
-        semester: course.semester
-    }, {
-        preserveScroll: true,
-        preserveState: true,
-        only: ['academicRecords', 'academicStats']
-    });
-};
-
-const deleteRecord = (id) => {
+const deleteSpecificSemester = (sem) => {
     Swal.fire({
-        title: `<span class="text-xl font-black text-slate-800 dark:text-white">${trans('study_delete_course_confirm_title', { course: terms.value.course })}</span>`,
-        html: `<p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-2">${trans('study_delete_course_confirm', { course: terms.value.course })}</p>`,
+        title: trans('study_delete_semester_title', { num: sem }),
+        text: trans('study_delete_semester_text'),
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: trans('study_delete_confirm_yes'),
         cancelButtonText: trans('study_delete_confirm_cancel'),
         customClass: {
-            popup: '!rounded-[2rem] !p-8 !border !border-slate-100 dark:!border-slate-800 !shadow-2xl dark:!shadow-none dark:!bg-slate-900 transition-colors duration-500',
-            confirmButton: '!bg-rose-500 !text-white !font-bold !py-3.5 !px-6 !rounded-xl !shadow-lg dark:!shadow-none shadow-rose-200 dark:!shadow-rose-900/20 !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
-            cancelButton: '!bg-slate-100 dark:!bg-slate-800 !text-slate-500 dark:!text-slate-400 !font-bold !py-3.5 !px-6 !rounded-xl !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
-            actions: '!mt-8 flex flex-col-reverse sm:flex-row !gap-3'
+            confirmButton: 'bg-rose-500 text-white font-bold py-3.5 px-8 rounded-2xl mx-2',
+            cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3.5 px-8 rounded-2xl mx-2',
+            popup: 'rounded-[2.5rem] p-8'
         },
-        backdrop: `rgba(15, 23, 42, 0.6) `,
         buttonsStyling: false
     }).then((res) => {
         if (res.isConfirmed) {
-            router.delete(route('study.academic.destroy', id), {
+            const originalRecords = JSON.parse(JSON.stringify(localAcademicRecords.value));
+            const originalStats = JSON.parse(JSON.stringify(localAcademicStats.value));
+            const originalSelectedSemester = selectedSemester.value;
+
+            localAcademicRecords.value = localAcademicRecords.value.filter(r => r.semester !== sem);
+            localAcademicStats.value.semesters = localAcademicStats.value.semesters.filter(s => s.semester !== sem);
+            
+            if (selectedSemester.value === sem) {
+                selectedSemester.value = 1;
+            }
+
+            fireToast('success', 'Semester berhasil dihapus!');
+
+            router.delete(route('study.academic.semester.destroy', sem), {
                 preserveScroll: true,
                 preserveState: true,
-                onSuccess: () => {
-                    fireToast('success', trans('study_delete_success', 'Berhasil dihapus!'));
+                progress: false,
+                onError: (err) => {
+                    localAcademicRecords.value = originalRecords;
+                    localAcademicStats.value = originalStats;
+                    selectedSemester.value = originalSelectedSemester;
+                    fireToast('error', Object.values(err)[0] || 'Gagal menghapus semester.');
                 }
             });
         }
     });
 };
 
-// --- Expandable Inline Archives Logic ---
-const toggleArchives = (courseId) => {
-    showArchivesMap.value[courseId] = !showArchivesMap.value[courseId];
-    if (showArchivesMap.value[courseId] && !newArchiveForms.value[courseId]) {
-        initNewArchiveForm(courseId);
+const promptNewSemester = () => {
+    newSemesterValue.value = '';
+    isAddSemesterModalOpen.value = true;
+};
+
+const isEditCourseModalOpen = ref(false);
+const editCourseForm = useForm({
+    id: null,
+    course_name: '',
+    semester: 1,
+    sks: 1,
+    grade: null,
+});
+
+const openEditCourse = (course) => {
+    editCourseForm.id = course.id;
+    editCourseForm.course_name = course.course_name;
+    editCourseForm.semester = course.semester;
+    editCourseForm.sks = course.sks;
+    editCourseForm.grade = course.grade;
+    isEditCourseModalOpen.value = true;
+};
+
+const submitEditCourse = () => {
+    if (!editCourseForm.course_name.trim()) return fireToast('error', trans('study_course_name_empty_alert', { course: terms.value.course }));
+    
+    const targetId = editCourseForm.id;
+    const index = localAcademicRecords.value.findIndex(r => r.id === targetId);
+    let originalRecord = null;
+    
+    if (index !== -1) {
+        originalRecord = JSON.parse(JSON.stringify(localAcademicRecords.value[index]));
+        localAcademicRecords.value[index] = {
+            ...localAcademicRecords.value[index],
+            course_name: editCourseForm.course_name,
+            sks: editCourseForm.sks,
+            grade: editCourseForm.grade
+        };
     }
+
+    isEditCourseModalOpen.value = false;
+    fireToast('success', 'Perubahan disimpan!');
+
+    editCourseForm.put(route('study.academic.update', targetId), {
+        preserveScroll: true,
+        preserveState: true,
+        progress: false,
+        onError: (err) => {
+            if (index !== -1 && originalRecord) {
+                localAcademicRecords.value[index] = originalRecord;
+            }
+            fireToast('error', Object.values(err)[0] || 'Gagal menyimpan perubahan.');
+            openEditCourse(localAcademicRecords.value[index]);
+        }
+    });
 };
 
-const initNewArchiveForm = (courseId) => {
-    newArchiveForms.value[courseId] = {
-        meeting_tag: '',
-        type: 'Modul',
-        file: null,
-        link_url: '',
-        processing: false
+const filteredCourses = computed(() => {
+    return localAcademicRecords.value.filter(r => r.semester === selectedSemester.value);
+});
+
+// --- Course Form Logic ---
+const isAddCourseModalOpen = ref(false);
+const form = useForm({
+    course_name: '',
+    semester: 1, // dynamically updated before open
+    sks: '',
+    grade: ''
+});
+
+const openAddCourse = () => {
+    form.semester = selectedSemester.value;
+    form.course_name = '';
+    form.sks = '';
+    form.grade = '';
+    isAddCourseModalOpen.value = false; // Reset first
+    setTimeout(() => isAddCourseModalOpen.value = true, 50);
+};
+
+const submitCourse = () => {
+    if (!form.course_name.trim()) {
+        return fireToast('error', trans('study_course_name_empty_alert', { course: terms.value.course }));
+    }
+    if (!form.sks || form.sks < 1) {
+        return fireToast('error', trans('study_sks_invalid_alert', { sks: terms.value.sks }));
+    }
+    
+    const tempId = 'temp_' + Date.now();
+    const newRecord = {
+        id: tempId,
+        course_name: form.course_name,
+        semester: selectedSemester.value,
+        sks: form.sks,
+        grade: form.grade,
+        archives: []
     };
+
+    localAcademicRecords.value.push(newRecord);
+    isAddCourseModalOpen.value = false;
+    fireToast('success', 'Data berhasil ditambahkan!');
+
+    form.post(route('study.academic.store'), {
+        preserveScroll: true,
+        preserveState: true,
+        progress: false,
+        onError: (err) => {
+            localAcademicRecords.value = localAcademicRecords.value.filter(r => r.id !== tempId);
+            fireToast('error', Object.values(err)[0] || 'Gagal menambahkan data.');
+            openAddCourse();
+        }
+    });
 };
 
-const getGroupedArchives = (archives) => {
-    if (!archives) return {};
+const deleteRecord = (id) => {
+    if (String(id).startsWith('temp_')) {
+        fireToast('warning', 'Harap tunggu hingga data tersimpan.');
+        return;
+    }
+
+    Swal.fire({
+        title: trans('study_delete_course_confirm_title', { course: terms.value.course }),
+        text: trans('study_delete_course_confirm', { course: terms.value.course }),
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: trans('study_delete_confirm_yes'),
+        cancelButtonText: trans('study_delete_confirm_cancel'),
+        customClass: {
+            confirmButton: 'bg-rose-500 text-white font-bold py-3.5 px-8 rounded-2xl mx-2',
+            cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3.5 px-8 rounded-2xl mx-2',
+            popup: 'rounded-[2.5rem] p-8'
+        },
+        buttonsStyling: false
+    }).then((res) => {
+        if (res.isConfirmed) {
+            const deletedRecord = localAcademicRecords.value.find(r => r.id === id);
+            localAcademicRecords.value = localAcademicRecords.value.filter(r => r.id !== id);
+            
+            if (selectedCourse.value && selectedCourse.value.id === id) {
+                closeCourse();
+            }
+            fireToast('success', 'Data berhasil dihapus!');
+
+            router.delete(route('study.academic.destroy', id), {
+                preserveScroll: true,
+                preserveState: true,
+                progress: false,
+                onError: () => {
+                    if (deletedRecord) {
+                        localAcademicRecords.value.push(deletedRecord);
+                    }
+                    fireToast('error', 'Gagal menghapus data.');
+                }
+            });
+        }
+    });
+};
+
+// --- Level 2 (Course Detail) Logic ---
+const selectedCourse = ref(null);
+const activeCourseReactive = computed(() => {
+    if (!selectedCourse.value) return null;
+    return localAcademicRecords.value.find(r => r.id === selectedCourse.value.id) || null;
+});
+
+const openCourse = (course) => {
+    selectedCourse.value = course;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+const closeCourse = () => {
+    selectedCourse.value = null;
+};
+
+// --- Archive Upload & Dynamic Meetings Logic ---
+const isAddMeetingModalOpen = ref(false);
+const archiveForm = useForm({
+    academic_record_id: '',
+    meeting_tag: '',
+    file: null,
+    link_url: '',
+    type: 'Modul'
+});
+
+const openAddArchive = (prefillTag = '') => {
+    archiveForm.reset();
+    archiveForm.meeting_tag = prefillTag;
+    archiveForm.type = 'Modul';
+    isAddMeetingModalOpen.value = true;
+};
+
+const submitArchive = () => {
+    if (!activeCourseReactive.value) return;
+    if (!archiveForm.meeting_tag.trim()) {
+        return fireToast('error', trans('study_meeting_tag_empty_alert'));
+    }
+    if (!archiveForm.file && !archiveForm.link_url.trim()) {
+        return fireToast('error', trans('study_archive_file_or_link_alert'));
+    }
+
+    const tempArchiveId = 'temp_arc_' + Date.now();
+    const newArchive = {
+        id: tempArchiveId,
+        academic_record_id: activeCourseReactive.value.id,
+        file_name: archiveForm.file ? archiveForm.file.name : null,
+        file_path: archiveForm.file ? 'pending' : null,
+        link_url: archiveForm.link_url,
+        meeting_tag: archiveForm.meeting_tag,
+        type: archiveForm.type
+    };
+
+    const recordIndex = localAcademicRecords.value.findIndex(r => r.id === activeCourseReactive.value.id);
+    if (recordIndex !== -1) {
+        localAcademicRecords.value[recordIndex].archives.push(newArchive);
+    }
+    
+    isAddMeetingModalOpen.value = false;
+    fireToast('success', 'Arsip diunggah!');
+
+    archiveForm.academic_record_id = activeCourseReactive.value.id;
+    
+    archiveForm.post(route('study.academic.archive.store'), {
+        preserveScroll: true,
+        preserveState: true,
+        progress: false,
+        onError: (err) => {
+            if (recordIndex !== -1) {
+                localAcademicRecords.value[recordIndex].archives = localAcademicRecords.value[recordIndex].archives.filter(a => a.id !== tempArchiveId);
+            }
+            fireToast('error', Object.values(err)[0] || 'Gagal mengunggah berkas.');
+            openAddArchive(newArchive.meeting_tag);
+        }
+    });
+};
+
+const deleteArchive = (id) => {
+    if (String(id).startsWith('temp_')) {
+        fireToast('warning', 'Harap tunggu hingga proses unggah selesai.');
+        return;
+    }
+
+    Swal.fire({
+        title: trans('study_delete_archive_title'),
+        text: trans('study_delete_confirm_desc'),
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: trans('study_delete_confirm_yes'),
+        cancelButtonText: trans('study_delete_confirm_cancel'),
+        customClass: {
+            confirmButton: 'bg-rose-500 text-white font-bold py-3.5 px-8 rounded-2xl mx-2',
+            cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3.5 px-8 rounded-2xl mx-2',
+            popup: 'rounded-[2.5rem] p-8'
+        },
+        buttonsStyling: false
+    }).then((res) => {
+        if (res.isConfirmed) {
+            let recordIndex = -1;
+            let deletedArchive = null;
+            let deletedArchiveIndex = -1;
+
+            localAcademicRecords.value.forEach((r, rIdx) => {
+                const aIdx = r.archives.findIndex(a => a.id === id);
+                if (aIdx !== -1) {
+                    recordIndex = rIdx;
+                    deletedArchiveIndex = aIdx;
+                    deletedArchive = r.archives[aIdx];
+                }
+            });
+
+            if (recordIndex !== -1 && deletedArchiveIndex !== -1) {
+                localAcademicRecords.value[recordIndex].archives.splice(deletedArchiveIndex, 1);
+            }
+            fireToast('success', 'Arsip berhasil dihapus!');
+
+            router.delete(route('study.academic.archive.destroy', id), {
+                preserveScroll: true, 
+                preserveState: true,
+                progress: false,
+                onError: () => {
+                    if (recordIndex !== -1 && deletedArchive) {
+                        localAcademicRecords.value[recordIndex].archives.splice(deletedArchiveIndex, 0, deletedArchive);
+                    }
+                    fireToast('error', 'Gagal menghapus arsip.');
+                }
+            });
+        }
+    });
+};
+
+// Extract unique meeting tags and group archives
+const groupedArchives = computed(() => {
+    if (!activeCourseReactive.value || !activeCourseReactive.value.archives) return {};
     const groups = {};
-    archives.forEach(arc => {
+    activeCourseReactive.value.archives.forEach(arc => {
         const tag = arc.meeting_tag || 'Umum';
         if (!groups[tag]) groups[tag] = [];
         groups[tag].push(arc);
     });
     return groups;
-};
-
-const getExistingTags = (course) => {
-    if (!course.archives) return [];
-    const tags = course.archives.map(a => a.meeting_tag).filter(Boolean);
-    return [...new Set(tags)];
-};
-
-const uploadArchive = (courseId) => {
-    const form = newArchiveForms.value[courseId];
-    if (!form.meeting_tag.trim()) {
-        return fireToast('error', trans('study_meeting_tag_empty_alert'));
-    }
-    if (!form.file && !form.link_url.trim()) {
-        return fireToast('error', trans('study_archive_file_or_link_alert'));
-    }
-
-    form.processing = true;
-    
-    // We send form data
-    const formData = new FormData();
-    formData.append('academic_record_id', courseId);
-    formData.append('meeting_tag', form.meeting_tag.trim());
-    formData.append('type', form.type);
-    if (form.file) {
-        formData.append('file', form.file);
-    }
-    if (form.link_url) {
-        formData.append('link_url', form.link_url.trim());
-    }
-
-    router.post(route('study.academic.archive.store'), formData, {
-        preserveScroll: true,
-        preserveState: true,
-        onSuccess: () => {
-            initNewArchiveForm(courseId);
-            fireToast('success', trans('success_saved', 'Tersimpan!'));
-        },
-        onFinish: () => {
-            if (newArchiveForms.value[courseId]) {
-                newArchiveForms.value[courseId].processing = false;
-            }
-        }
-    });
-};
-
-const saveArchiveSilent = (archive) => {
-    router.put(route('study.academic.archive.update', archive.id), {
-        file_name: archive.file_name,
-        link_url: archive.link_url,
-        meeting_tag: archive.meeting_tag,
-        type: archive.type
-    }, {
-        preserveScroll: true,
-        preserveState: true,
-        only: ['academicRecords']
-    });
-};
-
-const deleteArchive = (id) => {
-    Swal.fire({
-        title: `<span class="text-xl font-black text-slate-800 dark:text-white">${trans('study_delete_archive_title')}</span>`,
-        html: `<p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-2">${trans('study_delete_confirm_desc')}</p>`,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: trans('study_delete_confirm_yes'),
-        cancelButtonText: trans('study_delete_confirm_cancel'),
-        customClass: {
-            popup: '!rounded-[2rem] !p-8 !border !border-slate-100 dark:!border-slate-800 !shadow-2xl dark:!shadow-none dark:!bg-slate-900 transition-colors duration-500',
-            confirmButton: '!bg-rose-500 !text-white !font-bold !py-3.5 !px-6 !rounded-xl !shadow-lg dark:!shadow-none shadow-rose-200 dark:!shadow-rose-900/20 !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
-            cancelButton: '!bg-slate-100 dark:!bg-slate-800 !text-slate-500 dark:!text-slate-400 !font-bold !py-3.5 !px-6 !rounded-xl !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
-            actions: '!mt-8 flex flex-col-reverse sm:flex-row !gap-3'
-        },
-        backdrop: `rgba(15, 23, 42, 0.6) `,
-        buttonsStyling: false
-    }).then((res) => {
-        if (res.isConfirmed) {
-            router.delete(route('study.academic.archive.destroy', id), {
-                preserveScroll: true,
-                preserveState: true,
-                onSuccess: () => {
-                    fireToast('success', trans('study_delete_success', 'Berhasil dihapus!'));
-                }
-            });
-        }
-    });
-};
+});
 
 const getTypeColor = (type) => {
     if (type === 'Modul') return 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800';
@@ -360,18 +485,12 @@ const getTypeColor = (type) => {
     if (type === 'Jawaban') return 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800';
     return 'bg-slate-100 text-slate-700 dark:bg-slate-900/40 dark:text-slate-400 border-slate-200 dark:border-slate-800';
 };
-
-onMounted(() => {
-    if (hasCompletedSetup.value) {
-        selectedSemester.value = userSettings.value.current_semester || 1;
-    }
-});
 </script>
 
 <template>
     <Head :title="$t('study_academic_binder_title', 'Academic Binder')" />
 
-    <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24 transition-colors font-sans duration-500">
+    <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24 transition-colors font-sans">
         
         <!-- ============================================== -->
         <!-- STATE 1: EMPTY STATE & SETUP -->
@@ -392,7 +511,7 @@ onMounted(() => {
                 </div>
             </div>
 
-            <!-- Portfolio Banner -->
+            <!-- Portfolio Banner di Bagian Bawah Layar Kosong -->
             <div class="max-w-[1600px] w-full md:w-[95%] mx-auto px-6 pb-12">
                 <Link :href="route('study.portfolio')" class="group relative flex flex-col sm:flex-row items-center justify-between p-6 sm:p-8 bg-white dark:bg-slate-900 overflow-hidden rounded-[2.5rem] border-2 border-indigo-50 dark:border-slate-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-all shadow-xl hover:shadow-indigo-500/10 hover:-translate-y-1">
                     <div class="flex items-center gap-6 mb-4 sm:mb-0">
@@ -409,408 +528,9 @@ onMounted(() => {
                     </div>
                 </Link>
             </div>
-        </template>
 
-        <!-- ============================================== -->
-        <!-- STATE 2: ACTIVE BINDER DASHBOARD (SPLIT LAYOUT) -->
-        <!-- ============================================== -->
-        <template v-else>
-            <div class="max-w-[1600px] w-full md:w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    
-                    <!-- LEFT COLUMN: Profile & Navigation -->
-                    <div class="lg:col-span-4 w-full space-y-6 lg:sticky lg:top-24 h-fit">
-                        
-                        <!-- Card 1: Academic Profile Summary -->
-                        <div class="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] border border-slate-200/60 dark:border-slate-800 shadow-sm transition-colors duration-500 relative overflow-hidden group">
-                            <div class="absolute -right-16 -top-16 w-40 h-40 border-[20px] border-slate-50 dark:border-slate-800/40 rounded-full pointer-events-none group-hover:scale-105 transition-all duration-1000"></div>
-                            
-                            <div class="relative z-10 flex items-start justify-between gap-4">
-                                <div class="flex items-center gap-4 min-w-0">
-                                    <div class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-2xl shrink-0">
-                                        🏫
-                                    </div>
-                                    <div class="min-w-0">
-                                        <h3 class="font-black text-slate-800 dark:text-white text-base tracking-tight truncate">{{ props.user.name }}</h3>
-                                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-none mt-1 capitalize">{{ terms.semester }} {{ selectedSemester }}</p>
-                                    </div>
-                                </div>
-                                <button @click="openEditSetup" class="shrink-0 p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-400 hover:text-indigo-600 transition-colors">
-                                    <Settings class="h-4 w-4" />
-                                </button>
-                            </div>
-
-                            <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800/50 grid grid-cols-2 gap-4">
-                                <div class="min-w-0">
-                                    <span class="block text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">{{ $t('study_edu_level_label', 'Jenjang') }}</span>
-                                    <span class="block text-xs font-bold text-slate-700 dark:text-slate-200 capitalize truncate">
-                                        {{ $t(`study_edu_level_${eduLevel}`) }}
-                                    </span>
-                                </div>
-                                <div class="min-w-0" v-if="userSettings.major">
-                                    <span class="block text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">{{ $t('study_major_label', 'Jurusan') }}</span>
-                                    <span class="block text-xs font-bold text-slate-700 dark:text-slate-200 truncate" :title="userSettings.major">
-                                        {{ userSettings.major }}
-                                    </span>
-                                </div>
-                                <div class="min-w-0 col-span-2" v-if="userSettings.student_id">
-                                    <span class="block text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">ID / NIM / NIS</span>
-                                    <span class="block text-xs font-bold font-mono text-slate-600 dark:text-slate-400 truncate">
-                                        {{ userSettings.student_id }}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 2: Interactive Stats Display -->
-                        <div class="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] border border-slate-200/60 dark:border-slate-800 shadow-sm transition-colors duration-500 flex items-center justify-between gap-6 relative overflow-hidden group">
-                            <!-- IPK GPA Circle Gauge -->
-                            <div class="relative flex items-center justify-center w-28 h-28 shrink-0">
-                                <svg class="w-full h-full transform -rotate-90">
-                                    <circle cx="56" cy="56" r="48" stroke="currentColor" class="text-slate-100 dark:text-slate-800" stroke-width="8" fill="transparent" />
-                                    <circle cx="56" cy="56" r="48" stroke="currentColor" class="text-indigo-600 dark:text-indigo-400 transition-all duration-1000 ease-out" stroke-width="8" fill="transparent"
-                                        :stroke-dasharray="2 * Math.PI * 48"
-                                        :stroke-dashoffset="2 * Math.PI * 48 * (1 - Math.min(props.academicStats.ipk, 4.0) / 4.0)"
-                                        stroke-linecap="round" />
-                                </svg>
-                                <div class="absolute flex flex-col items-center justify-center">
-                                    <span class="text-2xl font-black text-slate-800 dark:text-white leading-none">{{ Number(props.academicStats.ipk).toFixed(2) }}</span>
-                                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">{{ terms.ipk }}</span>
-                                </div>
-                            </div>
-
-                            <!-- Right details -->
-                            <div class="flex-1 space-y-4">
-                                <div>
-                                    <span class="block text-[8px] font-black text-slate-400 uppercase tracking-widest mb-0.5">{{ terms.total_sks }}</span>
-                                    <span class="text-lg font-black text-slate-800 dark:text-white leading-none">
-                                        {{ props.academicStats.total_sks }} <span class="text-xs font-bold text-slate-400">{{ terms.sks }}</span>
-                                    </span>
-                                </div>
-                                <div class="pt-2 border-t border-slate-100 dark:border-slate-800/50">
-                                    <span class="block text-[8px] font-black text-slate-400 uppercase tracking-widest mb-0.5">{{ terms.ips }} (Active)</span>
-                                    <span class="text-lg font-black text-indigo-600 dark:text-indigo-400 leading-none">
-                                        {{ Number(activeSemesterStats.ips).toFixed(2) }}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 3: Semester Navigation Sidebar -->
-                        <div class="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] border border-slate-200/60 dark:border-slate-800 shadow-sm transition-colors duration-500">
-                            <div class="flex items-center justify-between mb-4 px-1">
-                                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{{ $t('study_setup_title', 'Semester List') }}</span>
-                                <button @click="promptNewSemester" class="p-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition-colors">
-                                    <Plus class="h-4 w-4" />
-                                </button>
-                            </div>
-
-                            <div class="space-y-1.5 max-h-[300px] overflow-y-auto custom-scrollbar pr-1">
-                                <button 
-                                    v-for="sem in availableSemesters" 
-                                    :key="sem"
-                                    @click="selectedSemester = sem"
-                                    class="w-full text-left px-4 py-3 rounded-2xl flex items-center justify-between group transition-all"
-                                    :class="[
-                                        selectedSemester === sem 
-                                            ? 'bg-indigo-600 text-white font-black shadow-lg shadow-indigo-100 dark:shadow-none translate-x-1' 
-                                            : 'hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400'
-                                    ]"
-                                >
-                                    <span class="text-xs">{{ terms.semester }} {{ sem }}</span>
-                                    <div class="flex items-center gap-3">
-                                        <span class="text-[9px] font-bold opacity-60" :class="selectedSemester === sem ? 'text-indigo-100' : 'text-slate-400'">
-                                            {{ getSemesterStatsSummary(sem) }}
-                                        </span>
-                                        <button 
-                                            @click.stop="deleteSpecificSemester(sem)" 
-                                            class="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-500 p-1 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-all z-20"
-                                            :class="{ 'group-hover:text-white': selectedSemester === sem }"
-                                        >
-                                            <Trash2 class="h-3.5 w-3.5" />
-                                        </button>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- RIGHT COLUMN: Course Sheet & Archives Manager -->
-                    <div class="lg:col-span-8 w-full space-y-6">
-                        
-                        <!-- Main Sheet Console Panel -->
-                        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200/60 dark:border-slate-800 shadow-sm transition-colors duration-500 overflow-hidden flex flex-col min-h-[450px]">
-                            
-                            <!-- Sheet Header -->
-                            <div class="px-8 py-6 border-b border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 shrink-0 transition-colors">
-                                <div class="flex items-center gap-3 min-w-0">
-                                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg dark:shadow-none shadow-indigo-100 dark:shadow-indigo-900/20 text-lg">
-                                        📖
-                                    </div>
-                                    <div class="min-w-0">
-                                        <h2 class="text-lg font-black text-slate-800 dark:text-white tracking-tight leading-none mb-1.5 truncate">
-                                            {{ terms.semester }} {{ selectedSemester }}
-                                        </h2>
-                                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-none mt-1">
-                                            {{ activeSemesterStats.total_sks }} SKS &bull; IPS {{ Number(activeSemesterStats.ips).toFixed(2) }}
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                                <button @click="addCourseRow" class="h-[42px] px-5 flex items-center justify-center gap-2 text-white bg-indigo-600 hover:bg-indigo-700 active:scale-95 rounded-xl font-bold transition-all text-xs shadow-lg shadow-indigo-100 dark:shadow-none">
-                                    <Plus class="h-4 w-4" /> {{ $t('study_add_course_btn') }} {{ terms.course }}
-                                </button>
-                            </div>
-
-                            <!-- Course List / Spreadsheet Area -->
-                            <div class="flex-1 overflow-x-auto no-scrollbar">
-                                <table class="w-full text-left border-collapse">
-                                    <thead>
-                                        <tr class="bg-slate-50/50 dark:bg-slate-950/20 border-b border-slate-100 dark:border-slate-800 text-[10px] font-black uppercase tracking-wider text-slate-400">
-                                            <th class="py-4 px-6 min-w-[240px]">{{ terms.course }}</th>
-                                            <th class="py-4 px-4 w-[110px]">{{ terms.sks }}</th>
-                                            <th class="py-4 px-4 w-[140px]">{{ terms.grade }}</th>
-                                            <th class="py-4 px-4 w-[110px] text-center">{{ $t('study_archive', 'Berkas') }}</th>
-                                            <th class="py-4 px-6 w-[70px] text-right"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800/50">
-                                        <template v-if="filteredCourses.length === 0">
-                                            <tr>
-                                                <td colspan="5" class="py-20 text-center">
-                                                    <div class="max-w-md mx-auto flex flex-col items-center gap-4">
-                                                        <span class="text-4xl">📂</span>
-                                                        <h4 class="text-sm font-black text-slate-500 dark:text-slate-400 capitalize">{{ $t('study_no_course_data') }} {{ terms.course }}</h4>
-                                                        <p class="text-xs text-slate-400 px-8 leading-relaxed">{{ $t('study_no_course_desc', { course: terms.course, semester: terms.semester, num: selectedSemester }) }}</p>
-                                                        <button @click="addCourseRow" class="mt-2 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 font-bold px-6 py-2.5 rounded-xl border border-indigo-100/50 dark:border-indigo-900/20 text-xs transition-all active:scale-95">
-                                                            {{ $t('study_add_first_course', { course: terms.course }) }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </template>
-                                        <template v-else v-for="course in filteredCourses" :key="course.id">
-                                            <!-- Main Course Row -->
-                                            <tr class="group hover:bg-slate-50/30 dark:hover:bg-slate-900/10 transition-colors">
-                                                <!-- Course Name input -->
-                                                <td class="py-3 px-6">
-                                                    <input 
-                                                        v-model="course.course_name"
-                                                        @blur="saveCourseSilent(course)"
-                                                        @keydown.enter="$event.target.blur()"
-                                                        class="w-full bg-transparent border-0 focus:ring-0 p-0 text-sm font-black text-slate-800 dark:text-slate-100 placeholder-slate-350 dark:placeholder-slate-700 truncate transition-colors outline-none focus:border-b focus:border-indigo-500 focus:bg-slate-50 dark:focus:bg-slate-800/30 focus:px-2 focus:py-1 rounded" 
-                                                        placeholder="..."
-                                                    />
-                                                </td>
-                                                <!-- Credits (SKS) select -->
-                                                <td class="py-3 px-4">
-                                                    <select 
-                                                        v-model="course.sks"
-                                                        @change="saveCourseSilent(course)"
-                                                        class="bg-transparent border-0 focus:ring-0 p-0 text-xs font-bold text-slate-600 dark:text-slate-350 outline-none cursor-pointer focus:bg-slate-50 dark:focus:bg-slate-800/30 rounded focus:px-2 py-0.5"
-                                                    >
-                                                        <option v-for="val in 10" :key="val" :value="val">{{ val }} {{ terms.sks }}</option>
-                                                    </select>
-                                                </td>
-                                                <!-- Target Grade input -->
-                                                <td class="py-3 px-4">
-                                                    <input 
-                                                        v-model="course.grade"
-                                                        @blur="saveCourseSilent(course)"
-                                                        @keydown.enter="$event.target.blur()"
-                                                        class="w-full bg-transparent border-0 focus:ring-0 p-0 text-xs font-mono font-black text-emerald-600 dark:text-emerald-400 placeholder-slate-300 dark:placeholder-slate-700 transition-colors outline-none focus:bg-slate-50 dark:focus:bg-slate-800/30 focus:px-2 focus:py-1 rounded"
-                                                        :placeholder="$t('study_grade_placeholder')"
-                                                    />
-                                                </td>
-                                                <!-- Archives badge button -->
-                                                <td class="py-3 px-4 text-center">
-                                                    <button 
-                                                        @click="toggleArchives(course.id)"
-                                                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[10px] font-black tracking-wide transition-all border outline-none active:scale-95"
-                                                        :class="[
-                                                            showArchivesMap[course.id]
-                                                                ? 'bg-indigo-650 text-white border-indigo-650 shadow-md'
-                                                                : (course.archives?.length > 0)
-                                                                    ? 'bg-indigo-50 border-indigo-100 text-indigo-655 dark:bg-indigo-900/20 dark:border-indigo-900/40 dark:text-indigo-400'
-                                                                    : 'bg-slate-50 border-slate-100 text-slate-400 dark:bg-slate-800/50 dark:border-slate-800 dark:text-slate-500'
-                                                        ]"
-                                                    >
-                                                        <FileText class="h-3.5 w-3.5" />
-                                                        <span>{{ course.archives?.length || 0 }} Berkas</span>
-                                                    </button>
-                                                </td>
-                                                <!-- Delete Action -->
-                                                <td class="py-3 px-6 text-right">
-                                                    <button 
-                                                        @click="deleteRecord(course.id)"
-                                                        class="opacity-0 group-hover:opacity-100 text-slate-300 hover:text-rose-500 p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-all"
-                                                    >
-                                                        <Trash2 class="h-4 w-4" />
-                                                    </button>
-                                                </td>
-                                            </tr>
-
-                                            <!-- Expanded Archives Row -->
-                                            <tr v-if="showArchivesMap[course.id]">
-                                                <td colspan="5" class="p-6 bg-slate-50/30 dark:bg-slate-900/5 border-t border-b border-slate-100/80 dark:border-slate-800/80">
-                                                    <div class="space-y-6">
-                                                        
-                                                        <div class="flex items-center justify-between">
-                                                            <h4 class="text-xs font-black uppercase tracking-wider text-slate-450 flex items-center gap-2">
-                                                                <span>📁 Manajer Berkas</span> &bull; 
-                                                                <span class="text-indigo-600 dark:text-indigo-400 normal-case font-bold">{{ course.course_name }}</span>
-                                                            </h4>
-                                                        </div>
-
-                                                        <!-- Grouped Archives List -->
-                                                        <div v-if="!course.archives || course.archives.length === 0" class="text-center py-8 bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-850 border-dashed rounded-[1.5rem]">
-                                                            <p class="text-xs text-slate-400 font-bold italic tracking-wide">Belum ada berkas untuk mata kuliah ini.</p>
-                                                        </div>
-                                                        <div v-else class="space-y-6">
-                                                            <div v-for="(archives, groupTag) in getGroupedArchives(course.archives)" :key="groupTag" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-150 dark:border-slate-850 p-4 shadow-sm">
-                                                                <div class="text-[10px] font-black text-indigo-500 uppercase tracking-widest mb-3 border-b border-slate-50 dark:border-slate-800 pb-2">
-                                                                    📚 {{ groupTag }}
-                                                                </div>
-                                                                
-                                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                                    <div v-for="arc in archives" :key="arc.id" class="group/arc relative p-3.5 bg-slate-50/50 dark:bg-slate-950/20 border border-slate-100 dark:border-slate-800 rounded-xl flex items-center justify-between gap-3 hover:border-indigo-200 hover:bg-white dark:hover:bg-slate-900 transition-all">
-                                                                        <div class="flex items-center gap-3 min-w-0 flex-1">
-                                                                            <select 
-                                                                                v-model="arc.type"
-                                                                                @change="saveArchiveSilent(arc)"
-                                                                                class="w-20 rounded bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-700 text-[9px] font-black py-0.5 px-1 outline-none text-slate-500 focus:border-indigo-400"
-                                                                            >
-                                                                                <option value="Modul">{{ $t('study_type_modul') }}</option>
-                                                                                <option value="Soal">{{ $t('study_type_soal') }}</option>
-                                                                                <option value="Jawaban">{{ $t('study_type_jawaban') }}</option>
-                                                                                <option value="Referensi">{{ $t('study_type_referensi') }}</option>
-                                                                                <option value="Catatan">{{ $t('study_type_catatan') }}</option>
-                                                                            </select>
-                                                                            <input 
-                                                                                v-model="arc.file_name"
-                                                                                @blur="saveArchiveSilent(arc)"
-                                                                                @keydown.enter="$event.target.blur()"
-                                                                                class="flex-1 bg-transparent border-0 focus:ring-0 p-0 text-xs font-bold text-slate-700 dark:text-slate-250 truncate outline-none focus:border-b focus:border-indigo-400"
-                                                                                placeholder="..."
-                                                                            />
-                                                                        </div>
-                                                                        
-                                                                        <div class="flex items-center gap-2">
-                                                                            <a v-if="arc.file_path" :href="'/storage/' + arc.file_path" target="_blank" class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-100 text-indigo-600 dark:text-indigo-400 flex items-center justify-center transition-colors" title="Open PDF">
-                                                                                <FileText class="h-4 w-4" />
-                                                                            </a>
-                                                                            <a v-if="arc.link_url" :href="arc.link_url" target="_blank" class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 text-blue-600 dark:text-blue-400 flex items-center justify-center transition-colors" title="Visit Link">
-                                                                                <ExternalLink class="h-4 w-4" />
-                                                                            </a>
-                                                                            <button @click="deleteArchive(arc.id)" class="w-8 h-8 rounded-lg hover:bg-rose-50 text-slate-350 hover:text-rose-500 flex items-center justify-center transition-colors">
-                                                                                <Trash2 class="h-4 w-4" />
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Inline Quick Add Archive Form -->
-                                                        <div class="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-850 p-5 rounded-[1.5rem] shadow-sm">
-                                                            <span class="block text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4">+ Tambah Berkas / Link</span>
-                                                            
-                                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-                                                                <!-- Tag input with datalist -->
-                                                                <div class="space-y-1.5 md:col-span-1">
-                                                                    <label class="block text-[9px] font-bold text-slate-400 tracking-wider">Topik / Pertemuan</label>
-                                                                    <input 
-                                                                        v-model="newArchiveForms[course.id].meeting_tag"
-                                                                        :list="'datalist-' + course.id"
-                                                                        placeholder="Cth: Pertemuan 1"
-                                                                        class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-semibold focus:ring-1 focus:ring-indigo-500 outline-none"
-                                                                    />
-                                                                    <datalist :id="'datalist-' + course.id">
-                                                                        <option v-for="tag in getExistingTags(course)" :key="tag" :value="tag" />
-                                                                    </datalist>
-                                                                </div>
-                                                                <!-- Type -->
-                                                                <div class="space-y-1.5 md:col-span-1">
-                                                                    <label class="block text-[9px] font-bold text-slate-400 tracking-wider">Jenis Konten</label>
-                                                                    <select 
-                                                                        v-model="newArchiveForms[course.id].type"
-                                                                        class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-semibold focus:ring-1 focus:ring-indigo-500 outline-none"
-                                                                    >
-                                                                        <option value="Modul">{{ $t('study_type_modul') }}</option>
-                                                                        <option value="Soal">{{ $t('study_type_soal') }}</option>
-                                                                        <option value="Jawaban">{{ $t('study_type_jawaban') }}</option>
-                                                                        <option value="Referensi">{{ $t('study_type_referensi') }}</option>
-                                                                        <option value="Catatan">{{ $t('study_type_catatan') }}</option>
-                                                                    </select>
-                                                                </div>
-                                                                <!-- File upload & link -->
-                                                                <div class="space-y-1.5 md:col-span-2 flex flex-col sm:flex-row gap-3">
-                                                                    <div class="flex-1 space-y-1.5">
-                                                                        <label class="block text-[9px] font-bold text-slate-400 tracking-wider">File PDF / Tautan URL</label>
-                                                                        <div class="flex gap-2">
-                                                                            <input 
-                                                                                @input="newArchiveForms[course.id].file = $event.target.files[0]" 
-                                                                                type="file" 
-                                                                                accept=".pdf" 
-                                                                                class="flex-1 text-[10px] file:mr-2 file:py-1 file:px-2 file:rounded-lg file:border-0 file:bg-indigo-50 dark:file:bg-indigo-950/50 file:text-indigo-650 dark:file:text-indigo-400 bg-slate-55 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl py-1 px-2 cursor-pointer outline-none" 
-                                                                            />
-                                                                            <span class="text-xs text-slate-350 self-center font-bold">atau</span>
-                                                                            <input 
-                                                                                v-model="newArchiveForms[course.id].link_url"
-                                                                                type="url"
-                                                                                placeholder="https://..."
-                                                                                class="flex-1 px-3 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-semibold focus:ring-1 focus:ring-indigo-500 outline-none"
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                    <button 
-                                                                        @click="uploadArchive(course.id)"
-                                                                        :disabled="newArchiveForms[course.id].processing"
-                                                                        class="px-5 h-[36px] self-end shrink-0 bg-slate-900 dark:bg-indigo-600 text-white rounded-xl text-xs font-black uppercase tracking-wider flex items-center justify-center gap-1 hover:scale-102 transition-all active:scale-98 disabled:opacity-60"
-                                                                    >
-                                                                        <span v-if="newArchiveForms[course.id].processing">...</span>
-                                                                        <span v-else>+ Tambah</span>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </template>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <!-- Neural Portfolio Banner at the bottom -->
-                        <Link :href="route('study.portfolio')" class="group relative flex flex-col sm:flex-row items-center justify-between p-6 sm:p-8 bg-white dark:bg-slate-900 overflow-hidden rounded-[2.5rem] border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all shadow-md hover:shadow-indigo-500/5 hover:-translate-y-0.5 duration-300">
-                            <div class="flex items-center gap-6 mb-4 sm:mb-0">
-                                <div class="h-14 w-14 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-500 group-hover:scale-105 transition-transform">
-                                    <Sparkles class="h-7 w-7" />
-                                </div>
-                                <div class="text-center sm:text-left">
-                                    <h3 class="text-slate-800 dark:text-white font-black text-lg mb-0.5">Neural Portfolio</h3>
-                                    <p class="text-slate-500 dark:text-slate-450 text-xs max-w-xl">{{ $t('study_portfolio_banner_desc') }}</p>
-                                </div>
-                            </div>
-                            <div class="bg-slate-50 dark:bg-slate-850 px-5 py-2.5 rounded-xl text-indigo-600 dark:text-indigo-400 font-bold text-xs flex items-center gap-2 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                                {{ $t('study_explore_ai_space') }} <ChevronRight class="h-4 w-4" />
-                            </div>
-                        </Link>
-
-                    </div>
-
-                </div>
-            </div>
-        </template>
-
-        <!-- ============================================== -->
-        <!-- SETUP & SETTINGS MODAL -->
-        <!-- ============================================== -->
-        <Teleport to="body">
+            <!-- SETUP WIZARD MODAL -->
+            <Teleport to="body">
             <div v-if="showSetupModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-[100] flex items-center justify-center p-4">
                 <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-[2.5rem] shadow-2xl border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300 relative overflow-hidden flex flex-col max-h-[90vh]">
                     <div class="bg-indigo-600 p-6 text-center relative shrink-0">
@@ -854,45 +574,366 @@ onMounted(() => {
                 </div>
             </div>
         </Teleport>
+        </template>
 
         <!-- ============================================== -->
-        <!-- CUSTOM ADD SEMESTER MODAL -->
+        <!-- STATE 2: DASHBOARD (SEMESTER & DAFTAR MATKUL) -->
         <!-- ============================================== -->
+        <template v-else-if="!activeCourseReactive">
+            <!-- Header Khusus Study Console -->
+            <!-- Header Khusus Study Console -->
+            <header class="relative z-40 transition-all bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 transition-colors duration-500">
+                <div class="w-full min-w-0 px-4 md:px-8 py-4">
+                    <div class="flex flex-col items-stretch justify-between gap-4 min-w-0 md:flex-row md:items-center">
+                        <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,22rem)]">
+                            <p class="shrink-0 text-[13px] font-black capitalize tracking-wide text-slate-700 dark:text-slate-300 mr-2 pr-4">
+                                {{ $t('study_academic_binder_title', 'Academic Binder') }} &bull; <span class="text-slate-400">{{ userSettings.major || terms.course }}</span>
+                            </p>
+                        </div>
+                        
+                        <div class="flex min-w-0 flex-wrap items-center w-full gap-3 md:w-auto md:flex-nowrap md:justify-end">
+                            <!-- Dropdown Semester Dinamis -->
+                            <div class="relative min-w-0 flex-1 md:flex-none md:max-w-xs z-50">
+                                <Menu as="div" class="relative inline-block text-left w-full">
+                                    <MenuButton class="w-full min-w-0 flex items-center justify-between gap-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 pl-4 pr-3 py-2.5 rounded-xl font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500 hover:shadow-sm transition-all active:scale-95 outline-none">
+                                        <div class="flex min-w-0 flex-1 flex-col items-start leading-none text-left">
+                                            <span class="text-[9px] text-slate-400 dark:text-slate-500 mb-0.5">{{ terms.semester }}</span>
+                                            <span class="w-full truncate text-xs">{{ selectedSemester }}</span>
+                                        </div>
+                                        <div class="p-1 bg-white dark:bg-slate-800 border shadow-sm rounded-lg border-slate-100 dark:border-slate-700 flex items-center justify-center">
+                                            <ChevronDown class="h-3 w-3 text-indigo-500" />
+                                        </div>
+                                    </MenuButton>
+                                    <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                        <MenuItems class="absolute right-0 mt-2 w-56 origin-top-right bg-white dark:bg-slate-900 rounded-3xl shadow-2xl dark:shadow-none border border-slate-100 dark:border-slate-800 p-2 z-[60] max-h-60 overflow-y-auto custom-scrollbar">
+                                            <MenuItem v-for="sem in availableSemesters" :key="sem" v-slot="{ active }">
+                                                <div class="relative group flex items-center w-full mb-1">
+                                                    <button @click="selectedSemester = sem" :class="[active ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200 dark:shadow-none' : 'hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400', 'flex-1 text-left px-4 py-3 rounded-2xl text-[11px] font-black transition-all']">
+                                                        {{ terms.semester }} {{ sem }}
+                                                    </button>
+                                                    <button @click.stop="deleteSpecificSemester(sem)" class="absolute right-2 opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-500 p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-all z-20">
+                                                        <Trash2 class="h-3.5 w-3.5" />
+                                                    </button>
+                                                </div>
+                                            </MenuItem>
+                                            <div class="border-t border-slate-100 dark:border-slate-800 my-2 mx-2"></div>
+                                            <MenuItem v-slot="{ active }">
+                                                <button @click="promptNewSemester" :class="[active ? 'bg-indigo-50 dark:bg-slate-800' : '', 'group flex w-full items-center px-4 py-3 rounded-2xl text-[11px] font-black text-indigo-600 dark:text-indigo-400 transition-colors']">
+                                                    <Plus class="h-4 w-4 mr-2" /> {{ $t('study_custom', 'Custom') }}
+                                                </button>
+                                            </MenuItem>
+                                        </MenuItems>
+                                    </transition>
+                                </Menu>
+                            </div>
+    
+                            <!-- Button Tambah Matkul -->
+                            <button @click="openAddCourse" class="h-[46px] shrink-0 px-5 flex items-center gap-3 text-white rounded-xl font-bold hover:-translate-y-0.5 active:translate-y-0 shadow-lg transition-all duration-300 whitespace-nowrap bg-indigo-600 shadow-indigo-100 dark:shadow-indigo-900/40 hover:bg-indigo-700">
+                                <div class="bg-white/20 rounded-lg p-0.5 flex items-center justify-center">
+                                    <Plus class="h-4 w-4" />
+                                </div>
+                                <span class="hidden md:inline text-xs capitalize tracking-wide font-black">
+                                    {{ $t('study_add_course_btn') }} {{ terms.course }}
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="max-w-[1600px] w-full md:w-[95%] mx-auto px-4 sm:px-8 py-8">
+                <!-- Banner Portfolio di Bawah Header -->
+                <Link :href="route('study.portfolio')" class="group relative flex items-center justify-between px-6 py-4 bg-gradient-to-r from-slate-900 to-slate-800 overflow-hidden rounded-2xl border border-slate-800 transition-all hover:border-indigo-500/50 shadow-lg mb-8 hover:-translate-y-0.5">
+                    <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div class="relative z-10 flex items-center gap-4">
+                        <div class="h-10 w-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform border border-indigo-500/30">
+                            <Sparkles class="h-5 w-5" />
+                        </div>
+                        <h3 class="text-white font-bold text-sm sm:text-base tracking-wide">Neural Portfolio <span class="hidden sm:inline text-slate-400 font-normal ml-2">&mdash; {{ $t('study_portfolio_banner_sub') }}</span></h3>
+                    </div>
+                    <ChevronRight class="relative z-10 h-5 w-5 text-indigo-400 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <div class="flex items-end justify-between mb-6 border-b border-slate-200 dark:border-slate-800 pb-4 group/header">
+                    <h2 class="text-lg font-black text-slate-800 dark:text-white flex items-center gap-2">
+                        <FolderOpen class="h-5 w-5 text-slate-400" />
+                        {{ $t('study_course_list_title', { course: terms.course, semester: terms.semester, num: selectedSemester }) }}
+                        
+                        <button @click="deleteSemester" class="ml-2 text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 p-1.5 rounded-lg transition-colors opacity-0 group-hover/header:opacity-100" :title="$t('study_delete_this')">
+                            <Trash2 class="h-4 w-4" />
+                        </button>
+                    </h2>
+                </div>
+
+                <!-- Grid Mata Kuliah -->
+                <div v-if="filteredCourses.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div v-for="record in filteredCourses" :key="record.id" 
+                        @click="openCourse(record)"
+                        class="group relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-500 rounded-[2rem] p-6 cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/10 hover:-translate-y-1 overflow-hidden flex flex-col justify-between min-h-[180px]">
+                        
+                        <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-indigo-50 dark:bg-indigo-900/20 group-hover:scale-150 transition-transform duration-700 ease-out z-0"></div>
+
+                        <div class="relative z-20 flex justify-between items-start mb-6">
+                            <h5 class="text-lg font-black text-slate-800 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors pr-8 leading-tight">{{ record.course_name }}</h5>
+                            
+                            <!-- Action Menu -->
+                            <div class="absolute right-0 top-0 translate-x-2 group-hover:translate-x-0 opacity-0 group-hover:opacity-100 transition-all duration-300" @click.stop>
+                                <Menu as="div" class="relative inline-block text-left">
+                                    <MenuButton class="p-2 text-slate-400 hover:text-indigo-600 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors outline-none">
+                                        <MoreVertical class="h-5 w-5" />
+                                    </MenuButton>
+                                    <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                        <MenuItems class="absolute right-0 mt-2 w-48 origin-top-right bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-xl outline-none overflow-hidden z-50">
+                                            <MenuItem v-slot="{ active }">
+                                                <button @click="openEditCourse(record)" :class="[active ? 'bg-slate-50 dark:bg-slate-800' : '', 'flex w-full items-center gap-3 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-300']">
+                                                    <Edit3 class="h-4 w-4" /> {{ $t('study_edit') }}
+                                                </button>
+                                            </MenuItem>
+                                            <MenuItem v-slot="{ active }">
+                                                <button @click="deleteRecord(record.id)" :class="[active ? 'bg-rose-50 dark:bg-slate-800' : '', 'flex w-full items-center gap-3 px-4 py-3 text-sm font-bold text-rose-500']">
+                                                    <Trash2 class="h-4 w-4" /> {{ $t('study_delete') }}
+                                                </button>
+                                            </MenuItem>
+                                        </MenuItems>
+                                    </transition>
+                                </Menu>
+                            </div>
+                        </div>
+                        
+                        <div class="relative z-10 flex justify-between items-end mt-auto">
+                            <div class="flex flex-col gap-1">
+                                <span class="text-[10px] font-bold text-slate-400 capitalize tracking-wide">{{ terms.sks }}: <span class="text-slate-600 dark:text-slate-300">{{ record.sks }}</span></span>
+                                <span class="text-[10px] font-bold text-slate-400 capitalize tracking-wide">{{ terms.grade }}: <span class="text-emerald-600 dark:text-emerald-400 text-xs">{{ record.grade }}</span></span>
+                            </div>
+                            <div class="text-xs font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 px-3 py-2 rounded-xl flex items-center gap-1.5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                                <FileText class="h-4 w-4" /> {{ record.archives?.length || 0 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-else class="py-20 text-center border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-[2.5rem]">
+                    <div class="h-16 w-16 mx-auto bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mb-4">
+                        <FolderOpen class="h-8 w-8 text-slate-400" />
+                    </div>
+                    <h3 class="text-lg font-black text-slate-600 dark:text-slate-300 mb-1">{{ $t('study_no_course_data') }} {{ terms.course }}</h3>
+                    <p class="text-sm text-slate-500 mb-6">{{ $t('study_no_course_desc', { course: terms.course, semester: terms.semester, num: selectedSemester }) }}</p>
+                    <button @click="openAddCourse" class="px-6 py-2.5 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-200 dark:hover:bg-indigo-900/60 rounded-full font-bold transition-colors">
+                        {{ $t('study_add_first_course', { course: terms.course }) }}
+                    </button>
+                </div>
+            </div>
+
+            
+        <!-- MODAL EDIT COURSE -->
         <Teleport to="body">
-            <div v-if="isAddSemesterModalOpen" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-                <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-[2.5rem] shadow-2xl p-8 border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300 relative">
-                    <button @click="isAddSemesterModalOpen = false" class="absolute top-6 right-6 p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors">
+            <div v-if="isEditCourseModalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" @click="isEditCourseModalOpen = false"></div>
+                <div class="bg-white dark:bg-slate-900 rounded-[2rem] w-full max-w-lg shadow-2xl relative z-10 p-8 border border-slate-100 dark:border-slate-800 transform transition-all">
+                    
+                    <button @click="isEditCourseModalOpen = false" class="absolute top-6 right-6 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
                         <X class="h-5 w-5" />
                     </button>
-                    
-                    <div class="mb-6">
-                        <h3 class="text-xl font-black text-slate-800 dark:text-white">{{ $t('study_add_new_semester_title', 'Tambah Semester Baru') }}</h3>
-                        <p class="text-xs text-slate-500 mt-1">{{ $t('study_add_new_semester_text', 'Masukkan angka semester yang ingin ditambahkan (Misal: 7)') }}</p>
-                    </div>
 
-                    <form @submit.prevent="submitNewSemester" class="space-y-4">
+                    <h3 class="text-2xl font-black text-slate-800 dark:text-white mb-6">{{ $t('study_edit_course', { course: terms.course }) }}</h3>
+
+                    <form @submit.prevent="submitEditCourse" class="space-y-5">
                         <div>
-                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ terms.semester }} *</label>
-                            <input v-model="newSemesterValue" type="number" min="1" max="50" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_course_name_dynamic', { course: terms.course }) }}</label>
+                            <input v-model="editCourseForm.course_name" type="text" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
-                        <button type="submit" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg transition-all mt-2">
-                            {{ $t('study_continue', 'Lanjut') }}
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_sks_weight_dynamic', { sks: terms.sks }) }}</label>
+                                <input v-model="editCourseForm.sks" type="number" min="1" max="10" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_grade_target_dynamic', { grade: terms.grade }) }}</label>
+                                <input v-model="editCourseForm.grade" type="text" :placeholder="$t('study_grade_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                            </div>
+                        </div>
+
+                        <button type="submit" :disabled="editCourseForm.processing" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg transition-all mt-4">
+                            {{ $t('study_save_changes') }}
                         </button>
                     </form>
                 </div>
             </div>
         </Teleport>
 
+        <!-- MODAL TAMBAH MATKUL -->
+            <Teleport to="body">
+            <div v-if="isAddCourseModalOpen" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+                <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-[2.5rem] shadow-2xl p-8 border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300 relative">
+                    <button @click="isAddCourseModalOpen = false" class="absolute top-6 right-6 p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors">
+                        <X class="h-5 w-5" />
+                    </button>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-xl font-black text-slate-800 dark:text-white">{{ $t('study_add_new_data') }}</h3>
+                        <p class="text-xs font-bold text-indigo-500 capitalize tracking-wide mt-1">{{ $t('study_for_semester_dynamic', { semester: terms.semester, num: selectedSemester }) }}</p>
+                    </div>
+
+                    <form @submit.prevent="submitCourse" class="space-y-4">
+                        <div>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_course_name_dynamic', { course: terms.course }) }}</label>
+                            <input v-model="form.course_name" type="text" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ terms.sks }} *</label>
+                                <input v-model="form.sks" type="number" min="1" max="20" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_grade_target_required', { grade: terms.grade }) }}</label>
+                                <input v-model="form.grade" type="text" :placeholder="$t('study_grade_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                            </div>
+                        </div>
+                        <button type="submit" :disabled="form.processing" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg transition-all mt-2">
+                            {{ $t('study_save_data') }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </Teleport>
+        </template>
+
+        <!-- ============================================== -->
+        <!-- STATE 3: RUANG KELAS / DETAIL MATKUL -->
+        <!-- ============================================== -->
+        <template v-else>
+            <!-- Header Mode Kelas -->
+            <header class="bg-indigo-600 dark:bg-indigo-900 px-4 sm:px-8 pt-8 pb-16 sm:pb-24 relative overflow-hidden">
+                <div class="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+                <div class="max-w-[1600px] w-full md:w-[95%] mx-auto relative z-10">
+                    <button @click="closeCourse" class="mb-6 flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl text-white text-xs font-bold transition-colors w-max">
+                        <ArrowLeft class="h-4 w-4" /> {{ $t('study_back') }}
+                    </button>
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="bg-indigo-500/50 text-white text-[10px] font-black capitalize tracking-wide px-3 py-1 rounded-lg border border-white/20">{{ terms.semester }} {{ activeCourseReactive.semester }}</span>
+                                <span class="bg-white/10 text-indigo-100 text-[10px] font-bold px-3 py-1 rounded-lg">{{ activeCourseReactive.sks }} {{ terms.sks }}</span>
+                            </div>
+                            <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight mb-2 max-w-4xl">{{ activeCourseReactive.course_name }}</h1>
+                        </div>
+                        <div class="shrink-0">
+                            <!-- Tombol Input Pertemuan Baru (Dinamis) -->
+                            <button @click="openAddArchive('')" class="px-6 py-4 bg-white text-indigo-600 hover:bg-indigo-50 rounded-2xl font-black shadow-xl transition-transform hover:scale-105 flex items-center gap-3">
+                                <PlusCircle class="h-5 w-5" /> {{ $t('study_input_meeting_new', { meeting: terms.meeting }) }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Tampilan Kartu Blok Pertemuan (Dinamis) -->
+            <div class="max-w-[1600px] w-full md:w-[95%] mx-auto px-4 sm:px-8 -mt-8 sm:-mt-12 relative z-20 space-y-6 pb-20">
+                
+                <div v-if="Object.keys(groupedArchives).length === 0" class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-12 text-center border border-slate-200 dark:border-slate-800 shadow-xl">
+                    <div class="h-20 w-20 mx-auto bg-slate-50 dark:bg-slate-800 rounded-full flex items-center justify-center mb-6">
+                        <FolderOpen class="h-10 w-10 text-slate-300" />
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-700 dark:text-slate-200 mb-2">{{ $t('study_class_is_empty') }}</h3>
+                    <p class="text-slate-500 max-w-md mx-auto" v-html="$t('study_empty_class_desc', { meeting: terms.meeting })"></p>
+                </div>
+
+                <!-- Iterate unique meeting tags as Blocks -->
+                <div v-for="(archives, groupTag) in groupedArchives" :key="groupTag" class="bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-lg overflow-hidden">
+                    <!-- Header Blok Pertemuan -->
+                    <div class="bg-slate-50 dark:bg-slate-950 px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                        <h3 class="font-black text-lg text-slate-800 dark:text-white flex items-center gap-3">
+                            <BookOpen class="h-5 w-5 text-indigo-500" /> {{ groupTag }}
+                        </h3>
+                        <button @click="openAddArchive(groupTag)" class="text-xs font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
+                            <Plus class="h-3 w-3" /> {{ $t('study_add_file') }}
+                        </button>
+                    </div>
+
+                    <!-- Isi File dalam Grup Ini -->
+                    <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <div v-for="arc in archives" :key="arc.id" class="group relative p-4 bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl flex flex-col transition-all hover:border-indigo-300 hover:shadow-md">
+                            <div class="flex items-start justify-between gap-3 mb-4">
+                                <div class="flex-1 min-w-0">
+                                    <span class="inline-block px-2 py-0.5 rounded-md text-[9px] font-black capitalize tracking-wide mb-2" :class="getTypeColor(arc.type)">
+                                        {{ $t('study_type_' + arc.type.toLowerCase()) }}
+                                    </span>
+                                    <p class="text-sm font-bold text-slate-800 dark:text-slate-200 line-clamp-2 leading-snug">{{ arc.file_name || arc.link_url || $t('study_untitled_archive') }}</p>
+                                </div>
+                                <button @click="deleteArchive(arc.id)" class="text-slate-300 hover:text-red-500 p-1.5 rounded-lg hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100 shrink-0">
+                                    <Trash2 class="h-4 w-4" />
+                                </button>
+                            </div>
+                            <div class="mt-auto">
+                                <a v-if="arc.file_path" :href="'/storage/' + arc.file_path" target="_blank" class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-xs font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-xl transition-colors">
+                                    <FileText class="h-4 w-4" /> {{ $t('study_open_pdf') }}
+                                </a>
+                                <a v-if="arc.link_url" :href="arc.link_url" target="_blank" class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-xs font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400 rounded-xl transition-colors">
+                                    <ExternalLink class="h-4 w-4" /> {{ $t('study_visit_link') }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL INPUT PERTEMUAN / FILE BARU -->
+            <Teleport to="body">
+            <div v-if="isAddMeetingModalOpen" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+                <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-[2.5rem] shadow-2xl p-8 border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300 relative">
+                    <button @click="isAddMeetingModalOpen = false" class="absolute top-6 right-6 p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 hover:text-slate-800 transition-colors">
+                        <X class="h-5 w-5" />
+                    </button>
+                    
+                    <div class="mb-6 flex items-center gap-4">
+                        <div class="h-12 w-12 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-500">
+                            <Upload class="h-6 w-6" />
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black text-slate-800 dark:text-white">{{ $t('study_input_material') }}</h3>
+                            <p class="text-xs text-slate-500">{{ activeCourseReactive.course_name }}</p>
+                        </div>
+                    </div>
+
+                    <form @submit.prevent="submitArchive" class="space-y-5">
+                        <div>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_meeting_tag_label') }}</label>
+                            <input v-model="archiveForm.meeting_tag" type="text" :placeholder="$t('study_meeting_placeholder', { meeting: terms.meeting })" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="col-span-2 sm:col-span-1">
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_content_type') }}</label>
+                                <select v-model="archiveForm.type" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none">
+                                    <option value="Modul">{{ $t('study_type_modul') }}</option>
+                                    <option value="Soal">{{ $t('study_type_soal') }}</option>
+                                    <option value="Jawaban">{{ $t('study_type_jawaban') }}</option>
+                                    <option value="Referensi">{{ $t('study_type_referensi') }}</option>
+                                    <option value="Catatan">{{ $t('study_type_catatan') }}</option>
+                                </select>
+                            </div>
+                            <div class="col-span-2 sm:col-span-1">
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_upload_pdf') }}</label>
+                                <input @input="archiveForm.file = $event.target.files[0]" type="file" accept=".pdf" class="w-full text-xs file:mr-2 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-indigo-100 file:text-indigo-700 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-1.5 px-2 cursor-pointer" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_or_link') }}</label>
+                            <div class="relative">
+                                <Link2 class="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                                <input v-model="archiveForm.link_url" type="url" placeholder="https://..." class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 outline-none" />
+                            </div>
+                        </div>
+
+                        <button type="submit" :disabled="archiveForm.processing" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg transition-all mt-4">
+                            {{ $t('study_upload_save') }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+            </Teleport>
+        </template>
     </div>
 </template>
-
-<style scoped>
-.custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 20px; }
-.dark .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #1e293b; }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: #94a3b8; }
-.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: #334155; }
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-</style>
