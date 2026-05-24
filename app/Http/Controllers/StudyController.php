@@ -53,10 +53,23 @@ class StudyController extends Controller
     public function academicIndex()
     {
         $user = Auth::user();
+        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+        
         $academicRecords = \App\Models\AcademicRecord::with('archives')
             ->where('user_id', $user->id)
             ->orderBy('semester', 'desc')
-            ->get();
+            ->get()
+            ->map(function ($record) use ($disk) {
+                $record->archives->map(function ($archive) use ($disk) {
+                    if ($archive->file_path) {
+                        if (!str_starts_with($archive->file_path, 'http://') && !str_starts_with($archive->file_path, 'https://')) {
+                            $archive->file_path = \Illuminate\Support\Facades\Storage::disk($disk)->url($archive->file_path);
+                        }
+                    }
+                    return $archive;
+                });
+                return $record;
+            });
 
         $totalSks = 0;
         $totalPoints = 0;
@@ -202,10 +215,11 @@ class StudyController extends Controller
     {
         $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($id);
         
+        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
         // Also delete associated physical files
         foreach ($record->archives as $archive) {
-            if ($archive->file_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($archive->file_path)) {
-                \Illuminate\Support\Facades\Storage::disk('public')->delete($archive->file_path);
+            if ($archive->file_path && \Illuminate\Support\Facades\Storage::disk($disk)->exists($archive->file_path)) {
+                \Illuminate\Support\Facades\Storage::disk($disk)->delete($archive->file_path);
             }
         }
 
@@ -232,7 +246,8 @@ class StudyController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $fileName = $file->getClientOriginalName();
-            $filePath = $file->store('academic_archives', 'public');
+            $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+            $filePath = $file->store('academic_archives', $disk);
         }
 
         \App\Models\AcademicArchive::create([
@@ -277,8 +292,9 @@ class StudyController extends Controller
         // Ensure user owns the parent record
         $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($archive->academic_record_id);
 
-        if ($archive->file_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($archive->file_path)) {
-            \Illuminate\Support\Facades\Storage::disk('public')->delete($archive->file_path);
+        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+        if ($archive->file_path && \Illuminate\Support\Facades\Storage::disk($disk)->exists($archive->file_path)) {
+            \Illuminate\Support\Facades\Storage::disk($disk)->delete($archive->file_path);
         }
 
         $archive->delete();
