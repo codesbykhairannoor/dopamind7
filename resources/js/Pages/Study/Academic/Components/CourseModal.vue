@@ -55,23 +55,23 @@ const handleSubmit = () => {
                     <h3 class="text-xl font-black text-slate-800 dark:text-white">
                         {{ isEdit ? $t('study_edit_course', { course: terms.course }) : $t('study_add_new_data') }}
                     </h3>
-                    <p class="text-xs font-bold text-indigo-500 capitalize tracking-wide mt-1">
+                    <p class="text-xs font-bold text-indigo-500 tracking-wide mt-1">
                         {{ $t('study_for_semester_dynamic', { semester: terms.semester, num: selectedSemester }) }}
                     </p>
                 </div>
 
                 <form @submit.prevent="handleSubmit" class="space-y-4">
                     <div>
-                        <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_course_name_dynamic', { course: terms.course }) }}</label>
+                        <label class="block text-[11px] font-black tracking-wide text-slate-500 mb-1.5">{{ $t('study_course_name_dynamic', { course: terms.course }) }}</label>
                         <input v-model="courseName" type="text" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ terms.sks }} *</label>
+                            <label class="block text-[11px] font-black tracking-wide text-slate-500 mb-1.5">{{ terms.sks }} *</label>
                             <input v-model="sks" type="number" min="1" max="20" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
                         <div>
-                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_grade_target_required', { grade: terms.grade }) }}</label>
+                            <label class="block text-[11px] font-black tracking-wide text-slate-500 mb-1.5">{{ $t('study_grade_target_required', { grade: terms.grade }) }}</label>
                             <input v-model="grade" type="text" :placeholder="$t('study_grade_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
                     </div>

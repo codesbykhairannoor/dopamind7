@@ -1,7 +1,7 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3';
 import { trans } from 'laravel-vue-i18n';
-import { ref, computed, reactive, onMounted } from 'vue';
+import { ref, computed, reactive, onMounted, watch } from 'vue';
 import { 
     Sparkles, Loader2, Link2, BookOpen, FileText, PlusCircle,
     Upload, Trash2, CheckCircle2, XCircle, AlertTriangle, Files,
@@ -49,13 +49,22 @@ const isSubmittingAll = ref(false);
 const emit = defineEmits(['close']);
 
 // ─── Computed ─────────────────────────────────────────────────────────────────
+const contextWordCount = ref(0);
+const artifactWordCount = ref(0);
+
 const getWordCount = (text) => {
     if (!text) return 0;
-    return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+    const matches = text.match(/\S+/g);
+    return matches ? matches.length : 0;
 };
 
-const contextWordCount = computed(() => getWordCount(contextPanel.rich_text));
-const artifactWordCount = computed(() => getWordCount(artifactPanel.rich_text));
+watch(() => contextPanel.rich_text, (newVal) => {
+    contextWordCount.value = getWordCount(newVal);
+});
+
+watch(() => artifactPanel.rich_text, (newVal) => {
+    artifactWordCount.value = getWordCount(newVal);
+});
 
 const maxWords = 500;
 
@@ -407,8 +416,11 @@ const globalHasPending = computed(() => {
                             <textarea v-model="contextPanel.embed_url" rows="2" :placeholder="$t('study_link_placeholder')"
                                 class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"></textarea>
                         </div>
-                        <input v-if="contextPanel.embed_url" v-model="contextPanel.embed_url_name" type="text" :placeholder="$t('study_context_link_name')"
-                            class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
+                        <div v-if="contextPanel.embed_url" class="space-y-2">
+                            <label class="block text-[10px] font-bold text-slate-400 ml-1">{{ $t('study_link_name_label', 'Link Name') }}</label>
+                            <input v-model="contextPanel.embed_url_name" type="text" :placeholder="$t('study_context_link_name')"
+                                class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
+                        </div>
                     </div>
                 </div>
 
@@ -504,8 +516,11 @@ const globalHasPending = computed(() => {
                             <textarea v-model="artifactPanel.embed_url" rows="2" :placeholder="$t('study_link_placeholder')"
                                 class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"></textarea>
                         </div>
-                        <input v-if="artifactPanel.embed_url" v-model="artifactPanel.embed_url_name" type="text" :placeholder="$t('study_artifact_link_name')"
-                            class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition" />
+                        <div v-if="artifactPanel.embed_url" class="space-y-2">
+                            <label class="block text-[10px] font-bold text-slate-400 ml-1">{{ $t('study_link_name_label', 'Link Name') }}</label>
+                            <input v-model="artifactPanel.embed_url_name" type="text" :placeholder="$t('study_artifact_link_name')"
+                                class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition" />
+                        </div>
                     </div>
                 </div>
 

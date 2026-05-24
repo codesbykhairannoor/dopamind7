@@ -38,7 +38,7 @@ const openAddCourse = () => {
         <div class="w-full min-w-0 px-4 md:px-8 py-4">
             <div class="flex flex-col items-stretch justify-between gap-4 min-w-0 md:flex-row md:items-center">
                 <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,22rem)]">
-                    <p class="shrink-0 text-[13px] font-black capitalize tracking-wide text-slate-700 dark:text-slate-300 mr-2 pr-4">
+                    <p class="shrink-0 text-[13px] font-black tracking-wide text-slate-700 dark:text-slate-300 mr-2 pr-4">
                         {{ $t('study_academic_binder_title', 'Academic Binder') }} &bull; 
                         <span class="text-slate-400">{{ userSettings.major || terms.course }}</span>
                     </p>
@@ -94,7 +94,7 @@ const openAddCourse = () => {
                         <div class="bg-white/20 rounded-lg p-0.5 flex items-center justify-center">
                             <Plus class="h-4 w-4" />
                         </div>
-                        <span class="hidden md:inline text-xs capitalize tracking-wide font-black">
+                        <span class="hidden md:inline text-xs tracking-wide font-black">
                             {{ $t('study_add_course_btn') }} {{ terms.course }}
                         </span>
                     </button>

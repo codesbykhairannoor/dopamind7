@@ -141,10 +141,16 @@ const submit = () => {
                             {{ $t('study_context_link') }}
                         </label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input v-model="form.context_link" type="url" :placeholder="$t('study_link_label')"
-                                class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
-                            <input v-model="form.context_link_name" type="text" :placeholder="$t('study_context_link_name')"
-                                class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                            <div class="space-y-1.5">
+                                <label class="text-[10px] font-bold text-slate-400 ml-1">{{ $t('study_link_url_label', 'Link Url') }}</label>
+                                <input v-model="form.context_link" type="url" :placeholder="$t('study_link_label')"
+                                    class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="text-[10px] font-bold text-slate-400 ml-1">{{ $t('study_link_name_label', 'Link Name') }}</label>
+                                <input v-model="form.context_link_name" type="text" :placeholder="$t('study_context_link_name')"
+                                    class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                            </div>
                         </div>
                     </div>
 
@@ -155,10 +161,16 @@ const submit = () => {
                             {{ $t('study_artifact_link') }}
                         </label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input v-model="form.artifact_link" type="url" :placeholder="$t('study_link_label')"
-                                class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
-                            <input v-model="form.artifact_link_name" type="text" :placeholder="$t('study_artifact_link_name')"
-                                class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                            <div class="space-y-1.5">
+                                <label class="text-[10px] font-bold text-slate-400 ml-1">{{ $t('study_link_url_label', 'Link Url') }}</label>
+                                <input v-model="form.artifact_link" type="url" :placeholder="$t('study_link_label')"
+                                    class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="text-[10px] font-bold text-slate-400 ml-1">{{ $t('study_link_name_label', 'Link Name') }}</label>
+                                <input v-model="form.artifact_link_name" type="text" :placeholder="$t('study_artifact_link_name')"
+                                    class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                            </div>
                         </div>
                     </div>
 

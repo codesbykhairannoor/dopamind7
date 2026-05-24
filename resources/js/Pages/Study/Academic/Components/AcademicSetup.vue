@@ -90,7 +90,7 @@ const submitSetup = () => {
                     
                     <form @submit.prevent="submitSetup" class="p-6 space-y-5 overflow-y-auto custom-scrollbar">
                         <div>
-                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">{{ $t('study_edu_level_label') }}</label>
+                            <label class="block text-[11px] font-black tracking-wide text-slate-500 mb-2">{{ $t('study_edu_level_label') }}</label>
                             <select v-model="setupForm.education_level" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none">
                                 <option value="kuliah">{{ $t('study_edu_level_uni') }}</option>
                                 <option value="sma">{{ $t('study_edu_level_hs') }}</option>
@@ -100,16 +100,16 @@ const submitSetup = () => {
                             </select>
                         </div>
                         <div>
-                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">{{ $t('study_major_label') }}</label>
+                            <label class="block text-[11px] font-black tracking-wide text-slate-500 mb-2">{{ $t('study_major_label') }}</label>
                             <input v-model="setupForm.major" type="text" :placeholder="$t('study_major_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">{{ $t('study_student_id_label') }}</label>
+                                <label class="block text-[11px] font-black tracking-wide text-slate-500 mb-2">{{ $t('study_student_id_label') }}</label>
                                 <input v-model="setupForm.student_id" type="text" :placeholder="$t('study_student_id_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                             <div>
-                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">{{ $t('study_semester_label') }}</label>
+                                <label class="block text-[11px] font-black tracking-wide text-slate-500 mb-2">{{ $t('study_semester_label') }}</label>
                                 <input v-model="setupForm.current_semester" type="number" min="1" max="20" placeholder="1" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                         </div>

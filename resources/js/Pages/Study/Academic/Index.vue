@@ -93,14 +93,21 @@ watch(() => userSettings.value.current_semester, (newVal) => {
 
 const availableSemesters = computed(() => {
     const semsFromRecords = localAcademicStats.value.semesters.map(s => s.semester);
-    const maxVal = Math.max(localCurrentSemester.value, maxSemesterAdded.value, ...semsFromRecords, 1);
     
-    const all = [];
-    for (let i = 1; i <= maxVal; i++) {
-        all.push(i);
-    }
-    return all.reverse();
+    // Always include current semester
+    const allSems = new Set([...semsFromRecords, localCurrentSemester.value]);
+    
+    // Sort descending
+    return Array.from(allSems).sort((a, b) => b - a);
 });
+
+const availableSemestersRange = (max) => {
+    const range = [];
+    for (let i = 1; i <= max; i++) {
+        range.push(i);
+    }
+    return range;
+};
 
 const selectedSemester = ref(userSettings.value.current_semester || 1);
 const isAddSemesterModalOpen = ref(false);

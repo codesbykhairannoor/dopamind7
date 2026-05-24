@@ -40,7 +40,7 @@ const handleSubmit = () => {
 
                 <form @submit.prevent="handleSubmit" class="space-y-4">
                     <div>
-                        <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_semester_label', 'Semester') }} *</label>
+                        <label class="block text-[11px] font-black tracking-wide text-slate-500 mb-1.5">{{ $t('study_semester_label', 'Semester') }} *</label>
                         <input v-model="semesterVal" type="number" min="1" max="20" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                     </div>
                     <button type="submit" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg transition-all mt-2">

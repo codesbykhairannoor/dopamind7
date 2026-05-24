@@ -57,8 +57,8 @@ const handleDelete = () => {
         
         <div class="relative z-10 flex justify-between items-end mt-auto">
             <div class="flex flex-col gap-1">
-                <span class="text-[10px] font-bold text-slate-400 capitalize tracking-wide">{{ terms.sks }}: <span class="text-slate-600 dark:text-slate-300">{{ record.sks }}</span></span>
-                <span class="text-[10px] font-bold text-slate-400 capitalize tracking-wide">{{ terms.grade }}: <span class="text-emerald-600 dark:text-emerald-400 text-xs">{{ record.grade }}</span></span>
+                <span class="text-[10px] font-bold text-slate-400 tracking-wide">{{ terms.sks }}: <span class="text-slate-600 dark:text-slate-300">{{ record.sks }}</span></span>
+                <span class="text-[10px] font-bold text-slate-400 tracking-wide">{{ terms.grade }}: <span class="text-emerald-600 dark:text-emerald-400 text-xs">{{ record.grade }}</span></span>
             </div>
             <div class="text-xs font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 px-3 py-2 rounded-xl flex items-center gap-1.5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                 <FileText class="h-4 w-4" /> {{ record.archives?.length || 0 }}
