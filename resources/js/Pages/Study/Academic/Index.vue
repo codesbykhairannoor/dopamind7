@@ -127,12 +127,16 @@ const isAddSemesterModalOpen = ref(false);
 const newSemesterValue = ref('');
 
 const submitNewSemester = () => {
-    const val = parseInt(newSemesterValue.value);
-    if (val && val >= 1) {
-        maxSemesterAdded.value = Math.max(maxSemesterAdded.value, val);
-        selectedSemester.value = val;
-        isAddSemesterModalOpen.value = false;
+    if (!newSemesterValue.value) {
+        return fireToast('error', trans('study_semester_empty_alert'));
     }
+    const val = parseInt(newSemesterValue.value);
+    if (!val || val < 1) {
+        return fireToast('error', 'Nomor semester tidak valid!');
+    }
+    maxSemesterAdded.value = Math.max(maxSemesterAdded.value, val);
+    selectedSemester.value = val;
+    isAddSemesterModalOpen.value = false;
 };
 
 const deleteSpecificSemester = (sem) => {
@@ -792,6 +796,32 @@ const getTypeColor = (type) => {
                         </div>
                         <button type="submit" :disabled="form.processing" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg transition-all mt-2">
                             {{ $t('study_save_data') }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </Teleport>
+        
+        <!-- MODAL TAMBAH SEMESTER -->
+        <Teleport to="body">
+            <div v-if="isAddSemesterModalOpen" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+                <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-[2.5rem] shadow-2xl p-8 border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300 relative">
+                    <button @click="isAddSemesterModalOpen = false" class="absolute top-6 right-6 p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 hover:text-slate-800 transition-colors">
+                        <X class="h-5 w-5" />
+                    </button>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-xl font-black text-slate-800 dark:text-white">{{ $t('study_add_new_semester_title', 'Tambah Semester Baru') }}</h3>
+                        <p class="text-xs text-slate-500 mt-1">{{ $t('study_add_new_semester_text', 'Masukkan nomor semester yang ingin Anda tambahkan (contoh: 7)') }}</p>
+                    </div>
+
+                    <form @submit.prevent="submitNewSemester" class="space-y-4">
+                        <div>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_semester_label', 'Semester') }} *</label>
+                            <input v-model="newSemesterValue" type="number" min="1" max="20" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg transition-all mt-2">
+                            {{ $t('study_continue', 'Lanjutkan') }}
                         </button>
                     </form>
                 </div>

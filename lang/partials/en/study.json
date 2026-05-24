@@ -239,5 +239,6 @@
   "study_career_goal_placeholder": "e.g. Machine Learning Engineer, Frontend Developer",
   "study_display_settings_desc": "Configure which audited sections and career target metrics you want to show on your public portfolio page.",
   "study_delete_course_confirm_title": "Delete :course?",
-  "study_delete_archive_title": "Delete Archive?"
+  "study_delete_archive_title": "Delete Archive?",
+  "study_custom": "Custom"
 }

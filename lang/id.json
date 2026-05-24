@@ -5692,5 +5692,6 @@
     "study_career_goal_placeholder": "misal: Machine Learning Engineer, Frontend Developer",
     "study_display_settings_desc": "Konfigurasikan bagian audit dan target karir mana yang ingin Anda tampilkan pada halaman portofolio publik Anda.",
     "study_delete_course_confirm_title": "Hapus :course?",
-    "study_delete_archive_title": "Hapus Arsip?"
+    "study_delete_archive_title": "Hapus Arsip?",
+    "study_custom": "Kustom"
 }
