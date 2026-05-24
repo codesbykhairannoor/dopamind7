@@ -173,7 +173,9 @@ class StudyController extends Controller
             'week' => 'nullable|string|max:255',
             'grade' => 'nullable|numeric|min:0|max:100',
             'context_link' => 'nullable|url|max:2083',
+            'context_link_name' => 'nullable|string|max:255',
             'artifact_link' => 'nullable|url|max:2083',
+            'artifact_link_name' => 'nullable|string|max:255',
             'show_radar' => 'boolean',
             'show_archetypes' => 'boolean',
             'show_materials' => 'boolean',
@@ -188,11 +190,15 @@ class StudyController extends Controller
         ]);
 
         $contextData = $material->context_data ?? [];
+        if (!is_array($contextData)) $contextData = [];
         $contextData['link'] = $request->context_link;
+        $contextData['link_name'] = $request->context_link_name;
         $material->context_data = $contextData;
 
         $artifactData = $material->artifact_data ?? [];
+        if (!is_array($artifactData)) $artifactData = [];
         $artifactData['link'] = $request->artifact_link;
+        $artifactData['link_name'] = $request->artifact_link_name;
         $material->artifact_data = $artifactData;
 
         $material->save();
@@ -475,9 +481,11 @@ class StudyController extends Controller
             'grade' => 'nullable|numeric|min:0|max:100',
             'context_files.*' => 'nullable|file|mimes:pdf,docx,pptx|max:10240',
             'context_link' => 'nullable|url|max:2083',
+            'context_link_name' => 'nullable|string|max:255',
             'context_text' => 'nullable|string|max:5000',
             'artifact_files.*' => 'nullable|file|mimes:pdf,docx,pptx|max:10240',
             'artifact_link' => 'nullable|url|max:2083',
+            'artifact_link_name' => 'nullable|string|max:255',
             'artifact_text' => 'nullable|string|max:5000',
         ]);
 
@@ -524,8 +532,10 @@ class StudyController extends Controller
 
             $textData = [
                 'context_link' => $request->context_link,
+                'context_link_name' => $request->context_link_name,
                 'context_text' => $request->context_text,
                 'artifact_link' => $request->artifact_link,
+                'artifact_link_name' => $request->artifact_link_name,
                 'artifact_text' => $request->artifact_text,
             ];
 

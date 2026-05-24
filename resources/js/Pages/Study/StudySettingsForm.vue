@@ -70,7 +70,7 @@ const saveSettings = () => {
         <form @submit.prevent="saveSettings" class="space-y-6">
             <!-- Checklist Settings -->
             <div class="space-y-4">
-                <label class="block text-xs font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-2">{{ $t('study_visible_sections') }}</label>
+                <label class="block text-xs font-extrabold tracking-widest text-slate-400 dark:text-slate-500 mb-2">{{ $t('study_visible_sections') }}</label>
                 
                 <!-- Toggle: Pemahaman Materi (Radar) -->
                 <label class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/50 dark:border-slate-800/50 cursor-pointer select-none hover:bg-slate-100 dark:hover:bg-slate-900 transition">
@@ -124,7 +124,7 @@ const saveSettings = () => {
             <!-- Custom Career Target Section -->
             <div class="pt-4 border-t border-slate-100 dark:border-slate-800/60 space-y-4">
                 <div class="flex items-center justify-between">
-                    <label class="block text-xs font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500">{{ $t('study_career_target_input') }}</label>
+                    <label class="block text-xs font-extrabold tracking-widest text-slate-400 dark:text-slate-500">{{ $t('study_career_target_input') }}</label>
                     
                     <!-- Toggle: Target career visible -->
                     <label class="flex items-center gap-2 cursor-pointer select-none">

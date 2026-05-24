@@ -14,23 +14,29 @@ const props = defineProps({
     userSettings: { type: Object, default: () => ({}) }
 });
 
+const emit = defineEmits(['optimistic-delete', 'optimistic-update']);
+
 const showDeleteModal = ref(false);
-const materialToDelete = ref(null);
+const materialToDeleteId = ref(null);
 const showEditModal = ref(false);
 const materialToEdit = ref(null);
 
 const openDeleteModal = (id) => {
-    materialToDelete.value = id;
+    materialToDeleteId.value = id;
     showDeleteModal.value = true;
 };
 
 const confirmDelete = () => {
-    if (materialToDelete.value) {
-        router.delete(route('study.destroy', materialToDelete.value), {
+    if (materialToDeleteId.value) {
+        const id = materialToDeleteId.value;
+        emit('optimistic-delete', id);
+        showDeleteModal.value = false;
+        
+        router.delete(route('study.destroy', id), {
             preserveScroll: true,
-            onSuccess: () => {
-                showDeleteModal.value = false;
-                materialToDelete.value = null;
+            preserveState: true,
+            onFinish: () => {
+                materialToDeleteId.value = null;
             }
         });
     }
@@ -38,7 +44,7 @@ const confirmDelete = () => {
 
 const closeDeleteModal = () => {
     showDeleteModal.value = false;
-    materialToDelete.value = null;
+    materialToDeleteId.value = null;
 };
 
 const openEditModal = (material) => {
@@ -64,6 +70,15 @@ const getMaterialSummary = (data) => {
     if (data.files && data.files.length) parts.push(`${data.files.length} file(s)`);
     if (data.link) parts.push('1 link');
     if (data.text) parts.push('Notes');
+    // For backward compatibility if it's an array of items
+    if (Array.isArray(data)) {
+        const fileCount = data.filter(i => i.type === 'file').length;
+        const linkCount = data.filter(i => i.type === 'link').length;
+        const hasText = data.some(i => i.type === 'text');
+        if (fileCount) parts.push(`${fileCount} file(s)`);
+        if (linkCount) parts.push(`${linkCount} link(s)`);
+        if (hasText) parts.push('Notes');
+    }
     return parts.length ? parts.join(', ') : 'None';
 };
 </script>
@@ -77,7 +92,7 @@ const getMaterialSummary = (data) => {
                 </div>
                 {{ $t('study_coursework_materials') }}
             </h2>
-            <div v-if="materials.length > 0" class="px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">
+            <div v-if="materials.length > 0" class="px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-black tracking-widest text-slate-400 dark:text-slate-500">
                 {{ materials.length }} / 6 Cards
             </div>
         </div>
@@ -104,18 +119,18 @@ const getMaterialSummary = (data) => {
                     <div class="min-w-0 flex-1">
                         <!-- Badge Header -->
                         <div class="flex items-center gap-2 mb-3 flex-wrap">
-                            <span v-if="material.metadata?.field_of_study" class="px-2.5 py-1 rounded-lg text-[9px] font-black uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-900/40">
+                            <span v-if="material.metadata?.field_of_study" class="px-2.5 py-1 rounded-lg text-[9px] font-black tracking-wider bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-900/40">
                                 {{ material.metadata.field_of_study }}
                             </span>
 
                             <!-- Period/Week -->
-                            <span v-if="material.week" class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 text-[9px] text-slate-400 dark:text-slate-500 font-black uppercase tracking-wider flex items-center gap-1.5">
+                            <span v-if="material.week" class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 text-[9px] text-slate-400 dark:text-slate-500 font-black tracking-wider flex items-center gap-1.5">
                                 <Clock class="h-3 w-3" />
                                 {{ material.week }}
                             </span>
 
                             <!-- Grade/Score -->
-                            <span v-if="material.grade !== null" class="px-2 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-[9px] font-black uppercase tracking-wider border border-emerald-100/50 dark:border-emerald-900/40">
+                            <span v-if="material.grade !== null" class="px-2 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-[9px] font-black tracking-wider border border-emerald-100/50 dark:border-emerald-900/40">
                                 {{ $t('study_grade') }}: {{ material.grade }}
                             </span>
                         </div>
@@ -129,56 +144,98 @@ const getMaterialSummary = (data) => {
                             <!-- Context Section -->
                             <div v-if="material.context_data" class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/50">
                                 <div class="flex items-center gap-2 mb-3">
-                                    <span class="text-[9px] font-black uppercase tracking-widest text-indigo-500 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-1 rounded-md">Context</span>
+                                    <span class="text-[9px] font-black tracking-widest text-indigo-500 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-1 rounded-md">Context</span>
                                     <span class="text-[10px] font-bold text-slate-400">{{ getMaterialSummary(material.context_data) }}</span>
                                 </div>
                                 <div class="space-y-2">
-                                    <a v-if="material.context_data.link" :href="material.context_data.link" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
-                                        <ExternalLink class="h-3.5 w-3.5" /> {{ material.context_data.link }}
-                                    </a>
-                                    <div v-if="material.context_data.files && material.context_data.files.length" class="space-y-1.5">
-                                        <div v-for="(file, idx) in material.context_data.files" :key="idx" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
-                                            <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
-                                                <FileText class="h-3 w-3 text-slate-400" /> {{ file.name }}
-                                            </span>
-                                            <div class="flex items-center gap-1">
-                                                <a :href="route('study.file.download', { material: material.id, type: 'context', index: idx, view: 1 })" target="_blank" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
-                                                    <FileSearch class="h-3.5 w-3.5" />
-                                                </a>
-                                                <a :href="route('study.file.download', { material: material.id, type: 'context', index: idx })" download class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_download_pdf')">
-                                                    <Download class="h-3.5 w-3.5" />
-                                                </a>
+                                    <!-- New Object Structure -->
+                                    <template v-if="!Array.isArray(material.context_data)">
+                                        <a v-if="material.context_data.link" :href="material.context_data.link" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
+                                            <ExternalLink class="h-3.5 w-3.5" /> {{ material.context_data.link_name || material.context_data.link }}
+                                        </a>
+                                        <div v-if="material.context_data.files && material.context_data.files.length" class="space-y-1.5">
+                                            <div v-for="(file, idx) in material.context_data.files" :key="idx" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
+                                                <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
+                                                    <FileText class="h-3 w-3 text-slate-400" /> {{ file.name }}
+                                                </span>
+                                                <div class="flex items-center gap-1">
+                                                    <a :href="route('study.file.download', { material: material.id, type: 'context', index: idx, view: 1 })" target="_blank" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
+                                                        <FileSearch class="h-3.5 w-3.5" />
+                                                    </a>
+                                                    <a :href="route('study.file.download', { material: material.id, type: 'context', index: idx })" download class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_download_pdf')">
+                                                        <Download class="h-3.5 w-3.5" />
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </template>
+                                    <!-- Old Array Structure fallback -->
+                                    <template v-else>
+                                        <div v-for="(item, idx) in material.context_data" :key="idx">
+                                            <a v-if="item.type === 'link'" :href="item.url" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
+                                                <ExternalLink class="h-3.5 w-3.5" /> {{ item.url }}
+                                            </a>
+                                            <div v-if="item.type === 'file'" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
+                                                <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
+                                                    <FileText class="h-3 w-3 text-slate-400" /> {{ item.name }}
+                                                </span>
+                                                <div class="flex items-center gap-1">
+                                                    <a :href="route('study.file.download', { material: material.id, type: 'context', index: idx, view: 1 })" target="_blank" class="p-1.5 text-slate-400 hover:text-indigo-500 transition">
+                                                        <FileSearch class="h-3.5 w-3.5" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
                                 </div>
                             </div>
 
                             <!-- Artifact Section -->
                             <div v-if="material.artifact_data" class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/50">
                                 <div class="flex items-center gap-2 mb-3">
-                                    <span class="text-[9px] font-black uppercase tracking-widest text-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-1 rounded-md">Artifact</span>
+                                    <span class="text-[9px] font-black tracking-widest text-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-1 rounded-md">Artifact</span>
                                     <span class="text-[10px] font-bold text-slate-400">{{ getMaterialSummary(material.artifact_data) }}</span>
                                 </div>
                                 <div class="space-y-2">
-                                    <a v-if="material.artifact_data.link" :href="material.artifact_data.link" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
-                                        <ExternalLink class="h-3.5 w-3.5" /> {{ material.artifact_data.link }}
-                                    </a>
-                                    <div v-if="material.artifact_data.files && material.artifact_data.files.length" class="space-y-1.5">
-                                        <div v-for="(file, idx) in material.artifact_data.files" :key="idx" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
-                                            <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
-                                                <FileText class="h-3 w-3 text-slate-400" /> {{ file.name }}
-                                            </span>
-                                            <div class="flex items-center gap-1">
-                                                <a :href="route('study.file.download', { material: material.id, type: 'artifact', index: idx, view: 1 })" target="_blank" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
-                                                    <FileSearch class="h-3.5 w-3.5" />
-                                                </a>
-                                                <a :href="route('study.file.download', { material: material.id, type: 'artifact', index: idx })" download class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_download_pdf')">
-                                                    <Download class="h-3.5 w-3.5" />
-                                                </a>
+                                    <!-- New Object Structure -->
+                                    <template v-if="!Array.isArray(material.artifact_data)">
+                                        <a v-if="material.artifact_data.link" :href="material.artifact_data.link" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
+                                            <ExternalLink class="h-3.5 w-3.5" /> {{ material.artifact_data.link_name || material.artifact_data.link }}
+                                        </a>
+                                        <div v-if="material.artifact_data.files && material.artifact_data.files.length" class="space-y-1.5">
+                                            <div v-for="(file, idx) in material.artifact_data.files" :key="idx" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
+                                                <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
+                                                    <FileText class="h-3 w-3 text-slate-400" /> {{ file.name }}
+                                                </span>
+                                                <div class="flex items-center gap-1">
+                                                    <a :href="route('study.file.download', { material: material.id, type: 'artifact', index: idx, view: 1 })" target="_blank" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
+                                                        <FileSearch class="h-3.5 w-3.5" />
+                                                    </a>
+                                                    <a :href="route('study.file.download', { material: material.id, type: 'artifact', index: idx })" download class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_download_pdf')">
+                                                        <Download class="h-3.5 w-3.5" />
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </template>
+                                    <!-- Old Array Structure fallback -->
+                                    <template v-else>
+                                        <div v-for="(item, idx) in material.artifact_data" :key="idx">
+                                            <a v-if="item.type === 'link'" :href="item.url" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
+                                                <ExternalLink class="h-3.5 w-3.5" /> {{ item.url }}
+                                            </a>
+                                            <div v-if="item.type === 'file'" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
+                                                <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
+                                                    <FileText class="h-3 w-3 text-slate-400" /> {{ item.name }}
+                                                </span>
+                                                <div class="flex items-center gap-1">
+                                                    <a :href="route('study.file.download', { material: material.id, type: 'artifact', index: idx, view: 1 })" target="_blank" class="p-1.5 text-slate-400 hover:text-indigo-500 transition">
+                                                        <FileSearch class="h-3.5 w-3.5" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +245,7 @@ const getMaterialSummary = (data) => {
                             <span 
                                 v-for="(score, comp) in Object.entries(material.metadata.competencies).slice(0, 5).reduce((acc, [k,v]) => ({...acc, [k]:v}), {})" 
                                 :key="comp"
-                                class="px-3 py-1 rounded-xl bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 text-[10px] font-black uppercase tracking-wider border border-slate-100 dark:border-slate-800 shadow-sm"
+                                class="px-3 py-1 rounded-xl bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 text-[10px] font-black tracking-wider border border-slate-100 dark:border-slate-800 shadow-sm"
                             >
                                 {{ comp }}
                             </span>
@@ -203,15 +260,15 @@ const getMaterialSummary = (data) => {
                         <div class="flex flex-col items-center gap-1">
                             <template v-if="material.status === 'processing'">
                                 <Loader2 class="h-6 w-6 text-indigo-500 animate-spin" />
-                                <span class="text-indigo-500 text-[10px] font-black uppercase tracking-widest">{{ $t('study_processing') }}</span>
+                                <span class="text-indigo-500 text-[10px] font-black tracking-widest">{{ $t('study_processing') }}</span>
                             </template>
                             <template v-else-if="material.status === 'completed'">
                                 <CheckCircle2 class="h-6 w-6 text-emerald-500" />
-                                <span class="text-slate-400 text-[10px] font-black uppercase tracking-widest">{{ $t('study_status_completed') }}</span>
+                                <span class="text-slate-400 text-[10px] font-black tracking-widest">{{ $t('study_status_completed') }}</span>
                             </template>
                             <template v-else>
                                 <XCircle class="h-6 w-6 text-red-500" />
-                                <span class="text-red-500 text-[10px] font-black uppercase tracking-widest">{{ $t('study_status_failed') }}</span>
+                                <span class="text-red-500 text-[10px] font-black tracking-widest">{{ $t('study_status_failed') }}</span>
                             </template>
                         </div>
 
@@ -266,6 +323,7 @@ const getMaterialSummary = (data) => {
             :material="materialToEdit"
             :userSettings="userSettings"
             @close="showEditModal = false"
+            @optimistic-update="emit('optimistic-update', $event)"
         />
 
         <div v-if="showDeleteModal" class="fixed inset-0 z-[70] flex items-center justify-center p-4">
@@ -279,10 +337,10 @@ const getMaterialSummary = (data) => {
                     {{ $t('study_delete_confirm_desc') }}
                 </p>
                 <div class="flex items-center gap-3">
-                    <button @click="closeDeleteModal" class="flex-1 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-2xl font-black text-xs uppercase tracking-widest transition">
+                    <button @click="closeDeleteModal" class="flex-1 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-2xl font-black text-xs tracking-widest transition">
                         {{ $t('btn_cancel') }}
                     </button>
-                    <button @click="confirmDelete" class="flex-1 py-4 bg-red-500 hover:bg-red-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-red-500/20 transition active:scale-95">
+                    <button @click="confirmDelete" class="flex-1 py-4 bg-red-500 hover:bg-red-600 text-white rounded-2xl font-black text-xs tracking-widest shadow-xl shadow-red-500/20 transition active:scale-95">
                         {{ $t('study_delete_yes', 'Hapus') }}
                     </button>
                 </div>

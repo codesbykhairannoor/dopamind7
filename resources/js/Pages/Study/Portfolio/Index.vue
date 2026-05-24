@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { Head, Link, useForm, router } from '@inertiajs/vue3';
 import { Sparkles, ArrowLeft, Link2, Copy, RefreshCw, CheckCircle2, Plus, X, ExternalLink, ShieldCheck } from 'lucide-vue-next';
 import StudyUploadForm from '../StudyUploadForm.vue';
@@ -12,6 +12,23 @@ const props = defineProps({
     competency: { type: Object, default: null },
     user: { type: Object, required: true }
 });
+
+const localMaterials = ref([...props.materials]);
+
+watch(() => props.materials, (newVal) => {
+    localMaterials.value = [...newVal];
+}, { deep: true });
+
+const handleOptimisticDelete = (id) => {
+    localMaterials.value = localMaterials.value.filter(m => m.id !== id);
+};
+
+const handleOptimisticUpdate = (updatedMaterial) => {
+    const index = localMaterials.value.findIndex(m => m.id === updatedMaterial.id);
+    if (index !== -1) {
+        localMaterials.value[index] = { ...localMaterials.value[index], ...updatedMaterial };
+    }
+};
 
 const copied = ref(false);
 const isUploadModalOpen = ref(false);
@@ -42,7 +59,7 @@ const refreshData = () => {
     router.reload({ preserveScroll: true, onFinish: () => { isRefreshing.value = false; } });
 };
 
-const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'processing'));
+const hasPendingFiles = computed(() => localMaterials.value.some(m => m.status === 'processing'));
 
 const openUploadModal = () => {
     isUploadModalOpen.value = true;
@@ -73,20 +90,20 @@ const closeUploadModal = () => {
                     <h1 class="text-2xl font-black text-slate-900 dark:text-white leading-none mb-1.5 tracking-tight">{{ $t('study_neural_portfolio_title', 'Neural Portfolio') }}</h1>
                     <div class="flex items-center gap-2">
                         <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <p class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.25em]">{{ $t('study_portfolio_subtitle', 'AI Competency Showcase') }}</p>
+                        <p class="text-[10px] font-black text-indigo-500 tracking-[0.25em]">{{ $t('study_portfolio_subtitle', 'Ai Competency Showcase') }}</p>
                     </div>
                 </div>
             </div>
 
             <div class="flex items-center gap-4">
                 <button @click="refreshData" :disabled="isRefreshing" 
-                    class="flex items-center gap-2.5 px-5 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-2xl font-black text-[11px] uppercase tracking-wider transition-all active:scale-95 disabled:opacity-50 border border-slate-200/50 dark:border-slate-700/50 shadow-sm group">
+                    class="flex items-center gap-2.5 px-5 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-2xl font-black text-[11px] tracking-wider transition-all active:scale-95 disabled:opacity-50 border border-slate-200/50 dark:border-slate-700/50 shadow-sm group">
                     <RefreshCw class="h-4 w-4" :class="{'animate-spin text-indigo-500': isRefreshing || hasPendingFiles, 'group-hover:rotate-180 transition-transform duration-500': !isRefreshing && !hasPendingFiles}" />
                     <span class="hidden md:inline">{{ hasPendingFiles ? $t('study_analyzing') : $t('study_refresh_data') }}</span>
                 </button>
 
                 <button @click="openUploadModal"
-                    class="flex items-center gap-2.5 px-7 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-[11px] uppercase tracking-wider transition-all active:scale-95 shadow-xl shadow-indigo-600/20 hover:shadow-indigo-600/30 border border-indigo-500/50">
+                    class="flex items-center gap-2.5 px-7 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-[11px] tracking-wider transition-all active:scale-95 shadow-xl shadow-indigo-600/20 hover:shadow-indigo-600/30 border border-indigo-500/50">
                     <Plus class="h-4 w-4" />
                     <span>{{ $t('study_new_analysis', 'Input Card') }}</span>
                 </button>
@@ -118,7 +135,7 @@ const closeUploadModal = () => {
                             <form @submit.prevent="updateUsername" class="flex items-center gap-2">
                                 <input v-model="usernameForm.username" type="text" :placeholder="$t('study_username_placeholder')" required
                                     class="bg-transparent border-none rounded-2xl text-sm font-bold text-slate-800 dark:text-white placeholder-slate-400 focus:ring-0 w-full px-6" />
-                                <button type="submit" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-[11px] uppercase tracking-widest shadow-lg active:scale-95 transition-all">
+                                <button type="submit" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-[11px] tracking-widest shadow-lg active:scale-95 transition-all">
                                     {{ $t('study_save_username') }}
                                 </button>
                             </form>
@@ -132,7 +149,7 @@ const closeUploadModal = () => {
                                     <CheckCircle2 v-else class="h-4 w-4 text-emerald-500" />
                                 </button>
                             </div>
-                            <a :href="publicUrl" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] font-black text-[11px] uppercase tracking-widest hover:scale-105 transition-all active:scale-95 shadow-xl flex items-center justify-center gap-3">
+                            <a :href="publicUrl" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] font-black text-[11px] tracking-widest hover:scale-105 transition-all active:scale-95 shadow-xl flex items-center justify-center gap-3">
                                 {{ $t('study_visit_link') }}
                                 <ExternalLink class="h-4 w-4" />
                             </a>
@@ -148,19 +165,21 @@ const closeUploadModal = () => {
                 <div class="lg:col-span-8">
                     <!-- Material List Component -->
                     <StudyMaterialList 
-                        :materials="props.materials" 
+                        :materials="localMaterials" 
                         :user="props.user"
                         :userSettings="props.user.settings"
+                        @optimistic-delete="handleOptimisticDelete"
+                        @optimistic-update="handleOptimisticUpdate"
                     />
                     
                     <!-- Empty State CTA -->
-                    <div v-if="props.materials.length === 0" class="mt-12 text-center py-24 bg-slate-50/50 dark:bg-slate-900/30 rounded-[3.5rem] border-2 border-dashed border-slate-200 dark:border-slate-800 transition-all hover:bg-indigo-50/30 dark:hover:bg-indigo-950/10">
+                    <div v-if="localMaterials.length === 0" class="mt-12 text-center py-24 bg-slate-50/50 dark:bg-slate-900/30 rounded-[3.5rem] border-2 border-dashed border-slate-200 dark:border-slate-800 transition-all hover:bg-indigo-50/30 dark:hover:bg-indigo-950/10">
                         <div class="h-24 w-24 bg-white dark:bg-slate-800 rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-indigo-500/10">
                             <Plus class="h-12 w-12 text-indigo-500" />
                         </div>
                         <h3 class="text-2xl font-black text-slate-900 dark:text-white mb-3">{{ $t('study_get_started') }}</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-base max-w-sm mx-auto mb-10 font-bold leading-relaxed">{{ $t('study_empty_portfolio_desc', 'Upload coursework materials to let our AI build your verified neural competency profile.') }}</p>
-                        <button @click="openUploadModal" class="px-12 py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-3xl font-black text-xs uppercase tracking-[0.2em] shadow-2xl shadow-indigo-600/30 transition-all hover:-translate-y-2 active:scale-95 border border-indigo-500/50">
+                        <p class="text-slate-500 dark:text-slate-400 text-base max-w-sm mx-auto mb-10 font-bold leading-relaxed">{{ $t('study_empty_portfolio_desc', 'Upload coursework materials to let our Ai build your verified neural competency profile.') }}</p>
+                        <button @click="openUploadModal" class="px-12 py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-3xl font-black text-xs tracking-[0.2em] shadow-2xl shadow-indigo-600/30 transition-all hover:-translate-y-2 active:scale-95 border border-indigo-500/50">
                             {{ $t('study_start_analysis') }}
                         </button>
                     </div>
@@ -207,7 +226,7 @@ const closeUploadModal = () => {
                                     <h2 class="text-2xl font-black text-slate-900 dark:text-white leading-tight tracking-tight">{{ $t('study_input_material', 'Analyze New Coursework') }}</h2>
                                     <div class="flex items-center gap-2">
                                         <span class="h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
-                                        <p class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.3em]">{{ $t('study_neural_analysis', 'Neural Skill Mapping Engine') }}</p>
+                                        <p class="text-[10px] font-black text-slate-500 dark:text-slate-400 tracking-[0.3em]">{{ $t('study_neural_analysis', 'Neural Skill Mapping Engine') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +238,7 @@ const closeUploadModal = () => {
                         <!-- Modal Body -->
                         <div class="flex-1 overflow-y-auto p-10 custom-scrollbar">
                             <div class="max-w-5xl mx-auto">
-                                <StudyUploadForm :materials="props.materials" @close="closeUploadModal" />
+                                <StudyUploadForm :materials="localMaterials" @close="closeUploadModal" />
                             </div>
                         </div>
                     </div>

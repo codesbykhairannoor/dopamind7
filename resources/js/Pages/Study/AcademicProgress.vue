@@ -41,7 +41,7 @@ const deleteRecord = (id) => {
                     {{ props.academicStats.ipk.toFixed(2) }}
                 </div>
                 <div>
-                    <p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Cumulative GPA (IPK)</p>
+                    <p class="text-[10px] tracking-widest font-bold text-slate-400">Cumulative Gpa (Ipk)</p>
                     <h3 class="text-xl font-black text-slate-800 dark:text-slate-100 leading-tight">Prestasi Akademik</h3>
                 </div>
             </div>
@@ -52,7 +52,7 @@ const deleteRecord = (id) => {
                     {{ props.academicStats.total_sks }}
                 </div>
                 <div>
-                    <p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Total Credits</p>
+                    <p class="text-[10px] tracking-widest font-bold text-slate-400">Total Credits</p>
                     <h3 class="text-xl font-black text-slate-800 dark:text-slate-100 leading-tight">SKS Ditempuh</h3>
                 </div>
             </div>
@@ -63,7 +63,7 @@ const deleteRecord = (id) => {
                     {{ props.academicStats.current_semester }}
                 </div>
                 <div>
-                    <p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Current Position</p>
+                    <p class="text-[10px] tracking-widest font-bold text-slate-400">Current Position</p>
                     <h3 class="text-xl font-black text-slate-800 dark:text-slate-100 leading-tight">Semester Aktif</h3>
                 </div>
             </div>
@@ -80,39 +80,39 @@ const deleteRecord = (id) => {
                     
                     <form @submit.prevent="submit" class="space-y-4">
                         <div>
-                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">Nama Mata Kuliah *</label>
+                            <label class="block text-[11px] font-black tracking-widest text-slate-400 mb-1">Nama Mata Kuliah *</label>
                             <input v-model="form.course_name" type="text" required
                                 class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                         </div>
                         
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">Semester *</label>
+                                <label class="block text-[11px] font-black tracking-widest text-slate-400 mb-1">Semester *</label>
                                 <input v-model="form.semester" type="number" min="1" max="14" required
                                     class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                             </div>
                             
                             <div>
-                                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">SKS *</label>
+                                <label class="block text-[11px] font-black tracking-widest text-slate-400 mb-1">Sks *</label>
                                 <input v-model="form.sks" type="number" min="1" max="10" required
                                     class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">Nilai Grade (0-100) *</label>
+                            <label class="block text-[11px] font-black tracking-widest text-slate-400 mb-1">Nilai Grade (0-100) *</label>
                             <input v-model="form.grade" type="number" step="0.01" min="0" max="100" required
                                 class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                         </div>
 
                         <div>
-                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">Upload Arsip (Opsional, PDF max 5MB)</label>
+                            <label class="block text-[11px] font-black tracking-widest text-slate-400 mb-1">Upload Arsip (Opsional, PDF max 5MB)</label>
                             <input @input="form.file = $event.target.files[0]" type="file" accept=".pdf"
                                 class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                         </div>
 
                         <div>
-                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">Link Eksternal (Opsional, Drive/Notion)</label>
+                            <label class="block text-[11px] font-black tracking-widest text-slate-400 mb-1">Link Eksternal (Opsional, Drive/Notion)</label>
                             <input v-model="form.link_url" type="url" placeholder="https://..."
                                 class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                         </div>

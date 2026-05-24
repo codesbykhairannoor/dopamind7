@@ -33,17 +33,11 @@ class ProcessCoursework implements ShouldQueue
         if (!$material) return;
 
         try {
-            $contextData = [];
-            $artifactData = [];
-            $aggregatedContextText = '';
-            $aggregatedArtifactText = '';
-
-            // PROCESS CONTEXTS
+            // AGGREGATE TEXT FOR AI
             if (!empty($this->filesData['context_files'])) {
                 foreach ($this->filesData['context_files'] as $fileData) {
                     $res = $this->extractFileText($fileData, $geminiService);
-                    $contextData[] = [
-                        'type' => 'file',
+                    $contextData['files'][] = [
                         'name' => $fileData['name'],
                         'path' => $fileData['path']
                     ];
@@ -51,27 +45,23 @@ class ProcessCoursework implements ShouldQueue
                 }
             }
             if (!empty($this->textData['context_link'])) {
-                $links = explode("\n", str_replace("\r", "", $this->textData['context_link']));
-                foreach ($links as $link) {
-                    $link = trim($link);
-                    if (!empty($link)) {
-                        $text = $this->processLink($link);
-                        $contextData[] = ['type' => 'link', 'url' => $link];
-                        $aggregatedContextText .= $text . "\n\n";
-                    }
+                $link = trim($this->textData['context_link']);
+                if (!empty($link)) {
+                    $text = $this->processLink($link);
+                    $contextData['link'] = $link;
+                    $contextData['link_name'] = $this->textData['context_link_name'] ?? null;
+                    $aggregatedContextText .= $text . "\n\n";
                 }
             }
             if (!empty($this->textData['context_text'])) {
-                $contextData[] = ['type' => 'text', 'content' => substr($this->textData['context_text'], 0, 100)];
+                $contextData['text'] = $this->textData['context_text'];
                 $aggregatedContextText .= $this->textData['context_text'] . "\n\n";
             }
-
-            // PROCESS ARTIFACTS
+            
             if (!empty($this->filesData['artifact_files'])) {
                 foreach ($this->filesData['artifact_files'] as $fileData) {
                     $res = $this->extractFileText($fileData, $geminiService);
-                    $artifactData[] = [
-                        'type' => 'file',
+                    $artifactData['files'][] = [
                         'name' => $fileData['name'],
                         'path' => $fileData['path']
                     ];
@@ -79,18 +69,16 @@ class ProcessCoursework implements ShouldQueue
                 }
             }
             if (!empty($this->textData['artifact_link'])) {
-                $links = explode("\n", str_replace("\r", "", $this->textData['artifact_link']));
-                foreach ($links as $link) {
-                    $link = trim($link);
-                    if (!empty($link)) {
-                        $text = $this->processLink($link);
-                        $artifactData[] = ['type' => 'link', 'url' => $link];
-                        $aggregatedArtifactText .= $text . "\n\n";
-                    }
+                $link = trim($this->textData['artifact_link']);
+                if (!empty($link)) {
+                    $text = $this->processLink($link);
+                    $artifactData['link'] = $link;
+                    $artifactData['link_name'] = $this->textData['artifact_link_name'] ?? null;
+                    $aggregatedArtifactText .= $text . "\n\n";
                 }
             }
             if (!empty($this->textData['artifact_text'])) {
-                $artifactData[] = ['type' => 'text', 'content' => substr($this->textData['artifact_text'], 0, 100)];
+                $artifactData['text'] = $this->textData['artifact_text'];
                 $aggregatedArtifactText .= $this->textData['artifact_text'] . "\n\n";
             }
 

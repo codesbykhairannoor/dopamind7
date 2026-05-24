@@ -32,6 +32,7 @@ const sharedMeta = reactive({
 const makePanel = (type) => ({
     type,
     embed_url: '',
+    embed_url_name: '',
     rich_text: '',
     fileQueue: [], // [{ file, name, size }]
     dragOver: false,
@@ -48,10 +49,13 @@ const isSubmittingAll = ref(false);
 const emit = defineEmits(['close']);
 
 // ─── Computed ─────────────────────────────────────────────────────────────────
-const wordCount = (text) => {
+const getWordCount = (text) => {
     if (!text) return 0;
     return text.trim().split(/\s+/).filter(w => w.length > 0).length;
 };
+
+const contextWordCount = computed(() => getWordCount(contextPanel.rich_text));
+const artifactWordCount = computed(() => getWordCount(artifactPanel.rich_text));
 
 const maxWords = 500;
 
@@ -125,10 +129,10 @@ const submitAll = () => {
         return;
     }
 
-    if (contextPanel.rich_text && wordCount(contextPanel.rich_text) > maxWords) {
+    if (contextWordCount.value > maxWords) {
         alert(trans('study_context_limit_alert')); return;
     }
-    if (artifactPanel.rich_text && wordCount(artifactPanel.rich_text) > maxWords) {
+    if (artifactWordCount.value > maxWords) {
         alert(trans('study_artifact_limit_alert')); return;
     }
 
@@ -140,13 +144,19 @@ const submitAll = () => {
     if (sharedMeta.week) formData.append('week', sharedMeta.week);
     if (sharedMeta.grade) formData.append('grade', sharedMeta.grade);
 
-    if (contextPanel.embed_url) formData.append('context_link', contextPanel.embed_url);
+    if (contextPanel.embed_url) {
+        formData.append('context_link', contextPanel.embed_url);
+        if (contextPanel.embed_url_name) formData.append('context_link_name', contextPanel.embed_url_name);
+    }
     if (contextPanel.rich_text) formData.append('context_text', contextPanel.rich_text);
     contextPanel.fileQueue.forEach((q, i) => {
         formData.append(`context_files[${i}]`, q.file);
     });
 
-    if (artifactPanel.embed_url) formData.append('artifact_link', artifactPanel.embed_url);
+    if (artifactPanel.embed_url) {
+        formData.append('artifact_link', artifactPanel.embed_url);
+        if (artifactPanel.embed_url_name) formData.append('artifact_link_name', artifactPanel.embed_url_name);
+    }
     if (artifactPanel.rich_text) formData.append('artifact_text', artifactPanel.rich_text);
     artifactPanel.fileQueue.forEach((q, i) => {
         formData.append(`artifact_files[${i}]`, q.file);
@@ -164,9 +174,11 @@ const submitAll = () => {
         onSuccess: () => {
             contextPanel.fileQueue = [];
             contextPanel.embed_url = '';
+            contextPanel.embed_url_name = '';
             contextPanel.rich_text = '';
             artifactPanel.fileQueue = [];
             artifactPanel.embed_url = '';
+            artifactPanel.embed_url_name = '';
             artifactPanel.rich_text = '';
             sharedMeta.course_name = '';
             sharedMeta.week = '';
@@ -196,9 +208,11 @@ const resetForm = () => {
     sharedMeta.week = '';
     sharedMeta.grade = '';
     contextPanel.embed_url = '';
+    contextPanel.embed_url_name = '';
     contextPanel.rich_text = '';
     contextPanel.fileQueue = [];
     artifactPanel.embed_url = '';
+    artifactPanel.embed_url_name = '';
     artifactPanel.rich_text = '';
     artifactPanel.fileQueue = [];
     if (contextFileInput.value) contextFileInput.value.value = '';
@@ -219,7 +233,7 @@ const globalHasPending = computed(() => {
     <div v-if="isLimitReached" class="mb-6 p-4 rounded-2xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/30 flex items-start gap-3">
         <AlertTriangle class="h-5 w-5 text-amber-500 shrink-0 mt-0.5" />
         <div>
-            <h4 class="text-xs font-extrabold text-amber-800 dark:text-amber-400 uppercase tracking-wider">{{ $t('study_upload_limit_title', 'Upload Limit Reached (Max 6 Cards)') }}</h4>
+            <h4 class="text-xs font-extrabold text-amber-800 dark:text-amber-400 tracking-wider">{{ $t('study_upload_limit_title', 'Upload Limit Reached (Max 6 Cards)') }}</h4>
             <p class="text-[11px] text-amber-600/80 dark:text-amber-500 mt-1 font-semibold">{{ $t('study_upload_limit_desc', 'Delete an existing card to add more materials.') }}</p>
         </div>
     </div>
@@ -231,7 +245,7 @@ const globalHasPending = computed(() => {
         <div class="flex gap-1 ml-1">
             <span v-for="i in 6" :key="i"
                 class="h-1.5 w-5 rounded-full transition"
-                :class="i <= props.materialsCount ? 'bg-indigo-500' : 'bg-slate-200 dark:bg-slate-800'"
+                :class="i <= props.materials.length ? 'bg-indigo-500' : 'bg-slate-200 dark:bg-slate-800'"
             ></span>
         </div>
     </div>
@@ -251,7 +265,7 @@ const globalHasPending = computed(() => {
         <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
             <!-- Course Name -->
             <div class="md:col-span-6">
-                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_course_name', 'Course Name') }} *</label>
+                <label class="block text-[11px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_course_name', 'Course Name') }} *</label>
                 <input v-model="sharedMeta.course_name" type="text"
                     :placeholder="$t('study_course_name_placeholder')"
                     class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
@@ -259,21 +273,21 @@ const globalHasPending = computed(() => {
             
             <!-- Week -->
             <div class="md:col-span-3">
-                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_week', 'Week / Period') }}</label>
+                <label class="block text-[11px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_week', 'Week / Period') }}</label>
                 <input v-model="sharedMeta.week" type="text" :placeholder="$t('study_week_placeholder')"
                     class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
             </div>
 
             <!-- Grade -->
             <div class="md:col-span-3">
-                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_grade', 'Grade / Score') }}</label>
+                <label class="block text-[11px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_grade', 'Grade / Score') }}</label>
                 <input v-model="sharedMeta.grade" type="number" min="0" max="100" step="0.01" placeholder="85.50"
                     class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
             </div>
 
             <!-- Settings Divider -->
             <div class="md:col-span-12 border-t border-slate-200/60 dark:border-slate-800/60 pt-4 mt-2">
-                <h4 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4">{{ $t('study_display_settings', 'Display Settings') }}</h4>
+                <h4 class="text-xs font-black tracking-widest text-slate-400 mb-4">{{ $t('study_display_settings', 'Display Settings') }}</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="flex flex-col gap-3">
                         <label class="flex items-center gap-3 cursor-pointer group">
@@ -312,7 +326,7 @@ const globalHasPending = computed(() => {
                     </div>
 
                     <div v-if="sharedMeta.show_career_target" class="md:col-span-12 mt-2">
-                        <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_career_target_input', 'Custom Career Goal') }}</label>
+                        <label class="block text-[11px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_career_target_input', 'Custom Career Goal') }}</label>
                         <input v-model="sharedMeta.career_target" type="text" :placeholder="$t('study_career_goal_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                     </div>
                 </div>
@@ -335,7 +349,7 @@ const globalHasPending = computed(() => {
                         <h2 class="text-sm font-black text-slate-900 dark:text-white tracking-tight">{{ $t('study_context_title', 'Context') }}</h2>
                         <p class="text-[10px] text-slate-400 dark:text-slate-500 font-semibold">{{ $t('study_context_subtitle', 'Syllabus • Question Paper • Module') }}</p>
                     </div>
-                    <span class="ml-auto px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 border border-blue-100/50 dark:border-blue-900/30">
+                    <span class="ml-auto px-2 py-0.5 rounded-full text-[9px] font-extrabold tracking-wider bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 border border-blue-100/50 dark:border-blue-900/30">
                         {{ $t('study_context_badge', 'Context') }}
                     </span>
                 </div>
@@ -345,7 +359,7 @@ const globalHasPending = computed(() => {
             <div class="p-6 space-y-6">
                 <!-- File Drop Zone -->
                 <div>
-                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_files_label', 'Files') }}</label>
+                    <label class="block text-[11px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_files_label', 'Files') }}</label>
                     <input ref="contextFileInput" type="file" accept=".pdf,.docx,.pptx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.presentationml.presentation" multiple class="hidden"
                         @change="e => handleFileSelect(contextPanel, e)" />
                     <div
@@ -358,7 +372,7 @@ const globalHasPending = computed(() => {
                     >
                         <div class="h-10 w-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center shadow-sm text-xl">📥</div>
                         <span class="text-xs font-bold text-slate-600 dark:text-slate-400 mt-2">{{ $t('study_drop_files', 'Drop files here or click to browse') }}</span>
-                        <span class="text-[10px] text-slate-400">{{ $t('study_supported_files', 'PDF, DOCX, PPTX supported · Max 10MB each') }}</span>
+                        <span class="text-[10px] text-slate-400">{{ $t('study_supported_files', 'Pdf, Docx, Pptx supported · Max 10MB each') }}</span>
                     </div>
 
                     <!-- File Queue -->
@@ -382,35 +396,39 @@ const globalHasPending = computed(() => {
                 <!-- Link Mode -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">{{ $t('study_link_label', 'Link') }}</label>
-                        <button v-if="contextPanel.embed_url" @click="contextPanel.embed_url = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
+                        <label class="text-[11px] font-black tracking-widest text-slate-400">{{ $t('study_link_label', 'Link') }}</label>
+                        <button v-if="contextPanel.embed_url" @click="contextPanel.embed_url = ''; contextPanel.embed_url_name = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
                             <XCircle class="h-3 w-3" /> Hapus
                         </button>
                     </div>
-                    <div class="relative">
-                        <span class="absolute left-4 top-4 text-slate-400"><Link2 class="h-4 w-4" /></span>
-                        <textarea v-model="contextPanel.embed_url" rows="2" :placeholder="$t('study_link_placeholder')"
-                            class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"></textarea>
+                    <div class="space-y-3">
+                        <div class="relative">
+                            <span class="absolute left-4 top-4 text-slate-400"><Link2 class="h-4 w-4" /></span>
+                            <textarea v-model="contextPanel.embed_url" rows="2" :placeholder="$t('study_link_placeholder')"
+                                class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"></textarea>
+                        </div>
+                        <input v-if="contextPanel.embed_url" v-model="contextPanel.embed_url_name" type="text" :placeholder="$t('study_context_link_name')"
+                            class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
                     </div>
                 </div>
 
                 <!-- Text Mode -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">{{ $t('study_notes_label', 'Notes / Text') }}</label>
+                        <label class="text-[11px] font-black tracking-widest text-slate-400">{{ $t('study_notes_label', 'Notes / Text') }}</label>
                         <div class="flex items-center gap-3">
                             <button v-if="contextPanel.rich_text" @click="contextPanel.rich_text = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
                                 <XCircle class="h-3 w-3" /> Hapus
                             </button>
-                            <span class="text-[10px] font-bold" :class="wordCount(contextPanel.rich_text) > maxWords ? 'text-rose-500' : 'text-slate-400'">
-                                {{ wordCount(contextPanel.rich_text) }}/{{ maxWords }}
+                            <span class="text-[10px] font-bold" :class="contextWordCount > maxWords ? 'text-rose-500' : 'text-slate-400'">
+                                {{ contextWordCount }}/{{ maxWords }}
                             </span>
                         </div>
                     </div>
                     <textarea v-model="contextPanel.rich_text" rows="4"
                         :placeholder="$t('study_context_text_placeholder')"
                         class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
-                        :class="wordCount(contextPanel.rich_text) > maxWords ? 'border-rose-500' : 'border-slate-200 dark:border-slate-800'"
+                        :class="contextWordCount > maxWords ? 'border-rose-500' : 'border-slate-200 dark:border-slate-800'"
                     ></textarea>
                 </div>
             </div>
@@ -428,7 +446,7 @@ const globalHasPending = computed(() => {
                         <h2 class="text-sm font-black text-slate-900 dark:text-white tracking-tight">{{ $t('study_artifact_title', 'Artifact') }}</h2>
                         <p class="text-[10px] text-slate-400 dark:text-slate-500 font-semibold">{{ $t('study_artifact_subtitle', 'Task Report • Presentation • Code Project') }}</p>
                     </div>
-                    <span class="ml-auto px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-100/50 dark:border-emerald-900/30">
+                    <span class="ml-auto px-2 py-0.5 rounded-full text-[9px] font-extrabold tracking-wider bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-100/50 dark:border-emerald-900/30">
                         {{ $t('study_artifact_badge', 'Artifact') }}
                     </span>
                 </div>
@@ -438,7 +456,7 @@ const globalHasPending = computed(() => {
             <div class="p-6 space-y-6">
                 <!-- File Drop Zone -->
                 <div>
-                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_files_label', 'Files') }}</label>
+                    <label class="block text-[11px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_files_label', 'Files') }}</label>
                     <input ref="artifactFileInput" type="file" accept=".pdf,.docx,.pptx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.presentationml.presentation" multiple class="hidden"
                         @change="e => handleFileSelect(artifactPanel, e)" />
                     <div
@@ -451,7 +469,7 @@ const globalHasPending = computed(() => {
                     >
                         <div class="h-10 w-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center shadow-sm text-xl">📤</div>
                         <span class="text-xs font-bold text-slate-600 dark:text-slate-400 mt-2">{{ $t('study_drop_files', 'Drop files here or click to browse') }}</span>
-                        <span class="text-[10px] text-slate-400">{{ $t('study_supported_files', 'PDF, DOCX, PPTX supported · Max 10MB each') }}</span>
+                        <span class="text-[10px] text-slate-400">{{ $t('study_supported_files', 'Pdf, Docx, Pptx supported · Max 10MB each') }}</span>
                     </div>
 
                     <!-- File Queue -->
@@ -475,35 +493,39 @@ const globalHasPending = computed(() => {
                 <!-- Link Mode -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">{{ $t('study_link_label', 'Link') }}</label>
-                        <button v-if="artifactPanel.embed_url" @click="artifactPanel.embed_url = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
+                        <label class="text-[11px] font-black tracking-widest text-slate-400">{{ $t('study_link_label', 'Link') }}</label>
+                        <button v-if="artifactPanel.embed_url" @click="artifactPanel.embed_url = ''; artifactPanel.embed_url_name = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
                             <XCircle class="h-3 w-3" /> Hapus
                         </button>
                     </div>
-                    <div class="relative">
-                        <span class="absolute left-4 top-4 text-slate-400"><Link2 class="h-4 w-4" /></span>
-                        <textarea v-model="artifactPanel.embed_url" rows="2" :placeholder="$t('study_link_placeholder')"
-                            class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"></textarea>
+                    <div class="space-y-3">
+                        <div class="relative">
+                            <span class="absolute left-4 top-4 text-slate-400"><Link2 class="h-4 w-4" /></span>
+                            <textarea v-model="artifactPanel.embed_url" rows="2" :placeholder="$t('study_link_placeholder')"
+                                class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"></textarea>
+                        </div>
+                        <input v-if="artifactPanel.embed_url" v-model="artifactPanel.embed_url_name" type="text" :placeholder="$t('study_artifact_link_name')"
+                            class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition" />
                     </div>
                 </div>
 
                 <!-- Text Mode -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">{{ $t('study_notes_label', 'Notes / Text') }}</label>
+                        <label class="text-[11px] font-black tracking-widest text-slate-400">{{ $t('study_notes_label', 'Notes / Text') }}</label>
                         <div class="flex items-center gap-3">
                             <button v-if="artifactPanel.rich_text" @click="artifactPanel.rich_text = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
                                 <XCircle class="h-3 w-3" /> Hapus
                             </button>
-                            <span class="text-[10px] font-bold" :class="wordCount(artifactPanel.rich_text) > maxWords ? 'text-rose-500' : 'text-slate-400'">
-                                {{ wordCount(artifactPanel.rich_text) }}/{{ maxWords }}
+                            <span class="text-[10px] font-bold" :class="artifactWordCount > maxWords ? 'text-rose-500' : 'text-slate-400'">
+                                {{ artifactWordCount }}/{{ maxWords }}
                             </span>
                         </div>
                     </div>
                     <textarea v-model="artifactPanel.rich_text" rows="4"
                         :placeholder="$t('study_artifact_text_placeholder')"
                         class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"
-                        :class="wordCount(artifactPanel.rich_text) > maxWords ? 'border-rose-500' : 'border-slate-200 dark:border-slate-800'"
+                        :class="artifactWordCount > maxWords ? 'border-rose-500' : 'border-slate-200 dark:border-slate-800'"
                     ></textarea>
                 </div>
             </div>
@@ -526,5 +548,5 @@ const globalHasPending = computed(() => {
             </span>
         </button>
     </div>
-
 </template>
+

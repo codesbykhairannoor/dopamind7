@@ -12,14 +12,16 @@ const props = defineProps({
     userSettings: Object
 });
 
-const emit = defineEmits(['close']);
+const emit = defineEmits(['close', 'optimistic-update']);
 
 const form = useForm({
     course_name: '',
     week: '',
     grade: '',
     context_link: '',
+    context_link_name: '',
     artifact_link: '',
+    artifact_link_name: '',
     show_radar: true,
     show_archetypes: true,
     show_materials: true,
@@ -33,7 +35,9 @@ watch(() => props.material, (newVal) => {
         form.week = newVal.week || '';
         form.grade = newVal.grade || '';
         form.context_link = newVal.context_data?.link || '';
+        form.context_link_name = newVal.context_data?.link_name || '';
         form.artifact_link = newVal.artifact_data?.link || '';
+        form.artifact_link_name = newVal.artifact_data?.link_name || '';
         // Load settings from user settings
         form.show_radar = props.userSettings?.show_radar ?? true;
         form.show_archetypes = props.userSettings?.show_archetypes ?? true;
@@ -44,9 +48,33 @@ watch(() => props.material, (newVal) => {
 }, { immediate: true });
 
 const submit = () => {
+    const updatedData = {
+        id: props.material.id,
+        course_name: form.course_name,
+        week: form.week,
+        grade: form.grade,
+        context_data: {
+            ...props.material.context_data,
+            link: form.context_link,
+            link_name: form.context_link_name
+        },
+        artifact_data: {
+            ...props.material.artifact_data,
+            link: form.artifact_link,
+            link_name: form.artifact_link_name
+        }
+    };
+    
+    emit('optimistic-update', updatedData);
+    emit('close');
+
     form.put(route('study.update', props.material.id), {
-        onSuccess: () => emit('close'),
-        preserveScroll: true
+        preserveScroll: true,
+        preserveState: true,
+        onSuccess: () => {},
+        onError: () => {
+            // Revert or show error toast if needed
+        }
     });
 };
 </script>
@@ -66,7 +94,7 @@ const submit = () => {
                     </div>
                     <div>
                         <h3 class="text-lg font-black text-slate-900 dark:text-white">{{ $t('study_edit_material') }}</h3>
-                        <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">{{ material?.course_name }}</p>
+                        <p class="text-[11px] font-bold text-slate-400 tracking-widest">{{ material?.course_name }}</p>
                     </div>
                 </div>
                 <button @click="emit('close')" class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
@@ -74,11 +102,11 @@ const submit = () => {
                 </button>
             </div>
 
-            <form @submit.prevent="submit" class="p-8">
+            <form @submit.prevent="submit" class="p-8 max-h-[70vh] overflow-y-auto custom-scrollbar">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
                     <!-- Course Name -->
                     <div class="md:col-span-12">
-                        <label class="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                        <label class="flex items-center gap-2 text-[11px] font-black tracking-widest text-slate-400 mb-2">
                             <Info class="h-3 w-3" />
                             {{ $t('study_course_name') }}
                         </label>
@@ -88,7 +116,7 @@ const submit = () => {
                     
                     <!-- Week -->
                     <div class="md:col-span-6">
-                        <label class="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                        <label class="flex items-center gap-2 text-[11px] font-black tracking-widest text-slate-400 mb-2">
                             <Clock class="h-3 w-3" />
                             {{ $t('study_week') }}
                         </label>
@@ -98,7 +126,7 @@ const submit = () => {
 
                     <!-- Grade -->
                     <div class="md:col-span-6">
-                        <label class="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                        <label class="flex items-center gap-2 text-[11px] font-black tracking-widest text-slate-400 mb-2">
                             <GraduationCap class="h-3 w-3" />
                             {{ $t('study_grade') }}
                         </label>
@@ -106,9 +134,37 @@ const submit = () => {
                             class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
                     </div>
 
+                    <!-- Context Link -->
+                    <div class="md:col-span-12 pt-4 border-t border-slate-100 dark:border-slate-800/50 mt-2">
+                        <label class="flex items-center gap-2 text-[11px] font-black tracking-widest text-indigo-500 mb-2">
+                            <Link2 class="h-3 w-3" />
+                            {{ $t('study_context_link') }}
+                        </label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input v-model="form.context_link" type="url" :placeholder="$t('study_link_label')"
+                                class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                            <input v-model="form.context_link_name" type="text" :placeholder="$t('study_context_link_name')"
+                                class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                        </div>
+                    </div>
+
+                    <!-- Artifact Link -->
+                    <div class="md:col-span-12">
+                        <label class="flex items-center gap-2 text-[11px] font-black tracking-widest text-emerald-500 mb-2">
+                            <Link2 class="h-3 w-3" />
+                            {{ $t('study_artifact_link') }}
+                        </label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input v-model="form.artifact_link" type="url" :placeholder="$t('study_link_label')"
+                                class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                            <input v-model="form.artifact_link_name" type="text" :placeholder="$t('study_artifact_link_name')"
+                                class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                        </div>
+                    </div>
+
                     <!-- Settings Section -->
                     <div class="md:col-span-12 pt-4 border-t border-slate-100 dark:border-slate-800/50 mt-2">
-                        <h4 class="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+                        <h4 class="text-[11px] font-black tracking-widest text-slate-400 mb-4 flex items-center gap-2">
                             <Layout class="h-3 w-3" />
                             {{ $t('study_display_settings') }}
                         </h4>
@@ -161,7 +217,7 @@ const submit = () => {
                     </div>
 
                     <div v-if="form.show_career_target" class="md:col-span-12">
-                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2 block">{{ $t('study_career_target_input') }}</label>
+                        <label class="text-[11px] font-black tracking-widest text-slate-400 mb-2 block">{{ $t('study_career_target_input') }}</label>
                         <input v-model="form.career_target" type="text"
                             class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
                     </div>
