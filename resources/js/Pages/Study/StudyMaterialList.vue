@@ -2,30 +2,22 @@
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import { 
-    BookOpen, 
-    Clock, 
-    Link2, 
-    FileText, 
-    Loader2, 
-    CheckCircle2, 
-    XCircle, 
-    Trash2,
-    AlertTriangle
+    BookOpen, Clock, Link2, FileText, Loader2, CheckCircle2, 
+    XCircle, Trash2, AlertTriangle, Edit3, ExternalLink, Download,
+    FileSearch
 } from 'lucide-vue-next';
+import EditMaterialModal from './Portfolio/Components/EditMaterialModal.vue';
 
 const props = defineProps({
-    materials: {
-        type: Array,
-        default: () => []
-    },
-    user: {
-        type: Object,
-        required: true
-    }
+    materials: { type: Array, default: () => [] },
+    user: { type: Object, required: true },
+    userSettings: { type: Object, default: () => ({}) }
 });
 
 const showDeleteModal = ref(false);
 const materialToDelete = ref(null);
+const showEditModal = ref(false);
+const materialToEdit = ref(null);
 
 const openDeleteModal = (id) => {
     materialToDelete.value = id;
@@ -49,6 +41,11 @@ const closeDeleteModal = () => {
     materialToDelete.value = null;
 };
 
+const openEditModal = (material) => {
+    materialToEdit.value = material;
+    showEditModal.value = true;
+};
+
 const copiedCardId = ref(null);
 
 const copyCardLink = (id) => {
@@ -60,159 +57,233 @@ const copyCardLink = (id) => {
         copiedCardId.value = null;
     }, 2000);
 };
-    const getMaterialSummary = (data) => {
-        if (!data) return 'None';
-        const parts = [];
-        if (data.files && data.files.length) parts.push(`${data.files.length} file(s)`);
-        if (data.link) parts.push('1 link');
-        if (data.text) parts.push('Notes');
-        return parts.length ? parts.join(', ') : 'None';
-    };
+
+const getMaterialSummary = (data) => {
+    if (!data) return 'None';
+    const parts = [];
+    if (data.files && data.files.length) parts.push(`${data.files.length} file(s)`);
+    if (data.link) parts.push('1 link');
+    if (data.text) parts.push('Notes');
+    return parts.length ? parts.join(', ') : 'None';
+};
 </script>
 
 <template>
-    <div class="group bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 md:p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800/80 shadow-[0_10px_45px_-4px_rgba(0,0,0,0.03)] hover:shadow-2xl transition duration-500">
-        <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-            <BookOpen class="h-5 w-5 text-indigo-500" />
-            {{ $t('study_coursework_materials', 'Coursework Materials') }}
-        </h2>
+    <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 md:p-10 rounded-[3rem] border border-slate-200/50 dark:border-slate-800/80 shadow-[0_10px_50px_-10px_rgba(0,0,0,0.05)] transition-all">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-3">
+                <div class="h-10 w-10 rounded-2xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center border border-indigo-100/50 dark:border-indigo-900/50 text-indigo-600 dark:text-indigo-400">
+                    <BookOpen class="h-5 w-5" />
+                </div>
+                {{ $t('study_coursework_materials') }}
+            </h2>
+            <div v-if="materials.length > 0" class="px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">
+                {{ materials.length }} / 6 Cards
+            </div>
+        </div>
 
         <!-- Empty State -->
-        <div v-if="materials.length === 0" class="py-16 text-center">
-            <div class="h-16 w-16 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-[1.5rem] flex items-center justify-center text-4xl mb-4 mx-auto animate-bounce-slow">
+        <div v-if="materials.length === 0" class="py-20 text-center">
+            <div class="h-20 w-20 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-[2rem] flex items-center justify-center text-5xl mb-6 mx-auto animate-bounce-slow">
                 📚
             </div>
-            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">{{ $t('study_no_coursework_materials') }}</h3>
-            <p class="text-xs text-slate-400 dark:text-slate-500 max-w-sm mx-auto px-4">
-                {{ $t('study_empty_state', 'No study materials uploaded yet. Upload your syllabus or task reports to begin building your neural competency profile.') }}
+            <h3 class="text-lg font-black text-slate-800 dark:text-slate-200 mb-2">{{ $t('study_no_coursework_materials') }}</h3>
+            <p class="text-sm text-slate-400 dark:text-slate-500 max-w-sm mx-auto font-medium">
+                {{ $t('study_empty_state') }}
             </p>
         </div>
 
         <!-- Materials List -->
-        <div v-else class="space-y-4">
+        <div v-else class="grid grid-cols-1 gap-6">
             <div 
                 v-for="material in materials" 
                 :key="material.id"
-                class="p-4 bg-slate-50/50 dark:bg-slate-950/20 border border-slate-100 dark:border-slate-900/40 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4"
+                class="group p-6 bg-white dark:bg-slate-950 border border-slate-200/60 dark:border-slate-900/40 rounded-[2.5rem] hover:border-indigo-500/50 hover:shadow-2xl hover:shadow-indigo-500/5 transition-all duration-500 relative overflow-hidden"
             >
-                <div class="min-w-0">
-                    <!-- Badge Header -->
-                    <div class="flex items-center gap-2 mb-1.5 flex-wrap">
-                        <span v-if="material.metadata?.field_of_study" class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-900/40">
-                            {{ material.metadata.field_of_study }}
-                        </span>
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+                    <div class="min-w-0 flex-1">
+                        <!-- Badge Header -->
+                        <div class="flex items-center gap-2 mb-3 flex-wrap">
+                            <span v-if="material.metadata?.field_of_study" class="px-2.5 py-1 rounded-lg text-[9px] font-black uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-900/40">
+                                {{ material.metadata.field_of_study }}
+                            </span>
 
-                        <!-- Period/Week -->
-                        <span v-if="material.week" class="text-[10px] text-slate-400 dark:text-slate-500 font-semibold flex items-center gap-1">
-                            <Clock class="h-3 w-3" />
-                            {{ material.week }}
-                        </span>
+                            <!-- Period/Week -->
+                            <span v-if="material.week" class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 text-[9px] text-slate-400 dark:text-slate-500 font-black uppercase tracking-wider flex items-center gap-1.5">
+                                <Clock class="h-3 w-3" />
+                                {{ material.week }}
+                            </span>
 
-                        <!-- Grade/Score -->
-                        <span v-if="material.grade !== null" class="px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-[9px] font-bold">
-                            {{ $t('study_grade') }}: {{ material.grade }}
-                        </span>
+                            <!-- Grade/Score -->
+                            <span v-if="material.grade !== null" class="px-2 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-[9px] font-black uppercase tracking-wider border border-emerald-100/50 dark:border-emerald-900/40">
+                                {{ $t('study_grade') }}: {{ material.grade }}
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl font-black text-slate-900 dark:text-white truncate mb-4">
+                            {{ material.course_name }}
+                        </h3>
+                        
+                        <!-- Content Details -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Context Section -->
+                            <div v-if="material.context_data" class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/50">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-indigo-500 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-1 rounded-md">Context</span>
+                                    <span class="text-[10px] font-bold text-slate-400">{{ getMaterialSummary(material.context_data) }}</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <a v-if="material.context_data.link" :href="material.context_data.link" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
+                                        <ExternalLink class="h-3.5 w-3.5" /> {{ material.context_data.link }}
+                                    </a>
+                                    <div v-if="material.context_data.files && material.context_data.files.length" class="space-y-1.5">
+                                        <div v-for="(file, idx) in material.context_data.files" :key="idx" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
+                                            <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
+                                                <FileText class="h-3 w-3 text-slate-400" /> {{ file.name }}
+                                            </span>
+                                            <div class="flex items-center gap-1">
+                                                <a :href="route('study.file.download', { material: material.id, type: 'context', index: idx, view: 1 })" target="_blank" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
+                                                    <FileSearch class="h-3.5 w-3.5" />
+                                                </a>
+                                                <a :href="route('study.file.download', { material: material.id, type: 'context', index: idx })" download class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_download_pdf')">
+                                                    <Download class="h-3.5 w-3.5" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Artifact Section -->
+                            <div v-if="material.artifact_data" class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/50">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-1 rounded-md">Artifact</span>
+                                    <span class="text-[10px] font-bold text-slate-400">{{ getMaterialSummary(material.artifact_data) }}</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <a v-if="material.artifact_data.link" :href="material.artifact_data.link" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
+                                        <ExternalLink class="h-3.5 w-3.5" /> {{ material.artifact_data.link }}
+                                    </a>
+                                    <div v-if="material.artifact_data.files && material.artifact_data.files.length" class="space-y-1.5">
+                                        <div v-for="(file, idx) in material.artifact_data.files" :key="idx" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
+                                            <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
+                                                <FileText class="h-3 w-3 text-slate-400" /> {{ file.name }}
+                                            </span>
+                                            <div class="flex items-center gap-1">
+                                                <a :href="route('study.file.download', { material: material.id, type: 'artifact', index: idx, view: 1 })" target="_blank" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
+                                                    <FileSearch class="h-3.5 w-3.5" />
+                                                </a>
+                                                <a :href="route('study.file.download', { material: material.id, type: 'artifact', index: idx })" download class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_download_pdf')">
+                                                    <Download class="h-3.5 w-3.5" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Competencies tags -->
+                        <div v-if="material.metadata?.competencies" class="flex flex-wrap gap-2 mt-6">
+                            <span 
+                                v-for="(score, comp) in Object.entries(material.metadata.competencies).slice(0, 5).reduce((acc, [k,v]) => ({...acc, [k]:v}), {})" 
+                                :key="comp"
+                                class="px-3 py-1 rounded-xl bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 text-[10px] font-black uppercase tracking-wider border border-slate-100 dark:border-slate-800 shadow-sm"
+                            >
+                                {{ comp }}
+                            </span>
+                            <span v-if="Object.keys(material.metadata.competencies).length > 5" class="text-[10px] text-slate-400 dark:text-slate-500 font-black self-center pl-2">
+                                +{{ Object.keys(material.metadata.competencies).length - 5 }}
+                            </span>
+                        </div>
                     </div>
 
-                    <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-200 truncate">
-                        {{ material.course_name }}
-                    </h3>
-                    
-                    <div class="mt-2 text-xs text-slate-400 dark:text-slate-500 flex flex-col gap-1">
-                        <div v-if="material.context_data" class="flex items-center gap-2">
-                            <span class="text-[9px] font-bold uppercase text-slate-400 bg-slate-200/50 dark:bg-slate-800/50 px-1.5 py-0.5 rounded">Context</span>
-                            <span class="truncate">{{ getMaterialSummary(material.context_data) }}</span>
+                    <div class="flex lg:flex-col items-center justify-between lg:justify-center gap-4 border-t lg:border-t-0 lg:border-l pt-6 lg:pt-0 lg:pl-10 border-slate-100 dark:border-slate-900/60 min-w-[140px]">
+                        <!-- Status Indicator -->
+                        <div class="flex flex-col items-center gap-1">
+                            <template v-if="material.status === 'processing'">
+                                <Loader2 class="h-6 w-6 text-indigo-500 animate-spin" />
+                                <span class="text-indigo-500 text-[10px] font-black uppercase tracking-widest">{{ $t('study_processing') }}</span>
+                            </template>
+                            <template v-else-if="material.status === 'completed'">
+                                <CheckCircle2 class="h-6 w-6 text-emerald-500" />
+                                <span class="text-slate-400 text-[10px] font-black uppercase tracking-widest">{{ $t('study_status_completed') }}</span>
+                            </template>
+                            <template v-else>
+                                <XCircle class="h-6 w-6 text-red-500" />
+                                <span class="text-red-500 text-[10px] font-black uppercase tracking-widest">{{ $t('study_status_failed') }}</span>
+                            </template>
                         </div>
-                        <div v-if="material.artifact_data" class="flex items-center gap-2">
-                            <span class="text-[9px] font-bold uppercase text-slate-400 bg-slate-200/50 dark:bg-slate-800/50 px-1.5 py-0.5 rounded">Artifact</span>
-                            <span class="truncate">{{ getMaterialSummary(material.artifact_data) }}</span>
-                        </div>
-                    </div>
 
-                    <!-- Competencies tags -->
-                    <div v-if="material.metadata?.competencies" class="flex flex-wrap gap-1.5 mt-3">
-                        <span 
-                            v-for="(score, comp) in Object.entries(material.metadata.competencies).slice(0, 4).reduce((acc, [k,v]) => ({...acc, [k]:v}), {})" 
-                            :key="comp"
-                            class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-[9px] font-bold border border-slate-200/30 dark:border-slate-700/30"
-                        >
-                            {{ comp }}
-                        </span>
-                        <span v-if="Object.keys(material.metadata.competencies).length > 4" class="text-[9px] text-slate-400 dark:text-slate-500 font-bold self-center pl-1">
-                            +{{ Object.keys(material.metadata.competencies).length - 4 }} more
-                        </span>
+                        <!-- Actions Group -->
+                        <div class="flex items-center gap-2">
+                            <!-- Share -->
+                            <button 
+                                v-if="material.status === 'completed'"
+                                @click="copyCardLink(material.id)"
+                                class="p-3 text-slate-400 hover:text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/20 rounded-2xl transition-all relative group/share"
+                                :title="user?.username ? $t('study_share_card') : $t('study_share_no_username')"
+                                :disabled="!user?.username"
+                                :class="{'opacity-40 cursor-not-allowed': !user?.username}"
+                            >
+                                <Link2 class="h-5 w-5" />
+                                <span v-if="copiedCardId === material.id" class="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-slate-900 dark:bg-white text-white dark:text-slate-950 text-[10px] rounded-xl font-black shadow-xl whitespace-nowrap z-20">
+                                    {{ $t('study_share_copied') }}
+                                </span>
+                            </button>
+
+                            <!-- Edit -->
+                            <button 
+                                @click="openEditModal(material)"
+                                class="p-3 text-slate-400 hover:text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/20 rounded-2xl transition-all"
+                                :title="$t('study_edit')"
+                            >
+                                <Edit3 class="h-5 w-5" />
+                            </button>
+
+                            <!-- Delete -->
+                            <button 
+                                @click="openDeleteModal(material.id)"
+                                class="p-3 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-2xl transition-all"
+                                :title="$t('study_delete')"
+                            >
+                                <Trash2 class="h-5 w-5" />
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="flex items-center justify-between md:justify-end gap-3 border-t md:border-t-0 pt-3 md:pt-0 border-slate-100 dark:border-slate-900/40">
-                    <!-- Status Indicator -->
-                    <div class="flex items-center gap-1.5 text-xs font-bold">
-                        <template v-if="material.status === 'processing'">
-                            <Loader2 class="h-3.5 w-3.5 text-indigo-500 animate-spin" />
-                            <span class="text-indigo-500 text-[11px]">{{ $t('study_processing', 'Processing...') }}</span>
-                        </template>
-                        <template v-else-if="material.status === 'completed'">
-                            <CheckCircle2 class="h-3.5 w-3.5 text-emerald-500" />
-                            <span class="text-slate-500 dark:text-slate-400 text-[11px] hidden sm:inline">{{ $t('study_status_completed', 'Parsed') }}</span>
-                        </template>
-                        <template v-else>
-                            <XCircle class="h-3.5 w-3.5 text-red-500" />
-                            <span class="text-red-500 text-[11px]">{{ $t('study_status_failed', 'Failed') }}</span>
-                        </template>
-                    </div>
-
-                    <!-- Share Card Action -->
-                    <button 
-                        v-if="material.status === 'completed'"
-                        @click="copyCardLink(material.id)"
-                        class="p-2 text-slate-400 hover:text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/20 rounded-xl transition relative"
-                        :title="user?.username ? $t('study_share_card', 'Copy Shareable Link') : $t('study_share_no_username', 'Set a username to share this card')"
-                        :disabled="!user?.username"
-                        :class="{'opacity-40 cursor-not-allowed': !user?.username}"
-                    >
-                        <Link2 class="h-4 w-4" />
-                        <span v-if="copiedCardId === material.id" class="absolute -top-9 left-1/2 -translate-x-1/2 px-2 py-1 bg-slate-900 dark:bg-white text-white dark:text-slate-950 text-[10px] rounded font-bold shadow-md whitespace-nowrap z-20">
-                            {{ $t('study_share_copied', 'Copied!') }}
-                        </span>
-                    </button>
-
-                    <!-- Delete Action -->
-                    <button 
-                        @click="openDeleteModal(material.id)"
-                        class="p-2 bg-red-50 dark:bg-red-950/30 text-red-500 hover:bg-red-100 dark:hover:bg-red-900 rounded-xl transition"
-                        :title="$t('study_delete')"
-                    >
-                        <Trash2 class="h-4 w-4" />
-                    </button>
+                <!-- Subtle Decorative Background -->
+                <div class="absolute -right-4 -bottom-4 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-700 pointer-events-none">
+                    <BookOpen class="h-40 w-40" />
                 </div>
             </div>
         </div>
-        <!-- Custom Delete Modal -->
-        <div v-if="showDeleteModal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <!-- Backdrop -->
-            <div class="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-sm" @click="closeDeleteModal"></div>
 
-            <!-- Modal Content -->
-            <div class="relative w-full max-w-sm bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-2xl border border-slate-200 dark:border-slate-800 text-center animate-scale-up">
-                <div class="w-16 h-16 rounded-full bg-red-50 dark:bg-red-950/50 flex items-center justify-center mx-auto mb-4 text-red-500">
-                    <AlertTriangle class="h-8 w-8" />
+        <!-- Modals -->
+        <EditMaterialModal 
+            :show="showEditModal"
+            :material="materialToEdit"
+            :userSettings="userSettings"
+            @close="showEditModal = false"
+        />
+
+        <div v-if="showDeleteModal" class="fixed inset-0 z-[70] flex items-center justify-center p-4">
+            <div class="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-sm" @click="closeDeleteModal"></div>
+            <div class="relative w-full max-w-sm bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 shadow-2xl border border-slate-200 dark:border-slate-800 text-center animate-scale-up">
+                <div class="w-20 h-20 rounded-3xl bg-red-50 dark:bg-red-950/50 flex items-center justify-center mx-auto mb-6 text-red-500 shadow-inner">
+                    <AlertTriangle class="h-10 w-10" />
                 </div>
-                <h3 class="text-lg font-black text-slate-900 dark:text-white mb-2">{{ $t('study_delete_confirm_title', 'Delete Coursework?') }}</h3>
-                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-6">
-                    {{ $t('study_delete_confirm_desc', 'Are you sure you want to delete this material? This will recalculate your competency profile and AI insights.') }}
+                <h3 class="text-xl font-black text-slate-900 dark:text-white mb-2">{{ $t('study_delete_confirm_title') }}</h3>
+                <p class="text-sm font-bold text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
+                    {{ $t('study_delete_confirm_desc') }}
                 </p>
-                <div class="flex items-center gap-3 w-full">
-                    <button 
-                        @click="closeDeleteModal"
-                        class="flex-1 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl font-bold text-sm transition"
-                    >
-                        {{ $t('study_delete_cancel') }}
+                <div class="flex items-center gap-3">
+                    <button @click="closeDeleteModal" class="flex-1 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-2xl font-black text-xs uppercase tracking-widest transition">
+                        {{ $t('btn_cancel') }}
                     </button>
-                    <button 
-                        @click="confirmDelete"
-                        class="flex-1 py-3 bg-red-500 hover:bg-red-600 text-white rounded-xl font-bold text-sm shadow-lg shadow-red-500/20 transition"
-                    >
-                        {{ $t('study_delete_yes') }}
+                    <button @click="confirmDelete" class="flex-1 py-4 bg-red-500 hover:bg-red-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-red-500/20 transition active:scale-95">
+                        {{ $t('study_delete_yes', 'Hapus') }}
                     </button>
                 </div>
             </div>
@@ -226,6 +297,13 @@ const copyCardLink = (id) => {
 }
 @keyframes bounce-slow {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-12px); }
+}
+.animate-scale-up {
+    animation: scale-up 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes scale-up {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
 </style>

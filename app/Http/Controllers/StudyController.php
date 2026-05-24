@@ -157,8 +157,61 @@ class StudyController extends Controller
             'user' => [
                 'name' => $user->name,
                 'username' => $user->username,
+                'settings' => $user->settings,
             ],
         ]);
+    }
+
+    public function update(Request $request, StudyMaterial $material)
+    {
+        if ($material->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $request->validate([
+            'course_name' => 'required|string|max:255',
+            'week' => 'nullable|string|max:255',
+            'grade' => 'nullable|numeric|min:0|max:100',
+            'context_link' => 'nullable|url|max:2083',
+            'artifact_link' => 'nullable|url|max:2083',
+            'show_radar' => 'boolean',
+            'show_archetypes' => 'boolean',
+            'show_materials' => 'boolean',
+            'show_career_target' => 'boolean',
+            'career_target' => 'nullable|string|max:255',
+        ]);
+
+        $material->update([
+            'course_name' => $request->course_name,
+            'week' => $request->week,
+            'grade' => $request->grade,
+        ]);
+
+        $contextData = $material->context_data ?? [];
+        $contextData['link'] = $request->context_link;
+        $material->context_data = $contextData;
+
+        $artifactData = $material->artifact_data ?? [];
+        $artifactData['link'] = $request->artifact_link;
+        $material->artifact_data = $artifactData;
+
+        $material->save();
+
+        // Update settings in user metadata if provided, or material metadata if that's where they are stored
+        // In this app, these settings seem to be global user preferences stored in user table,
+        // but they are passed in the upload form. Let's update the user settings.
+        $user = Auth::user();
+        $settings = $user->settings ?? [];
+        $settings['show_radar'] = $request->boolean('show_radar');
+        $settings['show_archetypes'] = $request->boolean('show_archetypes');
+        $settings['show_materials'] = $request->boolean('show_materials');
+        $settings['show_career_target'] = $request->boolean('show_career_target');
+        $settings['career_target'] = $request->career_target;
+        
+        $user->settings = $settings;
+        $user->save();
+
+        return back()->with('success', 'Material updated successfully');
     }
 
     public function storeAcademicRecord(Request $request)
@@ -387,6 +440,32 @@ class StudyController extends Controller
         return \Illuminate\Support\Facades\Storage::disk($disk)->download($archive->file_path, $archive->file_name ?? basename($archive->file_path));
     }
 
+
+    public function downloadFile(Request $request, StudyMaterial $material, $type, $index)
+    {
+        if ($material->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $data = $type === 'context' ? $material->context_data : $material->artifact_data;
+        if (!$data || !isset($data['files'][$index])) {
+            abort(404, 'File not found');
+        }
+
+        $file = $data['files'][$index];
+        $path = $file['path'];
+        $name = $file['name'];
+
+        if (!\Illuminate\Support\Facades\Storage::disk('local')->exists($path)) {
+            abort(404, 'File not found in storage');
+        }
+
+        if ($request->has('view')) {
+            return \Illuminate\Support\Facades\Storage::disk('local')->response($path);
+        }
+
+        return \Illuminate\Support\Facades\Storage::disk('local')->download($path, $name);
+    }
 
     public function store(Request $request)
     {
