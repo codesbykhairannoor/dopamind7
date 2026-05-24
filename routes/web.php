@@ -997,8 +997,11 @@ Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(
             // Academic Binder actions
             Route::post('/academic/setup', [StudyController::class, 'academicSetup'])->name('academic.setup');
             Route::post('/academic/records', [StudyController::class, 'storeAcademicRecord'])->name('academic.store');
+            Route::put('/academic/records/{id}', [StudyController::class, 'updateAcademicRecord'])->name('academic.update');
             Route::delete('/academic/records/{id}', [StudyController::class, 'destroyAcademicRecord'])->name('academic.destroy');
+            Route::delete('/academic/semester/{semester}', [StudyController::class, 'destroySemester'])->name('academic.semester.destroy');
             Route::post('/academic/archives', [StudyController::class, 'storeAcademicArchive'])->name('academic.archive.store');
+            Route::put('/academic/archives/{id}', [StudyController::class, 'updateAcademicArchive'])->name('academic.archive.update');
             Route::delete('/academic/archives/{id}', [StudyController::class, 'destroyAcademicArchive'])->name('academic.archive.destroy');
         });
 

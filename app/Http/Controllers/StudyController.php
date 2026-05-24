@@ -247,6 +247,29 @@ class StudyController extends Controller
         return redirect()->back();
     }
 
+    public function updateAcademicArchive(Request $request, $id)
+    {
+        $request->validate([
+            'file_name' => 'nullable|string|max:255',
+            'link_url' => 'nullable|url|max:2083',
+            'meeting_tag' => 'required|string|max:255',
+            'type' => 'required|string|max:50',
+        ]);
+
+        $archive = \App\Models\AcademicArchive::findOrFail($id);
+        // Ensure user owns the parent record
+        $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($archive->academic_record_id);
+
+        $archive->update([
+            'file_name' => $request->file_name,
+            'link_url' => $request->link_url,
+            'meeting_tag' => $request->meeting_tag,
+            'type' => $request->type,
+        ]);
+
+        return redirect()->back();
+    }
+
     public function destroyAcademicArchive($id)
     {
         $archive = \App\Models\AcademicArchive::findOrFail($id);
