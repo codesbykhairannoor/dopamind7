@@ -111,9 +111,22 @@ const submitNewSemester = (val) => {
     if (!parsedVal || parsedVal < 1) {
         return fireToast('error', 'Nomor semester tidak valid!');
     }
+    
+    // 1. Optimistic Update
     maxSemesterAdded.value = Math.max(maxSemesterAdded.value, parsedVal);
+    localCurrentSemester.value = Math.max(localCurrentSemester.value, parsedVal);
     selectedSemester.value = parsedVal;
     isAddSemesterModalOpen.value = false;
+
+    // 2. Persist to backend (Academic Binder use settings for current_semester)
+    axios.post(route('study.settings'), {
+        current_semester: parsedVal
+    }).then(() => {
+        fireToast('success', trans('study_semester_added_success', { num: parsedVal }));
+    }).catch(err => {
+        console.error('Failed to save semester:', err);
+        fireToast('error', 'Gagal menyimpan semester ke database.');
+    });
 };
 
 const deleteSpecificSemester = (sem) => {
@@ -144,29 +157,39 @@ const deleteSpecificSemester = (sem) => {
             
             // Calculate new max semester from remaining data
             const remainingSems = localAcademicStats.value.semesters.map(s => s.semester);
-            const maxRemaining = Math.max(1, ...remainingSems);
+            const maxFromRecords = remainingSems.length > 0 ? Math.max(...remainingSems) : 1;
             
-            // Update range indicators
+            // Shrink range indicators
             if (localCurrentSemester.value >= parseInt(sem)) {
-                localCurrentSemester.value = maxRemaining;
+                localCurrentSemester.value = maxFromRecords;
             }
-            maxSemesterAdded.value = maxRemaining;
+            maxSemesterAdded.value = Math.max(localCurrentSemester.value, maxFromRecords);
 
             // If the selected semester was the one deleted, switch to the new max
             if (selectedSemester.value === parseInt(sem)) {
-                selectedSemester.value = maxRemaining;
+                selectedSemester.value = localCurrentSemester.value;
             }
 
             fireToast('success', 'Semester berhasil dihapus!');
 
-            // 2. Perform silent backend DELETE request using axios
+            // 2. Perform silent backend DELETE request
             axios.delete(route('study.academic.semester.destroy', sem), {
                 headers: { 'Accept': 'application/json' }
             })
-                .then(() => {
-                    // Silent success - state is already beautifully updated in Vue reactively
+                .then((response) => {
+                    // Sync backend updated setting if provided
+                    if (response.data?.current_semester) {
+                        localCurrentSemester.value = parseInt(response.data.current_semester);
+                        if (maxSemesterAdded.value > localCurrentSemester.value) {
+                             // Keep maxSemesterAdded aligned if records exist, otherwise pull back
+                             const semsFromRecords = localAcademicStats.value.semesters.map(s => s.semester);
+                             const realMax = Math.max(localCurrentSemester.value, ...semsFromRecords, 1);
+                             maxSemesterAdded.value = realMax;
+                        }
+                    }
                 })
                 .catch((err) => {
+                    console.error('Delete semester failed:', err);
                     // Rollback on failure
                     localAcademicRecords.value = originalRecords;
                     localAcademicStats.value = originalStats;
@@ -174,7 +197,7 @@ const deleteSpecificSemester = (sem) => {
                     localCurrentSemester.value = originalLocalCurrentSemester;
                     maxSemesterAdded.value = originalMaxSemesterAdded;
                     
-                    const errorMsg = err.response?.data?.message || 'Gagal menghapus semester.';
+                    const errorMsg = err.response?.data?.message || 'Gagal menghapus semester dari database.';
                     fireToast('error', errorMsg);
                 });
         }

@@ -205,29 +205,48 @@ class StudyController extends Controller
     public function destroySemester(Request $request, $semester)
     {
         $user = Auth::user();
+        $semester = intval($semester);
         
-        \App\Models\AcademicRecord::where('user_id', $user->id)
-            ->where('semester', $semester)
-            ->delete();
+        \Log::info("Deleting semester {$semester} for user {$user->id}");
 
-        // Check if the deleted semester matches the current_semester in user settings
+        $records = \App\Models\AcademicRecord::with('archives')
+            ->where('user_id', $user->id)
+            ->where('semester', $semester)
+            ->get();
+
+        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+
+        foreach ($records as $record) {
+            foreach ($record->archives as $archive) {
+                if ($archive->file_path && \Illuminate\Support\Facades\Storage::disk($disk)->exists($archive->file_path)) {
+                    \Illuminate\Support\Facades\Storage::disk($disk)->delete($archive->file_path);
+                }
+            }
+            $record->delete();
+        }
+
+        // Check if the deleted semester affects the current_semester in user settings
         $settings = $user->settings ?? [];
-        if (isset($settings['current_semester']) && intval($settings['current_semester']) == intval($semester)) {
+        $currentSem = isset($settings['current_semester']) ? intval($settings['current_semester']) : 1;
+
+        if ($currentSem >= $semester) {
             // Find highest remaining semester from academic records
             $maxRemaining = \App\Models\AcademicRecord::where('user_id', $user->id)
                 ->where('semester', '!=', $semester)
                 ->max('semester');
             
-            $newSem = $maxRemaining ? intval($maxRemaining) : max(intval($semester) - 1, 1);
+            $newSem = $maxRemaining ? intval($maxRemaining) : max($semester - 1, 1);
             $settings['current_semester'] = $newSem;
             $user->settings = $settings;
             $user->save();
+            \Log::info("Updated user current_semester to {$newSem}");
         }
 
         if ($request->wantsJson() || $request->ajax()) {
             return response()->json([
                 'success' => true,
-                'message' => 'Semester berhasil dihapus!'
+                'message' => 'Semester berhasil dihapus!',
+                'current_semester' => $settings['current_semester'] ?? 1
             ]);
         }
 
