@@ -335,12 +335,26 @@ class StudyController extends Controller
             abort(404, 'File not found');
         }
 
-        // If it starts with http, it is likely already an external URL (e.g. Cloudinary direct link or S3 link)
+        // If it starts with http, it is likely already an external URL
         if (str_starts_with($archive->file_path, 'http://') || str_starts_with($archive->file_path, 'https://')) {
             return redirect($archive->file_path);
         }
 
         $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+
+        // For remote disks like Cloudinary, streaming response() might not be supported or optimal
+        if ($disk !== 'public' && $disk !== 'local') {
+            $url = \Illuminate\Support\Facades\Storage::disk($disk)->url($archive->file_path);
+            if ($request->has('view')) {
+                return redirect($url);
+            }
+            // For download, we still try download() if supported, otherwise redirect
+            try {
+                return \Illuminate\Support\Facades\Storage::disk($disk)->download($archive->file_path, $archive->file_name ?? basename($archive->file_path));
+            } catch (\Exception $e) {
+                return redirect($url);
+            }
+        }
 
         if (!\Illuminate\Support\Facades\Storage::disk($disk)->exists($archive->file_path)) {
             abort(404, 'File not found in storage');

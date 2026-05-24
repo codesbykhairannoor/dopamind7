@@ -89,17 +89,17 @@ const getTypeColor = (type) => {
                     </button>
                 </div>
 
-                <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                    <div v-for="arc in archives" :key="arc.id" class="group relative p-4 bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl flex flex-col transition-all hover:border-indigo-300 hover:shadow-md">
-                        <div class="flex items-start justify-between gap-3 mb-4">
+                <div class="p-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <div v-for="arc in archives" :key="arc.id" class="group relative p-6 bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col transition-all hover:border-indigo-300 hover:shadow-xl hover:-translate-y-1">
+                        <div class="flex items-start justify-between gap-4 mb-6">
                             <div class="flex-1 min-w-0">
-                                <span class="inline-block px-2 py-0.5 rounded-md text-[9px] font-black capitalize tracking-wide mb-2" :class="getTypeColor(arc.type)">
+                                <span class="inline-block px-3 py-1 rounded-lg text-[10px] font-black capitalize tracking-wider mb-3 shadow-sm border" :class="getTypeColor(arc.type)">
                                     {{ $t('study_type_' + arc.type.toLowerCase()) }}
                                 </span>
-                                <p class="text-sm font-bold text-slate-800 dark:text-slate-200 line-clamp-2 leading-snug">{{ arc.file_name || arc.link_url || $t('study_untitled_archive') }}</p>
+                                <p class="text-base font-black text-slate-800 dark:text-slate-100 line-clamp-2 leading-tight">{{ arc.file_name || arc.link_url || $t('study_untitled_archive') }}</p>
                             </div>
-                            <button @click="deleteArchive(arc.id)" class="text-slate-300 hover:text-red-500 p-1.5 rounded-lg hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100 shrink-0">
-                                <Trash2 class="h-4 w-4" />
+                            <button @click="deleteArchive(arc.id)" class="text-slate-300 hover:text-red-500 p-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors opacity-0 group-hover:opacity-100 shrink-0">
+                                <Trash2 class="h-5 w-5" />
                             </button>
                         </div>
                         <div class="mt-auto space-y-2">

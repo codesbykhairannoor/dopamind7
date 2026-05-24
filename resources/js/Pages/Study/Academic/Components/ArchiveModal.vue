@@ -1,8 +1,10 @@
 <script setup>
-import { watch } from 'vue';
+import { watch, ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import { trans } from 'laravel-vue-i18n';
 import { X, Upload, Link2 } from 'lucide-vue-next';
+
+const fileInput = ref(null);
 
 const props = defineProps({
     isOpen: { type: Boolean, required: true },
@@ -24,6 +26,7 @@ const archiveForm = useForm({
 watch(() => props.isOpen, (newVal) => {
     if (newVal) {
         archiveForm.reset();
+        if (fileInput.value) fileInput.value.value = '';
         archiveForm.academic_record_id = props.course.id;
         archiveForm.meeting_tag = props.prefillTag || '';
         archiveForm.type = 'Modul';
@@ -112,7 +115,7 @@ const submitArchive = () => {
                         </div>
                         <div class="col-span-2 sm:col-span-1">
                             <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_upload_pdf') }}</label>
-                            <input @input="archiveForm.file = $event.target.files[0]" type="file" accept=".pdf" class="w-full text-xs file:mr-2 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-indigo-100 file:text-indigo-700 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-1.5 px-2 cursor-pointer" />
+                            <input ref="fileInput" @input="archiveForm.file = $event.target.files[0]" type="file" accept=".pdf" class="w-full text-xs file:mr-2 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-indigo-100 file:text-indigo-700 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-1.5 px-2 cursor-pointer" />
                         </div>
                     </div>
 

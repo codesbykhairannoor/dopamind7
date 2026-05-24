@@ -172,6 +172,8 @@ const submitAll = () => {
             sharedMeta.week = '';
             sharedMeta.grade = '';
             isSubmittingAll.value = false;
+            if (contextFileInput.value) contextFileInput.value.value = '';
+            if (artifactFileInput.value) artifactFileInput.value.value = '';
             emit('close');
         },
         onError: (errors) => {

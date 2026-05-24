@@ -138,21 +138,23 @@ const deleteSpecificSemester = (sem) => {
             const originalLocalCurrentSemester = localCurrentSemester.value;
             const originalMaxSemesterAdded = maxSemesterAdded.value;
 
-            // 1. Update local states immediately
-            localAcademicRecords.value = localAcademicRecords.value.filter(r => r.semester !== sem);
-            localAcademicStats.value.semesters = localAcademicStats.value.semesters.filter(s => s.semester !== sem);
+            // 1. Optimistic UI update
+            localAcademicRecords.value = localAcademicRecords.value.filter(r => r.semester !== parseInt(sem));
+            localAcademicStats.value.semesters = localAcademicStats.value.semesters.filter(s => s.semester !== parseInt(sem));
             
-            if (localCurrentSemester.value >= sem) {
-                const remaining = localAcademicStats.value.semesters.map(s => s.semester);
-                localCurrentSemester.value = remaining.length > 0 ? Math.max(...remaining) : Math.max(sem - 1, 1);
+            // Calculate new max semester from remaining data
+            const remainingSems = localAcademicStats.value.semesters.map(s => s.semester);
+            const maxRemaining = Math.max(1, ...remainingSems);
+            
+            // Update range indicators
+            if (localCurrentSemester.value >= parseInt(sem)) {
+                localCurrentSemester.value = maxRemaining;
             }
+            maxSemesterAdded.value = maxRemaining;
 
-            if (maxSemesterAdded.value >= sem) {
-                maxSemesterAdded.value = Math.max(localCurrentSemester.value, 1);
-            }
-
-            if (selectedSemester.value === sem) {
-                selectedSemester.value = Math.max(localCurrentSemester.value, 1);
+            // If the selected semester was the one deleted, switch to the new max
+            if (selectedSemester.value === parseInt(sem)) {
+                selectedSemester.value = maxRemaining;
             }
 
             fireToast('success', 'Semester berhasil dihapus!');
