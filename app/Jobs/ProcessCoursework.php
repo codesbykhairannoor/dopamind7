@@ -127,9 +127,16 @@ class ProcessCoursework implements ShouldQueue
         $ext = $fileData['ext'];
         
         // Ensure path points to a readable local file.
-        // If it was stored locally, Storage::disk('local')->path($fileData['path']) works.
-        // If Cloudinary is used, we need to download it first or use URL. For this fix, let's assume local storage works or we stored it locally in Controller.
-        $fullPath = Storage::disk('local')->path($fileData['path']);
+        $disk = config('filesystems.default');
+        
+        if ($disk === 'local') {
+            $fullPath = Storage::disk('local')->path($fileData['path']);
+        } else {
+            // Download to temporary location for processing
+            $tempPath = tempnam(sys_get_temp_dir(), 'study_');
+            file_put_contents($tempPath, Storage::disk($disk)->get($fileData['path']));
+            $fullPath = $tempPath;
+        }
         
         if (!file_exists($fullPath)) {
             return "";

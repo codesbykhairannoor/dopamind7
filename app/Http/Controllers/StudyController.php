@@ -420,31 +420,18 @@ class StudyController extends Controller
 
         $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
 
-        // For remote disks like Cloudinary, streaming response() might not be supported or optimal
+        // For remote disks like Cloudinary/S3, streaming through the server avoids 401 direct access errors
         if ($disk !== 'public' && $disk !== 'local') {
-            if ($request->has('view')) {
-                try {
-                    $mime = \Illuminate\Support\Facades\Storage::disk($disk)->mimeType($archive->file_path);
-                    return response(\Illuminate\Support\Facades\Storage::disk($disk)->get($archive->file_path))
-                        ->header('Content-Type', $mime)
-                        ->header('Content-Disposition', 'inline; filename="' . $archive->file_name . '"');
-                } catch (\Exception $e) {
-                    return redirect(\Illuminate\Support\Facades\Storage::disk($disk)->url($archive->file_path));
-                }
-            }
-            
-            // For download, we still try download() if supported, otherwise stream manually
             try {
-                return \Illuminate\Support\Facades\Storage::disk($disk)->download($archive->file_path, $archive->file_name ?? basename($archive->file_path));
+                $content = \Illuminate\Support\Facades\Storage::disk($disk)->get($archive->file_path);
+                $mime = \Illuminate\Support\Facades\Storage::disk($disk)->mimeType($archive->file_path);
+                
+                return response($content)
+                    ->header('Content-Type', $mime)
+                    ->header('Content-Disposition', ($request->has('view') ? 'inline' : 'attachment') . '; filename="' . $archive->file_name . '"');
             } catch (\Exception $e) {
-                try {
-                    $mime = \Illuminate\Support\Facades\Storage::disk($disk)->mimeType($archive->file_path);
-                    return response(\Illuminate\Support\Facades\Storage::disk($disk)->get($archive->file_path))
-                        ->header('Content-Type', $mime)
-                        ->header('Content-Disposition', 'attachment; filename="' . $archive->file_name . '"');
-                } catch (\Exception $e2) {
-                    return redirect(\Illuminate\Support\Facades\Storage::disk($disk)->url($archive->file_path));
-                }
+                // Last resort fallback to URL
+                return redirect(\Illuminate\Support\Facades\Storage::disk($disk)->url($archive->file_path));
             }
         }
 
@@ -476,15 +463,23 @@ class StudyController extends Controller
         $path = $file['path'];
         $name = $file['name'];
 
-        if (!\Illuminate\Support\Facades\Storage::disk('local')->exists($path)) {
+        $disk = config('filesystems.default') === 'local' ? 'local' : config('filesystems.default');
+
+        if (!\Illuminate\Support\Facades\Storage::disk($disk)->exists($path)) {
             abort(404, 'File not found in storage');
         }
 
         if ($request->has('view')) {
-            return \Illuminate\Support\Facades\Storage::disk('local')->response($path);
+            try {
+                $content = \Illuminate\Support\Facades\Storage::disk($disk)->get($path);
+                $mime = \Illuminate\Support\Facades\Storage::disk($disk)->mimeType($path);
+                return response($content)->header('Content-Type', $mime)->header('Content-Disposition', 'inline; filename="' . $name . '"');
+            } catch (\Exception $e) {
+                 return \Illuminate\Support\Facades\Storage::disk($disk)->response($path);
+            }
         }
 
-        return \Illuminate\Support\Facades\Storage::disk('local')->download($path, $name);
+        return \Illuminate\Support\Facades\Storage::disk($disk)->download($path, $name);
     }
 
     public function store(Request $request)
@@ -522,9 +517,11 @@ class StudyController extends Controller
         try {
             $filesData = ['context_files' => [], 'artifact_files' => []];
 
+            $disk = config('filesystems.default'); // Use default cloud disk if on Lambda/Vapor
+
             if ($request->hasFile('context_files')) {
                 foreach ($request->file('context_files') as $file) {
-                    $path = $file->store('secure_study', 'local');
+                    $path = $file->store('secure_study', $disk);
                     $filesData['context_files'][] = [
                         'name' => $file->getClientOriginalName(), 
                         'path' => $path, 
@@ -535,7 +532,7 @@ class StudyController extends Controller
             
             if ($request->hasFile('artifact_files')) {
                 foreach ($request->file('artifact_files') as $file) {
-                    $path = $file->store('secure_study', 'local');
+                    $path = $file->store('secure_study', $disk);
                     $filesData['artifact_files'][] = [
                         'name' => $file->getClientOriginalName(), 
                         'path' => $path, 

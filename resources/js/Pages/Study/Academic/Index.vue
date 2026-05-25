@@ -93,13 +93,15 @@ watch(() => userSettings.value.current_semester, (newVal) => {
 
 const availableSemesters = computed(() => {
     const semsFromRecords = localAcademicStats.value.semesters.map(s => s.semester);
-    const maxSem = Math.max(localCurrentSemester.value, ...semsFromRecords, maxSemesterAdded.value, 1);
     
-    const range = [];
-    for (let i = maxSem; i >= 1; i--) {
-        range.push(i);
-    }
-    return range;
+    // Union of semesters with records and the currently active/selected semester
+    const semsSet = new Set([...semsFromRecords, parseInt(selectedSemester.value), localCurrentSemester.value]);
+    
+    // If the user is on education_level "lainnya", we treat it as discrete terms
+    // but for others, we might still want the range 1..max for adding convenience.
+    // However, to fix the "delete" issue, we only show what exists + current.
+    
+    return Array.from(semsSet).sort((a, b) => b - a);
 });
 
 const availableSemestersRange = (max) => {
@@ -120,7 +122,7 @@ const deleteSemester = () => {
 const submitNewSemester = (val) => {
     const parsedVal = parseInt(val);
     if (!parsedVal || parsedVal < 1) {
-        return fireToast('error', 'Nomor semester tidak valid!');
+        return fireToast('error', trans('study_invalid_semester_num'));
     }
     
     // 1. Optimistic Update
@@ -136,7 +138,7 @@ const submitNewSemester = (val) => {
         fireToast('success', trans('study_semester_added_success', { num: parsedVal }));
     }).catch(err => {
         console.error('Failed to save semester:', err);
-        fireToast('error', 'Gagal menyimpan semester ke database.');
+        fireToast('error', trans('study_save_semester_failed'));
     });
 };
 
@@ -184,7 +186,7 @@ const deleteSpecificSemester = (sem) => {
                 selectedSemester.value = localCurrentSemester.value;
             }
 
-            fireToast('success', 'Semester berhasil dihapus!');
+            fireToast('success', trans('study_semester_deleted_success'));
 
             // 2. Perform silent backend DELETE request
             axios.delete(route('study.academic.semester.destroy', sem), {
@@ -249,7 +251,7 @@ const submitCourse = (data) => {
 
     localAcademicRecords.value.push(newRecord);
     isAddCourseModalOpen.value = false;
-    fireToast('success', 'Data berhasil ditambahkan!');
+    fireToast('success', trans('study_course_added_success'));
 
     router.post(route('study.academic.store'), {
         course_name: data.course_name,
@@ -261,7 +263,7 @@ const submitCourse = (data) => {
         preserveState: true,
         onError: (err) => {
             localAcademicRecords.value = localAcademicRecords.value.filter(r => r.id !== tempId);
-            fireToast('error', Object.values(err)[0] || 'Gagal menambahkan data.');
+            fireToast('error', Object.values(err)[0] || trans('study_add_course_failed'));
         }
     });
 };
@@ -282,7 +284,7 @@ const submitEditCourse = (data) => {
     }
 
     isEditCourseModalOpen.value = false;
-    fireToast('success', 'Perubahan disimpan!');
+    fireToast('success', trans('study_changes_saved'));
 
     router.put(route('study.academic.update', targetId), {
         course_name: data.course_name,
@@ -296,14 +298,14 @@ const submitEditCourse = (data) => {
             if (index !== -1 && originalRecord) {
                 localAcademicRecords.value[index] = originalRecord;
             }
-            fireToast('error', Object.values(err)[0] || 'Gagal menyimpan perubahan.');
+            fireToast('error', Object.values(err)[0] || trans('study_save_changes_failed'));
         }
     });
 };
 
 const deleteRecord = (id) => {
     if (String(id).startsWith('temp_')) {
-        return fireToast('warning', 'Harap tunggu hingga data tersimpan.');
+        return fireToast('warning', trans('study_wait_sync'));
     }
 
     Swal.fire({
@@ -327,7 +329,7 @@ const deleteRecord = (id) => {
             if (selectedCourse.value && selectedCourse.value.id === id) {
                 closeCourse();
             }
-            fireToast('success', 'Data berhasil dihapus!');
+            fireToast('success', trans('study_course_deleted_success'));
 
             router.delete(route('study.academic.destroy', id), {
                 preserveScroll: true,
@@ -335,7 +337,7 @@ const deleteRecord = (id) => {
                 progress: false,
                 onError: () => {
                     if (deletedRecord) localAcademicRecords.value.push(deletedRecord);
-                    fireToast('error', 'Gagal menghapus data.');
+                    fireToast('error', trans('study_delete_course_failed'));
                 }
             });
         }
@@ -372,7 +374,7 @@ const handleOptimisticArchiveAdd = (archive) => {
     if (recordIndex !== -1) {
         localAcademicRecords.value[recordIndex].archives.push(archive);
     }
-    fireToast('success', 'Arsip diunggah!');
+    fireToast('success', trans('study_archive_uploaded_success'));
 };
 
 const handleRollbackArchiveAdd = ({ tempId, error }) => {
@@ -385,7 +387,7 @@ const handleRollbackArchiveAdd = ({ tempId, error }) => {
 
 const deleteArchive = (id) => {
     if (String(id).startsWith('temp_')) {
-        return fireToast('warning', 'Harap tunggu hingga proses unggah selesai.');
+        return fireToast('warning', trans('study_wait_upload'));
     }
 
     Swal.fire({
@@ -419,7 +421,7 @@ const deleteArchive = (id) => {
             if (recordIndex !== -1 && deletedArchiveIndex !== -1) {
                 localAcademicRecords.value[recordIndex].archives.splice(deletedArchiveIndex, 1);
             }
-            fireToast('success', 'Arsip berhasil dihapus!');
+            fireToast('success', trans('study_archive_deleted_success'));
 
             router.delete(route('study.academic.archive.destroy', id), {
                 preserveScroll: true, 
@@ -429,7 +431,7 @@ const deleteArchive = (id) => {
                     if (recordIndex !== -1 && deletedArchive) {
                         localAcademicRecords.value[recordIndex].archives.splice(deletedArchiveIndex, 0, deletedArchive);
                     }
-                    fireToast('error', 'Gagal menghapus arsip.');
+                    fireToast('error', trans('study_delete_archive_failed'));
                 }
             });
         }
