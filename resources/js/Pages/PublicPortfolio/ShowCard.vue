@@ -353,54 +353,89 @@ const showMaterials = computed(() => {
 
                     <!-- Background Decor -->
                     <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- RADAR CHART -->
+                    <div v-if="showRadar" class="w-full bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-8 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-lg mt-4">
+                        <h3 class="text-sm font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-8 flex items-center gap-2">
+                            <BarChart3 class="h-5 w-5 text-indigo-500" />
+                            {{ $t('portfolio_verified_competencies', 'Verified Competencies Radar') }}
+                        </h3>
+                        
+                        <div class="flex flex-col lg:flex-row items-center gap-12">
+                            <!-- Left: Radar Chart -->
+                            <div class="h-[400px] w-full lg:w-3/5 relative flex items-center justify-center">
+                                <Radar :data="chartData" :options="chartOptions" />
+                            </div>
+                            
+                            <!-- Right: Competency List -->
+                            <div class="w-full lg:w-2/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+                                <div v-for="(score, name) in (props.competency?.competencies || {})" :key="name" 
+                                    class="flex items-center justify-between p-4 rounded-2xl bg-slate-50/50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800 transition hover:border-indigo-300 dark:hover:border-indigo-700 group">
+                                    <span class="text-[11px] font-black text-slate-600 dark:text-slate-300 group-hover:text-indigo-500 transition truncate mr-2">{{ name }}</span>
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-16 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                            <div class="h-full bg-indigo-500 transition-all duration-1000" :style="{ width: score + '%' }"></div>
+                                        </div>
+                                        <span class="text-[10px] font-black text-indigo-500 w-10 text-right">{{ score }}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 4. EVIDENCE & AUDITABLE ARTIFACTS -->
-                <div class="mt-8 space-y-6">
-                    <div class="flex items-center gap-4 px-2">
-                        <h2 class="text-xl font-black text-slate-900 dark:text-white tracking-tight">Evidence & Auditable Artifacts</h2>
-                        <div class="h-px flex-1 bg-gradient-to-r from-slate-200 dark:from-slate-800 to-transparent"></div>
+                <div class="mt-12 space-y-8">
+                    <div class="flex flex-col gap-2">
+                        <div class="flex items-center gap-4">
+                            <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">{{ $t('portfolio_evidence_vault_title', 'Verified Evidence Vault') }}</h2>
+                            <div class="h-px flex-1 bg-gradient-to-r from-slate-200 dark:from-slate-800 to-transparent"></div>
+                        </div>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ $t('portfolio_evidence_vault_subtitle', 'Auditable materials secured via IPoW protocol') }}</p>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <!-- Context Materials -->
                         <div v-if="props.material.context_data && (props.material.context_data.link || (props.material.context_data.files && props.material.context_data.files.length > 0))" class="space-y-4">
-                            <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-500 px-2">Verification Context</h3>
+                            <div class="flex items-center gap-2 px-2">
+                                <div class="h-2 w-2 rounded-full bg-indigo-500"></div>
+                                <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-500">{{ $t('study_context_evidence', 'Verification Context') }}</h3>
+                            </div>
                             <div class="flex flex-col gap-3">
                                 <!-- Link -->
                                 <a v-if="props.material.context_data.link" :href="props.material.context_data.link" target="_blank" 
-                                    class="group/item flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl hover:border-indigo-500/50 transition-all shadow-sm">
-                                    <div class="flex items-center gap-3">
-                                        <div class="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
-                                            <Link2 class="h-5 w-5" />
+                                    class="group/item flex items-center justify-between p-5 bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-indigo-500/50 transition-all shadow-sm hover:shadow-indigo-500/5">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-12 w-12 rounded-2xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center border border-indigo-100 dark:border-indigo-900/50">
+                                            <Link2 class="h-6 w-6" />
                                         </div>
                                         <div>
-                                            <p class="text-xs font-black text-slate-400 uppercase tracking-widest leading-none mb-1">External Link</p>
-                                            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate max-w-[200px]">{{ props.material.context_data.link_name || props.material.context_data.link }}</p>
+                                            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">{{ $t('portfolio_context_reference', 'Context Reference') }}</p>
+                                            <p class="text-sm font-bold text-slate-800 dark:text-slate-200">{{ props.material.context_data.link_name || $t('portfolio_view_reference', 'View Reference Link') }}</p>
                                         </div>
                                     </div>
-                                    <ExternalLink class="h-4 w-4 text-slate-300 group-hover/item:text-indigo-500 transition" />
+                                    <ExternalLink class="h-5 w-5 text-slate-300 group-hover/item:text-indigo-500 transition transform group-hover/item:translate-x-1" />
                                 </a>
 
                                 <!-- Files -->
                                 <div v-for="(file, idx) in props.material.context_data.files" :key="'ctx-f-'+idx"
-                                    class="group/item flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl hover:border-indigo-500/50 transition-all shadow-sm">
-                                    <div class="flex items-center gap-3">
-                                        <div class="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
-                                            <FileText class="h-5 w-5" />
+                                    class="group/item flex items-center justify-between p-5 bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-indigo-500/50 transition-all shadow-sm hover:shadow-indigo-500/5">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-12 w-12 rounded-2xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center border border-indigo-100 dark:border-indigo-900/50">
+                                            <FileText class="h-6 w-6" />
                                         </div>
                                         <div>
-                                            <p class="text-xs font-black text-slate-400 uppercase tracking-widest leading-none mb-1">PDF Artifact</p>
-                                            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate max-w-[200px]">{{ file.name }}</p>
+                                            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">{{ $t('portfolio_context_artifact', 'Context Artifact') }}</p>
+                                            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate max-w-[180px]">{{ file.name }}</p>
                                         </div>
                                     </div>
-                                    <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-3">
                                         <button @click="() => { window.scrollTo({ top: document.querySelector('iframe')?.offsetTop - 100, behavior: 'smooth' }) }"
-                                            class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-indigo-500 transition">
+                                            class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-indigo-500 transition border border-slate-100 dark:border-slate-700">
                                             <Eye class="h-4 w-4" />
                                         </button>
                                         <a :href="route('portfolio.file.download', { username: props.student.username, path: file.path })" download
-                                            class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-emerald-500 transition">
+                                            class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-indigo-500 transition border border-slate-100 dark:border-slate-700">
                                             <Download class="h-4 w-4" />
                                         </a>
                                     </div>
@@ -410,42 +445,45 @@ const showMaterials = computed(() => {
 
                         <!-- Artifact Deliverables -->
                         <div v-if="props.material.artifact_data && (props.material.artifact_data.link || (props.material.artifact_data.files && props.material.artifact_data.files.length > 0))" class="space-y-4">
-                            <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-500 px-2">Verified Deliverables</h3>
+                            <div class="flex items-center gap-2 px-2">
+                                <div class="h-2 w-2 rounded-full bg-emerald-500"></div>
+                                <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-500">{{ $t('study_artifact_deliverables', 'Verified Deliverables') }}</h3>
+                            </div>
                             <div class="flex flex-col gap-3">
                                 <!-- Link -->
                                 <a v-if="props.material.artifact_data.link" :href="props.material.artifact_data.link" target="_blank" 
-                                    class="group/item flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-emerald-100 dark:border-emerald-900/30 rounded-2xl hover:border-emerald-500/50 transition-all shadow-sm">
-                                    <div class="flex items-center gap-3">
-                                        <div class="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-                                            <Link2 class="h-5 w-5" />
+                                    class="group/item flex items-center justify-between p-5 bg-white/50 dark:bg-slate-900/50 border border-emerald-100 dark:border-emerald-900/30 rounded-3xl hover:border-emerald-500/50 transition-all shadow-sm hover:shadow-emerald-500/5">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-12 w-12 rounded-2xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center border border-emerald-100 dark:border-emerald-900/50">
+                                            <Link2 class="h-6 w-6" />
                                         </div>
                                         <div>
-                                            <p class="text-xs font-black text-emerald-500/60 uppercase tracking-widest leading-none mb-1">Artifact Link</p>
-                                            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate max-w-[200px]">{{ props.material.artifact_data.link_name || props.material.artifact_data.link }}</p>
+                                            <p class="text-[9px] font-black text-emerald-500/60 uppercase tracking-widest mb-1">{{ $t('portfolio_external_artifact', 'External Artifact') }}</p>
+                                            <p class="text-sm font-bold text-slate-800 dark:text-slate-200">{{ props.material.artifact_data.link_name || $t('portfolio_view_deliverable', 'View Deliverable Link') }}</p>
                                         </div>
                                     </div>
-                                    <ExternalLink class="h-4 w-4 text-slate-300 group-hover/item:text-emerald-500 transition" />
+                                    <ExternalLink class="h-5 w-5 text-slate-300 group-hover/item:text-emerald-500 transition transform group-hover/item:translate-x-1" />
                                 </a>
 
                                 <!-- Files -->
                                 <div v-for="(file, idx) in props.material.artifact_data.files" :key="'art-f-'+idx"
-                                    class="group/item flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-emerald-100 dark:border-emerald-900/30 rounded-2xl hover:border-emerald-500/50 transition-all shadow-sm">
-                                    <div class="flex items-center gap-3">
-                                        <div class="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-                                            <FileText class="h-5 w-5" />
+                                    class="group/item flex items-center justify-between p-5 bg-white/50 dark:bg-slate-900/50 border border-emerald-100 dark:border-emerald-900/30 rounded-3xl hover:border-emerald-500/50 transition-all shadow-sm hover:shadow-emerald-500/5">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-12 w-12 rounded-2xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center border border-emerald-100 dark:border-emerald-900/50">
+                                            <FileText class="h-6 w-6" />
                                         </div>
                                         <div>
-                                            <p class="text-xs font-black text-emerald-500/60 uppercase tracking-widest leading-none mb-1">Verified PDF</p>
-                                            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate max-w-[200px]">{{ file.name }}</p>
+                                            <p class="text-[9px] font-black text-emerald-500/60 uppercase tracking-widest mb-1">{{ $t('portfolio_verified_audit_pdf', 'Verified Audit PDF') }}</p>
+                                            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate max-w-[180px]">{{ file.name }}</p>
                                         </div>
                                     </div>
-                                    <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-3">
                                         <button @click="() => { window.scrollTo({ top: document.querySelector('iframe')?.offsetTop - 100, behavior: 'smooth' }) }"
-                                            class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-indigo-500 transition">
+                                            class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-emerald-500 transition border border-slate-100 dark:border-slate-700">
                                             <Eye class="h-4 w-4" />
                                         </button>
                                         <a :href="route('portfolio.file.download', { username: props.student.username, path: file.path })" download
-                                            class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-emerald-500 transition">
+                                            class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-emerald-500 transition border border-slate-100 dark:border-slate-700">
                                             <Download class="h-4 w-4" />
                                         </a>
                                     </div>

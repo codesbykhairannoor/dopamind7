@@ -348,14 +348,17 @@ const profileBio = computed(() => {
     const kwSlice = allKeywords.value.slice(0, 5).join(', ');
 
     if (verdict) {
-        // If verdict is a JSON string, parse and format it
-        if (verdict.trim().startsWith('{')) {
-            try {
-                const parsed = JSON.parse(verdict);
-                if (parsed.field) {
-                    return `Verified student expertise in ${parsed.field} based on ${parsed.count} academic artifact(s) audited through IPoW protocol.`;
-                }
-            } catch (e) {}
+        // Handle both string and object formats
+        let data = null;
+        if (typeof verdict === 'object') {
+            data = verdict;
+        } else if (typeof verdict === 'string' && verdict.trim().startsWith('{')) {
+            try { data = JSON.parse(verdict); } catch (e) {}
+        }
+
+        if (data && data.field) {
+            const f = data.field.charAt(0).toUpperCase() + data.field.slice(1);
+            return `Verified student expertise in ${f} based on ${data.count || 1} academic artifact(s) audited through the IPoW protocol.`;
         }
         return verdict;
     }
@@ -533,7 +536,7 @@ const profileBio = computed(() => {
             <div v-if="showRadar || showArchetypes || showCareerTarget" class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
                 
                 <!-- Radar Competencies -->
-                <div v-if="showRadar" :class="[showArchetypes || showCareerTarget ? 'lg:col-span-6' : 'lg:col-span-12', 'bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 md:p-8 rounded-[2.5rem] border border-slate-200/50 dark:border-slate-800/80 shadow-[0_10px_45px_-4px_rgba(0,0,0,0.02)] hover:shadow-2xl transition duration-500']">
+                <div v-if="showRadar" :class="[showArchetypes || showCareerTarget ? 'lg:col-span-12' : 'lg:col-span-12', 'bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 md:p-8 rounded-[2.5rem] border border-slate-200/50 dark:border-slate-800/80 shadow-[0_10px_45px_-4px_rgba(0,0,0,0.02)] hover:shadow-2xl transition duration-500']">
                     <h2 class="text-lg font-extrabold text-slate-900 dark:text-white mb-1 flex items-center gap-2">
                         <BarChart3 class="h-5 w-5 text-indigo-500" />
                         {{ $t('portfolio_verified_competencies', 'Verified Competencies') }}
@@ -542,9 +545,25 @@ const profileBio = computed(() => {
                         {{ $t('portfolio_competency_subtitle', 'Competency indices mapped dynamically from raw academic files') }}
                     </p>
 
-                    <!-- Radar canvas -->
-                    <div class="h-80 w-full relative flex items-center justify-center">
-                        <Radar :data="chartData" :options="chartOptions" />
+                    <div class="flex flex-col lg:flex-row items-center gap-8">
+                        <!-- Left: Radar Canvas -->
+                        <div class="h-80 w-full lg:w-3/5 relative flex items-center justify-center">
+                            <Radar :data="chartData" :options="chartOptions" />
+                        </div>
+                        
+                        <!-- Right: Legend/List -->
+                        <div class="w-full lg:w-2/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+                            <div v-for="(score, name) in (props.competency?.competencies || {})" :key="name" 
+                                class="flex items-center justify-between p-3 rounded-2xl bg-white/50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800 transition hover:border-indigo-200 dark:hover:border-indigo-900 group">
+                                <span class="text-[11px] font-black text-slate-600 dark:text-slate-400 group-hover:text-indigo-500 transition truncate mr-2">{{ name }}</span>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-12 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-indigo-500 transition-all duration-1000" :style="{ width: score + '%' }"></div>
+                                    </div>
+                                    <span class="text-[10px] font-black text-indigo-500 w-8 text-right">{{ score }}%</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

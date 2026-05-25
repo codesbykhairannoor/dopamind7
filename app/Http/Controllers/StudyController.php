@@ -65,12 +65,8 @@ class StudyController extends Controller
                 $record->archives->map(function ($archive) use ($disk) {
                     if ($archive->file_path) {
                         if (!str_starts_with($archive->file_path, 'http://') && !str_starts_with($archive->file_path, 'https://')) {
-                            if ($disk === 'cloudinary') {
-                                $cloudName = env('CLOUDINARY_CLOUD_NAME', 'dxbgpakk1');
-                                $archive->file_path = "https://res.cloudinary.com/{$cloudName}/image/upload/{$archive->file_path}";
-                            } else {
-                                $archive->file_path = \Illuminate\Support\Facades\Storage::disk($disk)->url($archive->file_path);
-                            }
+                            // Let the download route handle serving the file
+                            // so we don't expose raw storage URLs that might 401 for PDFs
                         }
                     }
                     return $archive;
@@ -181,8 +177,10 @@ class StudyController extends Controller
             'grade' => 'nullable|numeric|min:0|max:100',
             'context_link' => 'nullable|url|max:2083',
             'context_link_name' => 'nullable|string|max:255',
+            'context_text' => 'nullable|string|max:5000',
             'artifact_link' => 'nullable|url|max:2083',
             'artifact_link_name' => 'nullable|string|max:255',
+            'artifact_text' => 'nullable|string|max:5000',
             'show_radar' => 'boolean',
             'show_archetypes' => 'boolean',
             'show_materials' => 'boolean',
@@ -260,10 +258,12 @@ class StudyController extends Controller
 
         $contextData['link'] = $request->context_link;
         $contextData['link_name'] = $request->context_link_name;
+        $contextData['text'] = $request->context_text;
         $material->context_data = $contextData;
 
         $artifactData['link'] = $request->artifact_link;
         $artifactData['link_name'] = $request->artifact_link_name;
+        $artifactData['text'] = $request->artifact_text;
         $material->artifact_data = $artifactData;
 
         $material->save();
@@ -275,14 +275,22 @@ class StudyController extends Controller
             
             $filesData = ['context_files' => [], 'artifact_files' => []];
             // Re-map current files for the job
-            foreach (($contextData['files'] ?? []) as $f) $filesData['context_files'][] = $f;
-            foreach (($artifactData['files'] ?? []) as $f) $filesData['artifact_files'][] = $f;
+            foreach (($contextData['files'] ?? []) as $f) {
+                if (!isset($f['ext'])) $f['ext'] = strtolower(pathinfo($f['name'], PATHINFO_EXTENSION));
+                $filesData['context_files'][] = $f;
+            }
+            foreach (($artifactData['files'] ?? []) as $f) {
+                if (!isset($f['ext'])) $f['ext'] = strtolower(pathinfo($f['name'], PATHINFO_EXTENSION));
+                $filesData['artifact_files'][] = $f;
+            }
 
             $textData = [
                 'context_link' => $request->context_link,
                 'context_link_name' => $request->context_link_name,
+                'context_text' => $request->context_text,
                 'artifact_link' => $request->artifact_link,
                 'artifact_link_name' => $request->artifact_link_name,
+                'artifact_text' => $request->artifact_text,
             ];
 
             \App\Jobs\ProcessCoursework::dispatch($material->id, $filesData, $textData);
@@ -534,17 +542,15 @@ class StudyController extends Controller
 
         if ($disk === 'cloudinary' || $disk === 's3') {
             try {
-                if ($disk === 'cloudinary') {
-                    // Manual URL construction to bypass broken SDK engine
-                    $cloudName = env('CLOUDINARY_CLOUD_NAME', 'dxbgpakk1');
-                    $url = "https://res.cloudinary.com/{$cloudName}/image/upload/{$path}";
-                } else {
-                    // Safety check for supabase/s3 url generation
-                    try {
-                        $url = Storage::disk($disk)->url($path);
-                    } catch (\Exception $urlEx) {
+                // Safety check for supabase/s3 url generation
+                try {
+                    $url = Storage::disk($disk)->url($path);
+                    if ($disk === 'cloudinary') {
+                        // Cloudinary direct URLs for PDFs often return 401. Let's proxy it.
                         return $this->proxyFile($disk, $path, $name, $disposition);
                     }
+                } catch (\Exception $urlEx) {
+                    return $this->proxyFile($disk, $path, $name, $disposition);
                 }
 
                 if (str_starts_with($url, 'http://')) {

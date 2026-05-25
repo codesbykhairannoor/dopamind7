@@ -82,6 +82,14 @@ const chartData = computed(() => {
 const chartOptions = computed(() => ({
     responsive: true,
     maintainAspectRatio: false,
+    layout: {
+        padding: {
+            left: 20,
+            right: 20,
+            top: 10,
+            bottom: 10
+        }
+    },
     plugins: {
         legend: {
             display: false
@@ -123,14 +131,14 @@ const chartOptions = computed(() => ({
                 min: 0,
                 max: 100,
                 stepSize: 20,
-                display: false // Hide numbers to keep it clean
+                display: true // Show numbers
             },
             pointLabels: {
                 color: isDark.value ? '#cbd5e1' : '#1e293b',
-                padding: 25, // Increased padding
+                padding: 10, // Adjusted padding
                 font: {
                     family: 'Plus Jakarta Sans',
-                    size: 11,
+                    size: 10,
                     weight: '700'
                 }
             }
@@ -157,8 +165,25 @@ const chartOptions = computed(() => ({
             <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">{{ $t('study_no_competency_radar') }}</h3>
             <p class="text-xs text-slate-400 dark:text-slate-500 max-w-[220px]">{{ $t('study_no_competency_desc') }}</p>
         </div>
-        <div v-else class="h-80 w-full relative flex items-center justify-center">
-            <Radar :data="chartData" :options="chartOptions" />
+        <div v-else class="flex flex-col lg:flex-row items-center gap-8">
+            <!-- Left: Radar Chart -->
+            <div class="h-80 w-full lg:w-3/5 relative flex items-center justify-center">
+                <Radar :data="chartData" :options="chartOptions" />
+            </div>
+            
+            <!-- Right: Skills Legend/List -->
+            <div class="w-full lg:w-2/5 space-y-3">
+                <div v-for="(score, name) in (props.competency?.competencies || {})" :key="name" 
+                    class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 transition hover:border-indigo-200 dark:hover:border-indigo-900 group">
+                    <span class="text-[11px] font-black text-slate-600 dark:text-slate-400 group-hover:text-indigo-500 transition truncate mr-2">{{ name }}</span>
+                    <div class="flex items-center gap-2">
+                        <div class="w-12 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-indigo-500 transition-all duration-1000" :style="{ width: score + '%' }"></div>
+                        </div>
+                        <span class="text-[10px] font-black text-indigo-500 w-8 text-right">{{ score }}%</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
