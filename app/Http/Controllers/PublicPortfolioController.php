@@ -85,9 +85,9 @@ class PublicPortfolioController extends Controller
         
         // If it's stored on Cloudinary but returned as a public ID
         try {
-            if (Storage::disk('cloudinary')->exists($material->file_path)) {
-                return redirect(Storage::disk('cloudinary')->url($material->file_path));
-            }
+            // Manual construction to bypass broken SDK
+            $cloudName = env('CLOUDINARY_CLOUD_NAME', 'dxbgpakk1');
+            return redirect("https://res.cloudinary.com/{$cloudName}/image/upload/{$material->file_path}");
         } catch (\Exception $e) {
             // Ignore
         }

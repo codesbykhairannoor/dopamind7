@@ -65,7 +65,12 @@ class StudyController extends Controller
                 $record->archives->map(function ($archive) use ($disk) {
                     if ($archive->file_path) {
                         if (!str_starts_with($archive->file_path, 'http://') && !str_starts_with($archive->file_path, 'https://')) {
-                            $archive->file_path = \Illuminate\Support\Facades\Storage::disk($disk)->url($archive->file_path);
+                            if ($disk === 'cloudinary') {
+                                $cloudName = env('CLOUDINARY_CLOUD_NAME', 'dxbgpakk1');
+                                $archive->file_path = "https://res.cloudinary.com/{$cloudName}/image/upload/{$archive->file_path}";
+                            } else {
+                                $archive->file_path = \Illuminate\Support\Facades\Storage::disk($disk)->url($archive->file_path);
+                            }
                         }
                     }
                     return $archive;
@@ -439,9 +444,15 @@ class StudyController extends Controller
 
         $disposition = ($isView ? 'inline' : 'attachment') . '; filename="' . $name . '"';
 
-        if ($disk === 's3') {
+        if ($disk === 'cloudinary' || $disk === 's3') {
             try {
-                $url = Storage::disk($disk)->url($path);
+                if ($disk === 'cloudinary') {
+                    // Manual URL construction to bypass broken SDK engine
+                    $cloudName = env('CLOUDINARY_CLOUD_NAME', 'dxbgpakk1');
+                    $url = "https://res.cloudinary.com/{$cloudName}/image/upload/{$path}";
+                } else {
+                    $url = Storage::disk($disk)->url($path);
+                }
 
                 if (str_starts_with($url, 'http://')) {
                     $url = str_replace('http://', 'https://', $url);
@@ -449,7 +460,7 @@ class StudyController extends Controller
 
                 return redirect()->away($url);
             } catch (\Exception $e) {
-                Log::warning("Temporary URL failed for disk {$disk}: " . $e->getMessage());
+                Log::warning("URL generation failed for disk {$disk}: " . $e->getMessage());
             }
         }
 

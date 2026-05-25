@@ -67,15 +67,16 @@ const pdfStreamUrl = computed(() => {
 const chartData = computed(() => {
     const competencies = props.competency?.competencies || {};
     // Split long labels to prevent shrinking the chart
-    const labels = Object.keys(competencies).map(label => {
-        if (label.length > 18) {
-            const words = label.split(' ');
+    const labels = Object.entries(competencies).map(([label, value]) => {
+        const displayLabel = `${label} (${value}%)`;
+        if (displayLabel.length > 20) {
+            const words = displayLabel.split(' ');
             if (words.length > 1) {
                 const mid = Math.ceil(words.length / 2);
                 return [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
             }
         }
-        return label;
+        return displayLabel;
     });
     const data = Object.values(competencies);
 
@@ -149,22 +150,25 @@ const chartOptions = computed(() => ({
                 color: isDark.value ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)'
             },
             pointLabels: {
-                color: isDark.value ? '#e2e8f0' : '#334155',
+                color: isDark.value ? '#94a3b8' : '#475569',
+                padding: 15,
                 font: {
                     family: 'Plus Jakarta Sans',
-                    size: 12,
-                    weight: 'bold'
+                    size: 13,
+                    weight: '800'
                 }
             },
             ticks: {
                 backdropColor: 'transparent',
-                color: isDark.value ? '#94a3b8' : '#64748b',
+                color: isDark.value ? '#64748b' : '#94a3b8',
                 font: {
                     family: 'Plus Jakarta Sans',
-                    size: 10
+                    size: 9
                 },
                 beginAtZero: true,
+                min: 0,
                 max: 100,
+                suggestedMax: 100,
                 stepSize: 20
             }
         }

@@ -64,15 +64,16 @@ const { isDark } = useAppearance();
 const chartData = computed(() => {
     const competencies = props.competency?.competencies || {};
     // Split long labels to prevent shrinking the chart
-    const labels = Object.keys(competencies).map(label => {
-        if (label.length > 18) {
-            const words = label.split(' ');
+    const labels = Object.entries(competencies).map(([label, value]) => {
+        const displayLabel = `${label} (${value}%)`;
+        if (displayLabel.length > 20) {
+            const words = displayLabel.split(' ');
             if (words.length > 1) {
                 const mid = Math.ceil(words.length / 2);
                 return [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
             }
         }
-        return label;
+        return displayLabel;
     });
     const data = Object.values(competencies);
 
@@ -147,6 +148,7 @@ const chartOptions = computed(() => ({
             },
             pointLabels: {
                 color: isDark.value ? '#94a3b8' : '#475569',
+                padding: 20,
                 font: {
                     family: 'Plus Jakarta Sans',
                     size: 13,
@@ -161,7 +163,9 @@ const chartOptions = computed(() => ({
                     size: 9
                 },
                 beginAtZero: true,
+                min: 0,
                 max: 100,
+                suggestedMax: 100,
                 stepSize: 20
             }
         }
@@ -343,7 +347,18 @@ const profileBio = computed(() => {
     const verdict = props.competency?.verdict;
     const kwSlice = allKeywords.value.slice(0, 5).join(', ');
 
-    if (verdict) return verdict;
+    if (verdict) {
+        // If verdict is a JSON string, parse and format it
+        if (verdict.trim().startsWith('{')) {
+            try {
+                const parsed = JSON.parse(verdict);
+                if (parsed.field) {
+                    return `Verified student expertise in ${parsed.field} based on ${parsed.count} academic artifact(s) audited through IPoW protocol.`;
+                }
+            } catch (e) {}
+        }
+        return verdict;
+    }
 
     if (count === 0) {
         return `${name} is building their verified academic profile on Dopmymind. No coursework has been audited yet.`;
@@ -479,8 +494,8 @@ const profileBio = computed(() => {
                         <div class="flex-1">
                             <span class="text-[9px] uppercase font-black tracking-widest text-indigo-500 dark:text-indigo-400 block mb-1">{{ $t('portfolio_neural_summary_label', 'Neural Profile Summary') }}</span>
                             <p class="text-sm text-slate-700 dark:text-slate-300 font-semibold leading-relaxed">
-                                <!-- If ML verdict exists, show it directly (it's AI-generated, stays as-is) -->
-                                <template v-if="props.competency?.verdict">{{ props.competency.verdict }}</template>
+                                <!-- If ML verdict exists, show it directly (handled by profileBio) -->
+                                <template v-if="profileBio">{{ profileBio }}</template>
                                 <!-- No materials yet -->
                                 <template v-else-if="props.materials.length === 0">
                                     {{ props.student.name.split(' ')[0] }} {{ $t('portfolio_bio_empty', 'is building their verified academic profile on Dopmymind. No coursework has been audited yet.') }}
@@ -651,7 +666,7 @@ const profileBio = computed(() => {
                             <div>
                                 <h4 class="text-xs font-extrabold uppercase tracking-widest text-indigo-200">{{ $t('portfolio_neural_verdict_label', 'Neural Classifier Verdict') }}</h4>
                                 <p class="text-sm font-semibold mt-2 leading-relaxed text-indigo-50">
-                                    {{ props.competency.verdict }}
+                                    {{ profileBio }}
                                 </p>
                             </div>
                         </div>
