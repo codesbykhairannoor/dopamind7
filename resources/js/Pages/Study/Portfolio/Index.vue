@@ -37,8 +37,13 @@ const usernameForm = useForm({
     username: props.user?.username || ''
 });
 
+const isEditingUsername = ref(false);
+
 const updateUsername = () => {
-    usernameForm.post(route('study.username'), { preserveScroll: true });
+    usernameForm.post(route('study.username'), { 
+        preserveScroll: true,
+        onSuccess: () => { isEditingUsername.value = false; }
+    });
 };
 
 const publicUrl = computed(() => {
@@ -131,23 +136,33 @@ const closeUploadModal = () => {
                     </div>
 
                     <div class="w-full md:w-auto min-w-[320px]">
-                        <div v-if="!props.user.username" class="bg-slate-100 dark:bg-slate-800/50 p-2 rounded-[2rem] border border-slate-200 dark:border-slate-700/50">
+                        <div v-if="!props.user.username || isEditingUsername" class="bg-slate-100 dark:bg-slate-800/50 p-2 rounded-[2rem] border border-slate-200 dark:border-slate-700/50">
                             <form @submit.prevent="updateUsername" class="flex items-center gap-2">
                                 <input v-model="usernameForm.username" type="text" :placeholder="$t('study_username_placeholder')" required
                                     class="bg-transparent border-none rounded-2xl text-sm font-bold text-slate-800 dark:text-white placeholder-slate-400 focus:ring-0 w-full px-6" />
-                                <button type="submit" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-[11px] tracking-widest shadow-lg active:scale-95 transition-all">
-                                    {{ $t('study_save_username') }}
-                                </button>
+                                <div class="flex items-center gap-2">
+                                    <button v-if="props.user.username" type="button" @click="isEditingUsername = false" class="px-5 py-3 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-2xl font-black text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 text-[11px] tracking-widest transition-all">
+                                        {{ $t('btn_cancel', 'Cancel') }}
+                                    </button>
+                                    <button type="submit" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-[11px] tracking-widest shadow-lg active:scale-95 transition-all">
+                                        {{ $t('study_save_username') }}
+                                    </button>
+                                </div>
                             </form>
                         </div>
                         
                         <div v-else class="flex flex-col sm:flex-row items-center gap-4">
                             <div class="flex-1 bg-slate-100 dark:bg-slate-800/50 px-6 py-4 rounded-[2rem] border border-slate-200 dark:border-slate-700/50 flex items-center justify-between gap-4 group/url">
                                 <span class="text-sm font-black text-slate-900 dark:text-white truncate max-w-[200px] tracking-tight">{{ publicUrl }}</span>
-                                <button @click="copyLink" class="p-2.5 bg-white dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-indigo-900 text-slate-400 hover:text-indigo-600 rounded-xl transition-all shadow-sm active:scale-90 border border-slate-100 dark:border-slate-600">
-                                    <Copy v-if="!copied" class="h-4 w-4" />
-                                    <CheckCircle2 v-else class="h-4 w-4 text-emerald-500" />
-                                </button>
+                                <div class="flex items-center gap-2">
+                                    <button @click="isEditingUsername = true" class="p-2.5 bg-white dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-indigo-900 text-slate-400 hover:text-indigo-600 rounded-xl transition-all shadow-sm active:scale-90 border border-slate-100 dark:border-slate-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/><path d="m15 5 3 3"/></svg>
+                                    </button>
+                                    <button @click="copyLink" class="p-2.5 bg-white dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-indigo-900 text-slate-400 hover:text-indigo-600 rounded-xl transition-all shadow-sm active:scale-90 border border-slate-100 dark:border-slate-600">
+                                        <Copy v-if="!copied" class="h-4 w-4" />
+                                        <CheckCircle2 v-else class="h-4 w-4 text-emerald-500" />
+                                    </button>
+                                </div>
                             </div>
                             <a :href="publicUrl" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] font-black text-[11px] tracking-widest hover:scale-105 transition-all active:scale-95 shadow-xl flex items-center justify-center gap-3">
                                 {{ $t('study_visit_link') }}
