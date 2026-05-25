@@ -166,6 +166,19 @@ class ProcessCoursework implements ShouldQueue
             // If the content looks like a URL, it means the adapter returned a redirect link
             if (is_string($content) && (str_starts_with($content, 'http://') || str_starts_with($content, 'https://'))) {
                 Log::info("Fetching remote content for processing: " . substr($content, 0, 100) . "...");
+                
+                // If it is a Cloudinary URL, sign it so we don't get 401 Unauthorized for PDFs
+                if (str_contains($content, 'res.cloudinary.com') && class_exists(\Cloudinary\Cloudinary::class) && env('CLOUDINARY_URL')) {
+                    try {
+                        $cloudinary = new \Cloudinary\Cloudinary(env('CLOUDINARY_URL'));
+                        $publicId = preg_replace('/\.([a-zA-Z0-9]+)$/', '', $fileData['path']);
+                        $fileExt = pathinfo($fileData['path'], PATHINFO_EXTENSION);
+                        $content = (string) $cloudinary->image($publicId)->extension($fileExt)->signUrl();
+                    } catch (\Exception $e) {
+                        Log::warning("Failed to sign Cloudinary URL in background job: " . $e->getMessage());
+                    }
+                }
+                
                 $response = \Illuminate\Support\Facades\Http::get($content);
                 if ($response->successful()) {
                     $content = $response->body();

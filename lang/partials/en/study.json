@@ -273,5 +273,15 @@
   "study_update_material": "Update Material",
   "study_context_link": "Context Link",
   "study_artifact_link": "Artifact Link",
-  "study_link_url_label": "Link URL"
+  "study_link_url_label": "Link URL",
+  "study_context_evidence": "Context Evidence",
+  "study_add_more_files": "Add More Files",
+  "study_drop_files_click": "Drop files or click to browse",
+  "study_current_evidence": "Current Evidence (Saved)",
+  "study_reference_link": "Reference Link",
+  "study_artifact_deliverables": "Artifact Deliverables",
+  "study_current_artifacts": "Current Artifacts (Saved)",
+  "study_deliverable_link": "Deliverable Link",
+  "study_restore": "Restore",
+  "study_remove": "Remove"
 }

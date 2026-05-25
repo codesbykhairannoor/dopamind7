@@ -273,5 +273,15 @@
   "study_update_material": "Perbarui Materi",
   "study_context_link": "Tautan Konteks",
   "study_artifact_link": "Tautan Artefak",
-  "study_link_url_label": "URL Tautan"
+  "study_link_url_label": "URL Tautan",
+  "study_context_evidence": "Bukti Konteks",
+  "study_add_more_files": "Tambah Berkas Lain",
+  "study_drop_files_click": "Tarik berkas atau klik untuk mencari",
+  "study_current_evidence": "Bukti Saat Ini (Tersimpan)",
+  "study_reference_link": "Tautan Referensi",
+  "study_artifact_deliverables": "Hasil Artefak",
+  "study_current_artifacts": "Artefak Saat Ini (Tersimpan)",
+  "study_deliverable_link": "Tautan Hasil",
+  "study_restore": "Pulihkan",
+  "study_remove": "Hapus"
 }

@@ -542,21 +542,31 @@ class StudyController extends Controller
 
         if ($disk === 'cloudinary' || $disk === 's3') {
             try {
-                // Safety check for supabase/s3 url generation
-                try {
-                    $url = Storage::disk($disk)->url($path);
-                    if ($disk === 'cloudinary') {
-                        // Cloudinary direct URLs for PDFs often return 401. Let's proxy it.
-                        return $this->proxyFile($disk, $path, $name, $disposition);
+                if ($disk === 'cloudinary') {
+                    if (class_exists(\Cloudinary\Cloudinary::class) && env('CLOUDINARY_URL')) {
+                        $cloudinary = new \Cloudinary\Cloudinary(env('CLOUDINARY_URL'));
+                        // Get public ID without extension
+                        $publicId = preg_replace('/\.([a-zA-Z0-9]+)$/', '', $path);
+                        $ext = pathinfo($path, PATHINFO_EXTENSION);
+                        
+                        $image = $cloudinary->image($publicId)->extension($ext);
+                        if (!$isView) {
+                            $image->addTransformation(\Cloudinary\Transformation\Delivery::attachment($name));
+                        }
+                        
+                        $url = (string) $image->signUrl();
+                        return redirect()->away($url);
                     }
-                } catch (\Exception $urlEx) {
+                    
+                    // Fallback to our proxy if Cloudinary API is not configured
                     return $this->proxyFile($disk, $path, $name, $disposition);
                 }
 
+                // For s3 or generic url generation
+                $url = Storage::disk($disk)->url($path);
                 if (str_starts_with($url, 'http://')) {
                     $url = str_replace('http://', 'https://', $url);
                 }
-
                 return redirect()->away($url);
             } catch (\Exception $e) {
                 Log::warning("URL generation failed for disk {$disk}: " . $e->getMessage());

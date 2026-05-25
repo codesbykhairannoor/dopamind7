@@ -161,8 +161,8 @@ const closeUploadModal = () => {
             <!-- Main Layout Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 
-                <!-- Left Column: Materials (8/12) -->
-                <div class="lg:col-span-8">
+                <!-- Left Column: Materials (7/12) -->
+                <div class="lg:col-span-7 space-y-12">
                     <!-- Material List Component -->
                     <StudyMaterialList 
                         :materials="localMaterials" 
@@ -173,8 +173,8 @@ const closeUploadModal = () => {
                     />
                 </div>
 
-                <!-- Right Column: AI Analysis (4/12) -->
-                <div class="lg:col-span-4 space-y-12">
+                <!-- Right Column: AI Analysis (5/12) -->
+                <div class="lg:col-span-5 space-y-12">
                     <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[3rem] border border-slate-200/50 dark:border-slate-800/50 p-10 shadow-2xl shadow-indigo-500/5">
                         <StudyCompetencyRadar :competency="props.competency" />
                     </div>

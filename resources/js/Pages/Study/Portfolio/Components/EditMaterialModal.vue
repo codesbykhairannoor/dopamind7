@@ -140,7 +140,7 @@ const submit = () => {
                     </div>
                     <div>
                         <h3 class="text-xl font-black text-slate-900 dark:text-white">{{ $t('study_edit_material') }}</h3>
-                        <p class="text-xs font-bold text-slate-400 tracking-widest uppercase">{{ material?.course_name }} • IPoW Edit Mode</p>
+                        <p class="text-xs font-bold text-slate-400 tracking-widest">{{ material?.course_name }} • IPoW Edit Mode</p>
                     </div>
                 </div>
                 <button @click="emit('close')" class="p-3 text-slate-400 hover:text-red-500 transition-colors">
@@ -152,15 +152,15 @@ const submit = () => {
                 <!-- Meta Info (Horizontal Row) -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-8 bg-slate-50 dark:bg-slate-900/50 p-6 rounded-[2rem] border border-slate-100 dark:border-slate-800">
                     <div class="md:col-span-6">
-                        <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2 uppercase">{{ $t('study_course_name') }}</label>
+                        <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_course_name') }}</label>
                         <input v-model="form.course_name" type="text" class="w-full px-5 py-3.5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 transition" />
                     </div>
                     <div class="md:col-span-3">
-                        <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2 uppercase">{{ $t('study_week') }}</label>
+                        <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_week') }}</label>
                         <input v-model="form.week" type="text" class="w-full px-5 py-3.5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 transition" />
                     </div>
                     <div class="md:col-span-3">
-                        <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2 uppercase">{{ $t('study_grade') }}</label>
+                        <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_grade') }}</label>
                         <input v-model="form.grade" type="number" step="0.01" class="w-full px-5 py-3.5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 transition" />
                     </div>
                 </div>
@@ -172,11 +172,11 @@ const submit = () => {
                     <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-blue-100/60 dark:border-blue-900/30 overflow-hidden flex flex-col">
                         <div class="px-6 py-4 bg-blue-50/50 dark:bg-blue-950/20 border-b border-blue-100 dark:border-blue-900/30 flex items-center gap-3">
                             <BookOpen class="h-4 w-4 text-blue-500" />
-                            <span class="text-xs font-black tracking-widest text-blue-600 dark:text-blue-400 uppercase">{{ $t('study_context_evidence', 'Context Evidence') }}</span>
+                            <span class="text-xs font-black tracking-widest text-blue-600 dark:text-blue-400">{{ $t('study_context_evidence', 'Context Evidence') }}</span>
                         </div>
                         <div class="p-6 space-y-6 flex-1">
                             <div>
-                                <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2 uppercase">{{ $t('study_add_more_files', 'Add More Files') }}</label>
+                                <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_add_more_files', 'Add More Files') }}</label>
                                 <input ref="contextFileInput" type="file" multiple class="hidden" @change="e => addFilesToQueue('context', e.target.files)" />
                                 <div @click="contextFileInput.click()" class="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-center cursor-pointer hover:border-blue-400 transition bg-slate-50/50 dark:bg-slate-950/30">
                                     <Upload class="h-5 w-5 text-slate-400 mx-auto mb-2" />
@@ -194,7 +194,7 @@ const submit = () => {
                             </div>
 
                             <div v-if="currentFiles.context.length > 0">
-                                <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2 uppercase">{{ $t('study_current_evidence', 'Current Evidence (Saved)') }}</label>
+                                <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_current_evidence', 'Current Evidence (Saved)') }}</label>
                                 <div class="space-y-2">
                                     <div v-for="file in currentFiles.context" :key="file.path" 
                                         class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950"
@@ -204,7 +204,7 @@ const submit = () => {
                                             <FileText class="h-3.5 w-3.5 text-slate-400" />
                                             <span class="text-[10px] font-bold text-slate-600 dark:text-slate-400 truncate">{{ file.name }}</span>
                                         </div>
-                                        <button type="button" @click="toggleFileDeletion(file.path)" class="text-[10px] font-black uppercase px-3 py-1 rounded-lg transition" :class="form.delete_files.includes(file.path) ? 'text-blue-500' : 'text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30'">
+                                        <button type="button" @click="toggleFileDeletion(file.path)" class="text-[10px] font-black px-3 py-1 rounded-lg transition" :class="form.delete_files.includes(file.path) ? 'text-blue-500' : 'text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30'">
                                             {{ form.delete_files.includes(file.path) ? $t('study_restore', 'Restore') : $t('study_remove', 'Remove') }}
                                         </button>
                                     </div>
@@ -212,7 +212,7 @@ const submit = () => {
                             </div>
 
                             <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
-                                <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2 uppercase">{{ $t('study_reference_link', 'Reference Link') }}</label>
+                                <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_reference_link', 'Reference Link') }}</label>
                                 <div class="space-y-3">
                                     <input v-model="form.context_link" type="url" placeholder="https://..." class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-bold transition focus:ring-1 focus:ring-blue-500" />
                                     <input v-model="form.context_link_name" type="text" :placeholder="$t('study_context_link_name')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-bold transition focus:ring-1 focus:ring-blue-500" />
@@ -222,7 +222,7 @@ const submit = () => {
                             <!-- Text Mode -->
                             <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
                                 <div class="flex justify-between items-center mb-2">
-                                    <label class="block text-[10px] font-black tracking-widest text-slate-400 uppercase">{{ $t('study_notes_label', 'Notes / Text') }}</label>
+                                    <label class="block text-[10px] font-black tracking-widest text-slate-400">{{ $t('study_notes_label', 'Notes / Text') }}</label>
                                 </div>
                                 <textarea v-model="form.context_text" rows="4"
                                     :placeholder="$t('study_context_text_placeholder')"
@@ -236,11 +236,11 @@ const submit = () => {
                     <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-emerald-100/60 dark:border-emerald-900/30 overflow-hidden flex flex-col">
                         <div class="px-6 py-4 bg-emerald-50/50 dark:bg-emerald-950/20 border-b border-emerald-100 dark:border-emerald-900/30 flex items-center gap-3">
                             <FileText class="h-4 w-4 text-emerald-500" />
-                            <span class="text-xs font-black tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">{{ $t('study_artifact_deliverables', 'Artifact Deliverables') }}</span>
+                            <span class="text-xs font-black tracking-widest text-emerald-600 dark:text-emerald-400">{{ $t('study_artifact_deliverables', 'Artifact Deliverables') }}</span>
                         </div>
                         <div class="p-6 space-y-6 flex-1">
                             <div>
-                                <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2 uppercase">{{ $t('study_add_more_files', 'Add More Files') }}</label>
+                                <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_add_more_files', 'Add More Files') }}</label>
                                 <input ref="artifactFileInput" type="file" multiple class="hidden" @change="e => addFilesToQueue('artifact', e.target.files)" />
                                 <div @click="artifactFileInput.click()" class="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-center cursor-pointer hover:border-emerald-400 transition bg-slate-50/50 dark:bg-slate-950/30">
                                     <Upload class="h-5 w-5 text-slate-400 mx-auto mb-2" />
@@ -258,7 +258,7 @@ const submit = () => {
                             </div>
 
                             <div v-if="currentFiles.artifact.length > 0">
-                                <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2 uppercase">{{ $t('study_current_artifacts', 'Current Artifacts (Saved)') }}</label>
+                                <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_current_artifacts', 'Current Artifacts (Saved)') }}</label>
                                 <div class="space-y-2">
                                     <div v-for="file in currentFiles.artifact" :key="file.path" 
                                         class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950"
@@ -268,7 +268,7 @@ const submit = () => {
                                             <FileText class="h-3.5 w-3.5 text-slate-400" />
                                             <span class="text-[10px] font-bold text-slate-600 dark:text-slate-400 truncate">{{ file.name }}</span>
                                         </div>
-                                        <button type="button" @click="toggleFileDeletion(file.path)" class="text-[10px] font-black uppercase px-3 py-1 rounded-lg transition" :class="form.delete_files.includes(file.path) ? 'text-emerald-500' : 'text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30'">
+                                        <button type="button" @click="toggleFileDeletion(file.path)" class="text-[10px] font-black px-3 py-1 rounded-lg transition" :class="form.delete_files.includes(file.path) ? 'text-emerald-500' : 'text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30'">
                                             {{ form.delete_files.includes(file.path) ? $t('study_restore', 'Restore') : $t('study_remove', 'Remove') }}
                                         </button>
                                     </div>
@@ -276,7 +276,7 @@ const submit = () => {
                             </div>
 
                             <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
-                                <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2 uppercase">{{ $t('study_deliverable_link', 'Deliverable Link') }}</label>
+                                <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2">{{ $t('study_deliverable_link', 'Deliverable Link') }}</label>
                                 <div class="space-y-3">
                                     <input v-model="form.artifact_link" type="url" placeholder="https://github.com/..." class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-bold transition focus:ring-1 focus:ring-emerald-500" />
                                     <input v-model="form.artifact_link_name" type="text" :placeholder="$t('study_artifact_link_name')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-bold transition focus:ring-1 focus:ring-emerald-500" />
@@ -286,7 +286,7 @@ const submit = () => {
                             <!-- Text Mode -->
                             <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
                                 <div class="flex justify-between items-center mb-2">
-                                    <label class="block text-[10px] font-black tracking-widest text-slate-400 uppercase">{{ $t('study_notes_label', 'Notes / Text') }}</label>
+                                    <label class="block text-[10px] font-black tracking-widest text-slate-400">{{ $t('study_notes_label', 'Notes / Text') }}</label>
                                 </div>
                                 <textarea v-model="form.artifact_text" rows="4"
                                     :placeholder="$t('study_artifact_text_placeholder')"
@@ -299,18 +299,18 @@ const submit = () => {
 
                 <!-- Display Settings -->
                 <div class="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-[2rem] border border-slate-100 dark:border-slate-800 mb-4">
-                    <h4 class="text-[10px] font-black tracking-widest text-slate-400 mb-6 uppercase">Visibility & Career Targets</h4>
+                    <h4 class="text-[10px] font-black tracking-widest text-slate-400 mb-6">Visibility & Career Targets</h4>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                         <label v-for="setting in ['show_radar', 'show_archetypes', 'show_materials', 'show_career_target']" :key="setting" class="flex items-center gap-3 p-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl cursor-pointer hover:border-indigo-300 transition group">
                             <div class="relative flex items-center">
                                 <input type="checkbox" v-model="form[setting]" class="sr-only peer" />
                                 <div class="w-9 h-5 bg-slate-200 dark:bg-slate-800 rounded-full peer peer-checked:bg-indigo-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-full"></div>
                             </div>
-                            <span class="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight group-hover:text-indigo-500 transition">{{ setting.replace('show_', '').replace('_', ' ') }}</span>
+                            <span class="text-[10px] font-bold text-slate-600 dark:text-slate-400 tracking-tight group-hover:text-indigo-500 transition">{{ setting.replace('show_', '').replace('_', ' ') }}</span>
                         </label>
                     </div>
                     <div v-if="form.show_career_target" class="mt-6">
-                        <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2 uppercase">Custom Career Goal</label>
+                        <label class="block text-[10px] font-black tracking-widest text-slate-400 mb-2">Custom Career Goal</label>
                         <input v-model="form.career_target" type="text" class="w-full px-5 py-3.5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 transition" />
                     </div>
                 </div>
@@ -318,7 +318,7 @@ const submit = () => {
 
             <!-- Footer Actions -->
             <div class="p-6 md:p-8 bg-slate-50 dark:bg-slate-900/80 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between shrink-0">
-                <button type="button" @click="emit('close')" class="px-8 py-4 rounded-2xl text-sm font-black text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition uppercase tracking-widest">
+                <button type="button" @click="emit('close')" class="px-8 py-4 rounded-2xl text-sm font-black text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition tracking-widest">
                     {{ $t('btn_cancel') }}
                 </button>
                 <button @click="submit" :disabled="form.processing" class="px-12 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl text-sm font-black shadow-xl shadow-indigo-600/20 transition-all flex items-center gap-3 group">
