@@ -1,10 +1,10 @@
 <script setup>
 import { ref } from 'vue';
-import { router } from '@inertiajs/vue3';
+import { router, Link } from '@inertiajs/vue3';
 import { 
     BookOpen, Clock, Link2, FileText, Loader2, CheckCircle2, 
     XCircle, Trash2, AlertTriangle, Edit3, ExternalLink, Download,
-    FileSearch
+    FileSearch, Terminal
 } from 'lucide-vue-next';
 import EditMaterialModal from './Portfolio/Components/EditMaterialModal.vue';
 
@@ -331,6 +331,15 @@ const viewFile = (materialId, type, index, name) => {
                                     {{ $t('study_share_copied') }}
                                 </span>
                             </button>
+
+                            <!-- Pipeline Logs -->
+                            <Link 
+                                :href="route('study.portfolio.logs', material.id)"
+                                class="p-3 text-slate-400 hover:text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/20 rounded-2xl transition-all"
+                                :title="$t('study_pipeline_logs', 'Log Proses AI')"
+                            >
+                                <Terminal class="h-5 w-5" />
+                            </Link>
 
                             <!-- Edit -->
                             <button 

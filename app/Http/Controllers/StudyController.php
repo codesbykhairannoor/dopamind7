@@ -891,4 +891,18 @@ class StudyController extends Controller
             return redirect()->back()->withErrors(['feedback' => 'Gagal mengirim koreksi.']);
         }
     }
+
+    public function viewLogs($id)
+    {
+        $user = Auth::user();
+        $material = StudyMaterial::where('user_id', $user->id)->findOrFail($id);
+        
+        return Inertia::render('Study/Portfolio/Logs', [
+            'material' => $material,
+            'user' => [
+                'name' => $user->name,
+                'username' => $user->username,
+            ]
+        ]);
+    }
 }

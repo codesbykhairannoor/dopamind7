@@ -987,6 +987,7 @@ Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(
         ->group(function () {
             Route::get("/", [StudyController::class, "academicIndex"])->name("index");
             Route::get("/portfolio", [StudyController::class, "portfolioIndex"])->name("portfolio");
+            Route::get("/portfolio/{id}/logs", [StudyController::class, "viewLogs"])->name("portfolio.logs");
 
             // Neural Portfolio actions
             Route::post("/portfolio", [StudyController::class, "store"])->name("store");
