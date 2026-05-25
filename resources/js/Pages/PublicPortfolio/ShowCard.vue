@@ -23,6 +23,7 @@ import {
     ArrowLeft,
     ExternalLink,
     Award,
+    Download,
     Link2,
     ShieldAlert
 } from 'lucide-vue-next';
@@ -354,64 +355,99 @@ const showMaterials = computed(() => {
                     <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 </div>
 
-                <!-- 4. ATTACHED DOCUMENTS -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
-                    <div v-if="props.material.context_data && props.material.context_data.length > 0">
-                        <h3 class="text-sm font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 px-2">Context Materials</h3>
-                        <div class="flex flex-col gap-4">
-                            <div v-for="(item, idx) in props.material.context_data" :key="'ctx-'+idx" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl flex items-center gap-4 hover:shadow-lg transition group">
-                                <div class="h-12 w-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition">
-                                    <FileText v-if="item.type === 'file'" class="h-5 w-5" />
-                                    <Link2 v-else-if="item.type === 'link'" class="h-5 w-5" />
-                                    <BookOpen v-else class="h-5 w-5" />
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{{ item.type }}</h4>
-                                    <div class="flex items-center gap-2">
-                                        <a v-if="item.type === 'file'" :href="route('portfolio.file.download', { username: props.student.username, path: item.path })" download class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-indigo-500 transition">{{ item.name }}</a>
-                                        <a v-else-if="item.type === 'link'" :href="item.url" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-indigo-500 transition">{{ item.url }}</a>
-                                        <p v-else class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">{{ item.content }}</p>
+                <!-- 4. EVIDENCE & AUDITABLE ARTIFACTS -->
+                <div class="mt-8 space-y-6">
+                    <div class="flex items-center gap-4 px-2">
+                        <h2 class="text-xl font-black text-slate-900 dark:text-white tracking-tight">Evidence & Auditable Artifacts</h2>
+                        <div class="h-px flex-1 bg-gradient-to-r from-slate-200 dark:from-slate-800 to-transparent"></div>
+                    </div>
 
-                                        <!-- View Button for Files -->
-                                        <button 
-                                            v-if="item.type === 'file'" 
-                                            @click="() => { window.scrollTo({ top: document.querySelector('iframe')?.offsetTop - 100, behavior: 'smooth' }) }"
-                                            class="shrink-0 p-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition"
-                                            title="View in Audit Viewer"
-                                        >
-                                            <Eye class="h-3.5 w-3.5" />
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Context Materials -->
+                        <div v-if="props.material.context_data && (props.material.context_data.link || (props.material.context_data.files && props.material.context_data.files.length > 0))" class="space-y-4">
+                            <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-500 px-2">Verification Context</h3>
+                            <div class="flex flex-col gap-3">
+                                <!-- Link -->
+                                <a v-if="props.material.context_data.link" :href="props.material.context_data.link" target="_blank" 
+                                    class="group/item flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl hover:border-indigo-500/50 transition-all shadow-sm">
+                                    <div class="flex items-center gap-3">
+                                        <div class="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                                            <Link2 class="h-5 w-5" />
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-black text-slate-400 uppercase tracking-widest leading-none mb-1">External Link</p>
+                                            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate max-w-[200px]">{{ props.material.context_data.link_name || props.material.context_data.link }}</p>
+                                        </div>
+                                    </div>
+                                    <ExternalLink class="h-4 w-4 text-slate-300 group-hover/item:text-indigo-500 transition" />
+                                </a>
+
+                                <!-- Files -->
+                                <div v-for="(file, idx) in props.material.context_data.files" :key="'ctx-f-'+idx"
+                                    class="group/item flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl hover:border-indigo-500/50 transition-all shadow-sm">
+                                    <div class="flex items-center gap-3">
+                                        <div class="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                                            <FileText class="h-5 w-5" />
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-black text-slate-400 uppercase tracking-widest leading-none mb-1">PDF Artifact</p>
+                                            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate max-w-[200px]">{{ file.name }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <button @click="() => { window.scrollTo({ top: document.querySelector('iframe')?.offsetTop - 100, behavior: 'smooth' }) }"
+                                            class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-indigo-500 transition">
+                                            <Eye class="h-4 w-4" />
                                         </button>
+                                        <a :href="route('portfolio.file.download', { username: props.student.username, path: file.path })" download
+                                            class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-emerald-500 transition">
+                                            <Download class="h-4 w-4" />
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div v-if="props.material.artifact_data && props.material.artifact_data.length > 0">
-                        <h3 class="text-sm font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-500 mb-4 px-2">Artifact Deliverables</h3>
-                        <div class="flex flex-col gap-4">
-                            <div v-for="(item, idx) in props.material.artifact_data" :key="'art-'+idx" class="bg-white dark:bg-slate-900 border border-emerald-100 dark:border-emerald-900/30 p-5 rounded-2xl flex items-center gap-4 hover:shadow-lg shadow-emerald-500/5 transition group">
-                                <div class="h-12 w-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition">
-                                    <FileText v-if="item.type === 'file'" class="h-5 w-5" />
-                                    <Link2 v-else-if="item.type === 'link'" class="h-5 w-5" />
-                                    <BookOpen v-else class="h-5 w-5" />
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <h4 class="text-xs font-bold text-emerald-500/70 uppercase tracking-wider mb-1">{{ item.type }}</h4>
+                        <!-- Artifact Deliverables -->
+                        <div v-if="props.material.artifact_data && (props.material.artifact_data.link || (props.material.artifact_data.files && props.material.artifact_data.files.length > 0))" class="space-y-4">
+                            <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-500 px-2">Verified Deliverables</h3>
+                            <div class="flex flex-col gap-3">
+                                <!-- Link -->
+                                <a v-if="props.material.artifact_data.link" :href="props.material.artifact_data.link" target="_blank" 
+                                    class="group/item flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-emerald-100 dark:border-emerald-900/30 rounded-2xl hover:border-emerald-500/50 transition-all shadow-sm">
+                                    <div class="flex items-center gap-3">
+                                        <div class="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                                            <Link2 class="h-5 w-5" />
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-black text-emerald-500/60 uppercase tracking-widest leading-none mb-1">Artifact Link</p>
+                                            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate max-w-[200px]">{{ props.material.artifact_data.link_name || props.material.artifact_data.link }}</p>
+                                        </div>
+                                    </div>
+                                    <ExternalLink class="h-4 w-4 text-slate-300 group-hover/item:text-emerald-500 transition" />
+                                </a>
+
+                                <!-- Files -->
+                                <div v-for="(file, idx) in props.material.artifact_data.files" :key="'art-f-'+idx"
+                                    class="group/item flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-emerald-100 dark:border-emerald-900/30 rounded-2xl hover:border-emerald-500/50 transition-all shadow-sm">
+                                    <div class="flex items-center gap-3">
+                                        <div class="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                                            <FileText class="h-5 w-5" />
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-black text-emerald-500/60 uppercase tracking-widest leading-none mb-1">Verified PDF</p>
+                                            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate max-w-[200px]">{{ file.name }}</p>
+                                        </div>
+                                    </div>
                                     <div class="flex items-center gap-2">
-                                        <a v-if="item.type === 'file'" :href="route('portfolio.file.download', { username: props.student.username, path: item.path })" download class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-emerald-500 transition">{{ item.name }}</a>
-                                        <a v-else-if="item.type === 'link'" :href="item.url" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-emerald-500 transition">{{ item.url }}</a>
-                                        <p v-else class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">{{ item.content }}</p>
-                                        
-                                        <!-- View Button for Files -->
-                                        <button 
-                                            v-if="item.type === 'file'" 
-                                            @click="() => { /* Scroll to viewer or update viewer source if needed */ window.scrollTo({ top: document.querySelector('iframe')?.offsetTop - 100, behavior: 'smooth' }) }"
-                                            class="shrink-0 p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 opacity-0 group-hover:opacity-100 transition"
-                                            title="View in Audit Viewer"
-                                        >
-                                            <Eye class="h-3.5 w-3.5" />
+                                        <button @click="() => { window.scrollTo({ top: document.querySelector('iframe')?.offsetTop - 100, behavior: 'smooth' }) }"
+                                            class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-indigo-500 transition">
+                                            <Eye class="h-4 w-4" />
                                         </button>
+                                        <a :href="route('portfolio.file.download', { username: props.student.username, path: file.path })" download
+                                            class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-emerald-500 transition">
+                                            <Download class="h-4 w-4" />
+                                        </a>
                                     </div>
                                 </div>
                             </div>

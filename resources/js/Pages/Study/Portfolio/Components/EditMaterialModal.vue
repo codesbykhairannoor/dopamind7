@@ -41,17 +41,30 @@ watch(() => props.material, (newVal) => {
         form.week = newVal.week || '';
         form.grade = newVal.grade || '';
         
-        // Handle context_data (could be old object or new formatted one)
+        // Helper to get files regardless of structure
+        const getFiles = (data) => {
+            if (!data) return [];
+            let parsed = data;
+            if (typeof data === 'string') {
+                try { parsed = JSON.parse(data); } catch (e) { return []; }
+            }
+            if (Array.isArray(parsed)) {
+                return parsed.filter(i => i.type === 'file');
+            }
+            return parsed.files || [];
+        };
+
+        // Handle context_data
         const ctx = newVal.context_data || {};
-        form.context_link = ctx.link || '';
-        form.context_link_name = ctx.link_name || '';
-        currentFiles.value.context = ctx.files || [];
+        form.context_link = typeof ctx === 'string' ? '' : (ctx.link || '');
+        form.context_link_name = typeof ctx === 'string' ? '' : (ctx.link_name || '');
+        currentFiles.value.context = getFiles(ctx);
         
         // Handle artifact_data
         const art = newVal.artifact_data || {};
-        form.artifact_link = art.link || '';
-        form.artifact_link_name = art.link_name || '';
-        currentFiles.value.artifact = art.files || [];
+        form.artifact_link = typeof art === 'string' ? '' : (art.link || '');
+        form.artifact_link_name = typeof art === 'string' ? '' : (art.link_name || '');
+        currentFiles.value.artifact = getFiles(art);
 
         form.delete_files = [];
 

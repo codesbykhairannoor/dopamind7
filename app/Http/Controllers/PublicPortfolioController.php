@@ -81,11 +81,17 @@ class PublicPortfolioController extends Controller
             $content = Storage::disk($disk)->get($path);
             
             if (is_string($content) && (str_starts_with($content, 'http://') || str_starts_with($content, 'https://'))) {
-                $response = \Illuminate\Support\Facades\Http::get($content);
-                if ($response->successful()) {
-                    $content = $response->body();
-                } else {
-                    return redirect($content); 
+                try {
+                    $response = \Illuminate\Support\Facades\Http::timeout(10)->get($content);
+                    if ($response->successful()) {
+                        $content = $response->body();
+                    } else {
+                        \Illuminate\Support\Facades\Log::error("Cloudinary Proxy Fetch Failed ({$response->status()}): " . substr($content, 0, 100));
+                        abort(403, 'Evidence file is private or inaccessible. Contact owner.');
+                    }
+                } catch (\Exception $httpEx) {
+                    \Illuminate\Support\Facades\Log::error("Cloudinary Proxy HTTP Error: " . $httpEx->getMessage());
+                    abort(502, 'File delivery gateway timeout.');
                 }
             }
 
