@@ -134,11 +134,21 @@ class ProcessCoursework implements ShouldQueue
         } else {
             // Download to temporary location for processing
             $tempPath = tempnam(sys_get_temp_dir(), 'study_');
-            file_put_contents($tempPath, Storage::disk($disk)->get($fileData['path']));
+            
+            // For remote disks, Storage::get() might return a URL instead of bytes if not configured properly.
+            // We ensure we get the content.
+            $content = Storage::disk($disk)->get($fileData['path']);
+            
+            // If the content looks like a URL, it means the adapter returned a redirect link
+            if (is_string($content) && (str_starts_with($content, 'http://') || str_starts_with($content, 'https://'))) {
+                $content = file_get_contents($content);
+            }
+            
+            file_put_contents($tempPath, $content);
             $fullPath = $tempPath;
         }
         
-        if (!file_exists($fullPath)) {
+        if (!file_exists($fullPath) || filesize($fullPath) === 0) {
             return "";
         }
 

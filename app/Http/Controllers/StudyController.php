@@ -407,46 +407,10 @@ class StudyController extends Controller
         $archive = \App\Models\AcademicArchive::findOrFail($id);
         
         // Ensure user owns the parent record
-        $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($archive->academic_record_id);
+        \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($archive->academic_record_id);
 
-        if (!$archive->file_path) {
-            abort(404, 'File not found');
-        }
-
-        // If it starts with http, it is likely already an external URL
-        if (str_starts_with($archive->file_path, 'http://') || str_starts_with($archive->file_path, 'https://')) {
-            return redirect($archive->file_path);
-        }
-
-        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
-
-        // For remote disks like Cloudinary/S3, streaming through the server avoids 401 direct access errors
-        if ($disk !== 'public' && $disk !== 'local') {
-            try {
-                $content = \Illuminate\Support\Facades\Storage::disk($disk)->get($archive->file_path);
-                $mime = \Illuminate\Support\Facades\Storage::disk($disk)->mimeType($archive->file_path);
-                
-                return response($content)
-                    ->header('Content-Type', $mime)
-                    ->header('Content-Disposition', ($request->has('view') ? 'inline' : 'attachment') . '; filename="' . $archive->file_name . '"');
-            } catch (\Exception $e) {
-                // Last resort fallback to URL
-                return redirect(\Illuminate\Support\Facades\Storage::disk($disk)->url($archive->file_path));
-            }
-        }
-
-        if (!\Illuminate\Support\Facades\Storage::disk($disk)->exists($archive->file_path)) {
-            abort(404, 'File not found in storage');
-        }
-
-        // Support 'view' mode to open in browser instead of forcing download
-        if ($request->has('view')) {
-            return \Illuminate\Support\Facades\Storage::disk($disk)->response($archive->file_path);
-        }
-
-        return \Illuminate\Support\Facades\Storage::disk($disk)->download($archive->file_path, $archive->file_name ?? basename($archive->file_path));
+        return $this->serveFile($archive->file_path, $archive->file_name, $request->has('view'));
     }
-
 
     public function downloadFile(Request $request, StudyMaterial $material, $type, $index)
     {
@@ -460,26 +424,62 @@ class StudyController extends Controller
         }
 
         $file = $data['files'][$index];
-        $path = $file['path'];
-        $name = $file['name'];
+        return $this->serveFile($file['path'], $file['name'], $request->has('view'));
+    }
 
-        $disk = config('filesystems.default') === 'local' ? 'local' : config('filesystems.default');
+    /**
+     * Helper to safely serve files from local or remote storage with signed URLs
+     */
+    private function serveFile($path, $name, $isView = false)
+    {
+        if (!$path) abort(404, 'Path is empty');
 
-        if (!\Illuminate\Support\Facades\Storage::disk($disk)->exists($path)) {
-            abort(404, 'File not found in storage');
+        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+
+        // Handle full URLs (External or Legacy)
+        if (str_starts_with($path, 'http')) {
+            // If it's a Cloudinary URL, we try to proxy or sign it if possible, 
+            // but for simple cases, we just redirect. If it's private, this will fail with 401.
+            // Better: If it's already a full URL in the DB, it might be a public one or an old one.
+            return redirect($path);
         }
 
-        if ($request->has('view')) {
-            try {
-                $content = \Illuminate\Support\Facades\Storage::disk($disk)->get($path);
-                $mime = \Illuminate\Support\Facades\Storage::disk($disk)->mimeType($path);
-                return response($content)->header('Content-Type', $mime)->header('Content-Disposition', 'inline; filename="' . $name . '"');
-            } catch (\Exception $e) {
-                 return \Illuminate\Support\Facades\Storage::disk($disk)->response($path);
+        // Check if file exists on disk
+        if (!Storage::disk($disk)->exists($path)) {
+            // Fallback for files that might be stored on 'public' even if default is cloud
+            if ($disk !== 'public' && Storage::disk('public')->exists($path)) {
+                $disk = 'public';
+            } else {
+                abort(404, 'File not found in storage: ' . $path);
             }
         }
 
-        return \Illuminate\Support\Facades\Storage::disk($disk)->download($path, $name);
+        $disposition = ($isView ? 'inline' : 'attachment') . '; filename="' . $name . '"';
+
+        // For Cloudinary or S3, use Temporary (Signed) URLs to avoid 401
+        if ($disk === 'cloudinary' || $disk === 's3') {
+            try {
+                // Cloudinary-laravel and S3 drivers support temporaryUrl
+                $url = Storage::disk($disk)->temporaryUrl($path, now()->addMinutes(60), [
+                    'ResponseContentDisposition' => $disposition
+                ]);
+                return redirect()->away($url);
+            } catch (\Exception $e) {
+                Log::warning("Temporary URL failed for disk {$disk}: " . $e->getMessage());
+                // Fallback to streaming if temporaryUrl is not supported
+            }
+        }
+
+        // Default: Streaming through server (reliable but uses bandwidth)
+        try {
+            return Storage::disk($disk)->response($path, $name, [
+                'Content-Type' => Storage::disk($disk)->mimeType($path),
+                'Content-Disposition' => $disposition
+            ]);
+        } catch (\Exception $e) {
+            // Last resort: direct URL
+            return redirect(Storage::disk($disk)->url($path));
+        }
     }
 
     public function store(Request $request)
