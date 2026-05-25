@@ -993,6 +993,7 @@ Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(
             Route::put("/portfolio/{material}", [StudyController::class, "update"])->name("update");
             Route::get("/portfolio/{material}/file/{type}/{index}", [StudyController::class, "downloadFile"])->name("file.download");
             Route::delete("/portfolio/{id}", [StudyController::class, "destroy"])->name("destroy");
+            Route::post("/feedback", [StudyController::class, "submitFeedback"])->name("feedback");
             Route::post('/username', [StudyController::class, 'updateUsername'])->name('username');
             Route::post("/settings", [StudyController::class, "updateSettings"])->name("settings");
 

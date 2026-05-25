@@ -847,4 +847,48 @@ class StudyController extends Controller
         $competency->verdict = "Verified student expertise in " . $primaryField . " based on " . $count . " academic artifact(s) audited through IPoW protocol.";
         $competency->save();
     }
+
+    public function submitFeedback(Request $request)
+    {
+        $request->validate([
+            'material_id' => 'required|exists:study_materials,id',
+            'correct_category' => 'required|string|max:255',
+        ]);
+
+        $user = Auth::user();
+        $material = StudyMaterial::where('user_id', $user->id)->findOrFail($request->material_id);
+        
+        $text = $material->extracted_text ?? '';
+        if (empty(trim($text))) {
+            return redirect()->back()->withErrors(['feedback' => 'No text available for training.']);
+        }
+
+        // Jalankan background retrain.py
+        try {
+            // Kita jalankan secara async agar tidak memblokir UI
+            // Menggunakan command OS bawaan atau Process facade
+            $scriptPath = base_path('python_pipeline/retrain.py');
+            $command = "python \"{$scriptPath}\" " . escapeshellarg(substr($text, 0, 5000)) . " " . escapeshellarg($request->correct_category);
+            
+            // Eksekusi asinkronus ke background
+            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                pclose(popen("start /B " . $command . " > NUL 2>&1", "r"));
+            } else {
+                exec($command . " > /dev/null 2>&1 &");
+            }
+            
+            // Tandai material ini sudah divalidasi
+            $metadata = $material->metadata ?? [];
+            $metadata['user_validated_archetype'] = $request->correct_category;
+            $material->metadata = $metadata;
+            $material->save();
+            
+            Log::info("Continuous Learning feedback submitted for material {$material->id}: {$request->correct_category}");
+            
+            return redirect()->back()->with('success', 'Koreksi berhasil dikirim! AI sedang belajar dari masukan Anda di latar belakang.');
+        } catch (\Exception $e) {
+            Log::error("Failed to submit feedback for retrain: " . $e->getMessage());
+            return redirect()->back()->withErrors(['feedback' => 'Gagal mengirim koreksi.']);
+        }
+    }
 }

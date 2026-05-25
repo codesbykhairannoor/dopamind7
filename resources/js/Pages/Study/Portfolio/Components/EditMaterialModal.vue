@@ -122,6 +122,22 @@ const submit = () => {
         onError: (err) => console.error('Update failed:', err)
     });
 };
+
+const feedbackForm = useForm({
+    material_id: '',
+    correct_category: ''
+});
+
+const submitFeedback = () => {
+    feedbackForm.material_id = props.material.id;
+    feedbackForm.post(route('study.feedback'), {
+        preserveScroll: true,
+        onSuccess: () => {
+            feedbackForm.correct_category = '';
+            // Close or show success msg? It will reload and show laravel session flash
+        }
+    });
+};
 </script>
 
 <template>
@@ -296,6 +312,27 @@ const submit = () => {
                                 ></textarea>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Continuous Learning -->
+                <div class="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-900/20 p-6 rounded-[2rem] border border-indigo-100 dark:border-indigo-800/50 mb-8 flex flex-col md:flex-row gap-6 items-center">
+                    <div class="flex-1">
+                        <h4 class="text-sm font-black text-indigo-900 dark:text-indigo-100 flex items-center gap-2 mb-1">
+                            <Brain class="h-4 w-4 text-indigo-500" />
+                            Continuous Learning Feedback
+                        </h4>
+                        <p class="text-xs font-medium text-indigo-700/70 dark:text-indigo-300/70 leading-relaxed">
+                            If the AI predicted the wrong Career Archetype for this coursework, you can correct it here. The model will automatically retrain in the background with your feedback.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 w-full md:w-auto">
+                        <input v-model="feedbackForm.correct_category" type="text" placeholder="e.g. Data Scientist" class="flex-1 md:w-48 px-4 py-3 bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-800 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-500" />
+                        <button @click="submitFeedback" :disabled="!feedbackForm.correct_category || feedbackForm.processing" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-black shadow-lg shadow-indigo-600/20 transition disabled:opacity-50 flex items-center gap-2">
+                            <Loader2 v-if="feedbackForm.processing" class="h-4 w-4 animate-spin" />
+                            <Target v-else class="h-4 w-4" />
+                            Submit
+                        </button>
                     </div>
                 </div>
 
