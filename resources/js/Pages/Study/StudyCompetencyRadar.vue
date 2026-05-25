@@ -121,6 +121,15 @@ const chartOptions = computed(() => ({
             grid: {
                 color: isDark.value ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)'
             },
+            pointLabels: {
+                color: isDark.value ? '#cbd5e1' : '#1e293b',
+                padding: 30,
+                font: {
+                    family: 'Plus Jakarta Sans',
+                    size: 11,
+                    weight: '800'
+                }
+            },
             ticks: {
                 backdropColor: 'transparent',
                 color: isDark.value ? '#64748b' : '#94a3b8',
@@ -132,16 +141,7 @@ const chartOptions = computed(() => ({
                 min: 0,
                 max: 100,
                 stepSize: 20,
-                display: true // Show numbers
-            },
-            pointLabels: {
-                color: isDark.value ? '#cbd5e1' : '#1e293b',
-                padding: 10, // Adjusted padding
-                font: {
-                    family: 'Plus Jakarta Sans',
-                    size: 10,
-                    weight: '700'
-                }
+                display: false
             }
         }
     }

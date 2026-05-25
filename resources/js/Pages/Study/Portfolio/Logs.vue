@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import { 
     Terminal, Cpu, Sparkles, Clock, ArrowLeft, RefreshCw, 
@@ -13,18 +13,42 @@ const props = defineProps({
 });
 
 const isRefreshing = ref(false);
+const logs = ref([]);
+let logInterval = null;
 
-const refreshLogs = () => {
-    isRefreshing.value = true;
-    router.reload({ 
-        preserveScroll: true, 
-        onFinish: () => { isRefreshing.value = false; } 
-    });
+const fetchLogs = async () => {
+    try {
+        const res = await fetch(route('study.portfolio.stream_logs'));
+        const data = await res.json();
+        if (data.logs) {
+            const lines = data.logs.split('\n').filter(l => l.trim().length > 0);
+            logs.value = lines.map(line => {
+                const match = line.match(/^\[(.*?)\] (.*)/);
+                if (match) {
+                    return { timestamp: match[1], message: match[2] };
+                }
+                return { timestamp: '', message: line };
+            });
+        }
+    } catch (e) {
+        console.error("Failed to fetch logs:", e);
+    }
 };
 
-const logs = computed(() => {
-    return props.material.metadata?.pipeline_logs || [];
+onMounted(() => {
+    fetchLogs();
+    logInterval = setInterval(fetchLogs, 1000);
 });
+
+onUnmounted(() => {
+    if (logInterval) clearInterval(logInterval);
+});
+
+const refreshLogs = async () => {
+    isRefreshing.value = true;
+    await fetchLogs();
+    isRefreshing.value = false;
+};
 
 const getLogIcon = (msg) => {
     const text = msg.toLowerCase();

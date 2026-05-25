@@ -505,11 +505,21 @@ class StudyController extends Controller
         }
 
         $data = $type === 'context' ? $material->context_data : $material->artifact_data;
-        if (!$data || !isset($data['files'][$index])) {
+        if (is_string($data)) {
+            $data = json_decode($data, true) ?? [];
+        }
+
+        $file = null;
+        if (isset($data['files']) && isset($data['files'][$index])) {
+            $file = $data['files'][$index];
+        } else if (is_array($data) && isset($data[$index]) && isset($data[$index]['type']) && $data[$index]['type'] === 'file') {
+            $file = $data[$index];
+        }
+
+        if (!$file) {
             abort(404, 'File not found');
         }
 
-        $file = $data['files'][$index];
         return $this->serveFile($file['path'], $file['name'], $request->has('view'));
     }
 
@@ -904,5 +914,15 @@ class StudyController extends Controller
                 'username' => $user->username,
             ]
         ]);
+    }
+
+    public function streamLogs()
+    {
+        $logPath = storage_path('logs/ml_pipeline.log');
+        if (!file_exists($logPath)) {
+            return response()->json(['logs' => '']);
+        }
+        $content = file_get_contents($logPath);
+        return response()->json(['logs' => $content]);
     }
 }

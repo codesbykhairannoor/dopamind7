@@ -175,10 +175,21 @@ const closeUploadModal = () => {
             </div>
 
             <!-- Main Layout Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div class="space-y-12">
                 
-                <!-- Left Column: Materials (7/12) -->
-                <div class="lg:col-span-7 space-y-12">
+                <!-- AI Analysis Grid (50/50) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[3rem] border border-slate-200/50 dark:border-slate-800/50 p-8 md:p-10 shadow-2xl shadow-indigo-500/5">
+                        <StudyCompetencyRadar :competency="props.competency" />
+                    </div>
+
+                    <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[3rem] border border-slate-200/50 dark:border-slate-800/50 p-8 md:p-10 shadow-2xl shadow-indigo-500/5">
+                        <StudyArchetypeMatches :competency="props.competency" />
+                    </div>
+                </div>
+
+                <!-- Materials List (Full Width) -->
+                <div>
                     <!-- Material List Component -->
                     <StudyMaterialList 
                         :materials="localMaterials" 
@@ -187,17 +198,6 @@ const closeUploadModal = () => {
                         @optimistic-delete="handleOptimisticDelete"
                         @optimistic-update="handleOptimisticUpdate"
                     />
-                </div>
-
-                <!-- Right Column: AI Analysis (5/12) -->
-                <div class="lg:col-span-5 space-y-12">
-                    <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[3rem] border border-slate-200/50 dark:border-slate-800/50 p-10 shadow-2xl shadow-indigo-500/5">
-                        <StudyCompetencyRadar :competency="props.competency" />
-                    </div>
-
-                    <div v-if="props.competency?.archetype_matches?.length > 0" class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[3rem] border border-slate-200/50 dark:border-slate-800/50 p-10 shadow-2xl shadow-indigo-500/5">
-                        <StudyArchetypeMatches :matches="props.competency.archetype_matches" />
-                    </div>
                 </div>
 
             </div>

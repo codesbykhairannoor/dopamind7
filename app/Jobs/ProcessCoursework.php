@@ -32,17 +32,12 @@ class ProcessCoursework implements ShouldQueue
         $material = StudyMaterial::find($this->materialId);
         if (!$material) return;
 
-        $logs = [];
-        $addLog = function(string $message) use (&$logs, $material) {
-            $entry = [
-                'timestamp' => now()->format('Y-m-d H:i:s.v'),
-                'message' => $message
-            ];
-            $logs[] = $entry;
-            $metadata = $material->metadata ?? [];
-            $metadata['pipeline_logs'] = $logs;
-            $material->metadata = $metadata;
-            $material->save();
+        $logPath = storage_path('logs/ml_pipeline.log');
+        file_put_contents($logPath, "--- START OF ANALYSIS SESSION ---\n");
+        $addLog = function(string $message) use ($logPath) {
+            $timestamp = now()->format('Y-m-d H:i:s.v');
+            $line = "[{$timestamp}] {$message}\n";
+            file_put_contents($logPath, $line, FILE_APPEND);
         };
 
         $addLog("🚀 Pipeline initialized: Processing Study Material #{$material->id} (Course: '{$material->course_name}')");
@@ -163,8 +158,7 @@ class ProcessCoursework implements ShouldQueue
                 $addLog("📈 Competencies verified: " . json_encode($metadata['competencies'] ?? []));
             }
 
-            // Append final logs to metadata
-            $metadata['pipeline_logs'] = $logs;
+            // Append final logs to metadata (removed)
             $material->metadata = $metadata;
             $material->status = 'completed';
             $material->save();
@@ -196,7 +190,6 @@ class ProcessCoursework implements ShouldQueue
                     $material->user->name
                 );
                 $metadata['source'] = 'emergency_fallback';
-                $metadata['pipeline_logs'] = $logs;
                 $material->metadata = $metadata;
                 $material->status = 'completed';
                 $material->save();
@@ -206,7 +199,6 @@ class ProcessCoursework implements ShouldQueue
                 $addLog("❌ Emergency fallback also failed: " . $fallbackEx->getMessage());
                 $material->status = 'failed';
                 $metadata = $material->metadata ?? [];
-                $metadata['pipeline_logs'] = $logs;
                 $material->metadata = $metadata;
                 $material->save();
             }
