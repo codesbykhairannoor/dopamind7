@@ -22,6 +22,8 @@ const form = useForm({
     context_link_name: '',
     artifact_link: '',
     artifact_link_name: '',
+    context_files: [],
+    artifact_files: [],
     delete_files: [], // Array of paths to delete
     show_radar: true,
     show_archetypes: true,
@@ -49,7 +51,7 @@ watch(() => props.material, (newVal) => {
                 try { parsed = JSON.parse(data); } catch (e) { return []; }
             }
             if (Array.isArray(parsed)) {
-                return parsed.filter(i => i.type === 'file');
+                return parsed;
             }
             return parsed.files || [];
         };
@@ -66,6 +68,8 @@ watch(() => props.material, (newVal) => {
         form.artifact_link_name = typeof art === 'string' ? '' : (art.link_name || '');
         currentFiles.value.artifact = getFiles(art);
 
+        form.context_files = [];
+        form.artifact_files = [];
         form.delete_files = [];
 
         // Load settings from user settings
@@ -87,13 +91,20 @@ const toggleFileDeletion = (path) => {
 };
 
 const submit = () => {
-    form.put(route('study.update', props.material.id), {
+    // We use post with _method PUT to support file uploads in a PUT request
+    form.transform((data) => ({
+        ...data,
+        _method: 'PUT'
+    })).post(route('study.update', props.material.id), {
+        forceFormData: true,
         preserveScroll: true,
         preserveState: true,
         onSuccess: () => {
             emit('close');
         },
-        onError: () => {}
+        onError: (err) => {
+            console.error('Update failed:', err);
+        }
     });
 };
 </script>
@@ -172,6 +183,13 @@ const submit = () => {
                             </div>
                         </div>
 
+                        <!-- Upload New Context Files -->
+                        <div class="mt-4 space-y-1.5">
+                            <label class="text-[10px] font-bold text-indigo-500/70 ml-1">Upload New Context Files</label>
+                            <input type="file" multiple @input="form.context_files = $event.target.files"
+                                class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-[10px] file:font-black file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100 transition" />
+                        </div>
+
                         <!-- Existing Files Context -->
                         <div v-if="currentFiles.context.length > 0" class="mt-4 space-y-2">
                             <label class="text-[10px] font-bold text-slate-400 ml-1">Current Files</label>
@@ -210,6 +228,13 @@ const submit = () => {
                                 <input v-model="form.artifact_link_name" type="text" :placeholder="$t('study_artifact_link_name')"
                                     class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
                             </div>
+                        </div>
+
+                        <!-- Upload New Artifact Files -->
+                        <div class="mt-4 space-y-1.5">
+                            <label class="text-[10px] font-bold text-emerald-500/70 ml-1">Upload New Artifact Deliverables</label>
+                            <input type="file" multiple @input="form.artifact_files = $event.target.files"
+                                class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-[10px] file:font-black file:bg-emerald-50 file:text-emerald-600 hover:file:bg-emerald-100 transition" />
                         </div>
 
                         <!-- Existing Files Artifact -->

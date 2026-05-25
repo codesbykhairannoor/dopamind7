@@ -233,6 +233,31 @@ class StudyController extends Controller
             }
         }
 
+        // Handle New File Uploads
+        $disk = config('filesystems.default');
+        if ($request->hasFile('context_files')) {
+            if (!isset($contextData['files'])) $contextData['files'] = [];
+            foreach ($request->file('context_files') as $file) {
+                $path = $file->store('secure_study', $disk);
+                $contextData['files'][] = [
+                    'name' => $file->getClientOriginalName(),
+                    'path' => $path,
+                    'ext' => strtolower($file->getClientOriginalExtension())
+                ];
+            }
+        }
+        if ($request->hasFile('artifact_files')) {
+            if (!isset($artifactData['files'])) $artifactData['files'] = [];
+            foreach ($request->file('artifact_files') as $file) {
+                $path = $file->store('secure_study', $disk);
+                $artifactData['files'][] = [
+                    'name' => $file->getClientOriginalName(),
+                    'path' => $path,
+                    'ext' => strtolower($file->getClientOriginalExtension())
+                ];
+            }
+        }
+
         $contextData['link'] = $request->context_link;
         $contextData['link_name'] = $request->context_link_name;
         $material->context_data = $contextData;
@@ -242,6 +267,29 @@ class StudyController extends Controller
         $material->artifact_data = $artifactData;
 
         $material->save();
+
+        // If new files were uploaded, we might want to re-process (Optional, but good for UX)
+        if ($request->hasFile('context_files') || $request->hasFile('artifact_files')) {
+            $material->status = 'processing';
+            $material->save();
+            
+            $filesData = ['context_files' => [], 'artifact_files' => []];
+            // Re-map current files for the job
+            foreach (($contextData['files'] ?? []) as $f) $filesData['context_files'][] = $f;
+            foreach (($artifactData['files'] ?? []) as $f) $filesData['artifact_files'][] = $f;
+
+            $textData = [
+                'context_link' => $request->context_link,
+                'context_link_name' => $request->context_link_name,
+                'artifact_link' => $request->artifact_link,
+                'artifact_link_name' => $request->artifact_link_name,
+            ];
+
+            \App\Jobs\ProcessCoursework::dispatch($material->id, $filesData, $textData);
+        } else {
+            // Just recalculate global competencies if only settings/links changed
+            $this->recalculateCompetencies($material->user_id);
+        }
 
         $user = Auth::user();
         $settings = $user->settings ?? [];

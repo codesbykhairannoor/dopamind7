@@ -147,11 +147,11 @@ const chartOptions = computed(() => ({
                 color: isDark.value ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)'
             },
             pointLabels: {
-                color: isDark.value ? '#94a3b8' : '#475569',
-                padding: 20,
+                color: isDark.value ? '#cbd5e1' : '#1e293b',
+                padding: 30,
                 font: {
                     family: 'Plus Jakarta Sans',
-                    size: 13,
+                    size: 11,
                     weight: '800'
                 }
             },
@@ -165,8 +165,8 @@ const chartOptions = computed(() => ({
                 beginAtZero: true,
                 min: 0,
                 max: 100,
-                suggestedMax: 100,
-                stepSize: 20
+                stepSize: 20,
+                display: false
             }
         }
     }

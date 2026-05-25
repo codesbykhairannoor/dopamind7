@@ -112,24 +112,27 @@ const chartOptions = computed(() => ({
             grid: {
                 color: isDark.value ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)'
             },
-            pointLabels: {
-                color: isDark.value ? '#e2e8f0' : '#334155',
-                font: {
-                    family: 'Plus Jakarta Sans',
-                    size: 12,
-                    weight: 'bold'
-                }
-            },
             ticks: {
                 backdropColor: 'transparent',
-                color: isDark.value ? '#94a3b8' : '#64748b',
+                color: isDark.value ? '#64748b' : '#94a3b8',
                 font: {
                     family: 'Plus Jakarta Sans',
-                    size: 10
+                    size: 9
                 },
                 beginAtZero: true,
+                min: 0,
                 max: 100,
-                stepSize: 20
+                stepSize: 20,
+                display: false // Hide numbers to keep it clean
+            },
+            pointLabels: {
+                color: isDark.value ? '#cbd5e1' : '#1e293b',
+                padding: 25, // Increased padding
+                font: {
+                    family: 'Plus Jakarta Sans',
+                    size: 11,
+                    weight: '700'
+                }
             }
         }
     }
