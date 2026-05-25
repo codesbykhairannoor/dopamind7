@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Log;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Inertia\Inertia;
 
 class StudyController extends Controller
@@ -206,9 +205,6 @@ class StudyController extends Controller
 
         $material->save();
 
-        // Update settings in user metadata if provided, or material metadata if that's where they are stored
-        // In this app, these settings seem to be global user preferences stored in user table,
-        // but they are passed in the upload form. Let's update the user settings.
         $user = Auth::user();
         $settings = $user->settings ?? [];
         $settings['show_radar'] = $request->boolean('show_radar');
@@ -287,12 +283,10 @@ class StudyController extends Controller
             $record->delete();
         }
 
-        // Check if the deleted semester affects the current_semester in user settings
         $settings = $user->settings ?? [];
         $currentSem = isset($settings['current_semester']) ? intval($settings['current_semester']) : 1;
 
         if ($semester >= $currentSem) {
-            // Find highest remaining semester from academic records
             $maxRemaining = \App\Models\AcademicRecord::where('user_id', $user->id)
                 ->where('semester', '!=', $semester)
                 ->max('semester');
@@ -320,7 +314,6 @@ class StudyController extends Controller
         $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($id);
         
         $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
-        // Also delete associated physical files
         foreach ($record->archives as $archive) {
             if ($archive->file_path && \Illuminate\Support\Facades\Storage::disk($disk)->exists($archive->file_path)) {
                 \Illuminate\Support\Facades\Storage::disk($disk)->delete($archive->file_path);
@@ -341,7 +334,6 @@ class StudyController extends Controller
             'type' => 'nullable|string|max:50',
         ]);
 
-        // Ensure user owns the record
         $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($request->academic_record_id);
 
         $fileName = null;
@@ -376,7 +368,6 @@ class StudyController extends Controller
         ]);
 
         $archive = \App\Models\AcademicArchive::findOrFail($id);
-        // Ensure user owns the parent record
         $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($archive->academic_record_id);
 
         $archive->update([
@@ -393,7 +384,6 @@ class StudyController extends Controller
     {
         $archive = \App\Models\AcademicArchive::findOrFail($id);
         
-        // Ensure user owns the parent record
         $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($archive->academic_record_id);
 
         $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
@@ -409,7 +399,6 @@ class StudyController extends Controller
     {
         $archive = \App\Models\AcademicArchive::findOrFail($id);
         
-        // Ensure user owns the parent record
         \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($archive->academic_record_id);
 
         return $this->serveFile($archive->file_path, $archive->file_name, $request->has('view'));
@@ -430,26 +419,17 @@ class StudyController extends Controller
         return $this->serveFile($file['path'], $file['name'], $request->has('view'));
     }
 
-    /**
-     * Helper to safely serve files from local or remote storage with signed URLs
-     */
     private function serveFile($path, $name, $isView = false)
     {
         if (!$path) abort(404, 'Path is empty');
 
         $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
 
-        // Handle full URLs (External or Legacy)
         if (str_starts_with($path, 'http')) {
-            // If it's a Cloudinary URL, we try to proxy or sign it if possible, 
-            // but for simple cases, we just redirect. If it's private, this will fail with 401.
-            // Better: If it's already a full URL in the DB, it might be a public one or an old one.
             return redirect($path);
         }
 
-        // Check if file exists on disk
         if (!Storage::disk($disk)->exists($path)) {
-            // Fallback for files that might be stored on 'public' even if default is cloud
             if ($disk !== 'public' && Storage::disk('public')->exists($path)) {
                 $disk = 'public';
             } else {
@@ -459,19 +439,10 @@ class StudyController extends Controller
 
         $disposition = ($isView ? 'inline' : 'attachment') . '; filename="' . $name . '"';
 
-        // For Cloudinary or S3, use Temporary (Signed) URLs to avoid 401
-        if ($disk === 'cloudinary' || $disk === 's3') {
+        if ($disk === 's3') {
             try {
-                if ($disk === 'cloudinary') {
-                    // Use Cloudinary Facade for a more robust signed URL
-                    $url = Cloudinary::privateDownloadUrl($path);
-                } else {
-                    $url = Storage::disk($disk)->temporaryUrl($path, now()->addHours(24), [
-                        'ResponseContentDisposition' => $disposition
-                    ]);
-                }
+                $url = Storage::disk($disk)->url($path);
 
-                // Force HTTPS if it's HTTP
                 if (str_starts_with($url, 'http://')) {
                     $url = str_replace('http://', 'https://', $url);
                 }
@@ -482,25 +453,20 @@ class StudyController extends Controller
             }
         }
 
-        // Default: Streaming through server (reliable but uses bandwidth)
         return $this->proxyFile($disk, $path, $name, $disposition);
     }
 
-    /**
-     * Fallback to proxying the file through the server
-     */
     private function proxyFile($disk, $path, $name, $disposition)
     {
         try {
             $content = Storage::disk($disk)->get($path);
             
-            // Handle if get() returned a redirect URL instead of bytes
             if (is_string($content) && (str_starts_with($content, 'http://') || str_starts_with($content, 'https://'))) {
                 $response = \Illuminate\Support\Facades\Http::get($content);
                 if ($response->successful()) {
                     $content = $response->body();
                 } else {
-                    return redirect($content); // Last resort redirect
+                    return redirect($content); 
                 }
             }
 
@@ -535,7 +501,6 @@ class StudyController extends Controller
 
         $user = Auth::user();
         
-        // Enforce maximum 6 coursework materials limit
         $existingCount = StudyMaterial::where('user_id', $user->id)->count();
         if ($existingCount >= 6) {
             return redirect()->back()->withErrors(['course_name' => 'Limit reached. You cannot upload more than 6 coursework cards. Please delete an existing card first.']);
@@ -552,7 +517,7 @@ class StudyController extends Controller
         try {
             $filesData = ['context_files' => [], 'artifact_files' => []];
 
-            $disk = config('filesystems.default'); // Use default cloud disk if on Lambda/Vapor
+            $disk = config('filesystems.default');
 
             if ($request->hasFile('context_files')) {
                 foreach ($request->file('context_files') as $file) {
@@ -585,10 +550,8 @@ class StudyController extends Controller
                 'artifact_text' => $request->artifact_text,
             ];
 
-            // Dispatch Background Job
             \App\Jobs\ProcessCoursework::dispatch($material->id, $filesData, $textData);
 
-            // Save display settings if provided
             if ($request->has('show_radar')) {
                 $competency = StudyCompetency::firstOrCreate(['user_id' => $user->id]);
                 $competency->settings = [
@@ -617,7 +580,6 @@ class StudyController extends Controller
         $user = Auth::user();
         $material = StudyMaterial::where('user_id', $user->id)->findOrFail($id);
 
-        // Delete modern files
         $contextData = $material->context_data ?? [];
         if (is_string($contextData)) {
             $contextData = json_decode($contextData, true) ?? [];
@@ -632,9 +594,7 @@ class StudyController extends Controller
         foreach ($allFiles as $item) {
             if (isset($item['type']) && $item['type'] === 'file' && !empty($item['path'])) {
                 try {
-                    if (Storage::disk('cloudinary')->exists($item['path'])) {
-                        Storage::disk('cloudinary')->delete($item['path']);
-                    } elseif (Storage::disk('local')->exists($item['path'])) {
+                    if (Storage::disk('local')->exists($item['path'])) {
                         Storage::disk('local')->delete($item['path']);
                     }
                 } catch (\Exception $e) {}
@@ -643,7 +603,6 @@ class StudyController extends Controller
 
         $material->delete();
 
-        // Recalculate
         $this->recalculateCompetencies($user->id);
 
         return redirect()->back()->with('success', 'Study material deleted.');
@@ -666,7 +625,6 @@ class StudyController extends Controller
     {
         $user = Auth::user();
         
-        // Handle User Academic Settings (current_semester, etc.)
         if ($request->has('current_semester')) {
             $settings = $user->settings ?? [];
             $settings['current_semester'] = intval($request->current_semester);
@@ -678,7 +636,6 @@ class StudyController extends Controller
             }
         }
 
-        // Handle StudyCompetency Settings (Radar, Archetypes, etc.)
         $request->validate([
             'show_radar' => 'nullable|boolean',
             'show_archetypes' => 'nullable|boolean',
@@ -767,10 +724,7 @@ class StudyController extends Controller
         $competency = StudyCompetency::firstOrNew(['user_id' => $userId]);
         $competency->competencies = array_slice($aggCompetencies, 0, 6, true);
         $competency->archetypes = array_slice($aggArchetypes, 0, 3, true);
-        $competency->verdict = json_encode([
-            'field' => $primaryField,
-            'count' => $count
-        ]);
+        $competency->verdict = "Verified student expertise in " . $primaryField . " based on " . $count . " academic artifact(s) audited through IPoW protocol.";
         $competency->save();
     }
 }

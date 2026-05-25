@@ -149,8 +149,8 @@ const chartOptions = computed(() => ({
                 color: isDark.value ? '#94a3b8' : '#475569',
                 font: {
                     family: 'Plus Jakarta Sans',
-                    size: 11,
-                    weight: '600'
+                    size: 13,
+                    weight: '800'
                 }
             },
             ticks: {

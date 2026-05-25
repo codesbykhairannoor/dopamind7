@@ -171,18 +171,6 @@ const closeUploadModal = () => {
                         @optimistic-delete="handleOptimisticDelete"
                         @optimistic-update="handleOptimisticUpdate"
                     />
-                    
-                    <!-- Empty State CTA -->
-                    <div v-if="localMaterials.length === 0" class="mt-12 text-center py-24 bg-slate-50/50 dark:bg-slate-900/30 rounded-[3.5rem] border-2 border-dashed border-slate-200 dark:border-slate-800 transition-all hover:bg-indigo-50/30 dark:hover:bg-indigo-950/10">
-                        <div class="h-24 w-24 bg-white dark:bg-slate-800 rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-indigo-500/10">
-                            <Plus class="h-12 w-12 text-indigo-500" />
-                        </div>
-                        <h3 class="text-2xl font-black text-slate-900 dark:text-white mb-3">{{ $t('study_get_started') }}</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-base max-w-sm mx-auto mb-10 font-bold leading-relaxed">{{ $t('study_empty_portfolio_desc', 'Upload coursework materials to let our Ai build your verified neural competency profile.') }}</p>
-                        <button @click="openUploadModal" class="px-12 py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-3xl font-black text-xs tracking-[0.2em] shadow-2xl shadow-indigo-600/30 transition-all hover:-translate-y-2 active:scale-95 border border-indigo-500/50">
-                            {{ $t('study_start_analysis') }}
-                        </button>
-                    </div>
                 </div>
 
                 <!-- Right Column: AI Analysis (4/12) -->
