@@ -359,9 +359,10 @@ class GeminiService
         ARTIFACT (Student's Submission/Answer):
         " . substr($artifactText, 0, 15000) . "
         
-        Based strictly on the content provided:
+        Based on the content provided:
         1. Identify the 'Field of Study' (e.g., Corporate Finance, Data Science, Graphic Design, Nursing).
-        2. Identify 6-10 specific technical 'Competencies' demonstrated in the artifact. Score each competency realistically from 60 to 95 based on the depth of knowledge shown. NEVER give a score of exactly 100.
+        2. Identify 6-10 specific technical 'Competencies' demonstrated. If the artifact text is missing or unreadable, use your general knowledge of the course title \"{$courseName}\" to estimate typical competencies.
+        3. Score each competency realistically from 60 to 95. NEVER give a score of exactly 100.
         ";
         
         // If ML Archetypes are provided, instruct Gemini to adopt them. Otherwise, generate them.

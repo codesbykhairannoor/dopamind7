@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Log;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Inertia\Inertia;
 
 class StudyController extends Controller
@@ -461,25 +462,57 @@ class StudyController extends Controller
         // For Cloudinary or S3, use Temporary (Signed) URLs to avoid 401
         if ($disk === 'cloudinary' || $disk === 's3') {
             try {
-                // Cloudinary-laravel and S3 drivers support temporaryUrl
-                $url = Storage::disk($disk)->temporaryUrl($path, now()->addMinutes(60), [
-                    'ResponseContentDisposition' => $disposition
-                ]);
+                if ($disk === 'cloudinary') {
+                    // Use Cloudinary Facade for a more robust signed URL
+                    $url = Cloudinary::privateDownloadUrl($path);
+                } else {
+                    $url = Storage::disk($disk)->temporaryUrl($path, now()->addHours(24), [
+                        'ResponseContentDisposition' => $disposition
+                    ]);
+                }
+
+                // Force HTTPS if it's HTTP
+                if (str_starts_with($url, 'http://')) {
+                    $url = str_replace('http://', 'https://', $url);
+                }
+
                 return redirect()->away($url);
             } catch (\Exception $e) {
                 Log::warning("Temporary URL failed for disk {$disk}: " . $e->getMessage());
-                // Fallback to streaming if temporaryUrl is not supported
             }
         }
 
         // Default: Streaming through server (reliable but uses bandwidth)
+        return $this->proxyFile($disk, $path, $name, $disposition);
+    }
+
+    /**
+     * Fallback to proxying the file through the server
+     */
+    private function proxyFile($disk, $path, $name, $disposition)
+    {
         try {
-            return Storage::disk($disk)->response($path, $name, [
-                'Content-Type' => Storage::disk($disk)->mimeType($path),
-                'Content-Disposition' => $disposition
-            ]);
+            $content = Storage::disk($disk)->get($path);
+            
+            // Handle if get() returned a redirect URL instead of bytes
+            if (is_string($content) && (str_starts_with($content, 'http://') || str_starts_with($content, 'https://'))) {
+                $response = \Illuminate\Support\Facades\Http::get($content);
+                if ($response->successful()) {
+                    $content = $response->body();
+                } else {
+                    return redirect($content); // Last resort redirect
+                }
+            }
+
+            $mime = Storage::disk($disk)->mimeType($path) ?: 'application/pdf';
+
+            return response($content)
+                ->header('Content-Type', $mime)
+                ->header('Content-Disposition', $disposition)
+                ->header('Cache-Control', 'private, max-age=3600');
+
         } catch (\Exception $e) {
-            // Last resort: direct URL
+            Log::error("Proxy failed for {$path}: " . $e->getMessage());
             return redirect(Storage::disk($disk)->url($path));
         }
     }
@@ -680,7 +713,13 @@ class StudyController extends Controller
             ->get();
 
         if ($materials->isEmpty()) {
-            StudyCompetency::where('user_id', $userId)->delete();
+            $competency = StudyCompetency::where('user_id', $userId)->first();
+            if ($competency) {
+                $competency->competencies = [];
+                $competency->archetypes = [];
+                $competency->verdict = null;
+                $competency->save();
+            }
             return;
         }
 

@@ -111,14 +111,38 @@ class ProcessCoursework implements ShouldQueue
             $material->metadata = $metadata;
             $material->status = 'completed';
             $material->save();
+            Log::info("Successfully processed study material ID {$material->id}");
 
             // Recalculate Competencies
-            app(StudyController::class)->recalculateCompetencies($material->user_id);
+            try {
+                app(StudyController::class)->recalculateCompetencies($material->user_id);
+            } catch (\Throwable $e) {
+                Log::error("Recalculate failed: " . $e->getMessage());
+            }
 
         } catch (\Throwable $e) {
-            Log::error("Failed processing study material ID {$material->id}: " . $e->getMessage());
-            $material->status = 'failed';
-            $material->save();
+            Log::error("Failed processing study material ID {$material->id}: " . $e->getMessage() . "\n" . $e->getTraceAsString());
+            
+            // OPTIONAL FALLBACK: If everything failed, try a very simple Gemini analysis with just the Course Name
+            try {
+                Log::info("Attempting emergency fallback analysis for ID {$material->id}");
+                $geminiService = app(GeminiService::class);
+                $metadata = $geminiService->analyzeCourseworkCompetencies(
+                    "Fallback processing due to system error.", 
+                    "No file text extracted.", 
+                    $material->course_name, 
+                    null, 
+                    $material->user->name
+                );
+                $metadata['source'] = 'emergency_fallback';
+                $material->metadata = $metadata;
+                $material->status = 'completed';
+                $material->save();
+                app(StudyController::class)->recalculateCompetencies($material->user_id);
+            } catch (\Throwable $fallbackEx) {
+                $material->status = 'failed';
+                $material->save();
+            }
         }
     }
 
@@ -141,7 +165,14 @@ class ProcessCoursework implements ShouldQueue
             
             // If the content looks like a URL, it means the adapter returned a redirect link
             if (is_string($content) && (str_starts_with($content, 'http://') || str_starts_with($content, 'https://'))) {
-                $content = file_get_contents($content);
+                Log::info("Fetching remote content for processing: " . substr($content, 0, 100) . "...");
+                $response = \Illuminate\Support\Facades\Http::get($content);
+                if ($response->successful()) {
+                    $content = $response->body();
+                } else {
+                    Log::error("Failed to fetch remote content via HTTP: " . $response->status());
+                    throw new \Exception("Could not fetch remote file content from URL.");
+                }
             }
             
             file_put_contents($tempPath, $content);
@@ -149,6 +180,7 @@ class ProcessCoursework implements ShouldQueue
         }
         
         if (!file_exists($fullPath) || filesize($fullPath) === 0) {
+            Log::warning("File extraction resulted in empty file: " . ($fileData['path'] ?? 'unknown'));
             return "";
         }
 
