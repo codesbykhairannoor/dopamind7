@@ -30,15 +30,16 @@ const { isDark } = useAppearance();
 const chartData = computed(() => {
     const competencies = props.competency?.competencies || {};
     // Split long labels to prevent shrinking the chart
-    const labels = Object.keys(competencies).map(label => {
-        if (label.length > 18) {
-            const words = label.split(' ');
+    const labels = Object.entries(competencies).map(([label, value]) => {
+        const displayLabel = `${label} (${value}%)`;
+        if (displayLabel.length > 18) {
+            const words = displayLabel.split(' ');
             if (words.length > 1) {
                 const mid = Math.ceil(words.length / 2);
                 return [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
             }
         }
-        return label;
+        return displayLabel;
     });
     const data = Object.values(competencies);
 

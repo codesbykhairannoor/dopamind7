@@ -536,7 +536,7 @@ const profileBio = computed(() => {
             <div v-if="showRadar || showArchetypes || showCareerTarget" class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
                 
                 <!-- Radar Competencies -->
-                <div v-if="showRadar" :class="[showArchetypes || showCareerTarget ? 'lg:col-span-12' : 'lg:col-span-12', 'bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 md:p-8 rounded-[2.5rem] border border-slate-200/50 dark:border-slate-800/80 shadow-[0_10px_45px_-4px_rgba(0,0,0,0.02)] hover:shadow-2xl transition duration-500']">
+                <div v-if="showRadar" :class="[showArchetypes || showCareerTarget ? 'lg:col-span-6' : 'lg:col-span-12', 'bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 md:p-8 rounded-[2.5rem] border border-slate-200/50 dark:border-slate-800/80 shadow-[0_10px_45px_-4px_rgba(0,0,0,0.02)] hover:shadow-2xl transition duration-500']">
                     <h2 class="text-lg font-extrabold text-slate-900 dark:text-white mb-1 flex items-center gap-2">
                         <BarChart3 class="h-5 w-5 text-indigo-500" />
                         {{ $t('portfolio_verified_competencies', 'Verified Competencies') }}

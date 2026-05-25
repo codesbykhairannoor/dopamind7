@@ -200,11 +200,13 @@ const submit = () => {
                                         class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950"
                                         :class="{'opacity-50 line-through bg-red-50/10 border-red-200/50': form.delete_files.includes(file.path)}"
                                     >
-                                        <div class="flex items-center gap-2 overflow-hidden">
-                                            <FileText class="h-3.5 w-3.5 text-slate-400" />
-                                            <span class="text-[10px] font-bold text-slate-600 dark:text-slate-400 truncate">{{ file.name }}</span>
+                                        <div class="flex items-center gap-2 overflow-hidden flex-1">
+                                            <a :href="route('study.file.download', { material: props.material.id, type: 'context', index: currentFiles.context.indexOf(file), view: 1 })" target="_blank" class="flex items-center gap-2 hover:text-indigo-500 transition max-w-full">
+                                                <FileText class="h-3.5 w-3.5 text-slate-400" />
+                                                <span class="text-[10px] font-bold text-slate-600 dark:text-slate-400 truncate">{{ file.name }}</span>
+                                            </a>
                                         </div>
-                                        <button type="button" @click="toggleFileDeletion(file.path)" class="text-[10px] font-black px-3 py-1 rounded-lg transition" :class="form.delete_files.includes(file.path) ? 'text-blue-500' : 'text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30'">
+                                        <button type="button" @click="toggleFileDeletion(file.path)" class="text-[10px] font-black px-3 py-1 rounded-lg transition shrink-0" :class="form.delete_files.includes(file.path) ? 'text-blue-500' : 'text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30'">
                                             {{ form.delete_files.includes(file.path) ? $t('study_restore', 'Restore') : $t('study_remove', 'Remove') }}
                                         </button>
                                     </div>

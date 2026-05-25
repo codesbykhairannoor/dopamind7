@@ -81,6 +81,22 @@ const getMaterialSummary = (data) => {
     }
     return parts.length ? parts.join(', ') : 'None';
 };
+
+const currentPdfStreamUrl = ref(null);
+const currentViewerTitle = ref('');
+const currentMaterialId = ref(null);
+const isLoadingPdf = ref(false);
+
+const viewFile = (materialId, type, index, name) => {
+    isLoadingPdf.value = true;
+    currentPdfStreamUrl.value = route('study.file.download', { material: materialId, type: type, index: index, view: 1 });
+    currentViewerTitle.value = name;
+    currentMaterialId.value = materialId;
+    setTimeout(() => {
+        const viewerEl = document.getElementById('neural-audit-viewer-internal');
+        if (viewerEl) viewerEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+};
 </script>
 
 <template>
@@ -159,9 +175,9 @@ const getMaterialSummary = (data) => {
                                                     <FileText class="h-3 w-3 text-slate-400" /> {{ file.name }}
                                                 </span>
                                                 <div class="flex items-center gap-1">
-                                                    <a :href="route('study.file.download', { material: material.id, type: 'context', index: idx, view: 1 })" target="_blank" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
+                                                    <button @click.prevent="viewFile(material.id, 'context', idx, file.name)" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
                                                         <FileSearch class="h-3.5 w-3.5" />
-                                                    </a>
+                                                    </button>
                                                     <a :href="route('study.file.download', { material: material.id, type: 'context', index: idx })" download class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_download_pdf')">
                                                         <Download class="h-3.5 w-3.5" />
                                                     </a>
@@ -180,9 +196,9 @@ const getMaterialSummary = (data) => {
                                                     <FileText class="h-3 w-3 text-slate-400" /> {{ item.name }}
                                                 </span>
                                                 <div class="flex items-center gap-1">
-                                                    <a :href="route('study.file.download', { material: material.id, type: 'context', index: idx, view: 1 })" target="_blank" class="p-1.5 text-slate-400 hover:text-indigo-500 transition">
+                                                    <button @click.prevent="viewFile(material.id, 'context', idx, item.name)" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
                                                         <FileSearch class="h-3.5 w-3.5" />
-                                                    </a>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -208,9 +224,9 @@ const getMaterialSummary = (data) => {
                                                     <FileText class="h-3 w-3 text-slate-400" /> {{ file.name }}
                                                 </span>
                                                 <div class="flex items-center gap-1">
-                                                    <a :href="route('study.file.download', { material: material.id, type: 'artifact', index: idx, view: 1 })" target="_blank" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
+                                                    <button @click.prevent="viewFile(material.id, 'artifact', idx, file.name)" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
                                                         <FileSearch class="h-3.5 w-3.5" />
-                                                    </a>
+                                                    </button>
                                                     <a :href="route('study.file.download', { material: material.id, type: 'artifact', index: idx })" download class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_download_pdf')">
                                                         <Download class="h-3.5 w-3.5" />
                                                     </a>
@@ -229,14 +245,41 @@ const getMaterialSummary = (data) => {
                                                     <FileText class="h-3 w-3 text-slate-400" /> {{ item.name }}
                                                 </span>
                                                 <div class="flex items-center gap-1">
-                                                    <a :href="route('study.file.download', { material: material.id, type: 'artifact', index: idx, view: 1 })" target="_blank" class="p-1.5 text-slate-400 hover:text-indigo-500 transition">
+                                                    <button @click.prevent="viewFile(material.id, 'artifact', idx, item.name)" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
                                                         <FileSearch class="h-3.5 w-3.5" />
-                                                    </a>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </template>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- Neural Audit Viewer -->
+                        <div v-if="currentPdfStreamUrl && currentMaterialId === material.id" id="neural-audit-viewer-internal" class="mt-8">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="h-8 w-8 rounded-xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center border border-indigo-100 dark:border-indigo-800/50">
+                                    <FileText class="h-4 w-4 text-indigo-500" />
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-black text-slate-800 dark:text-slate-200">{{ currentViewerTitle }}</h3>
+                                    <p class="text-[10px] font-bold text-slate-500 tracking-wider">SECURE INLINE STREAM</p>
+                                </div>
+                                <button @click="currentPdfStreamUrl = null; currentMaterialId = null" class="ml-auto p-2 text-slate-400 hover:text-red-500 transition-colors rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20">
+                                    <XCircle class="h-5 w-5" />
+                                </button>
+                            </div>
+                            <div class="relative w-full rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950" style="height: 600px;">
+                                <div v-if="isLoadingPdf" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-sm z-10">
+                                    <Loader2 class="h-8 w-8 text-indigo-500 animate-spin mb-3" />
+                                    <p class="text-xs font-bold text-slate-500 tracking-widest uppercase">Streaming Artifact...</p>
+                                </div>
+                                <iframe 
+                                    :src="currentPdfStreamUrl" 
+                                    class="w-full h-full border-none bg-white dark:bg-slate-900"
+                                    @load="isLoadingPdf = false"
+                                ></iframe>
                             </div>
                         </div>
 

@@ -551,7 +551,7 @@ class StudyController extends Controller
                         
                         $image = $cloudinary->image($publicId)->extension($ext);
                         if (!$isView) {
-                            $image->addTransformation(\Cloudinary\Transformation\Delivery::attachment($name));
+                            $image->addFlag(\Cloudinary\Transformation\Flag::attachment($name));
                         }
                         
                         $url = (string) $image->signUrl();
