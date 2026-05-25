@@ -17,7 +17,8 @@ const setupForm = useForm({
     education_level: 'kuliah',
     major: props.user.settings?.major || '',
     student_id: props.user.settings?.student_id || '',
-    current_semester: props.user.settings?.current_semester || 1
+    current_semester: props.user.settings?.current_semester || 1,
+    custom_term: props.user.settings?.custom_term || ''
 });
 
 const openSetup = () => {
@@ -98,6 +99,10 @@ const submitSetup = () => {
                                 <option value="sd">{{ $t('study_edu_level_es') }}</option>
                                 <option value="lainnya">{{ $t('study_edu_level_other') }}</option>
                             </select>
+                        </div>
+                        <div v-if="setupForm.education_level === 'lainnya'">
+                            <label class="block text-[11px] font-black tracking-wide text-indigo-500 mb-2">{{ $t('study_custom_term_label', 'Custom Term (e.g. Batch, Term, Phase)') }}</label>
+                            <input v-model="setupForm.custom_term" type="text" placeholder="e.g. Batch" class="w-full px-4 py-3 bg-indigo-50/50 dark:bg-indigo-900/10 border border-indigo-100 dark:border-indigo-900/30 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
                         <div>
                             <label class="block text-[11px] font-black tracking-wide text-slate-500 mb-2">{{ $t('study_major_label') }}</label>

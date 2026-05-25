@@ -5128,6 +5128,7 @@
     "study_course_name_required_alert": "Harap masukkan Nama Mata Kuliah terlebih dahulu.",
     "study_coursework_materials": "Materi Tugas Kuliah",
     "study_custom": "Kustom",
+    "study_custom_term_label": "Istilah Kustom (misal: Batch, Term, Fase)",
     "study_delete": "Hapus",
     "study_delete_archive_failed": "Gagal menghapus arsip.",
     "study_delete_archive_title": "Hapus Arsip?",

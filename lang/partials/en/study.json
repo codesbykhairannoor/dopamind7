@@ -266,6 +266,7 @@
   "study_uploading": "Uploading...",
   "study_view_pdf": "View PDF",
   "study_download_pdf": "Download PDF",
+  "study_custom_term_label": "Custom Term (e.g. Batch, Term, Phase)",
   "study_edit_material": "Edit Material",
   "study_update_material": "Update Material",
   "study_context_link": "Context Link",

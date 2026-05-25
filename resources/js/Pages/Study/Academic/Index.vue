@@ -50,8 +50,9 @@ const eduLevel = computed(() => localEduLevel.value || userSettings.value.educat
 
 const terms = computed(() => {
     const level = eduLevel.value;
+    const custom = userSettings.value.custom_term;
     return {
-        semester: trans(`study_term_semester_${level}`),
+        semester: custom || trans(`study_term_semester_${level}`),
         course: trans(`study_term_course_${level}`),
         sks: trans(`study_term_sks_${level}`),
         grade: trans(`study_term_grade_${level}`),

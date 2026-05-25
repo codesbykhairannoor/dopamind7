@@ -5140,6 +5140,7 @@
     "study_course_name_required_alert": "Please enter a Course Name first.",
     "study_coursework_materials": "Coursework Materials",
     "study_custom": "Custom",
+    "study_custom_term_label": "Custom Term (e.g. Batch, Term, Phase)",
     "study_delete": "Delete",
     "study_delete_archive_failed": "Failed to delete archive.",
     "study_delete_archive_title": "Delete Archive?",

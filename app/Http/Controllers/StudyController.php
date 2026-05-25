@@ -35,7 +35,8 @@ class StudyController extends Controller
             'education_level' => 'required|string|in:kuliah,sma,smp,sd,lainnya',
             'major' => 'nullable|string|max:255',
             'student_id' => 'nullable|string|max:255',
-            'current_semester' => 'nullable|integer|min:1|max:20'
+            'current_semester' => 'nullable|integer|min:1|max:20',
+            'custom_term' => 'nullable|string|max:50'
         ]);
 
         $user = Auth::user();
@@ -44,6 +45,7 @@ class StudyController extends Controller
         $settings['major'] = $request->major;
         $settings['student_id'] = $request->student_id;
         $settings['current_semester'] = $request->current_semester;
+        $settings['custom_term'] = $request->custom_term;
         $user->settings = $settings;
         $user->save();
 
