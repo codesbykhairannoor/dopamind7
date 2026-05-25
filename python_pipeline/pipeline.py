@@ -165,5 +165,5 @@ if __name__ == "__main__":
         if not text_content and not sys.stdin.isatty():
             text_content = sys.stdin.read()
             
-        result = predict_archetypes(text_content)
+        result = predict_archetypes(text_content, model_dir=os.path.dirname(os.path.abspath(__file__)))
         print(json.dumps(result))

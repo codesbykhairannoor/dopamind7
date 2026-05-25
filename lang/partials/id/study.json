@@ -265,5 +265,10 @@
   "study_neural_analysis": "Mesin Pemetaan Skill Neural",
   "study_uploading": "Sedang Mengunggah...",
   "study_view_pdf": "Lihat PDF",
-  "study_download_pdf": "Unduh PDF"
+  "study_download_pdf": "Unduh PDF",
+  "study_edit_material": "Edit Materi",
+  "study_update_material": "Perbarui Materi",
+  "study_context_link": "Tautan Konteks",
+  "study_artifact_link": "Tautan Artefak",
+  "study_link_url_label": "URL Tautan"
 }

@@ -265,5 +265,10 @@
   "study_neural_analysis": "Neural Skill Mapping Engine",
   "study_uploading": "Uploading...",
   "study_view_pdf": "View PDF",
-  "study_download_pdf": "Download PDF"
+  "study_download_pdf": "Download PDF",
+  "study_edit_material": "Edit Material",
+  "study_update_material": "Update Material",
+  "study_context_link": "Context Link",
+  "study_artifact_link": "Artifact Link",
+  "study_link_url_label": "Link URL"
 }
