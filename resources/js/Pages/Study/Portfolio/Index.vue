@@ -212,12 +212,12 @@ const closeUploadModal = () => {
             >
                 <div v-if="isUploadModalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 lg:p-10">
                     <!-- Overlay -->
-                    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md" @click="closeUploadModal"></div>
+                    <div class="absolute inset-0 bg-slate-950/60" @click="closeUploadModal"></div>
                     
                     <!-- Modal Content -->
                     <div class="relative w-full max-w-6xl max-h-full overflow-hidden bg-white dark:bg-slate-950 rounded-[4rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10 flex flex-col">
                         <!-- Modal Header -->
-                        <div class="sticky top-0 z-10 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl px-10 py-8 border-b border-slate-100 dark:border-slate-800/50 flex items-center justify-between">
+                        <div class="sticky top-0 z-10 bg-white/95 dark:bg-slate-950/95 px-10 py-8 border-b border-slate-100 dark:border-slate-800/50 flex items-center justify-between">
                             <div class="flex items-center gap-5">
                                 <div class="h-14 w-14 rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-2xl shadow-indigo-600/40 border border-indigo-500/50">
                                     <Sparkles class="h-7 w-7" />

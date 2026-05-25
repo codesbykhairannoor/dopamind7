@@ -18,7 +18,7 @@
     "btn_upgrade_limit": "Tingkatkan Batas",
     "btn_unlock_now": "Buka Sekarang",
     "label_usage_limit": "Batas Penggunaan",
-    "auth_processing": "Sedang Memprosesâ€¦",
+    "auth_processing": "Sedang Memproses…",
 
     "nav_item_premium": "Buka Elite",
     "nav_item_dashboard": "Dashboard",
@@ -33,8 +33,8 @@
     "nav_item_coach": "AI Coach",
     "nav_item_more": "Lainnya",
     "nav_search": "Cari",
-    "nav_search_anything": "Cari apa sajaâ€¦",
-    "nav_search_placeholder": "Cari modul atau halamanâ€¦",
+    "nav_search_anything": "Cari apa saja…",
+    "nav_search_placeholder": "Cari modul atau halaman…",
     "nav_menu_title": "Menu",
     "nav_close_menu": "Tutup menu",
     "nav_toggle_menu": "Buka menu navigasi",
@@ -147,31 +147,6 @@
     "tos_termination_title": "4. Pemutusan Akun",
     "tos_termination_p": "Kami berhak menangguhkan atau menghapus akun secara sepihak dan tanpa pemberitahuan sebelumnya jika pengguna terbukti melanggar ketentuan ini atau menyalahgunakan sumber daya sistem.",
     "legal_close": "Tutup & Pahami",
-
-
-
-
-    
-    
-  
-
-
-
-   
-
-
-
-
-
-    
-
-
-
-  
-
- 
-   
-
     "payment_success_title": "Akses Diberikan!",
     "payment_pending_title": "Pembayaran Tertunda",
     "payment_failed_title": "Pembayaran Dibatalkan",
@@ -212,15 +187,6 @@
     "btn_reset_tooltip": "Hapus semua task hari ini",
     "btn_confirm_reset": "Ya",
 
-    
-
-    
-   
-
-
-
-   
-
     "profile_settings": "Pengaturan Profil",
     "profile_info_title": "Informasi Pribadi",
     "profile_info_desc": "Perbarui foto profil, nama, dan alamat email akun Anda.",
@@ -235,7 +201,7 @@
     "password_security_title": "Keamanan Sandi",
     "password_security_desc": "Pastikan akun Anda menggunakan kata sandi acak yang panjang agar tetap aman.",
     "current_password": "Sandi Saat Ini",
-    "cookie_title": "ðŸª Icip Cookie?",
+    "cookie_title": "🍪 Icip Cookie?",
     "cookie_desc": "Kami menggunakan cookie untuk memastikan Anda mendapatkan pengalaman terbaik dan aman di sistem kami.",
     "cookie_btn_accept": "Terima Semua",
     "cookie_btn_settings": "Pengaturan",
@@ -266,6 +232,7 @@
     "contact_subject_partnership": "Kemitraan Bisnis",
     "contact_subject_other": "Lainnya",
     "neural_bridge_title": "Neural Bridge",
-    "neural_bridge_limit": "Wawasan neural memerlukan paket Quantum"
+    "neural_bridge_limit": "Wawasan neural memerlukan paket Quantum",
+    "btn_upgrade": "Tingkatkan",
+    "btn_get_intelligence": "Dapatkan Kecerdasan"
 }
-

@@ -260,7 +260,7 @@ const globalHasPending = computed(() => {
     </div>
 
     <!-- ─── SHARED COURSE DETAILS (Top Section) ──────────────────────────────── -->
-    <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 md:p-8 rounded-[2.5rem] border border-slate-200/50 dark:border-slate-800/80 shadow-[0_10px_45px_-4px_rgba(0,0,0,0.03)] mb-6">
+    <div class="bg-white/70 dark:bg-slate-900/70 p-6 md:p-8 rounded-[2.5rem] border border-slate-200/50 dark:border-slate-800/80 shadow-[0_10px_45px_-4px_rgba(0,0,0,0.03)] mb-6">
         <div class="flex items-center gap-3 mb-6">
             <div class="h-10 w-10 rounded-2xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center border border-indigo-100/50 dark:border-indigo-900/50 text-indigo-600 dark:text-indigo-400 shadow-sm">
                 <Info class="h-5 w-5" />
@@ -347,7 +347,7 @@ const globalHasPending = computed(() => {
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
 
         <!-- ── CONTEXT PANEL (Left / Blue) ─────────────────────────────────── -->
-        <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md rounded-[2.5rem] border border-blue-100/60 dark:border-blue-900/30 shadow-[0_10px_45px_-4px_rgba(59,130,246,0.06)] overflow-hidden">
+        <div class="bg-white/70 dark:bg-slate-900/70 rounded-[2.5rem] border border-blue-100/60 dark:border-blue-900/30 shadow-[0_10px_45px_-4px_rgba(59,130,246,0.06)] overflow-hidden">
             <!-- Panel Header -->
             <div class="px-6 pt-6 pb-4 border-b border-blue-50 dark:border-blue-950/50">
                 <div class="flex items-center gap-2">
@@ -407,7 +407,7 @@ const globalHasPending = computed(() => {
                     <div class="flex justify-between items-center mb-2">
                         <label class="text-[11px] font-black tracking-widest text-slate-400">{{ $t('study_link_label', 'Link') }}</label>
                         <button v-if="contextPanel.embed_url" @click="contextPanel.embed_url = ''; contextPanel.embed_url_name = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
-                            <XCircle class="h-3 w-3" /> Hapus
+                            <XCircle class="h-3 w-3" /> {{ $t('study_delete') }}
                         </button>
                     </div>
                     <div class="space-y-3">
@@ -430,7 +430,7 @@ const globalHasPending = computed(() => {
                         <label class="text-[11px] font-black tracking-widest text-slate-400">{{ $t('study_notes_label', 'Notes / Text') }}</label>
                         <div class="flex items-center gap-3">
                             <button v-if="contextPanel.rich_text" @click="contextPanel.rich_text = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
-                                <XCircle class="h-3 w-3" /> Hapus
+                                <XCircle class="h-3 w-3" /> {{ $t('study_delete') }}
                             </button>
                             <span class="text-[10px] font-bold" :class="contextWordCount > maxWords ? 'text-rose-500' : 'text-slate-400'">
                                 {{ contextWordCount }}/{{ maxWords }}
@@ -447,7 +447,7 @@ const globalHasPending = computed(() => {
         </div>
 
         <!-- ── ARTIFACT PANEL (Right / Emerald) ────────────────────────────── -->
-        <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md rounded-[2.5rem] border border-emerald-100/60 dark:border-emerald-900/30 shadow-[0_10px_45px_-4px_rgba(16,185,129,0.06)] overflow-hidden">
+        <div class="bg-white/70 dark:bg-slate-900/70 rounded-[2.5rem] border border-emerald-100/60 dark:border-emerald-900/30 shadow-[0_10px_45px_-4px_rgba(16,185,129,0.06)] overflow-hidden">
             <!-- Panel Header -->
             <div class="px-6 pt-6 pb-4 border-b border-emerald-50 dark:border-emerald-950/50">
                 <div class="flex items-center gap-2">
@@ -507,7 +507,7 @@ const globalHasPending = computed(() => {
                     <div class="flex justify-between items-center mb-2">
                         <label class="text-[11px] font-black tracking-widest text-slate-400">{{ $t('study_link_label', 'Link') }}</label>
                         <button v-if="artifactPanel.embed_url" @click="artifactPanel.embed_url = ''; artifactPanel.embed_url_name = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
-                            <XCircle class="h-3 w-3" /> Hapus
+                            <XCircle class="h-3 w-3" /> {{ $t('study_delete') }}
                         </button>
                     </div>
                     <div class="space-y-3">
@@ -530,7 +530,7 @@ const globalHasPending = computed(() => {
                         <label class="text-[11px] font-black tracking-widest text-slate-400">{{ $t('study_notes_label', 'Notes / Text') }}</label>
                         <div class="flex items-center gap-3">
                             <button v-if="artifactPanel.rich_text" @click="artifactPanel.rich_text = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
-                                <XCircle class="h-3 w-3" /> Hapus
+                                <XCircle class="h-3 w-3" /> {{ $t('study_delete') }}
                             </button>
                             <span class="text-[10px] font-bold" :class="artifactWordCount > maxWords ? 'text-rose-500' : 'text-slate-400'">
                                 {{ artifactWordCount }}/{{ maxWords }}

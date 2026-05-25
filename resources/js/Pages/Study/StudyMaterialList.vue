@@ -93,7 +93,7 @@ const getMaterialSummary = (data) => {
                 {{ $t('study_coursework_materials') }}
             </h2>
             <div v-if="materials.length > 0" class="px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-black tracking-widest text-slate-400 dark:text-slate-500">
-                {{ materials.length }} / 6 Cards
+                {{ materials.length }} / 6 {{ $t('study_tab_cards') }}
             </div>
         </div>
 
@@ -144,7 +144,7 @@ const getMaterialSummary = (data) => {
                             <!-- Context Section -->
                             <div v-if="material.context_data" class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/50">
                                 <div class="flex items-center gap-2 mb-3">
-                                    <span class="text-[9px] font-black tracking-widest text-indigo-500 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-1 rounded-md">Context</span>
+                                    <span class="text-[9px] font-black tracking-widest text-indigo-500 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-1 rounded-md">{{ $t('study_context_badge') }}</span>
                                     <span class="text-[10px] font-bold text-slate-400">{{ getMaterialSummary(material.context_data) }}</span>
                                 </div>
                                 <div class="space-y-2">
@@ -193,7 +193,7 @@ const getMaterialSummary = (data) => {
                             <!-- Artifact Section -->
                             <div v-if="material.artifact_data" class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/50">
                                 <div class="flex items-center gap-2 mb-3">
-                                    <span class="text-[9px] font-black tracking-widest text-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-1 rounded-md">Artifact</span>
+                                    <span class="text-[9px] font-black tracking-widest text-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-1 rounded-md">{{ $t('study_artifact_badge') }}</span>
                                     <span class="text-[10px] font-bold text-slate-400">{{ getMaterialSummary(material.artifact_data) }}</span>
                                 </div>
                                 <div class="space-y-2">
@@ -341,7 +341,7 @@ const getMaterialSummary = (data) => {
                         {{ $t('btn_cancel') }}
                     </button>
                     <button @click="confirmDelete" class="flex-1 py-4 bg-red-500 hover:bg-red-600 text-white rounded-2xl font-black text-xs tracking-widest shadow-xl shadow-red-500/20 transition active:scale-95">
-                        {{ $t('study_delete_yes', 'Hapus') }}
+                        {{ $t('study_delete_yes') }}
                     </button>
                 </div>
             </div>

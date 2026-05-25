@@ -93,12 +93,13 @@ watch(() => userSettings.value.current_semester, (newVal) => {
 
 const availableSemesters = computed(() => {
     const semsFromRecords = localAcademicStats.value.semesters.map(s => s.semester);
+    const maxSem = Math.max(localCurrentSemester.value, ...semsFromRecords, maxSemesterAdded.value, 1);
     
-    // Always include current semester
-    const allSems = new Set([...semsFromRecords, localCurrentSemester.value]);
-    
-    // Sort descending
-    return Array.from(allSems).sort((a, b) => b - a);
+    const range = [];
+    for (let i = maxSem; i >= 1; i--) {
+        range.push(i);
+    }
+    return range;
 });
 
 const availableSemestersRange = (max) => {

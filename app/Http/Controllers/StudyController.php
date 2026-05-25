@@ -422,15 +422,29 @@ class StudyController extends Controller
 
         // For remote disks like Cloudinary, streaming response() might not be supported or optimal
         if ($disk !== 'public' && $disk !== 'local') {
-            $url = \Illuminate\Support\Facades\Storage::disk($disk)->url($archive->file_path);
             if ($request->has('view')) {
-                return redirect($url);
+                try {
+                    $mime = \Illuminate\Support\Facades\Storage::disk($disk)->mimeType($archive->file_path);
+                    return response(\Illuminate\Support\Facades\Storage::disk($disk)->get($archive->file_path))
+                        ->header('Content-Type', $mime)
+                        ->header('Content-Disposition', 'inline; filename="' . $archive->file_name . '"');
+                } catch (\Exception $e) {
+                    return redirect(\Illuminate\Support\Facades\Storage::disk($disk)->url($archive->file_path));
+                }
             }
-            // For download, we still try download() if supported, otherwise redirect
+            
+            // For download, we still try download() if supported, otherwise stream manually
             try {
                 return \Illuminate\Support\Facades\Storage::disk($disk)->download($archive->file_path, $archive->file_name ?? basename($archive->file_path));
             } catch (\Exception $e) {
-                return redirect($url);
+                try {
+                    $mime = \Illuminate\Support\Facades\Storage::disk($disk)->mimeType($archive->file_path);
+                    return response(\Illuminate\Support\Facades\Storage::disk($disk)->get($archive->file_path))
+                        ->header('Content-Type', $mime)
+                        ->header('Content-Disposition', 'attachment; filename="' . $archive->file_name . '"');
+                } catch (\Exception $e2) {
+                    return redirect(\Illuminate\Support\Facades\Storage::disk($disk)->url($archive->file_path));
+                }
             }
         }
 
