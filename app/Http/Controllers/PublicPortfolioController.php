@@ -70,29 +70,39 @@ class PublicPortfolioController extends Controller
             ->where('status', 'completed')
             ->firstOrFail();
 
-        // If it's a valid URL (like Cloudinary absolute URL), redirect to it directly
-        if (filter_var($material->file_path, FILTER_VALIDATE_URL)) {
-            return redirect($material->file_path);
-        }
+        // Proxy the stream through server to bypass 401 and other Cloudinary delivery issues
+        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+        return $this->proxyFile($disk, $material->file_path, $material->file_name, 'inline; filename="' . $material->file_name . '"');
+    }
 
-        // Otherwise try local storage (fallback for local dev)
-        if (Storage::disk('local')->exists($material->file_path)) {
-            return response()->file(storage_path('app/' . $material->file_path), [
-                'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'inline; filename="' . $material->file_name . '"'
-            ]);
-        }
-        
-        // If it's stored on Cloudinary but returned as a public ID
+    private function proxyFile($disk, $path, $name, $disposition)
+    {
         try {
-            // Manual construction to bypass broken SDK
-            $cloudName = env('CLOUDINARY_CLOUD_NAME', 'dxbgpakk1');
-            return redirect("https://res.cloudinary.com/{$cloudName}/image/upload/{$material->file_path}");
-        } catch (\Exception $e) {
-            // Ignore
-        }
+            $content = Storage::disk($disk)->get($path);
+            
+            if (is_string($content) && (str_starts_with($content, 'http://') || str_starts_with($content, 'https://'))) {
+                $response = \Illuminate\Support\Facades\Http::get($content);
+                if ($response->successful()) {
+                    $content = $response->body();
+                } else {
+                    return redirect($content); 
+                }
+            }
 
-        abort(404, 'File not found or not accessible.');
+            $mime = 'application/pdf'; // Most coursework is PDF, fallback to PDF
+            try {
+                $mime = Storage::disk($disk)->mimeType($path) ?: 'application/pdf';
+            } catch (\Exception $e) {}
+
+            return response($content)
+                ->header('Content-Type', $mime)
+                ->header('Content-Disposition', $disposition)
+                ->header('Cache-Control', 'private, max-age=3600');
+
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error("Public Proxy failed for {$path}: " . $e->getMessage());
+            abort(404, 'File could not be streamed.');
+        }
     }
 
     public function downloadFile(\Illuminate\Http\Request $request, string $username)
@@ -123,10 +133,9 @@ class PublicPortfolioController extends Controller
         
         if (!$found) abort(404, 'File not found or not accessible.');
         
-        if (Storage::disk('local')->exists($path)) {
-            return response()->download(storage_path('app/' . $path));
-        }
-        
-        abort(404, 'File not found on disk.');
+        // Use proxy for download too to ensure it works with Cloudinary
+        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+        $fileName = basename($path);
+        return $this->proxyFile($disk, $path, $fileName, 'attachment; filename="' . $fileName . '"');
     }
 }

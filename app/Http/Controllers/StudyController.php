@@ -197,13 +197,46 @@ class StudyController extends Controller
         ]);
 
         $contextData = $material->context_data ?? [];
-        if (!is_array($contextData)) $contextData = [];
+        if (!is_array($contextData)) {
+            $contextData = is_string($contextData) ? json_decode($contextData, true) : [];
+        }
+        
+        $artifactData = $material->artifact_data ?? [];
+        if (!is_array($artifactData)) {
+            $artifactData = is_string($artifactData) ? json_decode($artifactData, true) : [];
+        }
+
+        // Handle File Deletions
+        if ($request->has('delete_files')) {
+            $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+            foreach ($request->delete_files as $del) {
+                // Delete from context_data
+                if (isset($contextData['files'])) {
+                    foreach ($contextData['files'] as $key => $file) {
+                        if ($file['path'] === $del) {
+                            try { Storage::disk($disk)->delete($del); } catch (\Exception $e) {}
+                            unset($contextData['files'][$key]);
+                        }
+                    }
+                    $contextData['files'] = array_values($contextData['files']);
+                }
+                // Delete from artifact_data
+                if (isset($artifactData['files'])) {
+                    foreach ($artifactData['files'] as $key => $file) {
+                        if ($file['path'] === $del) {
+                            try { Storage::disk($disk)->delete($del); } catch (\Exception $e) {}
+                            unset($artifactData['files'][$key]);
+                        }
+                    }
+                    $artifactData['files'] = array_values($artifactData['files']);
+                }
+            }
+        }
+
         $contextData['link'] = $request->context_link;
         $contextData['link_name'] = $request->context_link_name;
         $material->context_data = $contextData;
 
-        $artifactData = $material->artifact_data ?? [];
-        if (!is_array($artifactData)) $artifactData = [];
         $artifactData['link'] = $request->artifact_link;
         $artifactData['link_name'] = $request->artifact_link_name;
         $material->artifact_data = $artifactData;

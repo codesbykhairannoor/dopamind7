@@ -22,6 +22,7 @@ const form = useForm({
     context_link_name: '',
     artifact_link: '',
     artifact_link_name: '',
+    delete_files: [], // Array of paths to delete
     show_radar: true,
     show_archetypes: true,
     show_materials: true,
@@ -29,15 +30,31 @@ const form = useForm({
     career_target: ''
 });
 
+const currentFiles = ref({
+    context: [],
+    artifact: []
+});
+
 watch(() => props.material, (newVal) => {
     if (newVal) {
         form.course_name = newVal.course_name || '';
         form.week = newVal.week || '';
         form.grade = newVal.grade || '';
-        form.context_link = newVal.context_data?.link || '';
-        form.context_link_name = newVal.context_data?.link_name || '';
-        form.artifact_link = newVal.artifact_data?.link || '';
-        form.artifact_link_name = newVal.artifact_data?.link_name || '';
+        
+        // Handle context_data (could be old object or new formatted one)
+        const ctx = newVal.context_data || {};
+        form.context_link = ctx.link || '';
+        form.context_link_name = ctx.link_name || '';
+        currentFiles.value.context = ctx.files || [];
+        
+        // Handle artifact_data
+        const art = newVal.artifact_data || {};
+        form.artifact_link = art.link || '';
+        form.artifact_link_name = art.link_name || '';
+        currentFiles.value.artifact = art.files || [];
+
+        form.delete_files = [];
+
         // Load settings from user settings
         form.show_radar = props.userSettings?.show_radar ?? true;
         form.show_archetypes = props.userSettings?.show_archetypes ?? true;
@@ -47,34 +64,23 @@ watch(() => props.material, (newVal) => {
     }
 }, { immediate: true });
 
-const submit = () => {
-    const updatedData = {
-        id: props.material.id,
-        course_name: form.course_name,
-        week: form.week,
-        grade: form.grade,
-        context_data: {
-            ...props.material.context_data,
-            link: form.context_link,
-            link_name: form.context_link_name
-        },
-        artifact_data: {
-            ...props.material.artifact_data,
-            link: form.artifact_link,
-            link_name: form.artifact_link_name
-        }
-    };
-    
-    emit('optimistic-update', updatedData);
-    emit('close');
+const toggleFileDeletion = (path) => {
+    const idx = form.delete_files.indexOf(path);
+    if (idx > -1) {
+        form.delete_files.splice(idx, 1);
+    } else {
+        form.delete_files.push(path);
+    }
+};
 
+const submit = () => {
     form.put(route('study.update', props.material.id), {
         preserveScroll: true,
         preserveState: true,
-        onSuccess: () => {},
-        onError: () => {
-            // Revert or show error toast if needed
-        }
+        onSuccess: () => {
+            emit('close');
+        },
+        onError: () => {}
     });
 };
 </script>
@@ -152,6 +158,26 @@ const submit = () => {
                                     class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
                             </div>
                         </div>
+
+                        <!-- Existing Files Context -->
+                        <div v-if="currentFiles.context.length > 0" class="mt-4 space-y-2">
+                            <label class="text-[10px] font-bold text-slate-400 ml-1">Current Files</label>
+                            <div v-for="file in currentFiles.context" :key="file.path" 
+                                class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-950/30"
+                                :class="{'opacity-50 line-through bg-red-50/20 dark:bg-red-900/10 border-red-200/50': form.delete_files.includes(file.path)}"
+                            >
+                                <div class="flex items-center gap-2 overflow-hidden">
+                                    <FileText class="h-3.5 w-3.5 text-slate-400" />
+                                    <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 truncate">{{ file.name }}</span>
+                                </div>
+                                <button type="button" @click="toggleFileDeletion(file.path)" 
+                                    class="p-1.5 rounded-lg text-xs font-bold transition-colors"
+                                    :class="form.delete_files.includes(file.path) ? 'text-indigo-600 hover:text-indigo-700' : 'text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'"
+                                >
+                                    {{ form.delete_files.includes(file.path) ? 'Keep' : 'Remove' }}
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Artifact Link -->
@@ -170,6 +196,26 @@ const submit = () => {
                                 <label class="text-[10px] font-bold text-slate-400 ml-1">{{ $t('study_link_name_label', 'Link Name') }}</label>
                                 <input v-model="form.artifact_link_name" type="text" :placeholder="$t('study_artifact_link_name')"
                                     class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                            </div>
+                        </div>
+
+                        <!-- Existing Files Artifact -->
+                        <div v-if="currentFiles.artifact.length > 0" class="mt-4 space-y-2">
+                            <label class="text-[10px] font-bold text-slate-400 ml-1">Current Files</label>
+                            <div v-for="file in currentFiles.artifact" :key="file.path" 
+                                class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-950/30"
+                                :class="{'opacity-50 line-through bg-red-50/20 dark:bg-red-900/10 border-red-200/50': form.delete_files.includes(file.path)}"
+                            >
+                                <div class="flex items-center gap-2 overflow-hidden">
+                                    <FileText class="h-3.5 w-3.5 text-slate-400" />
+                                    <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 truncate">{{ file.name }}</span>
+                                </div>
+                                <button type="button" @click="toggleFileDeletion(file.path)" 
+                                    class="p-1.5 rounded-lg text-xs font-bold transition-colors"
+                                    :class="form.delete_files.includes(file.path) ? 'text-indigo-600 hover:text-indigo-700' : 'text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'"
+                                >
+                                    {{ form.delete_files.includes(file.path) ? 'Keep' : 'Remove' }}
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -19,6 +19,7 @@ import {
     Clock, 
     BarChart3, 
     FileText, 
+    Eye,
     ArrowLeft,
     ExternalLink,
     Award,
@@ -321,6 +322,38 @@ const showMaterials = computed(() => {
                     </div>
                 </div>
 
+                <!-- 5. NEURAL AUDIT VIEWER -->
+                <div v-if="props.material.file_path" class="w-full bg-slate-900/95 p-2 rounded-[2.5rem] border border-slate-800 shadow-2xl overflow-hidden mt-4 min-h-[600px] flex flex-col relative group">
+                    <!-- Premium Header for Viewer -->
+                    <div class="p-6 flex items-center justify-between border-b border-white/5 relative z-10">
+                        <div class="flex items-center gap-3">
+                            <div class="h-8 w-8 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 border border-indigo-500/30">
+                                <FileText class="h-4 w-4" />
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-black text-white tracking-widest uppercase">Original Artifact Neural Audit</h3>
+                                <p class="text-[10px] font-bold text-slate-500 tracking-wider">SECURE PROXY-STREAMED FROM IPoW REPOSITORY</p>
+                            </div>
+                        </div>
+                        <a :href="pdfStreamUrl" target="_blank" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white text-[10px] font-black uppercase tracking-widest border border-white/10 transition flex items-center gap-2">
+                            <ExternalLink class="h-3 w-3" />
+                            Expand View
+                        </a>
+                    </div>
+
+                    <!-- PDF Viewer -->
+                    <div class="flex-1 w-full relative z-10 bg-slate-950/50">
+                        <iframe 
+                            :src="pdfStreamUrl" 
+                            class="w-full h-[600px] border-none"
+                            title="Audit View"
+                        ></iframe>
+                    </div>
+
+                    <!-- Background Decor -->
+                    <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                </div>
+
                 <!-- 4. ATTACHED DOCUMENTS -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
                     <div v-if="props.material.context_data && props.material.context_data.length > 0">
@@ -334,9 +367,21 @@ const showMaterials = computed(() => {
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{{ item.type }}</h4>
-                                    <a v-if="item.type === 'file'" :href="route('portfolio.file.download', { username: props.student.username, path: item.path })" download class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-indigo-500">{{ item.name }}</a>
-                                    <a v-else-if="item.type === 'link'" :href="item.url" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-indigo-500">{{ item.url }}</a>
-                                    <p v-else class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">{{ item.content }}</p>
+                                    <div class="flex items-center gap-2">
+                                        <a v-if="item.type === 'file'" :href="route('portfolio.file.download', { username: props.student.username, path: item.path })" download class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-indigo-500 transition">{{ item.name }}</a>
+                                        <a v-else-if="item.type === 'link'" :href="item.url" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-indigo-500 transition">{{ item.url }}</a>
+                                        <p v-else class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">{{ item.content }}</p>
+
+                                        <!-- View Button for Files -->
+                                        <button 
+                                            v-if="item.type === 'file'" 
+                                            @click="() => { window.scrollTo({ top: document.querySelector('iframe')?.offsetTop - 100, behavior: 'smooth' }) }"
+                                            class="shrink-0 p-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition"
+                                            title="View in Audit Viewer"
+                                        >
+                                            <Eye class="h-3.5 w-3.5" />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -353,9 +398,21 @@ const showMaterials = computed(() => {
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h4 class="text-xs font-bold text-emerald-500/70 uppercase tracking-wider mb-1">{{ item.type }}</h4>
-                                    <a v-if="item.type === 'file'" :href="route('portfolio.file.download', { username: props.student.username, path: item.path })" download class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-emerald-500">{{ item.name }}</a>
-                                    <a v-else-if="item.type === 'link'" :href="item.url" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-emerald-500">{{ item.url }}</a>
-                                    <p v-else class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">{{ item.content }}</p>
+                                    <div class="flex items-center gap-2">
+                                        <a v-if="item.type === 'file'" :href="route('portfolio.file.download', { username: props.student.username, path: item.path })" download class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-emerald-500 transition">{{ item.name }}</a>
+                                        <a v-else-if="item.type === 'link'" :href="item.url" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-emerald-500 transition">{{ item.url }}</a>
+                                        <p v-else class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">{{ item.content }}</p>
+                                        
+                                        <!-- View Button for Files -->
+                                        <button 
+                                            v-if="item.type === 'file'" 
+                                            @click="() => { /* Scroll to viewer or update viewer source if needed */ window.scrollTo({ top: document.querySelector('iframe')?.offsetTop - 100, behavior: 'smooth' }) }"
+                                            class="shrink-0 p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 opacity-0 group-hover:opacity-100 transition"
+                                            title="View in Audit Viewer"
+                                        >
+                                            <Eye class="h-3.5 w-3.5" />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
