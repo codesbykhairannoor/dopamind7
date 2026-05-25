@@ -283,5 +283,8 @@
   "study_current_artifacts": "Current Artifacts (Saved)",
   "study_deliverable_link": "Deliverable Link",
   "study_restore": "Restore",
-  "study_remove": "Remove"
+  "study_remove": "Remove",
+  "portfolio_material_type_artifact": "Artifact",
+  "portfolio_evidence_vault_title": "Verified Evidence Vault",
+  "portfolio_evidence_vault_subtitle": "Auditable materials secured via IPoW protocol"
 }

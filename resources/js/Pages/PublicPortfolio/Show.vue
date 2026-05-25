@@ -545,24 +545,10 @@ const profileBio = computed(() => {
                         {{ $t('portfolio_competency_subtitle', 'Competency indices mapped dynamically from raw academic files') }}
                     </p>
 
-                    <div class="flex flex-col lg:flex-row items-center gap-8">
-                        <!-- Left: Radar Canvas -->
-                        <div class="h-80 w-full lg:w-3/5 relative flex items-center justify-center">
+                    <div class="flex flex-col items-center justify-center gap-8">
+                        <!-- Radar Canvas -->
+                        <div class="h-96 w-full lg:w-3/4 max-w-2xl relative flex items-center justify-center">
                             <Radar :data="chartData" :options="chartOptions" />
-                        </div>
-                        
-                        <!-- Right: Legend/List -->
-                        <div class="w-full lg:w-2/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
-                            <div v-for="(score, name) in (props.competency?.competencies || {})" :key="name" 
-                                class="flex items-center justify-between p-3 rounded-2xl bg-white/50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800 transition hover:border-indigo-200 dark:hover:border-indigo-900 group">
-                                <span class="text-[11px] font-black text-slate-600 dark:text-slate-400 group-hover:text-indigo-500 transition truncate mr-2">{{ name }}</span>
-                                <div class="flex items-center gap-2">
-                                    <div class="w-12 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-                                        <div class="h-full bg-indigo-500 transition-all duration-1000" :style="{ width: score + '%' }"></div>
-                                    </div>
-                                    <span class="text-[10px] font-black text-indigo-500 w-8 text-right">{{ score }}%</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

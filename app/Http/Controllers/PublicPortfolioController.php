@@ -81,6 +81,18 @@ class PublicPortfolioController extends Controller
             $disk = 'public';
         }
 
+        if ($disk === 'cloudinary' && class_exists(\Cloudinary\Cloudinary::class) && env('CLOUDINARY_URL')) {
+            try {
+                $cloudinary = new \Cloudinary\Cloudinary(env('CLOUDINARY_URL'));
+                $publicId = preg_replace('/\.([a-zA-Z0-9]+)$/', '', $material->file_path);
+                $ext = pathinfo($material->file_path, PATHINFO_EXTENSION);
+                $url = (string) $cloudinary->image($publicId)->extension($ext)->signUrl();
+                return redirect()->away($url);
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::warning("Cloudinary signUrl failed: " . $e->getMessage());
+            }
+        }
+
         return $this->proxyFile($disk, $material->file_path, $material->file_name, 'inline; filename="' . $material->file_name . '"');
     }
 
@@ -158,6 +170,23 @@ class PublicPortfolioController extends Controller
         }
 
         $fileName = basename($path);
-        return $this->proxyFile($disk, $path, $fileName, 'attachment; filename="' . $fileName . '"');
+        $dispositionType = $request->query('inline') ? 'inline' : 'attachment';
+        if ($disk === 'cloudinary' && class_exists(\Cloudinary\Cloudinary::class) && env('CLOUDINARY_URL')) {
+            try {
+                $cloudinary = new \Cloudinary\Cloudinary(env('CLOUDINARY_URL'));
+                $publicId = preg_replace('/\.([a-zA-Z0-9]+)$/', '', $path);
+                $ext = pathinfo($path, PATHINFO_EXTENSION);
+                $image = $cloudinary->image($publicId)->extension($ext);
+                if ($dispositionType === 'attachment') {
+                    $image->addFlag(\Cloudinary\Transformation\Flag::attachment($fileName));
+                }
+                $url = (string) $image->signUrl();
+                return redirect()->away($url);
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::warning("Cloudinary signUrl attachment failed: " . $e->getMessage());
+            }
+        }
+
+        return $this->proxyFile($disk, $path, $fileName, $dispositionType . '; filename="' . $fileName . '"');
     }
 }

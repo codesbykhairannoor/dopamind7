@@ -283,5 +283,8 @@
   "study_current_artifacts": "Artefak Saat Ini (Tersimpan)",
   "study_deliverable_link": "Tautan Hasil",
   "study_restore": "Pulihkan",
-  "study_remove": "Hapus"
+  "study_remove": "Hapus",
+  "portfolio_material_type_artifact": "Artefak",
+  "portfolio_evidence_vault_title": "Brankas Bukti Terverifikasi",
+  "portfolio_evidence_vault_subtitle": "Materi yang dapat diaudit dan diamankan melalui protokol IPoW"
 }

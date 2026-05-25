@@ -57,13 +57,35 @@ const props = defineProps({
 
 const { isDark } = useAppearance();
 
+import { ref } from 'vue';
+
 // Stream route for PDF iframe
-const pdfStreamUrl = computed(() => {
-    return route('portfolio.file', { 
-        username: props.student.username, 
-        id: props.material.id 
-    });
-});
+const currentPdfStreamUrl = ref(
+    props.material.file_path ? route('portfolio.file', { username: props.student.username, id: props.material.id }) : null
+);
+const currentViewerTitle = ref('Original Artifact Neural Audit');
+
+const viewFile = (path, name) => {
+    currentPdfStreamUrl.value = route('portfolio.file.download', { username: props.student.username, path: path, inline: 1 });
+    currentViewerTitle.value = name;
+    setTimeout(() => {
+        const viewerEl = document.getElementById('neural-audit-viewer');
+        if (viewerEl) {
+            viewerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, 100);
+};
+
+const viewOriginalFile = () => {
+    currentPdfStreamUrl.value = route('portfolio.file', { username: props.student.username, id: props.material.id });
+    currentViewerTitle.value = 'Original Artifact Neural Audit';
+    setTimeout(() => {
+        const viewerEl = document.getElementById('neural-audit-viewer');
+        if (viewerEl) {
+            viewerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, 100);
+};
 
 // Radar Chart Config
 const chartData = computed(() => {
@@ -323,66 +345,7 @@ const showMaterials = computed(() => {
                     </div>
                 </div>
 
-                <!-- 5. NEURAL AUDIT VIEWER -->
-                <div v-if="props.material.file_path" class="w-full bg-slate-900/95 p-2 rounded-[2.5rem] border border-slate-800 shadow-2xl overflow-hidden mt-4 min-h-[600px] flex flex-col relative group">
-                    <!-- Premium Header for Viewer -->
-                    <div class="p-6 flex items-center justify-between border-b border-white/5 relative z-10">
-                        <div class="flex items-center gap-3">
-                            <div class="h-8 w-8 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 border border-indigo-500/30">
-                                <FileText class="h-4 w-4" />
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-black text-white tracking-widest uppercase">Original Artifact Neural Audit</h3>
-                                <p class="text-[10px] font-bold text-slate-500 tracking-wider">SECURE PROXY-STREAMED FROM IPoW REPOSITORY</p>
-                            </div>
-                        </div>
-                        <a :href="pdfStreamUrl" target="_blank" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white text-[10px] font-black uppercase tracking-widest border border-white/10 transition flex items-center gap-2">
-                            <ExternalLink class="h-3 w-3" />
-                            Expand View
-                        </a>
-                    </div>
 
-                    <!-- PDF Viewer -->
-                    <div class="flex-1 w-full relative z-10 bg-slate-950/50">
-                        <iframe 
-                            :src="pdfStreamUrl" 
-                            class="w-full h-[600px] border-none"
-                            title="Audit View"
-                        ></iframe>
-                    </div>
-
-                    <!-- Background Decor -->
-                    <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-                    <!-- RADAR CHART -->
-                    <div v-if="showRadar" class="w-full bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-8 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-lg mt-4">
-                        <h3 class="text-sm font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-8 flex items-center gap-2">
-                            <BarChart3 class="h-5 w-5 text-indigo-500" />
-                            {{ $t('portfolio_verified_competencies', 'Verified Competencies Radar') }}
-                        </h3>
-                        
-                        <div class="flex flex-col lg:flex-row items-center gap-12">
-                            <!-- Left: Radar Chart -->
-                            <div class="h-[400px] w-full lg:w-3/5 relative flex items-center justify-center">
-                                <Radar :data="chartData" :options="chartOptions" />
-                            </div>
-                            
-                            <!-- Right: Competency List -->
-                            <div class="w-full lg:w-2/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-                                <div v-for="(score, name) in (props.competency?.competencies || {})" :key="name" 
-                                    class="flex items-center justify-between p-4 rounded-2xl bg-slate-50/50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800 transition hover:border-indigo-300 dark:hover:border-indigo-700 group">
-                                    <span class="text-[11px] font-black text-slate-600 dark:text-slate-300 group-hover:text-indigo-500 transition truncate mr-2">{{ name }}</span>
-                                    <div class="flex items-center gap-2">
-                                        <div class="w-16 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-                                            <div class="h-full bg-indigo-500 transition-all duration-1000" :style="{ width: score + '%' }"></div>
-                                        </div>
-                                        <span class="text-[10px] font-black text-indigo-500 w-10 text-right">{{ score }}%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- 4. EVIDENCE & AUDITABLE ARTIFACTS -->
                 <div class="mt-12 space-y-8">
@@ -430,7 +393,7 @@ const showMaterials = computed(() => {
                                         </div>
                                     </div>
                                     <div class="flex items-center gap-3">
-                                        <button @click="() => { window.scrollTo({ top: document.querySelector('iframe')?.offsetTop - 100, behavior: 'smooth' }) }"
+                                        <button @click="viewFile(file.path, file.name)"
                                             class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-indigo-500 transition border border-slate-100 dark:border-slate-700">
                                             <Eye class="h-4 w-4" />
                                         </button>
@@ -478,7 +441,7 @@ const showMaterials = computed(() => {
                                         </div>
                                     </div>
                                     <div class="flex items-center gap-3">
-                                        <button @click="() => { window.scrollTo({ top: document.querySelector('iframe')?.offsetTop - 100, behavior: 'smooth' }) }"
+                                        <button @click="viewFile(file.path, file.name)"
                                             class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-emerald-500 transition border border-slate-100 dark:border-slate-700">
                                             <Eye class="h-4 w-4" />
                                         </button>
@@ -491,6 +454,44 @@ const showMaterials = computed(() => {
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- 5. NEURAL AUDIT VIEWER -->
+                <div id="neural-audit-viewer" v-if="currentPdfStreamUrl" class="w-full bg-slate-900/95 p-2 rounded-[2.5rem] border border-slate-800 shadow-2xl overflow-hidden mt-8 min-h-[600px] flex flex-col relative group">
+                    <!-- Premium Header for Viewer -->
+                    <div class="p-6 flex items-center justify-between border-b border-white/5 relative z-10">
+                        <div class="flex items-center gap-3">
+                            <div class="h-8 w-8 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 border border-indigo-500/30">
+                                <FileText class="h-4 w-4" />
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-black text-white tracking-widest uppercase">{{ currentViewerTitle }}</h3>
+                                <p class="text-[10px] font-bold text-slate-500 tracking-wider">SECURE PROXY-STREAMED FROM IPoW REPOSITORY</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button v-if="props.material.file_path && currentViewerTitle !== 'Original Artifact Neural Audit'" @click="viewOriginalFile" class="px-4 py-2 rounded-xl bg-indigo-500/20 hover:bg-indigo-500/40 text-indigo-300 text-[10px] font-black uppercase tracking-widest border border-indigo-500/30 transition flex items-center gap-2">
+                                <Eye class="h-3 w-3" />
+                                View Original Artifact
+                            </button>
+                            <a :href="currentPdfStreamUrl" target="_blank" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white text-[10px] font-black uppercase tracking-widest border border-white/10 transition flex items-center gap-2">
+                                <ExternalLink class="h-3 w-3" />
+                                Expand View
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PDF Viewer -->
+                    <div class="flex-1 w-full relative z-10 bg-slate-950/50">
+                        <iframe 
+                            :src="currentPdfStreamUrl" 
+                            class="w-full h-[600px] border-none"
+                            title="Audit View"
+                        ></iframe>
+                    </div>
+
+                    <!-- Background Decor -->
+                    <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 </div>
 
             </div>
