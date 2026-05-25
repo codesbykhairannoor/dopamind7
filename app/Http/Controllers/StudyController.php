@@ -463,6 +463,13 @@ class StudyController extends Controller
 
         $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
 
+        try {
+            Storage::disk($disk);
+        } catch (\Exception $e) {
+            Log::warning("Disk {$disk} configuration error, falling back to public.");
+            $disk = 'public';
+        }
+
         if (str_starts_with($path, 'http')) {
             return redirect($path);
         }
@@ -484,7 +491,12 @@ class StudyController extends Controller
                     $cloudName = env('CLOUDINARY_CLOUD_NAME', 'dxbgpakk1');
                     $url = "https://res.cloudinary.com/{$cloudName}/image/upload/{$path}";
                 } else {
-                    $url = Storage::disk($disk)->url($path);
+                    // Safety check for supabase/s3 url generation
+                    try {
+                        $url = Storage::disk($disk)->url($path);
+                    } catch (\Exception $urlEx) {
+                        return $this->proxyFile($disk, $path, $name, $disposition);
+                    }
                 }
 
                 if (str_starts_with($url, 'http://')) {

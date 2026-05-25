@@ -70,8 +70,17 @@ class PublicPortfolioController extends Controller
             ->where('status', 'completed')
             ->firstOrFail();
 
-        // Proxy the stream through server to bypass 401 and other Cloudinary delivery issues
+        // Proxy the stream through server
         $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+        
+        // Safety check for unconfigured disks (like newly added supabase)
+        try {
+            Storage::disk($disk);
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::warning("Disk {$disk} is not fully configured, falling back to public.");
+            $disk = 'public';
+        }
+
         return $this->proxyFile($disk, $material->file_path, $material->file_name, 'inline; filename="' . $material->file_name . '"');
     }
 
@@ -139,8 +148,15 @@ class PublicPortfolioController extends Controller
         
         if (!$found) abort(404, 'File not found or not accessible.');
         
-        // Use proxy for download too to ensure it works with Cloudinary
+        // Use proxy for download
         $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+        
+        try {
+            Storage::disk($disk);
+        } catch (\Exception $e) {
+            $disk = 'public';
+        }
+
         $fileName = basename($path);
         return $this->proxyFile($disk, $path, $fileName, 'attachment; filename="' . $fileName . '"');
     }
