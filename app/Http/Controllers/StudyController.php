@@ -918,11 +918,7 @@ class StudyController extends Controller
 
     public function streamLogs()
     {
-        $logPath = storage_path('logs/ml_pipeline.log');
-        if (!file_exists($logPath)) {
-            return response()->json(['logs' => '']);
-        }
-        $content = file_get_contents($logPath);
+        $content = \Illuminate\Support\Facades\Cache::get('ml_pipeline_logs', '');
         return response()->json(['logs' => $content]);
     }
 }

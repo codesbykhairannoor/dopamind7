@@ -32,12 +32,12 @@ class ProcessCoursework implements ShouldQueue
         $material = StudyMaterial::find($this->materialId);
         if (!$material) return;
 
-        $logPath = storage_path('logs/ml_pipeline.log');
-        file_put_contents($logPath, "--- START OF ANALYSIS SESSION ---\n");
-        $addLog = function(string $message) use ($logPath) {
+        \Illuminate\Support\Facades\Cache::put('ml_pipeline_logs', "--- START OF ANALYSIS SESSION ---\n", 3600);
+        $addLog = function(string $message) {
             $timestamp = now()->format('Y-m-d H:i:s.v');
             $line = "[{$timestamp}] {$message}\n";
-            file_put_contents($logPath, $line, FILE_APPEND);
+            $current = \Illuminate\Support\Facades\Cache::get('ml_pipeline_logs', '');
+            \Illuminate\Support\Facades\Cache::put('ml_pipeline_logs', $current . $line, 3600);
         };
 
         $addLog("🚀 Pipeline initialized: Processing Study Material #{$material->id} (Course: '{$material->course_name}')");
