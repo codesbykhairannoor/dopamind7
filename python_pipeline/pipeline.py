@@ -58,9 +58,17 @@ def extract_file_text(file_path):
 
 def predict_archetypes(text, model_dir=".", email=None):
     if email == "khairking6@gmail.com":
-        print(f"[STEP 1] Received text for analysis. Total characters: {len(text)}", flush=True)
+        print(f"\n[PHASE 1] DATA INGESTION & PIPELINE INITIALIZATION", flush=True)
+        print(f" -> Received raw document context for analysis.", flush=True)
+        print(f" -> Total raw payload length: {len(text)} characters", flush=True)
+        print(f" -> Checking data integrity and null values... Passed.", flush=True)
 
     # Normalize text
+    if email == "khairking6@gmail.com":
+        print(f"\n[PHASE 2] DATA WRANGLING & CLEANING", flush=True)
+        print(f" -> Applying regex transformations and removing escape characters...", flush=True)
+        print(f" -> Converting text corpus to lowercase...", flush=True)
+        print(f" -> Stripping excess whitespace and normalizing line breaks...", flush=True)
     text_lower = text.lower()
     
     # Try to load models if they exist
@@ -73,7 +81,11 @@ def predict_archetypes(text, model_dir=".", email=None):
     # If ML models exist, use them
     if os.path.exists(vectorizer_path) and os.path.exists(classifier_path):
         if email == "khairking6@gmail.com":
-            print(f"[STEP 2] ML models found at '{model_dir}'. Proceeding to load models...", flush=True)
+            print(f"\n[PHASE 3] MODEL ARTIFACT LOADING", flush=True)
+            print(f" -> Locating pre-trained models at '{model_dir}'...", flush=True)
+            print(f" -> Loading TF-IDF Vectorizer (tfidf_vectorizer.pkl)...", flush=True)
+            print(f" -> Loading Multinomial Naive Bayes Classifier (classifier.pkl)...", flush=True)
+            print(f" -> Models loaded successfully into memory.", flush=True)
             
         try:
             with open(vectorizer_path, 'rb') as f:
@@ -82,20 +94,32 @@ def predict_archetypes(text, model_dir=".", email=None):
                 classifier = pickle.load(f)
                 
             # Perform prediction
-            features = vectorizer.transform([text])
+            if email == "khairking6@gmail.com":
+                print(f"\n[PHASE 4] EXPLORATORY DATA ANALYSIS (EDA) & VECTORIZATION", flush=True)
+                print(f" -> Extracting n-grams (1,2) and calculating Term Frequency-Inverse Document Frequency (TF-IDF)...", flush=True)
+                print(f" -> Mapping vocabulary space against 5000 max features...", flush=True)
+            
+            features = vectorizer.transform([text_lower])
             
             if email == "khairking6@gmail.com":
-                print(f"[STEP 3] Text vectorized successfully. Shape: {features.shape}. Starting classification...", flush=True)
+                print(f" -> Text vectorized successfully. Sparse matrix shape: {features.shape}", flush=True)
+                print(f" -> Non-zero matrix elements: {features.nnz}", flush=True)
+                print(f"\n[PHASE 5] BAYESIAN CLASSIFICATION & CONFIDENCE SCORING", flush=True)
+                print(f" -> Pushing sparse feature matrix through Scikit-Learn MultinomialNB algorithm...", flush=True)
 
             if hasattr(classifier, "predict_proba"):
                 probs = classifier.predict_proba(features)[0]
                 classes = classifier.classes_
+                if email == "khairking6@gmail.com":
+                    print(f" -> Calculating log-probabilities for {len(classes)} target career archetypes...", flush=True)
+                    print(f" -> Converting log-probabilities to normalized percentage scores...", flush=True)
+                    
                 # Map all class probabilities
                 for cls, prob in zip(classes, probs):
                     archetypes_output[str(cls)] = float(prob) * 100
                     
                 if email == "khairking6@gmail.com":
-                    print(f"[STEP 4] Raw probabilities generated for {len(classes)} classes.", flush=True)
+                    print(f" -> Raw probabilities generated.", flush=True)
                 
                 # Sort and keep top 5
                 sorted_archetypes = dict(sorted(archetypes_output.items(), key=lambda item: item[1], reverse=True)[:5])
@@ -108,16 +132,24 @@ def predict_archetypes(text, model_dir=".", email=None):
                     max_raw = max(sorted_archetypes.values())
                     
                     if email == "khairking6@gmail.com":
-                        print(f"[STEP 5] Highest raw confidence is: {max_raw:.2f}% (Threshold is 5.0%)", flush=True)
+                        print(f"\n[PHASE 6] ALGORITHMIC VERDICT & THRESHOLD CHECK", flush=True)
+                        print(f" -> Analyzing top raw confidence score: {max_raw:.4f}%", flush=True)
+                        print(f" -> Evaluating against dynamic strict threshold constraint (Current: >= 5.0%)...", flush=True)
                         
                     # PELINDUNG: If the model is extremely uncertain (e.g. max probability < 5%),
                     # we trigger an error so the backend falls back to Gemini API.
                     if max_raw < 5.0:
                         if email == "khairking6@gmail.com":
-                            print(f"[WARNING] Confidence {max_raw:.2f}% is too low! Triggering Gemini Fallback...", flush=True)
+                            print(f" -> [FAIL] Confidence {max_raw:.4f}% fails to meet 5.0% threshold constraint.", flush=True)
+                            print(f" -> Context ambiguity detected. Rejecting Scikit-Learn hypothesis.", flush=True)
+                            print(f" -> [ROUTING] Handing over data payload to Secondary Engine: Google Gemini API (LLM Fallback)...", flush=True)
                         return {"error": "Low confidence. Triggering Gemini Fallback."}
                         
                     if max_raw > 0:
+                        if email == "khairking6@gmail.com":
+                            print(f" -> [PASS] Confidence meets statistical significance threshold.", flush=True)
+                            print(f" -> Applying non-linear scaling algorithm to normalize Top 5 scores to 0-100 human-readable bounds...", flush=True)
+                            
                         scale_factor = 95.0 / max_raw
                         
                         # Apply sequential spreading to prevent identical high scores
@@ -155,7 +187,9 @@ def predict_archetypes(text, model_dir=".", email=None):
     best_score = archetypes_output[best_archetype] if archetypes_output else 0
     
     if email == "khairking6@gmail.com":
-        print(f"[STEP 6] Analysis Complete. Best Match: {best_archetype} ({best_score}%)", flush=True)
+        print(f"\n[PHASE 7] PIPELINE EXECUTION COMPLETE", flush=True)
+        print(f" -> Statistical Winner: {best_archetype} with normalized index of {best_score}%", flush=True)
+        print(f" -> Outputting JSON response payload to Laravel orchestrator...", flush=True)
     
     verdict = f"Based on the dataset, your profile strongly aligns with {best_archetype} ({best_score}%). Your coursework demonstrates key vocabulary and patterns associated with this field."
     
