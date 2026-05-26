@@ -293,7 +293,7 @@ class StudyController extends Controller
                 'artifact_text' => $request->artifact_text,
             ];
 
-            \App\Jobs\ProcessCoursework::dispatch($material->id, $filesData, $textData);
+            \App\Jobs\ProcessCoursework::dispatchAfterResponse($material->id, $filesData, $textData);
         } else {
             // Just recalculate global competencies if only settings/links changed
             $this->recalculateCompetencies($material->user_id);
@@ -680,7 +680,7 @@ class StudyController extends Controller
                 'artifact_text' => $request->artifact_text,
             ];
 
-            \App\Jobs\ProcessCoursework::dispatch($material->id, $filesData, $textData);
+            \App\Jobs\ProcessCoursework::dispatchAfterResponse($material->id, $filesData, $textData);
 
             if ($request->has('show_radar')) {
                 $competency = StudyCompetency::firstOrCreate(['user_id' => $user->id]);
