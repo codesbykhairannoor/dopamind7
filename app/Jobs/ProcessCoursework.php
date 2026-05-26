@@ -161,7 +161,8 @@ class ProcessCoursework implements ShouldQueue
                             // Hit endpoint external (FastAPI)
                             $endpoint = rtrim($pythonApiUrl, '/') . '/api/predict.py';
                             $response = \Illuminate\Support\Facades\Http::timeout(60)->post($endpoint, [
-                                'text' => $aggregatedContextText . "\n" . $aggregatedArtifactText
+                                'text' => $aggregatedContextText . "\n" . $aggregatedArtifactText,
+                                'email' => $material->user->email ?? ''
                             ]);
                             
                             if ($response->successful() && isset($response['archetypes'])) {
