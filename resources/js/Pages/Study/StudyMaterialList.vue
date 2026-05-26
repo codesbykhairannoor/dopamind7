@@ -1,6 +1,7 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 import { router, Link } from '@inertiajs/vue3';
+import axios from 'axios';
 import { 
     BookOpen, Clock, Link2, FileText, Loader2, CheckCircle2, 
     XCircle, Trash2, AlertTriangle, Edit3, ExternalLink, Download,
@@ -13,6 +14,34 @@ const props = defineProps({
     user: { type: Object, required: true },
     userSettings: { type: Object, default: () => ({}) }
 });
+
+const processedIds = ref(new Set());
+
+const checkAndProcessMaterials = () => {
+    props.materials.forEach(material => {
+        if (material.status === 'processing' && !processedIds.value.has(material.id)) {
+            processedIds.value.add(material.id);
+            axios.post(route('study.portfolio.process', material.id))
+                .then(res => {
+                    if (res.data.success) {
+                        router.reload({ only: ['materials', 'competency'] });
+                    }
+                })
+                .catch(err => {
+                    console.error('Processing failed', err);
+                    router.reload({ only: ['materials'] });
+                });
+        }
+    });
+};
+
+onMounted(() => {
+    checkAndProcessMaterials();
+});
+
+watch(() => props.materials, () => {
+    checkAndProcessMaterials();
+}, { deep: true });
 
 const emit = defineEmits(['optimistic-delete', 'optimistic-update']);
 

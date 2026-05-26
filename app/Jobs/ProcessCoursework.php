@@ -147,15 +147,52 @@ class ProcessCoursework implements ShouldQueue
                     throw new \Exception("Invalid output format from Python ML: " . ($parsed['error'] ?? 'unknown'));
                 }
             } catch (\Throwable $e) {
-                $addLog("⚠️ Python ML/Scikit-Learn failed or returned low confidence: " . $e->getMessage());
-                $addLog("🔄 Falling back 100% to Gemini API for both Archetype Classification & Competency Auditing...");
+                $addLog("⚠️ Native Python ML/Scikit-Learn failed: " . $e->getMessage());
                 
-                $metadata = $geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $material->course_name, null, $material->user->name);
-                $metadata['source'] = 'gemini_api_only';
+                $microserviceSuccess = false;
+                if (str_contains($e->getMessage(), 'not found') || str_contains($e->getMessage(), '127') || env('VERCEL') == 1) {
+                    $addLog("☁️ Cloud Environment Detected: Vercel Serverless (No native Python binaries).");
+                    $addLog("🔄 Initializing Distributed Microservice Architecture...");
+                    $addLog("📡 Routing Model Inference to /api/predict.py (Vercel Python Serverless Function)...");
+                    
+                    try {
+                        $baseUrl = env('APP_URL') ?? (env('VERCEL_URL') ? 'https://' . env('VERCEL_URL') : 'http://localhost:8000');
+                        if (env('VERCEL_URL') && !str_starts_with(env('VERCEL_URL'), 'http')) {
+                            $baseUrl = 'https://' . env('VERCEL_URL');
+                        }
+                        
+                        $response = \Illuminate\Support\Facades\Http::timeout(60)->post($baseUrl . '/api/predict.py', [
+                            'text' => $aggregatedContextText . "\n" . $aggregatedArtifactText
+                        ]);
+                        
+                        if ($response->successful() && isset($response['archetypes'])) {
+                            $addLog("🎯 Vercel Python Microservice successful. Archetypes found: " . json_encode($response['archetypes']));
+                            $addLog("🧠 Phase 2: Sending aggregated text + Scikit-Learn archetype scores to Gemini API (LLM) for competency audit...");
+                            
+                            $metadata = $geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $material->course_name, $response['archetypes'], $material->user->name);
+                            $metadata['source'] = 'vercel_microservice_gemini';
+                            
+                            $addLog("✅ Gemini Response parsed. Identified Field: '{$metadata['field_of_study']}'");
+                            $addLog("📈 Competencies verified: " . json_encode($metadata['competencies'] ?? []));
+                            $microserviceSuccess = true;
+                        } else {
+                            $addLog("❌ Vercel Microservice failed: " . $response->body());
+                        }
+                    } catch (\Throwable $ex) {
+                        $addLog("❌ Vercel Microservice Exception: " . $ex->getMessage());
+                    }
+                }
                 
-                $addLog("✅ Gemini Response parsed (Fallback Mode). Identified Field: '{$metadata['field_of_study']}'");
-                $addLog("🎯 Career Archetypes identified: " . json_encode($metadata['archetypes'] ?? []));
-                $addLog("📈 Competencies verified: " . json_encode($metadata['competencies'] ?? []));
+                if (!$microserviceSuccess) {
+                    $addLog("🔄 Falling back 100% to Generative AI Fallback Engine (Gemini API)...");
+                    
+                    $metadata = $geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $material->course_name, null, $material->user->name);
+                    $metadata['source'] = 'gemini_api_only';
+                    
+                    $addLog("✅ Gemini Response parsed (Fallback Mode). Identified Field: '{$metadata['field_of_study']}'");
+                    $addLog("🎯 Career Archetypes identified: " . json_encode($metadata['archetypes'] ?? []));
+                    $addLog("📈 Competencies verified: " . json_encode($metadata['competencies'] ?? []));
+                }
             }
 
             // Append final logs to metadata (removed)

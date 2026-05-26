@@ -992,6 +992,7 @@ Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(
 
             // Neural Portfolio actions
             Route::post("/portfolio", [StudyController::class, "store"])->name("store");
+            Route::post("/portfolio/{id}/process", [StudyController::class, "processMaterial"])->name("portfolio.process");
             Route::put("/portfolio/{material}", [StudyController::class, "update"])->name("update");
             Route::get("/portfolio/{material}/file/{type}/{index}", [StudyController::class, "downloadFile"])->name("file.download");
             Route::delete("/portfolio/{id}", [StudyController::class, "destroy"])->name("destroy");

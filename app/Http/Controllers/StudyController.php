@@ -291,11 +291,8 @@ class StudyController extends Controller
                 'artifact_link' => $request->artifact_link,
                 'artifact_link_name' => $request->artifact_link_name,
                 'artifact_text' => $request->artifact_text,
-            ];
-
-            \App\Jobs\ProcessCoursework::dispatchAfterResponse($material->id, $filesData, $textData);
+            // Background process will be triggered client-side via /process endpoint
         } else {
-            // Just recalculate global competencies if only settings/links changed
             $this->recalculateCompetencies($material->user_id);
         }
 
@@ -311,6 +308,38 @@ class StudyController extends Controller
         $user->save();
 
         return back()->with('success', 'Material updated successfully');
+    }
+
+    public function processMaterial(Request $request, $id)
+    {
+        $user = \Illuminate\Support\Facades\Auth::user();
+        $material = \App\Models\StudyMaterial::where('user_id', $user->id)->findOrFail($id);
+        
+        $filesData = ['context_files' => [], 'artifact_files' => []];
+        $contextData = $material->context_data ?? [];
+        $artifactData = $material->artifact_data ?? [];
+
+        foreach (($contextData['files'] ?? []) as $f) {
+            if (!isset($f['ext'])) $f['ext'] = strtolower(pathinfo($f['name'], PATHINFO_EXTENSION));
+            $filesData['context_files'][] = $f;
+        }
+        foreach (($artifactData['files'] ?? []) as $f) {
+            if (!isset($f['ext'])) $f['ext'] = strtolower(pathinfo($f['name'], PATHINFO_EXTENSION));
+            $filesData['artifact_files'][] = $f;
+        }
+
+        $textData = [
+            'context_link' => $contextData['link'] ?? null,
+            'context_link_name' => $contextData['link_name'] ?? null,
+            'context_text' => $contextData['text'] ?? null,
+            'artifact_link' => $artifactData['link'] ?? null,
+            'artifact_link_name' => $artifactData['link_name'] ?? null,
+            'artifact_text' => $artifactData['text'] ?? null,
+        ];
+
+        \App\Jobs\ProcessCoursework::dispatchSync($material->id, $filesData, $textData);
+
+        return response()->json(['success' => true, 'status' => $material->fresh()->status]);
     }
 
     public function storeAcademicRecord(Request $request)
@@ -680,7 +709,7 @@ class StudyController extends Controller
                 'artifact_text' => $request->artifact_text,
             ];
 
-            \App\Jobs\ProcessCoursework::dispatchAfterResponse($material->id, $filesData, $textData);
+            // Background process will be triggered client-side via /process endpoint
 
             if ($request->has('show_radar')) {
                 $competency = StudyCompetency::firstOrCreate(['user_id' => $user->id]);

@@ -6,6 +6,9 @@
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.7.3"
+    },
+    "api/predict.py": {
+      "runtime": "@vercel/python@4.5.0"
     }
   },
   "routes": [
