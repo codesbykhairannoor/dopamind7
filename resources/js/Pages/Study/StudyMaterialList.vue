@@ -16,9 +16,28 @@ const props = defineProps({
 });
 
 const page = usePage();
+const processedIds = ref(new Set());
+
+const checkAndProcessMaterials = () => {
+    props.materials.forEach(material => {
+        if (material.status === 'processing' && !processedIds.value.has(material.id)) {
+            processedIds.value.add(material.id);
+            axios.post(route('study.portfolio.process', material.id))
+                .then(res => {
+                    if (res.data.success) {
+                        router.reload({ only: ['materials', 'competency'] });
+                    }
+                })
+                .catch(err => {
+                    console.error('Processing failed', err);
+                    router.reload({ only: ['materials'] });
+                });
+        }
+    });
+};
 
 onMounted(() => {
-    // Processing logic dipindah ke Logs.vue agar tab logs yang menahan koneksi (Serverless workaround)
+    checkAndProcessMaterials();
 });
 
 watch(() => props.materials, () => {
