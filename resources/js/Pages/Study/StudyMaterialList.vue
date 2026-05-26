@@ -120,6 +120,14 @@ const getMaterialSummary = (data) => {
     return parts.length ? parts.join(', ') : 'None';
 };
 
+const parseData = (data) => {
+    if (!data) return {};
+    if (typeof data === 'string') {
+        try { return JSON.parse(data); } catch(e) { return {}; }
+    }
+    return data;
+};
+
 const currentPdfStreamUrl = ref(null);
 const currentViewerTitle = ref('');
 const currentMaterialId = ref(null);
@@ -202,44 +210,46 @@ const viewFile = (materialId, type, index, name) => {
                                     <span class="text-[10px] font-bold text-slate-400">{{ getMaterialSummary(material.context_data) }}</span>
                                 </div>
                                 <div class="space-y-2">
-                                    <!-- New Object Structure -->
-                                    <template v-if="!Array.isArray(material.context_data)">
-                                        <a v-if="material.context_data.link" :href="material.context_data.link" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
-                                            <ExternalLink class="h-3.5 w-3.5" /> {{ material.context_data.link_name || material.context_data.link }}
-                                        </a>
-                                        <div v-if="material.context_data.files && material.context_data.files.length" class="space-y-1.5">
-                                            <div v-for="(file, idx) in material.context_data.files" :key="idx" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
-                                                <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
-                                                    <FileText class="h-3 w-3 text-slate-400" /> {{ file.name }}
-                                                </span>
-                                                <div class="flex items-center gap-1">
-                                                    <button @click.prevent="viewFile(material.id, 'context', idx, file.name)" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
-                                                        <FileSearch class="h-3.5 w-3.5" />
-                                                    </button>
-                                                    <a :href="route('study.file.download', { material: material.id, type: 'context', index: idx })" download class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_download_pdf')">
-                                                        <Download class="h-3.5 w-3.5" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </template>
-                                    <!-- Old Array Structure fallback -->
-                                    <template v-else>
-                                        <div v-for="(item, idx) in material.context_data" :key="idx">
-                                            <a v-if="item.type === 'link'" :href="item.url" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
-                                                <ExternalLink class="h-3.5 w-3.5" /> {{ item.url }}
+                                    <template v-for="ctx in [parseData(material.context_data)]" :key="material.id + 'ctx'">
+                                        <!-- New Object Structure -->
+                                        <template v-if="!Array.isArray(ctx)">
+                                            <a v-if="ctx.link" :href="ctx.link" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
+                                                <ExternalLink class="h-3.5 w-3.5" /> {{ ctx.link_name || ctx.link }}
                                             </a>
-                                            <div v-if="item.type === 'file'" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
-                                                <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
-                                                    <FileText class="h-3 w-3 text-slate-400" /> {{ item.name }}
-                                                </span>
-                                                <div class="flex items-center gap-1">
-                                                    <button @click.prevent="viewFile(material.id, 'context', idx, item.name)" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
-                                                        <FileSearch class="h-3.5 w-3.5" />
-                                                    </button>
+                                            <div v-if="ctx.files && ctx.files.length" class="space-y-1.5">
+                                                <div v-for="(file, idx) in ctx.files" :key="idx" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
+                                                    <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
+                                                        <FileText class="h-3 w-3 text-slate-400" /> {{ file.name }}
+                                                    </span>
+                                                    <div class="flex items-center gap-1">
+                                                        <button @click.prevent="viewFile(material.id, 'context', idx, file.name)" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
+                                                            <FileSearch class="h-3.5 w-3.5" />
+                                                        </button>
+                                                        <a :href="route('study.file.download', { material: material.id, type: 'context', index: idx })" download class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_download_pdf')">
+                                                            <Download class="h-3.5 w-3.5" />
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </template>
+                                        <!-- Old Array Structure fallback -->
+                                        <template v-else>
+                                            <div v-for="(item, idx) in ctx" :key="idx">
+                                                <a v-if="item.type === 'link'" :href="item.url" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
+                                                    <ExternalLink class="h-3.5 w-3.5" /> {{ item.url }}
+                                                </a>
+                                                <div v-if="item.type === 'file'" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
+                                                    <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
+                                                        <FileText class="h-3 w-3 text-slate-400" /> {{ item.name }}
+                                                    </span>
+                                                    <div class="flex items-center gap-1">
+                                                        <button @click.prevent="viewFile(material.id, 'context', idx, item.name)" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
+                                                            <FileSearch class="h-3.5 w-3.5" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
                                     </template>
                                 </div>
                             </div>
@@ -251,44 +261,46 @@ const viewFile = (materialId, type, index, name) => {
                                     <span class="text-[10px] font-bold text-slate-400">{{ getMaterialSummary(material.artifact_data) }}</span>
                                 </div>
                                 <div class="space-y-2">
-                                    <!-- New Object Structure -->
-                                    <template v-if="!Array.isArray(material.artifact_data)">
-                                        <a v-if="material.artifact_data.link" :href="material.artifact_data.link" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
-                                            <ExternalLink class="h-3.5 w-3.5" /> {{ material.artifact_data.link_name || material.artifact_data.link }}
-                                        </a>
-                                        <div v-if="material.artifact_data.files && material.artifact_data.files.length" class="space-y-1.5">
-                                            <div v-for="(file, idx) in material.artifact_data.files" :key="idx" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
-                                                <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
-                                                    <FileText class="h-3 w-3 text-slate-400" /> {{ file.name }}
-                                                </span>
-                                                <div class="flex items-center gap-1">
-                                                    <button @click.prevent="viewFile(material.id, 'artifact', idx, file.name)" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
-                                                        <FileSearch class="h-3.5 w-3.5" />
-                                                    </button>
-                                                    <a :href="route('study.file.download', { material: material.id, type: 'artifact', index: idx })" download class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_download_pdf')">
-                                                        <Download class="h-3.5 w-3.5" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </template>
-                                    <!-- Old Array Structure fallback -->
-                                    <template v-else>
-                                        <div v-for="(item, idx) in material.artifact_data" :key="idx">
-                                            <a v-if="item.type === 'link'" :href="item.url" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
-                                                <ExternalLink class="h-3.5 w-3.5" /> {{ item.url }}
+                                    <template v-for="art in [parseData(material.artifact_data)]" :key="material.id + 'art'">
+                                        <!-- New Object Structure -->
+                                        <template v-if="!Array.isArray(art)">
+                                            <a v-if="art.link" :href="art.link" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
+                                                <ExternalLink class="h-3.5 w-3.5" /> {{ art.link_name || art.link }}
                                             </a>
-                                            <div v-if="item.type === 'file'" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
-                                                <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
-                                                    <FileText class="h-3 w-3 text-slate-400" /> {{ item.name }}
-                                                </span>
-                                                <div class="flex items-center gap-1">
-                                                    <button @click.prevent="viewFile(material.id, 'artifact', idx, item.name)" class="p-1.5 text-slate-400 hover:text-indigo-500 transition" :title="$t('study_view_pdf')">
-                                                        <FileSearch class="h-3.5 w-3.5" />
-                                                    </button>
+                                            <div v-if="art.files && art.files.length" class="space-y-1.5">
+                                                <div v-for="(file, idx) in art.files" :key="idx" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
+                                                    <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
+                                                        <FileText class="h-3 w-3 text-slate-400" /> {{ file.name }}
+                                                    </span>
+                                                    <div class="flex items-center gap-1">
+                                                        <button @click.prevent="viewFile(material.id, 'artifact', idx, file.name)" class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_view_pdf')">
+                                                            <FileSearch class="h-3.5 w-3.5" />
+                                                        </button>
+                                                        <a :href="route('study.file.download', { material: material.id, type: 'artifact', index: idx })" download class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_download_pdf')">
+                                                            <Download class="h-3.5 w-3.5" />
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </template>
+                                        <!-- Old Array Structure fallback -->
+                                        <template v-else>
+                                            <div v-for="(item, idx) in art" :key="idx">
+                                                <a v-if="item.type === 'link'" :href="item.url" target="_blank" class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition">
+                                                    <ExternalLink class="h-3.5 w-3.5" /> {{ item.url }}
+                                                </a>
+                                                <div v-if="item.type === 'file'" class="flex items-center justify-between gap-2 p-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-900 shadow-sm">
+                                                    <span class="text-[10px] font-bold text-slate-500 truncate flex items-center gap-1.5">
+                                                        <FileText class="h-3 w-3 text-slate-400" /> {{ item.name }}
+                                                    </span>
+                                                    <div class="flex items-center gap-1">
+                                                        <button @click.prevent="viewFile(material.id, 'artifact', idx, item.name)" class="p-1.5 text-slate-400 hover:text-emerald-500 transition" :title="$t('study_view_pdf')">
+                                                            <FileSearch class="h-3.5 w-3.5" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
                                     </template>
                                 </div>
                             </div>
