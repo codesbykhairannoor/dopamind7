@@ -38,9 +38,6 @@ const checkAndProcessMaterials = () => {
 
 onMounted(() => {
     checkAndProcessMaterials();
-    if (page.props.flash.auto_open_logs) {
-        router.visit(route('study.portfolio.logs', page.props.flash.auto_open_logs));
-    }
 });
 
 watch(() => props.materials, () => {
