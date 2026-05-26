@@ -56,7 +56,10 @@ def extract_file_text(file_path):
     except Exception as e:
         return {"error": f"Failed to extract text: {str(e)}", "text": ""}
 
-def predict_archetypes(text, model_dir="."):
+def predict_archetypes(text, model_dir=".", email=None):
+    if email == "khairking6@gmail.com":
+        print(f"[STEP 1] Received text for analysis. Total characters: {len(text)}", flush=True)
+
     # Normalize text
     text_lower = text.lower()
     
@@ -69,6 +72,9 @@ def predict_archetypes(text, model_dir="."):
     
     # If ML models exist, use them
     if os.path.exists(vectorizer_path) and os.path.exists(classifier_path):
+        if email == "khairking6@gmail.com":
+            print(f"[STEP 2] ML models found at '{model_dir}'. Proceeding to load models...", flush=True)
+            
         try:
             with open(vectorizer_path, 'rb') as f:
                 vectorizer = pickle.load(f)
@@ -77,12 +83,19 @@ def predict_archetypes(text, model_dir="."):
                 
             # Perform prediction
             features = vectorizer.transform([text])
+            
+            if email == "khairking6@gmail.com":
+                print(f"[STEP 3] Text vectorized successfully. Shape: {features.shape}. Starting classification...", flush=True)
+
             if hasattr(classifier, "predict_proba"):
                 probs = classifier.predict_proba(features)[0]
                 classes = classifier.classes_
                 # Map all class probabilities
                 for cls, prob in zip(classes, probs):
                     archetypes_output[str(cls)] = float(prob) * 100
+                    
+                if email == "khairking6@gmail.com":
+                    print(f"[STEP 4] Raw probabilities generated for {len(classes)} classes.", flush=True)
                 
                 # Sort and keep top 5
                 sorted_archetypes = dict(sorted(archetypes_output.items(), key=lambda item: item[1], reverse=True)[:5])
@@ -94,9 +107,14 @@ def predict_archetypes(text, model_dir="."):
                 if sorted_archetypes:
                     max_raw = max(sorted_archetypes.values())
                     
+                    if email == "khairking6@gmail.com":
+                        print(f"[STEP 5] Highest raw confidence is: {max_raw:.2f}% (Threshold is 5.0%)", flush=True)
+                        
                     # PELINDUNG: If the model is extremely uncertain (e.g. max probability < 5%),
                     # we trigger an error so the backend falls back to Gemini API.
                     if max_raw < 5.0:
+                        if email == "khairking6@gmail.com":
+                            print(f"[WARNING] Confidence {max_raw:.2f}% is too low! Triggering Gemini Fallback...", flush=True)
                         return {"error": "Low confidence. Triggering Gemini Fallback."}
                         
                     if max_raw > 0:
@@ -135,6 +153,9 @@ def predict_archetypes(text, model_dir="."):
     # Build verdict narrative dynamically based on highest archetype
     best_archetype = max(archetypes_output, key=archetypes_output.get) if archetypes_output else "Unknown"
     best_score = archetypes_output[best_archetype] if archetypes_output else 0
+    
+    if email == "khairking6@gmail.com":
+        print(f"[STEP 6] Analysis Complete. Best Match: {best_archetype} ({best_score}%)", flush=True)
     
     verdict = f"Based on the dataset, your profile strongly aligns with {best_archetype} ({best_score}%). Your coursework demonstrates key vocabulary and patterns associated with this field."
     

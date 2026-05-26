@@ -5,7 +5,7 @@ import axios from 'axios';
 import { 
     BookOpen, Clock, Link2, FileText, Loader2, CheckCircle2, 
     XCircle, Trash2, AlertTriangle, Edit3, ExternalLink, Download,
-    FileSearch, Terminal
+    FileSearch
 } from 'lucide-vue-next';
 import EditMaterialModal from './Portfolio/Components/EditMaterialModal.vue';
 
@@ -96,10 +96,18 @@ const copyCardLink = (id) => {
 
 const getMaterialSummary = (data) => {
     if (!data) return 'None';
+    
+    // In case the backend sends it as a raw JSON string
+    if (typeof data === 'string') {
+        try { data = JSON.parse(data); } 
+        catch (e) { return 'None'; }
+    }
+    
     const parts = [];
     if (data.files && data.files.length) parts.push(`${data.files.length} file(s)`);
     if (data.link) parts.push('1 link');
     if (data.text) parts.push('Notes');
+    
     // For backward compatibility if it's an array of items
     if (Array.isArray(data)) {
         const fileCount = data.filter(i => i.type === 'file').length;
@@ -362,14 +370,6 @@ const viewFile = (materialId, type, index, name) => {
                                 </span>
                             </button>
 
-                            <!-- Pipeline Logs -->
-                            <Link 
-                                :href="route('study.portfolio.logs', material.id)"
-                                class="p-3 text-slate-400 hover:text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/20 rounded-2xl transition-all"
-                                :title="$t('study_pipeline_logs', 'Log Proses AI')"
-                            >
-                                <Terminal class="h-5 w-5" />
-                            </Link>
 
                             <!-- Edit -->
                             <button 

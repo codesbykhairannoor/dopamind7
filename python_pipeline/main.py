@@ -16,7 +16,7 @@ class PredictRequest(BaseModel):
 
 @app.post("/api/predict.py")
 def predict(request: PredictRequest):
-    result = predict_archetypes(request.text, model_dir=".")
+    result = predict_archetypes(request.text, model_dir=".", email=request.email)
     
     if request.email == "khairking6@gmail.com":
         print("\n" + "="*50)

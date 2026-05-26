@@ -932,23 +932,5 @@ class StudyController extends Controller
         }
     }
 
-    public function viewLogs($id)
-    {
-        $user = Auth::user();
-        $material = StudyMaterial::where('user_id', $user->id)->findOrFail($id);
-        
-        return Inertia::render('Study/Portfolio/Logs', [
-            'material' => $material,
-            'user' => [
-                'name' => $user->name,
-                'username' => $user->username,
-            ]
-        ]);
-    }
 
-    public function streamLogs()
-    {
-        $content = \Illuminate\Support\Facades\Cache::get('ml_pipeline_logs', '');
-        return response()->json(['logs' => $content]);
-    }
 }
