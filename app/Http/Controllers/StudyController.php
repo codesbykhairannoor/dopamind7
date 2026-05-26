@@ -307,7 +307,10 @@ class StudyController extends Controller
         $user->settings = $settings;
         $user->save();
 
-        return back()->with('success', 'Material updated successfully');
+        return back()->with([
+            'success' => 'Material updated successfully',
+            'auto_open_logs' => $material->id
+        ]);
     }
 
     public function processMaterial(Request $request, $id)

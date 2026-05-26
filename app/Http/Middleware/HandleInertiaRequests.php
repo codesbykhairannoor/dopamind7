@@ -85,6 +85,7 @@ class HandleInertiaRequests extends Middleware
                 'message' => fn () => $request->session()->get('message'),
                 'error'   => fn () => $request->session()->get('error'),
                 'success' => fn () => $request->session()->get('success'),
+                'auto_open_logs' => fn () => $request->session()->get('auto_open_logs'),
             ],
 
             // 4. LOCALE & MISC

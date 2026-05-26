@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue';
-import { router, Link } from '@inertiajs/vue3';
+import { router, Link, usePage } from '@inertiajs/vue3';
 import axios from 'axios';
 import { 
     BookOpen, Clock, Link2, FileText, Loader2, CheckCircle2, 
@@ -15,6 +15,7 @@ const props = defineProps({
     userSettings: { type: Object, default: () => ({}) }
 });
 
+const page = usePage();
 const processedIds = ref(new Set());
 
 const checkAndProcessMaterials = () => {
@@ -37,6 +38,9 @@ const checkAndProcessMaterials = () => {
 
 onMounted(() => {
     checkAndProcessMaterials();
+    if (page.props.flash.auto_open_logs) {
+        router.visit(route('study.portfolio.logs', page.props.flash.auto_open_logs));
+    }
 });
 
 watch(() => props.materials, () => {
