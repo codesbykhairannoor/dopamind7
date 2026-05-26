@@ -570,6 +570,27 @@ class StudyController extends Controller
             return redirect($path);
         }
 
+        if ($disk === 'cloudinary' || str_contains(env('FILESYSTEM_DISK', ''), 'cloudinary')) {
+            $cloudinaryUrl = env('CLOUDINARY_URL', '');
+            if (preg_match('/@([^\/]+)/', $cloudinaryUrl, $matches)) {
+                $cloudName = $matches[1];
+                $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+                
+                // Cloudinary uses 'image' for images/pdfs usually, and 'raw' for docs
+                $resourceType = in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'pdf']) ? 'image' : 'raw';
+                
+                // For PDF we might need to specify .pdf, but $path already has it.
+                $url = "https://res.cloudinary.com/{$cloudName}/{$resourceType}/upload/{$path}";
+                
+                if (!$isView) {
+                    // Force download using Cloudinary fl_attachment flag
+                    $url = "https://res.cloudinary.com/{$cloudName}/{$resourceType}/upload/fl_attachment/{$path}";
+                }
+                
+                return redirect()->away($url);
+            }
+        }
+
         if (!Storage::disk($disk)->exists($path)) {
             if ($disk !== 'public' && Storage::disk('public')->exists($path)) {
                 $disk = 'public';
@@ -580,29 +601,8 @@ class StudyController extends Controller
 
         $disposition = ($isView ? 'inline' : 'attachment') . '; filename="' . $name . '"';
 
-        if ($disk === 'cloudinary' || $disk === 's3') {
+        if ($disk === 's3') {
             try {
-                if ($disk === 'cloudinary') {
-                    if (class_exists(\Cloudinary\Cloudinary::class) && env('CLOUDINARY_URL')) {
-                        $cloudinary = new \Cloudinary\Cloudinary(env('CLOUDINARY_URL'));
-                        // Get public ID without extension
-                        $publicId = preg_replace('/\.([a-zA-Z0-9]+)$/', '', $path);
-                        $ext = pathinfo($path, PATHINFO_EXTENSION);
-                        
-                        $image = $cloudinary->image($publicId)->extension($ext);
-                        if (!$isView) {
-                            $image->addFlag(\Cloudinary\Transformation\Flag::attachment($name));
-                        }
-                        
-                        $url = (string) $image->signUrl();
-                        return redirect()->away($url);
-                    }
-                    
-                    // Fallback to our proxy if Cloudinary API is not configured
-                    return $this->proxyFile($disk, $path, $name, $disposition);
-                }
-
-                // For s3 or generic url generation
                 $url = Storage::disk($disk)->url($path);
                 if (str_starts_with($url, 'http://')) {
                     $url = str_replace('http://', 'https://', $url);
