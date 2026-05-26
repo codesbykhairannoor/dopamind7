@@ -97,7 +97,15 @@ class User extends Authenticatable implements MustVerifyEmail
                     // Ambil config default filesystem ('public' di local, 'cloudinary' di prod)
                     $disk = config('filesystems.default');
 
-                    // Gunakan Storage::disk()->url() agar Cloudinary mengembalikan URL https yang benar
+                    if ($disk === 'cloudinary' || str_contains(env('FILESYSTEM_DISK', ''), 'cloudinary')) {
+                        $cloudinaryUrl = env('CLOUDINARY_URL', '');
+                        if (preg_match('/@([^\/]+)/', $cloudinaryUrl, $matches)) {
+                            $cloudName = $matches[1];
+                            return "https://res.cloudinary.com/{$cloudName}/image/upload/{$path}";
+                        }
+                    }
+
+                    // Gunakan Storage::disk()->url() untuk disk lain
                     return Storage::disk($disk)->url($path);
                 }
 

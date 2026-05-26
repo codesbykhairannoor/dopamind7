@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
+import axios from 'axios';
 import { 
     Terminal, Cpu, Sparkles, Clock, ArrowLeft, RefreshCw, 
     FileText, CheckCircle2, AlertTriangle, ShieldCheck, 
@@ -38,6 +39,19 @@ const fetchLogs = async () => {
 onMounted(() => {
     fetchLogs();
     logInterval = setInterval(fetchLogs, 1000);
+
+    // Jika material masih processing, tab ini yang akan memicu proses backend!
+    if (props.material.status === 'processing') {
+        axios.post(route('study.portfolio.process', props.material.id))
+            .then(res => {
+                if (res.data.success) {
+                    setTimeout(() => router.reload({ only: ['material'] }), 1000);
+                }
+            })
+            .catch(err => {
+                console.error('Processing failed', err);
+            });
+    }
 });
 
 onUnmounted(() => {

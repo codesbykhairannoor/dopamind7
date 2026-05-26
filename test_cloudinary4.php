@@ -1,13 +1,10 @@
 <?php
-require __DIR__.'/vendor/autoload.php';
-$app = require_once __DIR__.'/bootstrap/app.php';
-$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
-$kernel->bootstrap();
-
+require 'vendor/autoload.php';
+$app = require_once 'bootstrap/app.php';
+$app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 try {
-    $cloudinary = new \Cloudinary\Cloudinary(env('CLOUDINARY_URL'));
-    $url = $cloudinary->image('academic_archives/EZX0jYEPAKwHnyYKUKkoihxrBnD1kO0dl5VdELBY')->toUrl();
-    echo "URL: " . $url . "\n";
+    $res = \Illuminate\Support\Facades\Storage::disk('cloudinary')->put('test.txt', 'hello');
+    echo 'Success: ' . $res;
 } catch (\Exception $e) {
-    echo "Error: " . $e->getMessage();
+    echo 'Error: ' . $e->getMessage();
 }
