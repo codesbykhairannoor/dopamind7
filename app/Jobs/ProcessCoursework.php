@@ -150,36 +150,38 @@ class ProcessCoursework implements ShouldQueue
                 $addLog("⚠️ Native Python ML/Scikit-Learn failed: " . $e->getMessage());
                 
                 $microserviceSuccess = false;
+                $pythonApiUrl = env('PYTHON_ML_URL');
+
                 if (str_contains($e->getMessage(), 'not found') || str_contains($e->getMessage(), '127') || env('VERCEL') == 1) {
-                    $addLog("☁️ Cloud Environment Detected: Vercel Serverless (No native Python binaries).");
-                    $addLog("🔄 Initializing Distributed Microservice Architecture...");
-                    $addLog("📡 Routing Model Inference to /api/predict.py (Vercel Python Serverless Function)...");
-                    
-                    try {
-                        $baseUrl = env('APP_URL') ?? (env('VERCEL_URL') ? 'https://' . env('VERCEL_URL') : 'http://localhost:8000');
-                        if (env('VERCEL_URL') && !str_starts_with(env('VERCEL_URL'), 'http')) {
-                            $baseUrl = 'https://' . env('VERCEL_URL');
-                        }
+                    if ($pythonApiUrl) {
+                        $addLog("☁️ Cloud Environment Detected. Routing to External Python Microservice...");
+                        $addLog("📡 Target API: {$pythonApiUrl}");
                         
-                        $response = \Illuminate\Support\Facades\Http::timeout(60)->post($baseUrl . '/api/predict.py', [
-                            'text' => $aggregatedContextText . "\n" . $aggregatedArtifactText
-                        ]);
-                        
-                        if ($response->successful() && isset($response['archetypes'])) {
-                            $addLog("🎯 Vercel Python Microservice successful. Archetypes found: " . json_encode($response['archetypes']));
-                            $addLog("🧠 Phase 2: Sending aggregated text + Scikit-Learn archetype scores to Gemini API (LLM) for competency audit...");
+                        try {
+                            // Hit endpoint external (FastAPI)
+                            $endpoint = rtrim($pythonApiUrl, '/') . '/api/predict.py';
+                            $response = \Illuminate\Support\Facades\Http::timeout(60)->post($endpoint, [
+                                'text' => $aggregatedContextText . "\n" . $aggregatedArtifactText
+                            ]);
                             
-                            $metadata = $geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $material->course_name, $response['archetypes'], $material->user->name);
-                            $metadata['source'] = 'vercel_microservice_gemini';
-                            
-                            $addLog("✅ Gemini Response parsed. Identified Field: '{$metadata['field_of_study']}'");
-                            $addLog("📈 Competencies verified: " . json_encode($metadata['competencies'] ?? []));
-                            $microserviceSuccess = true;
-                        } else {
-                            $addLog("❌ Vercel Microservice failed: " . $response->body());
+                            if ($response->successful() && isset($response['archetypes'])) {
+                                $addLog("🎯 External Python Microservice successful. Archetypes found: " . json_encode($response['archetypes']));
+                                $addLog("🧠 Phase 2: Sending aggregated text + Scikit-Learn archetype scores to Gemini API (LLM) for competency audit...");
+                                
+                                $metadata = $geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $material->course_name, $response['archetypes'], $material->user->name);
+                                $metadata['source'] = 'external_microservice_gemini';
+                                
+                                $addLog("✅ Gemini Response parsed. Identified Field: '{$metadata['field_of_study']}'");
+                                $addLog("📈 Competencies verified: " . json_encode($metadata['competencies'] ?? []));
+                                $microserviceSuccess = true;
+                            } else {
+                                $addLog("❌ External Microservice failed: " . $response->body());
+                            }
+                        } catch (\Throwable $ex) {
+                            $addLog("❌ External Microservice Exception: " . $ex->getMessage());
                         }
-                    } catch (\Throwable $ex) {
-                        $addLog("❌ Vercel Microservice Exception: " . $ex->getMessage());
+                    } else {
+                        $addLog("⚠️ Cloud Environment Detected but PYTHON_ML_URL is missing. Cannot reach external Python Microservice.");
                     }
                 }
                 

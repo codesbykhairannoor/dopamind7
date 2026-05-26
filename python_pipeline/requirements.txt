@@ -3,3 +3,5 @@ python-docx
 python-pptx
 scikit-learn
 pandas
+fastapi
+uvicorn
