@@ -291,6 +291,7 @@ class StudyController extends Controller
                 'artifact_link' => $request->artifact_link,
                 'artifact_link_name' => $request->artifact_link_name,
                 'artifact_text' => $request->artifact_text,
+            ];
             // Background process will be triggered client-side via /process endpoint
         } else {
             $this->recalculateCompetencies($material->user_id);
