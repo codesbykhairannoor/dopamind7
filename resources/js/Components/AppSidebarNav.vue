@@ -84,7 +84,7 @@ const goCoach = () => {
                 <span
                     class="text-[9px] font-black text-slate-400 dark:text-slate-600 tracking-wide ml-1 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors"
                 >
-                    {{ $t("nav_core_modules", "System Core") }}
+                    System Core
                 </span>
                 <div
                     class="flex items-center justify-center w-4 h-4 text-slate-300 transition-transform duration-200"
@@ -130,7 +130,7 @@ const goCoach = () => {
                             : 'nav-item-default',
                         itemLayout,
                     ]"
-                    :title="!showLabels ? $t('nav_item_dashboard') : ''"
+                    :title="!showLabels ? 'Dashboard' : ''"
                     @click="onNav"
                 >
                     <div
@@ -145,8 +145,8 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate"
-                        >{{ $t("nav_item_dashboard") }}</span
+                        class="text-[13px] font-semibold tracking-tight truncate text-left"
+                        >Dashboard</span
                     >
                     <div
                         v-if="isActive('dashboard') && showLabels"
@@ -166,7 +166,7 @@ const goCoach = () => {
                             : 'nav-item-default',
                         itemLayout,
                     ]"
-                    :title="!showLabels ? $t('nav_item_habit') : ''"
+                    :title="!showLabels ? 'Habits' : ''"
                     @click="onNav"
                 >
                     <div
@@ -181,8 +181,8 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate"
-                        >{{ $t("nav_item_habit") }}</span
+                        class="text-[13px] font-semibold tracking-tight truncate text-left"
+                        >Habits</span
                     >
                     <div
                         v-if="isActive('habits.*') && showLabels"
@@ -202,7 +202,7 @@ const goCoach = () => {
                             : 'nav-item-default',
                         itemLayout,
                     ]"
-                    :title="!showLabels ? $t('nav_item_planner') : ''"
+                    :title="!showLabels ? 'Planner' : ''"
                     @click="onNav"
                 >
                     <div
@@ -217,8 +217,8 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate"
-                        >{{ $t("nav_item_planner") }}</span
+                        class="text-[13px] font-semibold tracking-tight truncate text-left"
+                        >Planner</span
                     >
                     <div
                         v-if="isActive('planner.*') && showLabels"
@@ -238,7 +238,7 @@ const goCoach = () => {
                             : 'nav-item-default',
                         itemLayout,
                     ]"
-                    :title="!showLabels ? $t('nav_item_finance') : ''"
+                    :title="!showLabels ? 'Finance' : ''"
                     @click="onNav"
                 >
                     <div
@@ -253,8 +253,8 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate"
-                        >{{ $t("nav_item_finance") }}</span
+                        class="text-[13px] font-semibold tracking-tight truncate text-left"
+                        >Finance</span
                     >
                     <div
                         v-if="isActive('finance.*') && showLabels"
@@ -285,7 +285,7 @@ const goCoach = () => {
                     <span
                         class="text-[9px] font-black text-slate-400 dark:text-slate-600 tracking-wide group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors"
                     >
-                        {{ $t("nav_platinum_suite", "Platinum Suite") }}
+                        Platinum Suite
                     </span>
                     <div
                         v-if="isExplorer"
@@ -359,7 +359,7 @@ const goCoach = () => {
                         itemLayout,
                         !canUse('journal') ? 'opacity-60' : '',
                     ]"
-                    :title="!showLabels ? $t('nav_item_journal') : ''"
+                    :title="!showLabels ? 'Journal' : ''"
                     @click="canUse('journal') ? onNav() : goJournal()"
                 >
                     <div
@@ -374,8 +374,8 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate flex-1"
-                        >{{ $t("nav_item_journal") }}</span
+                        class="text-[13px] font-semibold tracking-tight truncate flex-1 text-left"
+                        >Journal</span
                     >
                     <div
                         v-if="!canUse('journal') && showLabels"
@@ -401,7 +401,7 @@ const goCoach = () => {
                         itemLayout,
                         !canUse('calendar') ? 'opacity-60' : '',
                     ]"
-                    :title="!showLabels ? $t('nav_item_calendar') : ''"
+                    :title="!showLabels ? 'Calendar' : ''"
                     @click="canUse('calendar') ? onNav() : goCalendar()"
                 >
                     <div
@@ -416,8 +416,8 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate flex-1"
-                        >{{ $t("nav_item_calendar") }}</span
+                        class="text-[13px] font-semibold tracking-tight truncate flex-1 text-left"
+                        >Calendar</span
                     >
                     <div
                         v-if="!canUse('calendar') && showLabels"
@@ -443,7 +443,7 @@ const goCoach = () => {
                         itemLayout,
                         !canUse('job') ? 'opacity-60' : '',
                     ]"
-                    :title="!showLabels ? $t('nav_item_jobs') : ''"
+                    :title="!showLabels ? 'Jobs' : ''"
                     @click="canUse('job') ? onNav() : goJob()"
                 >
                     <div
@@ -458,8 +458,8 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate flex-1"
-                        >{{ $t("nav_item_jobs") }}</span
+                        class="text-[13px] font-semibold tracking-tight truncate flex-1 text-left"
+                        >Jobs</span
                     >
                     <div
                         v-if="!canUse('job') && showLabels"
@@ -485,7 +485,7 @@ const goCoach = () => {
                         itemLayout,
                         !canUse('goal') ? 'opacity-60' : '',
                     ]"
-                    :title="!showLabels ? $t('nav_item_goals') : ''"
+                    :title="!showLabels ? 'Goals' : ''"
                     @click="canUse('goal') ? onNav() : goGoal()"
                 >
                     <div
@@ -500,8 +500,8 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate flex-1"
-                        >{{ $t("nav_item_goals") }}</span
+                        class="text-[13px] font-semibold tracking-tight truncate flex-1 text-left"
+                        >Goals</span
                     >
                     <div
                         v-if="!canUse('goal') && showLabels"
@@ -527,7 +527,7 @@ const goCoach = () => {
                         itemLayout,
                         !canUse('goal') ? 'opacity-60' : '',
                     ]"
-                    :title="!showLabels ? $t('nav_item_study', 'Study Console') : ''"
+                    :title="!showLabels ? 'Study' : ''"
                     @click="canUse('goal') ? onNav() : goStudy()"
                 >
                     <div
@@ -542,8 +542,8 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate flex-1"
-                        >{{ $t("nav_item_study", "Study Console") }}</span
+                        class="text-[13px] font-semibold tracking-tight truncate flex-1 text-left"
+                        >Study</span
                     >
                     <div
                         v-if="!canUse('goal') && showLabels"
@@ -585,7 +585,7 @@ const goCoach = () => {
                         : 'text-slate-500 dark:text-slate-400 hover:bg-indigo-50/50 dark:hover:bg-indigo-500/5 hover:text-indigo-700 dark:hover:text-indigo-300',
                     itemLayout,
                 ]"
-                :title="!showLabels ? $t('nav_item_coach', 'AI Coach') : ''"
+                :title="!showLabels ? 'Coach' : ''"
                 @click="canUse('ai_coach') ? onNav() : goCoach()"
             >
                 <div class="shrink-0 text-indigo-500">
@@ -593,8 +593,8 @@ const goCoach = () => {
                 </div>
                 <span
                     v-if="showLabels"
-                    class="text-[13px] font-semibold tracking-tight truncate flex-1"
-                    >{{ $t("nav_item_coach", "AI Coach") }}</span
+                    class="text-[13px] font-semibold tracking-tight truncate flex-1 text-left"
+                    >Coach</span
                 >
                 <span
                     v-if="showLabels"
