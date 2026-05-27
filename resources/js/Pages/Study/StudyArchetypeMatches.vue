@@ -12,12 +12,23 @@ const props = defineProps({
 
 const parsedVerdict = computed(() => {
     if (!props.competency?.verdict) return '';
-    try {
-        const data = JSON.parse(props.competency.verdict);
-        return trans('study_dynamic_profile_verdict', { field: data.field, count: data.count });
-    } catch (e) {
-        return props.competency.verdict;
+    
+    let data = props.competency.verdict;
+    if (typeof data === 'string' && data.trim().startsWith('{')) {
+        try {
+            data = JSON.parse(data);
+        } catch (e) {}
     }
+    
+    if (data && data.summary) {
+        return data.summary;
+    }
+    
+    if (data && data.field) {
+        return trans('study_dynamic_profile_verdict', { field: data.field, count: data.count });
+    }
+    
+    return typeof data === 'string' ? data : JSON.stringify(data);
 });
 </script>
 

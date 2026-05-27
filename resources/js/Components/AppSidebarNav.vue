@@ -261,6 +261,210 @@ const goCoach = () => {
                         class="nav-active-bar"
                     ></div>
                 </Link>
+
+                <Link
+                    
+                    v-if="showModule('journal')"
+                    :href="route('study.index')"
+                    prefetch="hover"
+                    view-transition
+                    class="nav-item group"
+                    :class="[
+                        isActive('journal.*')
+                            ? 'nav-item-active'
+                            : 'nav-item-default',
+                        itemLayout,
+                        !canUse('journal') ? 'opacity-60' : '',
+                    ]"
+                    :title="!showLabels ? 'Journal' : ''"
+                    @click="onNav"
+                >
+                    <div
+                        class="nav-icon shrink-0"
+                        :class="
+                            isActive('journal.*')
+                                ? 'text-indigo-600 dark:text-indigo-400'
+                                : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'
+                        "
+                    >
+                        <OneForMindIcon name="journal" size="18" />
+                    </div>
+                    <span
+                        v-if="showLabels"
+                        class="text-[13px] font-semibold tracking-tight truncate text-left"
+                        >Journal</span
+                    >
+                    <div
+                        v-if="!canUse('journal') && showLabels"
+                        class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"
+                    ></div>
+                    <div
+                        v-if="isActive('journal.*') && showLabels"
+                        class="nav-active-bar"
+                    ></div>
+                </Link>
+
+                <Link
+                    
+                    v-if="showModule('calendar')"
+                    :href="route('study.index')"
+                    prefetch="hover"
+                    view-transition
+                    class="nav-item group"
+                    :class="[
+                        isActive('calendar.*')
+                            ? 'nav-item-active'
+                            : 'nav-item-default',
+                        itemLayout,
+                        !canUse('calendar') ? 'opacity-60' : '',
+                    ]"
+                    :title="!showLabels ? 'Calendar' : ''"
+                    @click="onNav"
+                >
+                    <div
+                        class="nav-icon shrink-0"
+                        :class="
+                            isActive('calendar.*')
+                                ? 'text-indigo-600 dark:text-indigo-400'
+                                : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'
+                        "
+                    >
+                        <OneForMindIcon name="calendar" size="18" />
+                    </div>
+                    <span
+                        v-if="showLabels"
+                        class="text-[13px] font-semibold tracking-tight truncate text-left"
+                        >Calendar</span
+                    >
+                    <div
+                        v-if="!canUse('calendar') && showLabels"
+                        class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"
+                    ></div>
+                    <div
+                        v-if="isActive('calendar.*') && showLabels"
+                        class="nav-active-bar"
+                    ></div>
+                </Link>
+
+                <Link
+                    
+                    v-if="showModule('job')"
+                    :href="route('study.index')"
+                    prefetch="hover"
+                    view-transition
+                    class="nav-item group"
+                    :class="[
+                        isActive('jobs.*')
+                            ? 'nav-item-active'
+                            : 'nav-item-default',
+                        itemLayout,
+                        !canUse('job') ? 'opacity-60' : '',
+                    ]"
+                    :title="!showLabels ? 'Jobs' : ''"
+                    @click="onNav"
+                >
+                    <div
+                        class="nav-icon shrink-0"
+                        :class="
+                            isActive('jobs.*')
+                                ? 'text-indigo-600 dark:text-indigo-400'
+                                : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'
+                        "
+                    >
+                        <OneForMindIcon name="job" size="18" />
+                    </div>
+                    <span
+                        v-if="showLabels"
+                        class="text-[13px] font-semibold tracking-tight truncate text-left"
+                        >Jobs</span
+                    >
+                    <div
+                        v-if="!canUse('job') && showLabels"
+                        class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"
+                    ></div>
+                    <div
+                        v-if="isActive('jobs.*') && showLabels"
+                        class="nav-active-bar"
+                    ></div>
+                </Link>
+
+                <Link
+                    
+                    v-if="showModule('goal')"
+                    :href="route('study.index')"
+                    prefetch="hover"
+                    view-transition
+                    class="nav-item group"
+                    :class="[
+                        isActive('goals.*')
+                            ? 'nav-item-active'
+                            : 'nav-item-default',
+                        itemLayout,
+                        
+                    ]"
+                    :title="!showLabels ? 'Goals' : ''"
+                    @click="onNav"
+                >
+                    <div
+                        class="nav-icon shrink-0"
+                        :class="
+                            isActive('goals.*')
+                                ? 'text-indigo-600 dark:text-indigo-400'
+                                : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'
+                        "
+                    >
+                        <OneForMindIcon name="goal" size="18" />
+                    </div>
+                    <span
+                        v-if="showLabels"
+                        class="text-[13px] font-semibold tracking-tight truncate text-left"
+                        >Goals</span
+                    >
+                    
+                    <div
+                        v-if="isActive('goals.*') && showLabels"
+                        class="nav-active-bar"
+                    ></div>
+                </Link>
+
+                <Link
+                    
+                    v-if="showModule('study')"
+                    :href="route('study.index')"
+                    prefetch="hover"
+                    view-transition
+                    class="nav-item group"
+                    :class="[
+                        isActive('study.*')
+                            ? 'nav-item-active'
+                            : 'nav-item-default',
+                        itemLayout,
+                        
+                    ]"
+                    :title="!showLabels ? 'Study' : ''"
+                    @click="onNav"
+                >
+                    <div
+                        class="nav-icon shrink-0"
+                        :class="
+                            isActive('study.*')
+                                ? 'text-indigo-600 dark:text-indigo-400'
+                                : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'
+                        "
+                    >
+                        <OneForMindIcon name="study" size="18" />
+                    </div>
+                    <span
+                        v-if="showLabels"
+                        class="text-[13px] font-semibold tracking-tight truncate text-left"
+                        >Study</span
+                    >
+                    
+                    <div
+                        v-if="isActive('study.*') && showLabels"
+                        class="nav-active-bar"
+                    ></div>
+                </Link>
             </div>
         </Transition>
 
@@ -345,215 +549,7 @@ const goCoach = () => {
                 v-show="platinumExpanded || (!isDrawer && collapsed)"
                 class="space-y-0.5"
             >
-                <component
-                    :is="canUse('journal') ? Link : 'button'"
-                    v-if="showModule('journal')"
-                    :href="canUse('journal') ? route('journal.index') : undefined"
-                    :prefetch="canUse('journal') ? 'hover' : undefined"
-                    view-transition
-                    class="nav-item group"
-                    :class="[
-                        isActive('journal.*')
-                            ? 'nav-item-active'
-                            : 'nav-item-default',
-                        itemLayout,
-                        !canUse('journal') ? 'opacity-60' : '',
-                    ]"
-                    :title="!showLabels ? 'Journal' : ''"
-                    @click="canUse('journal') ? onNav() : goJournal()"
-                >
-                    <div
-                        class="nav-icon shrink-0"
-                        :class="
-                            isActive('journal.*')
-                                ? 'text-indigo-600 dark:text-indigo-400'
-                                : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'
-                        "
-                    >
-                        <OneForMindIcon name="journal" size="18" />
-                    </div>
-                    <span
-                        v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate flex-1 text-left"
-                        >Journal</span
-                    >
-                    <div
-                        v-if="!canUse('journal') && showLabels"
-                        class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"
-                    ></div>
-                    <div
-                        v-if="isActive('journal.*') && showLabels"
-                        class="nav-active-bar"
-                    ></div>
-                </component>
-
-                <component
-                    :is="canUse('calendar') ? Link : 'button'"
-                    v-if="showModule('calendar')"
-                    :href="canUse('calendar') ? route('calendar.index') : undefined"
-                    :prefetch="canUse('calendar') ? 'hover' : undefined"
-                    view-transition
-                    class="nav-item group"
-                    :class="[
-                        isActive('calendar.*')
-                            ? 'nav-item-active'
-                            : 'nav-item-default',
-                        itemLayout,
-                        !canUse('calendar') ? 'opacity-60' : '',
-                    ]"
-                    :title="!showLabels ? 'Calendar' : ''"
-                    @click="canUse('calendar') ? onNav() : goCalendar()"
-                >
-                    <div
-                        class="nav-icon shrink-0"
-                        :class="
-                            isActive('calendar.*')
-                                ? 'text-indigo-600 dark:text-indigo-400'
-                                : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'
-                        "
-                    >
-                        <OneForMindIcon name="calendar" size="18" />
-                    </div>
-                    <span
-                        v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate flex-1 text-left"
-                        >Calendar</span
-                    >
-                    <div
-                        v-if="!canUse('calendar') && showLabels"
-                        class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"
-                    ></div>
-                    <div
-                        v-if="isActive('calendar.*') && showLabels"
-                        class="nav-active-bar"
-                    ></div>
-                </component>
-
-                <component
-                    :is="canUse('job') ? Link : 'button'"
-                    v-if="showModule('job')"
-                    :href="canUse('job') ? route('jobs.index') : undefined"
-                    :prefetch="canUse('job') ? 'hover' : undefined"
-                    view-transition
-                    class="nav-item group"
-                    :class="[
-                        isActive('jobs.*')
-                            ? 'nav-item-active'
-                            : 'nav-item-default',
-                        itemLayout,
-                        !canUse('job') ? 'opacity-60' : '',
-                    ]"
-                    :title="!showLabels ? 'Jobs' : ''"
-                    @click="canUse('job') ? onNav() : goJob()"
-                >
-                    <div
-                        class="nav-icon shrink-0"
-                        :class="
-                            isActive('jobs.*')
-                                ? 'text-indigo-600 dark:text-indigo-400'
-                                : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'
-                        "
-                    >
-                        <OneForMindIcon name="job" size="18" />
-                    </div>
-                    <span
-                        v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate flex-1 text-left"
-                        >Jobs</span
-                    >
-                    <div
-                        v-if="!canUse('job') && showLabels"
-                        class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"
-                    ></div>
-                    <div
-                        v-if="isActive('jobs.*') && showLabels"
-                        class="nav-active-bar"
-                    ></div>
-                </component>
-
-                <component
-                    :is="canUse('goal') ? Link : 'button'"
-                    v-if="showModule('goal')"
-                    :href="canUse('goal') ? route('goals.index') : undefined"
-                    :prefetch="canUse('goal') ? 'hover' : undefined"
-                    view-transition
-                    class="nav-item group"
-                    :class="[
-                        isActive('goals.*')
-                            ? 'nav-item-active'
-                            : 'nav-item-default',
-                        itemLayout,
-                        !canUse('goal') ? 'opacity-60' : '',
-                    ]"
-                    :title="!showLabels ? 'Goals' : ''"
-                    @click="canUse('goal') ? onNav() : goGoal()"
-                >
-                    <div
-                        class="nav-icon shrink-0"
-                        :class="
-                            isActive('goals.*')
-                                ? 'text-indigo-600 dark:text-indigo-400'
-                                : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'
-                        "
-                    >
-                        <OneForMindIcon name="goal" size="18" />
-                    </div>
-                    <span
-                        v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate flex-1 text-left"
-                        >Goals</span
-                    >
-                    <div
-                        v-if="!canUse('goal') && showLabels"
-                        class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"
-                    ></div>
-                    <div
-                        v-if="isActive('goals.*') && showLabels"
-                        class="nav-active-bar"
-                    ></div>
-                </component>
-
-                <component
-                    :is="canUse('goal') ? Link : 'button'"
-                    v-if="showModule('study')"
-                    :href="canUse('goal') ? route('study.index') : undefined"
-                    :prefetch="canUse('goal') ? 'hover' : undefined"
-                    view-transition
-                    class="nav-item group"
-                    :class="[
-                        isActive('study.*')
-                            ? 'nav-item-active'
-                            : 'nav-item-default',
-                        itemLayout,
-                        !canUse('goal') ? 'opacity-60' : '',
-                    ]"
-                    :title="!showLabels ? 'Study' : ''"
-                    @click="canUse('goal') ? onNav() : goStudy()"
-                >
-                    <div
-                        class="nav-icon shrink-0"
-                        :class="
-                            isActive('study.*')
-                                ? 'text-indigo-600 dark:text-indigo-400'
-                                : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'
-                        "
-                    >
-                        <OneForMindIcon name="study" size="18" />
-                    </div>
-                    <span
-                        v-if="showLabels"
-                        class="text-[13px] font-semibold tracking-tight truncate flex-1 text-left"
-                        >Study</span
-                    >
-                    <div
-                        v-if="!canUse('goal') && showLabels"
-                        class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"
-                    ></div>
-                    <div
-                        v-if="isActive('study.*') && showLabels"
-                        class="nav-active-bar"
-                    ></div>
-                </component>
+                
             </div>
         </Transition>
 
