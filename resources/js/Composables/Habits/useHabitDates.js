@@ -51,8 +51,9 @@ export function useHabitDates(props) {
         router.get(route('habits.index'), {
             month: newMonth
         }, {
-            preserveState: false, // Force reload buat ambil data bulan baru
-            preserveScroll: true
+            preserveState: true,
+            preserveScroll: true,
+            replace: true
         });
     };
 
