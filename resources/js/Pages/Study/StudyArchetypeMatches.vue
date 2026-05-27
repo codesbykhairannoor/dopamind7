@@ -67,15 +67,5 @@ const parsedVerdict = computed(() => {
             {{ $t('study_upload_to_run_ml', 'Upload coursework data to run ML archetype prediction.') }}
         </div>
 
-        <!-- Card: Model Verdict -->
-        <div v-if="competency?.verdict" class="p-6 md:p-8 rounded-[1.5rem] bg-gradient-to-br from-indigo-50/50 to-purple-50/30 dark:from-indigo-950/20 dark:to-purple-900/10 border border-indigo-100/60 dark:border-indigo-800/30 flex items-start gap-4 shadow-sm">
-            <span class="text-3xl md:text-4xl select-none shrink-0">🤖</span>
-            <div>
-                <h4 class="text-xs font-black tracking-widest text-indigo-600 dark:text-indigo-400 mb-1.5">{{ $t('study_classifier_verdict', 'Classifier Verdict') }}</h4>
-                <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 font-semibold leading-relaxed">
-                    "{{ parsedVerdict }}"
-                </p>
-            </div>
-        </div>
     </div>
 </template>

@@ -356,10 +356,6 @@ const profileBio = computed(() => {
             try { data = JSON.parse(verdict); } catch (e) {}
         }
 
-        if (data && data.summary) {
-            return data.summary;
-        }
-
         if (data && data.field) {
             const f = data.field.charAt(0).toUpperCase() + data.field.slice(1);
             return `Verified student expertise in ${f} based on ${data.count || 1} academic artifact(s) audited through the IPoW protocol.`;
@@ -673,22 +669,6 @@ const countItems = (data) => {
                         <!-- Empty state archetypes -->
                         <div v-else class="py-6 text-center text-slate-400 dark:text-slate-600 text-xs font-semibold">
                             {{ $t('portfolio_no_alignment', 'No career alignment analysis available.') }}
-                        </div>
-                    </div>
-
-                    <!-- Classifier Verdict -->
-                    <div v-if="showArchetypes && props.competency?.verdict" class="p-6 rounded-[2.5rem] bg-indigo-600 text-white shadow-xl shadow-indigo-600/10 border border-indigo-500 relative overflow-hidden group">
-                        <!-- Abstract design asset -->
-                        <div class="absolute right-0 top-0 h-32 w-32 bg-white/5 rounded-full translate-x-12 -translate-y-12 blur-xl transition group-hover:scale-125 duration-500"></div>
-                        
-                        <div class="flex items-start gap-4 relative z-10">
-                            <span class="text-3xl select-none">🤖</span>
-                            <div>
-                                <h4 class="text-xs font-extrabold uppercase tracking-widest text-indigo-200">{{ $t('portfolio_neural_verdict_label', 'Neural Classifier Verdict') }}</h4>
-                                <p class="text-sm font-semibold mt-2 leading-relaxed text-indigo-50">
-                                    {{ profileBio }}
-                                </p>
-                            </div>
                         </div>
                     </div>
 
