@@ -115,6 +115,9 @@ const chartOptions = computed(() => ({
     },
     scales: {
         r: {
+            min: 0,
+            max: 100,
+            beginAtZero: true,
             angleLines: {
                 color: isDark.value ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)'
             },
@@ -137,9 +140,6 @@ const chartOptions = computed(() => ({
                     family: 'Plus Jakarta Sans',
                     size: 9
                 },
-                beginAtZero: true,
-                min: 0,
-                max: 100,
                 stepSize: 20,
                 display: false
             }
