@@ -231,8 +231,7 @@ const careerReadinessResult = computed(() => {
         alignedArchetypeKey = 'DevOps Engineer';
     } else {
         // Generic fallback keyword set derived from target words
-        const words = targetLower.split(/\s+/).filter(w => w.length > 2);
-        requiredKeywords = [...new Set([...words, 'python', 'git', 'database', 'api', 'software', 'development'])];
+        requiredKeywords = [...new Set([targetLower, 'python', 'git', 'database', 'api', 'software', 'development'])];
         alignedCompetencyKeys = ['Software Engineering', 'Python Programming'];
         
         const archetypes = props.competency?.archetypes || {};
@@ -443,7 +442,7 @@ const countItems = (data) => {
                     <div class="hidden lg:block w-px self-stretch bg-gradient-to-b from-transparent via-slate-200 dark:via-slate-800 to-transparent mx-2"></div>
 
                     <!-- Right: Key stats row -->
-                    <div class="flex flex-wrap gap-4 lg:gap-6 items-start flex-1">
+                    <div class="grid grid-cols-2 md:flex md:flex-wrap gap-4 lg:gap-6 items-start flex-1">
 
                         <!-- Stat: Verified Cards -->
                         <div class="flex flex-col gap-1">
@@ -490,7 +489,7 @@ const countItems = (data) => {
                         </div>
 
                         <!-- Badge: Security audit -->
-                        <div class="ml-auto self-start">
+                        <div class="col-span-2 md:col-span-1 md:ml-auto self-start">
                             <span class="px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40 text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5">
                                 <Award class="h-3.5 w-3.5" />
                                 SKLEARN-SECURE-AUTO

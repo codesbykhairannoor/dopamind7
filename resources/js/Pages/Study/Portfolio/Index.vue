@@ -85,62 +85,61 @@ const closeUploadModal = () => {
             <div class="absolute top-[20%] -right-[10%] w-[40%] h-[40%] bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-[120px] animate-pulse" style="animation-delay: 2s"></div>
         </div>
         
-        <!-- Header -->
-        <header class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-2xl border-b border-slate-200/50 dark:border-slate-800/50 px-6 py-5 flex items-center justify-between sticky top-0 z-50">
-            <div class="flex items-center gap-5">
-                <Link :href="route('study.index')" class="group p-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl transition-all text-slate-500 active:scale-90 border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+        <header class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-2xl border-b border-slate-200/50 dark:border-slate-800/50 px-4 md:px-6 py-4 md:py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 sticky top-0 z-50">
+            <div class="flex items-center gap-4 w-full md:w-auto">
+                <Link :href="route('study.index')" class="group p-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl transition-all text-slate-500 active:scale-90 border border-transparent hover:border-slate-200 dark:hover:border-slate-700 shrink-0">
                     <ArrowLeft class="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
                 </Link>
-                <div>
-                    <h1 class="text-2xl font-black text-slate-900 dark:text-white leading-none mb-1.5 tracking-tight">{{ $t('study_neural_portfolio_title', 'Neural Portfolio') }}</h1>
+                <div class="flex-1">
+                    <h1 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white leading-none mb-1 tracking-tight">{{ $t('study_neural_portfolio_title', 'Neural Portfolio') }}</h1>
                     <div class="flex items-center gap-2">
-                        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <p class="text-[10px] font-black text-indigo-500 tracking-[0.25em]">{{ $t('study_portfolio_subtitle', 'Ai Competency Showcase') }}</p>
+                        <span class="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <p class="text-[9px] md:text-[10px] font-black text-indigo-500 tracking-[0.2em] md:tracking-[0.25em]">{{ $t('study_portfolio_subtitle', 'Ai Competency Showcase') }}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 custom-scrollbar">
                 <button @click="refreshData" :disabled="isRefreshing" 
-                    class="flex items-center gap-2.5 px-5 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-2xl font-black text-[11px] tracking-wider transition-all active:scale-95 disabled:opacity-50 border border-slate-200/50 dark:border-slate-700/50 shadow-sm group">
-                    <RefreshCw class="h-4 w-4" :class="{'animate-spin text-indigo-500': isRefreshing || hasPendingFiles, 'group-hover:rotate-180 transition-transform duration-500': !isRefreshing && !hasPendingFiles}" />
-                    <span class="hidden md:inline">{{ hasPendingFiles ? $t('study_analyzing') : $t('study_refresh_data') }}</span>
+                    class="flex items-center gap-2 px-4 md:px-5 py-2.5 md:py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-2xl font-black text-[10px] md:text-[11px] tracking-wider transition-all active:scale-95 disabled:opacity-50 border border-slate-200/50 dark:border-slate-700/50 shadow-sm group whitespace-nowrap">
+                    <RefreshCw class="h-4 w-4 shrink-0" :class="{'animate-spin text-indigo-500': isRefreshing || hasPendingFiles, 'group-hover:rotate-180 transition-transform duration-500': !isRefreshing && !hasPendingFiles}" />
+                    <span>{{ hasPendingFiles ? $t('study_analyzing') : $t('study_refresh_data') }}</span>
                 </button>
 
                 <button @click="openUploadModal"
-                    class="flex items-center gap-2.5 px-7 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-[11px] tracking-wider transition-all active:scale-95 shadow-xl shadow-indigo-600/20 hover:shadow-indigo-600/30 border border-indigo-500/50">
-                    <Plus class="h-4 w-4" />
+                    class="flex items-center gap-2 px-5 md:px-7 py-2.5 md:py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-[10px] md:text-[11px] tracking-wider transition-all active:scale-95 shadow-xl shadow-indigo-600/20 hover:shadow-indigo-600/30 border border-indigo-500/50 whitespace-nowrap">
+                    <Plus class="h-4 w-4 shrink-0" />
                     <span>{{ $t('study_new_analysis', 'Input Card') }}</span>
                 </button>
             </div>
         </header>
 
-        <main class="max-w-[1400px] mx-auto px-6 py-12 relative z-10">
+        <main class="max-w-[1400px] mx-auto px-4 md:px-6 py-8 md:py-12 relative z-10">
             
-            <!-- URL Identity Banner (Redesigned: "Neural Passport") -->
-            <div class="mb-12 p-1 bg-white dark:bg-slate-900 rounded-[3.5rem] shadow-2xl shadow-indigo-500/5 border border-slate-200/50 dark:border-slate-800/50 overflow-hidden group">
-                <div class="p-8 md:p-10 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 rounded-[3.25rem] flex flex-col md:flex-row items-center justify-between gap-10">
-                    <div class="flex items-center gap-8">
-                        <div class="relative">
-                            <div class="h-20 w-20 rounded-[2rem] bg-indigo-600 flex items-center justify-center text-white shadow-2xl shadow-indigo-600/30 rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                                <ShieldCheck class="h-10 w-10" />
+            <!-- URL Identity Banner -->
+            <div class="mb-8 md:mb-12 p-1 bg-white dark:bg-slate-900 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl shadow-indigo-500/5 border border-slate-200/50 dark:border-slate-800/50 overflow-hidden group">
+                <div class="p-6 md:p-10 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 rounded-[2.25rem] md:rounded-[3.25rem] flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                    <div class="flex items-start md:items-center gap-4 md:gap-8">
+                        <div class="relative shrink-0 mt-2 md:mt-0">
+                            <div class="h-16 w-16 md:h-20 md:w-20 rounded-2xl md:rounded-[2rem] bg-indigo-600 flex items-center justify-center text-white shadow-2xl shadow-indigo-600/30 rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                                <ShieldCheck class="h-8 w-8 md:h-10 md:w-10" />
                             </div>
-                            <div class="absolute -bottom-2 -right-2 h-8 w-8 rounded-full bg-emerald-500 border-4 border-white dark:border-slate-900 flex items-center justify-center text-white">
-                                <CheckCircle2 class="h-4 w-4" />
+                            <div class="absolute -bottom-2 -right-2 h-6 w-6 md:h-8 md:w-8 rounded-full bg-emerald-500 border-4 border-white dark:border-slate-900 flex items-center justify-center text-white">
+                                <CheckCircle2 class="h-3 w-3 md:h-4 md:w-4" />
                             </div>
                         </div>
                         <div>
-                            <h3 class="text-3xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">{{ $t('study_public_url') }}</h3>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm font-semibold max-w-md">{{ $t('study_portfolio_url_desc') }}</p>
+                            <h3 class="text-xl md:text-3xl font-black text-slate-900 dark:text-white mb-1.5 tracking-tight">{{ $t('study_public_url') }}</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-xs md:text-sm font-semibold max-w-md leading-relaxed">{{ $t('study_portfolio_url_desc') }}</p>
                         </div>
                     </div>
 
-                    <div class="w-full md:w-auto min-w-[320px]">
-                        <div v-if="!props.user.username || isEditingUsername" class="bg-slate-100 dark:bg-slate-800/50 p-2 rounded-[2rem] border border-slate-200 dark:border-slate-700/50">
-                            <form @submit.prevent="updateUsername" class="flex items-center gap-2">
+                    <div class="w-full lg:w-auto lg:min-w-[320px]">
+                        <div v-if="!props.user.username || isEditingUsername" class="bg-slate-100 dark:bg-slate-800/50 p-2 rounded-3xl md:rounded-[2rem] border border-slate-200 dark:border-slate-700/50">
+                            <form @submit.prevent="updateUsername" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                                 <input v-model="usernameForm.username" type="text" :placeholder="$t('study_username_placeholder')" required
-                                    class="bg-transparent border-none rounded-2xl text-sm font-bold text-slate-800 dark:text-white placeholder-slate-400 focus:ring-0 w-full px-6" />
-                                <div class="flex items-center gap-2">
+                                    class="bg-white dark:bg-slate-900 sm:bg-transparent sm:dark:bg-transparent border border-slate-200 dark:border-slate-700 sm:border-none rounded-2xl text-sm font-bold text-slate-800 dark:text-white placeholder-slate-400 focus:ring-1 focus:ring-indigo-500 sm:focus:ring-0 w-full px-5 py-3 sm:py-0" />
+                                <div class="flex items-center gap-2 w-full sm:w-auto shrink-0">
                                     <button v-if="props.user.username" type="button" @click="isEditingUsername = false" class="px-5 py-3 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-2xl font-black text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 text-[11px] tracking-widest transition-all">
                                         {{ $t('btn_cancel', 'Cancel') }}
                                     </button>
