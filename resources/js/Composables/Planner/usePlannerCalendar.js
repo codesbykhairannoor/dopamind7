@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { router, usePage } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 
@@ -7,6 +7,17 @@ import 'dayjs/locale/id';
 import 'dayjs/locale/en';
 
 export function usePlannerCalendar(initialDate) {
+    onMounted(() => {
+        const current = dayjs(initialDate);
+        const prevDay = current.subtract(1, 'day').format('YYYY-MM-DD');
+        const nextDay = current.add(1, 'day').format('YYYY-MM-DD');
+        
+        if (typeof router.prefetch === 'function') {
+            router.prefetch(route('planner.index'), { method: 'get', data: { date: prevDay } }, { cacheFor: '1m' });
+            router.prefetch(route('planner.index'), { method: 'get', data: { date: nextDay } }, { cacheFor: '1m' });
+        }
+    });
+
     const page = usePage();
     const currentDate = ref(initialDate);
 

@@ -1,5 +1,5 @@
 import { router, usePage } from '@inertiajs/vue3';
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
@@ -8,6 +8,17 @@ import localeData from 'dayjs/plugin/localeData';
 dayjs.extend(localeData);
 
 export function useHabitDates(props) {
+    onMounted(() => {
+        const current = props.monthQuery ? dayjs(props.monthQuery) : dayjs();
+        const prevMonth = current.subtract(1, 'month').format('YYYY-MM');
+        const nextMonth = current.add(1, 'month').format('YYYY-MM');
+        
+        if (typeof router.prefetch === 'function') {
+            router.prefetch(route('habits.index'), { method: 'get', data: { month: prevMonth } }, { cacheFor: '1m' });
+            router.prefetch(route('habits.index'), { method: 'get', data: { month: nextMonth } }, { cacheFor: '1m' });
+        }
+    });
+
     const todayDate = computed(() => {
         const activeLang = usePage().props.locale || 'id';
         return dayjs().locale(activeLang).format('dddd, D MMMM YYYY');

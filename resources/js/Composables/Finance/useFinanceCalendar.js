@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { router } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
@@ -8,6 +8,17 @@ import 'dayjs/locale/id';
 import 'dayjs/locale/en';
 
 export function useFinanceCalendar(initialDate) {
+    onMounted(() => {
+        const current = dayjs(initialDate);
+        const prevMonth = current.subtract(1, 'month').format('YYYY-MM-DD');
+        const nextMonth = current.add(1, 'month').format('YYYY-MM-DD');
+        
+        if (typeof router.prefetch === 'function') {
+            router.prefetch(route('finance.index'), { method: 'get', data: { date: prevMonth } }, { cacheFor: '1m' });
+            router.prefetch(route('finance.index'), { method: 'get', data: { date: nextMonth } }, { cacheFor: '1m' });
+        }
+    });
+
     // Destructure activeLocale dari format
     const { activeLocale } = useFinanceFormat();
 
