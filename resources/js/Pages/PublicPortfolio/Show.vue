@@ -359,6 +359,9 @@ const profileBio = computed(() => {
             const f = data.field.charAt(0).toUpperCase() + data.field.slice(1);
             return `Verified student expertise in ${f} based on ${data.count || 1} academic artifact(s) audited through the IPoW protocol.`;
         }
+        if (data && data.summary) {
+            return data.summary;
+        }
         // Fallback for old flat string verdicts
         return typeof verdict === 'string' ? verdict : JSON.stringify(verdict);
     }
