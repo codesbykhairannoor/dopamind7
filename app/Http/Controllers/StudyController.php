@@ -881,10 +881,20 @@ class StudyController extends Controller
         arsort($topField);
         $primaryField = array_key_first($topField);
 
+        $latestMaterial = $materials->sortByDesc('created_at')->first();
+        $latestVerdict = $latestMaterial->metadata['verdict'] ?? null;
+        if (!$latestVerdict) {
+            $latestVerdict = [
+                'summary' => "Verified student expertise in " . $primaryField . " based on " . $count . " academic artifact(s) audited through IPoW protocol.",
+                'strengths' => [],
+                'improvements' => []
+            ];
+        }
+
         $competency = StudyCompetency::firstOrNew(['user_id' => $userId]);
         $competency->competencies = array_slice($aggCompetencies, 0, 6, true);
         $competency->archetypes = array_slice($aggArchetypes, 0, 3, true);
-        $competency->verdict = "Verified student expertise in " . $primaryField . " based on " . $count . " academic artifact(s) audited through IPoW protocol.";
+        $competency->verdict = is_array($latestVerdict) ? json_encode($latestVerdict) : $latestVerdict;
         $competency->save();
     }
 
