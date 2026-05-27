@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import { Link } from "@inertiajs/vue3";
 import OneForMindIcon from "@/Components/OneForMindIcon.vue";
 import { useGating } from "@/Composables/useGating";
@@ -265,7 +265,7 @@ const goCoach = () => {
                 <Link
                     
                     v-if="showModule('journal')"
-                    :href="route('study.index')"
+                    :href="route('journal.index')"
                     prefetch="hover"
                     view-transition
                     class="nav-item group"
@@ -307,7 +307,7 @@ const goCoach = () => {
                 <Link
                     
                     v-if="showModule('calendar')"
-                    :href="route('study.index')"
+                    :href="route('calendar.index')"
                     prefetch="hover"
                     view-transition
                     class="nav-item group"
@@ -349,7 +349,7 @@ const goCoach = () => {
                 <Link
                     
                     v-if="showModule('job')"
-                    :href="route('study.index')"
+                    :href="route('jobs.index')"
                     prefetch="hover"
                     view-transition
                     class="nav-item group"
@@ -391,7 +391,7 @@ const goCoach = () => {
                 <Link
                     
                     v-if="showModule('goal')"
-                    :href="route('study.index')"
+                    :href="route('goals.index')"
                     prefetch="hover"
                     view-transition
                     class="nav-item group"
