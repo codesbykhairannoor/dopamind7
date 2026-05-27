@@ -3938,6 +3938,11 @@ const portfolio_open_external_demo$1 = "Open Demo / Codebase Link";
 const portfolio_reader_context_type$1 = "Course syllabus context";
 const portfolio_reader_artifact_type$1 = "Coursework task report";
 const portfolio_close_viewer$1 = "Close Viewer";
+const portfolio_ready_label$1 = "Career Ready";
+const portfolio_career_readiness_desc$1 = "Your coursework matches";
+const portfolio_career_readiness_of$1 = "of requirements for a role in";
+const portfolio_career_readiness_align$1 = "aligning with the dynamically predicted";
+const portfolio_career_readiness_archetype$1 = "archetype.";
 const press_kit_title$1 = "Press Kit";
 const press_kit_subtitle$1 = "Official assets and brand guidelines for OneForMind.";
 const press_kit_bio_title$1 = "About OneForMind";
@@ -9629,6 +9634,11 @@ const en = {
   portfolio_reader_context_type: portfolio_reader_context_type$1,
   portfolio_reader_artifact_type: portfolio_reader_artifact_type$1,
   portfolio_close_viewer: portfolio_close_viewer$1,
+  portfolio_ready_label: portfolio_ready_label$1,
+  portfolio_career_readiness_desc: portfolio_career_readiness_desc$1,
+  portfolio_career_readiness_of: portfolio_career_readiness_of$1,
+  portfolio_career_readiness_align: portfolio_career_readiness_align$1,
+  portfolio_career_readiness_archetype: portfolio_career_readiness_archetype$1,
   press_kit_title: press_kit_title$1,
   press_kit_subtitle: press_kit_subtitle$1,
   press_kit_bio_title: press_kit_bio_title$1,
@@ -15192,6 +15202,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   portfolio_card_skill_tags_label: portfolio_card_skill_tags_label$1,
   portfolio_card_type_artifact: portfolio_card_type_artifact$1,
   portfolio_card_type_context: portfolio_card_type_context$1,
+  portfolio_career_readiness_align: portfolio_career_readiness_align$1,
+  portfolio_career_readiness_archetype: portfolio_career_readiness_archetype$1,
+  portfolio_career_readiness_desc: portfolio_career_readiness_desc$1,
+  portfolio_career_readiness_of: portfolio_career_readiness_of$1,
   portfolio_close_viewer: portfolio_close_viewer$1,
   portfolio_competency_subtitle: portfolio_competency_subtitle$1,
   portfolio_content_hidden_desc: portfolio_content_hidden_desc$1,
@@ -15210,6 +15224,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   portfolio_open_external_demo: portfolio_open_external_demo$1,
   portfolio_reader_artifact_type: portfolio_reader_artifact_type$1,
   portfolio_reader_context_type: portfolio_reader_context_type$1,
+  portfolio_ready_label: portfolio_ready_label$1,
   portfolio_recommended_skills_label: portfolio_recommended_skills_label$1,
   portfolio_security_audit_label: portfolio_security_audit_label$1,
   portfolio_stat_confidence: portfolio_stat_confidence$1,
@@ -21003,6 +21018,11 @@ const portfolio_open_external_demo = "Buka Tautan Demo / Kodebase";
 const portfolio_reader_context_type = "Konteks silabus mata kuliah";
 const portfolio_reader_artifact_type = "Laporan tugas mata kuliah";
 const portfolio_close_viewer = "Tutup Tampilan";
+const portfolio_ready_label = "Siap Karir";
+const portfolio_career_readiness_desc = "Rekam jejak akademik Anda memiliki kecocokan";
+const portfolio_career_readiness_of = "terhadap kualifikasi";
+const portfolio_career_readiness_align = "sejalan dengan prediksi arketipe";
+const portfolio_career_readiness_archetype = "secara dinamis.";
 const press_kit_title = "Press Kit";
 const press_kit_subtitle = "Aset resmi dan panduan brand untuk OneForMind.";
 const press_kit_bio_title = "Tentang OneForMind";
@@ -26682,6 +26702,11 @@ const id = {
   portfolio_reader_context_type,
   portfolio_reader_artifact_type,
   portfolio_close_viewer,
+  portfolio_ready_label,
+  portfolio_career_readiness_desc,
+  portfolio_career_readiness_of,
+  portfolio_career_readiness_align,
+  portfolio_career_readiness_archetype,
   press_kit_title,
   press_kit_subtitle,
   press_kit_bio_title,
@@ -32264,6 +32289,10 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   portfolio_card_skill_tags_label,
   portfolio_card_type_artifact,
   portfolio_card_type_context,
+  portfolio_career_readiness_align,
+  portfolio_career_readiness_archetype,
+  portfolio_career_readiness_desc,
+  portfolio_career_readiness_of,
   portfolio_close_viewer,
   portfolio_competency_subtitle,
   portfolio_content_hidden_desc,
@@ -32282,6 +32311,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   portfolio_open_external_demo,
   portfolio_reader_artifact_type,
   portfolio_reader_context_type,
+  portfolio_ready_label,
   portfolio_recommended_skills_label,
   portfolio_security_audit_label,
   portfolio_stat_confidence,

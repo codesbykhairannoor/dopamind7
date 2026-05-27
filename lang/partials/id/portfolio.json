@@ -52,5 +52,10 @@
   "portfolio_open_external_demo": "Buka Tautan Demo / Kodebase",
   "portfolio_reader_context_type": "Konteks silabus mata kuliah",
   "portfolio_reader_artifact_type": "Laporan tugas mata kuliah",
-  "portfolio_close_viewer": "Tutup Tampilan"
+  "portfolio_close_viewer": "Tutup Tampilan",
+  "portfolio_ready_label": "Siap Karir",
+  "portfolio_career_readiness_desc": "Rekam jejak akademik Anda memiliki kecocokan",
+  "portfolio_career_readiness_of": "terhadap kualifikasi",
+  "portfolio_career_readiness_align": "sejalan dengan prediksi arketipe",
+  "portfolio_career_readiness_archetype": "secara dinamis."
 }

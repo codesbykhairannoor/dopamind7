@@ -52,5 +52,10 @@
   "portfolio_open_external_demo": "Open Demo / Codebase Link",
   "portfolio_reader_context_type": "Course syllabus context",
   "portfolio_reader_artifact_type": "Coursework task report",
-  "portfolio_close_viewer": "Close Viewer"
+  "portfolio_close_viewer": "Close Viewer",
+  "portfolio_ready_label": "Career Ready",
+  "portfolio_career_readiness_desc": "Your coursework matches",
+  "portfolio_career_readiness_of": "of requirements for a role in",
+  "portfolio_career_readiness_align": "aligning with the dynamically predicted",
+  "portfolio_career_readiness_archetype": "archetype."
 }
