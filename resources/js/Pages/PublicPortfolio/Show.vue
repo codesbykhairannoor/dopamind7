@@ -356,11 +356,16 @@ const profileBio = computed(() => {
             try { data = JSON.parse(verdict); } catch (e) {}
         }
 
+        if (data && data.summary) {
+            return data.summary;
+        }
+
         if (data && data.field) {
             const f = data.field.charAt(0).toUpperCase() + data.field.slice(1);
             return `Verified student expertise in ${f} based on ${data.count || 1} academic artifact(s) audited through the IPoW protocol.`;
         }
-        return verdict;
+        // Fallback for old flat string verdicts
+        return typeof verdict === 'string' ? verdict : JSON.stringify(verdict);
     }
 
     if (count === 0) {
@@ -372,6 +377,16 @@ const profileBio = computed(() => {
     if (kwSlice) bio += ` Key technical skills include: ${kwSlice}.`;
     return bio;
 });
+
+// Helper for UI counting
+const countItems = (data) => {
+    if (!data) return 0;
+    let count = 0;
+    if (data.files && Array.isArray(data.files)) count += data.files.length;
+    if (data.link) count += 1;
+    if (data.text) count += 1;
+    return count;
+};
 </script>
 
 <template>
@@ -717,12 +732,8 @@ const profileBio = computed(() => {
                         <div>
                             <!-- Badge Header -->
                             <div class="flex items-center gap-2 mb-2">
-                                <span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider"
-                                    :class="material.type === 'context' 
-                                        ? 'bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 border border-blue-100/50 dark:border-blue-900/40' 
-                                        : 'bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-100/50 dark:border-emerald-900/40'"
-                                >
-                                    {{ material.type === 'context' ? $t('portfolio_material_type_context', 'Context') : $t('portfolio_material_type_artifact', 'Artifact') }}
+                                <span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-900/40">
+                                    {{ $t('portfolio_material_type_verified', 'Verified Material') }}
                                 </span>
 
                                 <span v-if="material.week" class="text-[10px] text-slate-400 dark:text-slate-500 font-semibold flex items-center gap-1">
@@ -730,8 +741,8 @@ const profileBio = computed(() => {
                                     {{ material.week }}
                                 </span>
 
-                                <span v-if="material.grade !== null" class="px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 text-[9px] font-bold">
-                                    Grade: {{ material.grade }}
+                                <span v-if="material.grade !== null" class="px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-100/50 dark:border-emerald-900/40 text-[9px] font-bold flex items-center gap-1">
+                                    <Award class="h-3 w-3" /> Grade: {{ material.grade }}
                                 </span>
                             </div>
 
@@ -739,20 +750,16 @@ const profileBio = computed(() => {
                                 {{ material.course_name }}
                             </h3>
                             
-                            <p class="text-xs text-slate-400 dark:text-slate-500 mt-1 flex items-center gap-1.5">
-                                <template v-if="material.embed_url">
-                                    <Link2 class="h-3.5 w-3.5 text-indigo-500 shrink-0" />
-                                    <span class="truncate block max-w-[200px] sm:max-w-[280px] underline hover:text-indigo-600 dark:hover:text-indigo-400">{{ material.embed_url }}</span>
-                                </template>
-                                <template v-else-if="material.rich_text">
-                                    <BookOpen class="h-3.5 w-3.5 text-purple-500 shrink-0" />
-                                    <span class="truncate block max-w-[200px] sm:max-w-[280px] italic">"{{ material.rich_text.substring(0, 60) }}..."</span>
-                                </template>
-                                <template v-else>
-                                    <FileText class="h-3.5 w-3.5 text-blue-500 shrink-0" />
-                                    <span class="truncate block max-w-[200px] sm:max-w-[280px]">{{ material.file_name }}</span>
-                                </template>
-                            </p>
+                            <div class="mt-2 flex flex-wrap items-center gap-3 text-[10px] font-bold text-slate-500 dark:text-slate-400">
+                                <span class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+                                    <FileText class="h-3 w-3 text-blue-500" />
+                                    Context: {{ countItems(material.context_data) }} item(s)
+                                </span>
+                                <span class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+                                    <Link2 class="h-3 w-3 text-emerald-500" />
+                                    Artifact: {{ countItems(material.artifact_data) }} item(s)
+                                </span>
+                            </div>
                         </div>
 
                         <!-- Keywords tags -->

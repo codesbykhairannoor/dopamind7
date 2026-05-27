@@ -134,13 +134,13 @@ def predict_archetypes(text, model_dir=".", email=None):
                     if email == "khairking6@gmail.com":
                         print(f"\n[PHASE 6] ALGORITHMIC VERDICT & THRESHOLD CHECK", flush=True)
                         print(f" -> Analyzing top raw confidence score: {max_raw:.4f}%", flush=True)
-                        print(f" -> Evaluating against dynamic strict threshold constraint (Current: >= 5.0%)...", flush=True)
+                        print(f" -> Evaluating against dynamic strict threshold constraint (Current: >= 15.0%)...", flush=True)
                         
-                    # PELINDUNG: If the model is extremely uncertain (e.g. max probability < 5%),
+                    # PELINDUNG: If the model is extremely uncertain (e.g. max probability < 15.0%),
                     # we trigger an error so the backend falls back to Gemini API.
-                    if max_raw < 5.0:
+                    if max_raw < 15.0:
                         if email == "khairking6@gmail.com":
-                            print(f" -> [FAIL] Confidence {max_raw:.4f}% fails to meet 5.0% threshold constraint.", flush=True)
+                            print(f" -> [FAIL] Confidence {max_raw:.4f}% fails to meet 15.0% threshold constraint.", flush=True)
                             print(f" -> Context ambiguity detected. Rejecting Scikit-Learn hypothesis.", flush=True)
                             print(f" -> [ROUTING] Handing over data payload to Secondary Engine: Google Gemini API (LLM Fallback)...", flush=True)
                         return {"error": "Low confidence. Triggering Gemini Fallback."}
@@ -156,7 +156,7 @@ def predict_archetypes(text, model_dir=".", email=None):
                         penalty = 0
                         for k, v in sorted_archetypes.items():
                             scaled_v = (v * scale_factor) * 0.9 + 5
-                            final_score = min(95, round(scaled_v) - penalty)
+                            final_score = max(0, min(95, round(scaled_v) - penalty))
                             archetypes_output[k] = final_score
                             penalty += 3 # Next archetype is at least 3% lower
                     else:

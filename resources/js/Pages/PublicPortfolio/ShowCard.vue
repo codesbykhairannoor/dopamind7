@@ -25,7 +25,9 @@ import {
     Award,
     Download,
     Link2,
-    ShieldAlert
+    ShieldAlert,
+    CheckCircle,
+    TrendingUp
 } from 'lucide-vue-next';
 import ThemeToggle from '@/Components/ThemeToggle.vue';
 
@@ -207,6 +209,15 @@ const showRadar = computed(() => {
 const showMaterials = computed(() => {
     return props.competency?.settings?.show_materials !== false;
 });
+
+const isVerdictObject = computed(() => {
+    return props.material.metadata?.verdict && typeof props.material.metadata.verdict === 'object';
+});
+
+const verdictSummary = computed(() => isVerdictObject.value ? props.material.metadata.verdict.summary : 'Summary unavailable.');
+const verdictStrengths = computed(() => isVerdictObject.value ? (props.material.metadata.verdict.strengths || []) : []);
+const verdictImprovements = computed(() => isVerdictObject.value ? (props.material.metadata.verdict.improvements || []) : []);
+const flatVerdict = computed(() => !isVerdictObject.value ? props.material.metadata?.verdict : null);
 </script>
 
 <template>
@@ -305,13 +316,48 @@ const showMaterials = computed(() => {
                     <div class="flex flex-col md:flex-row gap-6">
                         <!-- AI Verdict -->
                         <div v-if="props.material.metadata?.verdict" class="flex-1 bg-gradient-to-br from-indigo-50/80 to-purple-50/50 dark:from-slate-900/80 dark:to-indigo-950/30 backdrop-blur-md p-8 rounded-[2rem] border border-indigo-100/80 dark:border-indigo-900/40 shadow-lg flex flex-col justify-center">
-                            <h3 class="text-sm font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-4 flex items-center gap-2">
+                            <h3 class="text-sm font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-6 flex items-center gap-2">
                                 <Sparkles class="h-5 w-5" />
                                 AI Audit Insight
                             </h3>
-                            <p class="text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed italic">
-                                "{{ props.material.metadata.verdict }}"
-                            </p>
+                            
+                            <!-- Structured Verdict from new Pipeline -->
+                            <div v-if="isVerdictObject" class="space-y-6">
+                                <!-- Executive Summary -->
+                                <div>
+                                    <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Executive Summary</h4>
+                                    <p class="text-sm font-medium text-slate-800 dark:text-slate-200 leading-relaxed italic border-l-4 border-indigo-500 pl-4">
+                                        "{{ props.material.metadata.verdict.summary || 'Summary unavailable.' }}"
+                                    </p>
+                                </div>
+                                
+                                <!-- Strengths -->
+                                <div v-if="props.material.metadata.verdict.strengths && props.material.metadata.verdict.strengths.length > 0">
+                                    <h4 class="text-[10px] font-black uppercase tracking-widest text-emerald-500 mb-2 flex items-center gap-1.5"><CheckCircle class="h-3 w-3"/> Demonstrated Strengths</h4>
+                                    <ul class="space-y-2">
+                                        <li v-for="(strength, idx) in props.material.metadata.verdict.strengths" :key="idx" class="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300 font-medium">
+                                            <span class="text-emerald-500 mt-0.5">•</span> {{ strength }}
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Improvements -->
+                                <div v-if="props.material.metadata.verdict.improvements && props.material.metadata.verdict.improvements.length > 0">
+                                    <h4 class="text-[10px] font-black uppercase tracking-widest text-amber-500 mb-2 flex items-center gap-1.5"><TrendingUp class="h-3 w-3"/> Areas for Growth</h4>
+                                    <ul class="space-y-2">
+                                        <li v-for="(imp, idx) in props.material.metadata.verdict.improvements" :key="idx" class="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300 font-medium">
+                                            <span class="text-amber-500 mt-0.5">•</span> {{ imp }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- Fallback for legacy flat string verdicts -->
+                            <div v-else>
+                                <p class="text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed italic border-l-4 border-indigo-500 pl-4">
+                                    "{{ props.material.metadata.verdict }}"
+                                </p>
+                            </div>
                         </div>
 
                         <!-- Verified Competencies -->

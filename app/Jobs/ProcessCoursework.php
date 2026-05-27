@@ -116,6 +116,25 @@ class ProcessCoursework implements ShouldQueue
                 $aggregatedArtifactText .= $this->textData['artifact_text'] . "\n\n";
             }
 
+            $competency = StudyCompetency::where('user_id', $material->user_id)->first();
+            $targetCareerText = "";
+            if ($competency && !empty($competency->settings['career_target'])) {
+                $targetCareerText = "Student's ultimate career goal is to become a: " . $competency->settings['career_target'] . ". ";
+                $addLog("🎯 [DATA INJECTION] Adding Career Target to ML Context: " . $competency->settings['career_target']);
+            }
+            
+            $gradeText = "";
+            if ($material->grade !== null) {
+                $gradeText = "Student achieved a formal grade/score of {$material->grade} for this coursework. ";
+                $addLog("🎓 [DATA INJECTION] Adding Grade to ML Context: " . $material->grade);
+            }
+
+            $courseText = "This coursework/material is for the subject/course: {$material->course_name}. ";
+            $addLog("📚 [DATA INJECTION] Adding Course Name to ML Context: " . $material->course_name);
+
+            $enrichedPreamble = $courseText . "\n" . $targetCareerText . "\n" . $gradeText . "\n\n";
+            $aggregatedContextText = $enrichedPreamble . $aggregatedContextText;
+
             $material->context_data = $contextData;
             $material->artifact_data = $artifactData;
             $material->extracted_text = "--- CONTEXT ---\n" . substr($aggregatedContextText, 0, 20000) . "\n\n--- ARTIFACT ---\n" . substr($aggregatedArtifactText, 0, 20000);

@@ -382,7 +382,11 @@ class GeminiService
           \"field_of_study\": \"Field Name\",
           \"competencies\": {\"Competency 1\": 85, \"Competency 2\": 90},
           \"archetypes\": {\"Job Title 1\": 85, \"Job Title 2\": 80},
-          \"verdict\": \"The narrative verdict...\"
+          \"verdict\": {
+              \"summary\": \"The narrative executive summary verdict...\",
+              \"strengths\": [\"Demonstrated Strength 1\", \"Demonstrated Strength 2\"],
+              \"improvements\": [\"Area for growth 1\", \"Area for growth 2\"]
+          }
         }";
 
         $response = $this->generate($prompt);
@@ -391,7 +395,11 @@ class GeminiService
             'field_of_study' => 'General Studies',
             'competencies' => ['Analysis' => 50, 'Comprehension' => 50],
             'archetypes' => ['Student' => 50],
-            'verdict' => 'Unable to generate dynamic analysis. Defaulting to general metrics.'
+            'verdict' => [
+                'summary' => 'Unable to generate dynamic analysis. Defaulting to general metrics.',
+                'strengths' => [],
+                'improvements' => []
+            ]
         ];
 
         if (!$response) return $default;
