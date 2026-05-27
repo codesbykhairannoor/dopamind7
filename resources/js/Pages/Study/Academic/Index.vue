@@ -92,15 +92,19 @@ watch(() => userSettings.value.current_semester, (newVal) => {
     }
 });
 
+const manuallyAddedSemesters = ref(new Set());
+
 const availableSemesters = computed(() => {
-    const semsFromRecords = localAcademicStats.value.semesters.map(s => s.semester);
+    // Extract distinct semesters directly from reactive records array to ensure instant updates when courses are added
+    const semsFromRecords = localAcademicRecords.value.map(r => parseInt(r.semester));
     
-    // Union of semesters with records and the currently active/selected semester
-    const semsSet = new Set([...semsFromRecords, parseInt(selectedSemester.value), localCurrentSemester.value]);
-    
-    // If the user is on education_level "lainnya", we treat it as discrete terms
-    // but for others, we might still want the range 1..max for adding convenience.
-    // However, to fix the "delete" issue, we only show what exists + current.
+    // Union of semesters with records, currently active/selected semester, and manually added ones
+    const semsSet = new Set([
+        ...semsFromRecords, 
+        parseInt(selectedSemester.value), 
+        localCurrentSemester.value,
+        ...manuallyAddedSemesters.value
+    ]);
     
     return Array.from(semsSet).sort((a, b) => b - a);
 });
@@ -130,6 +134,7 @@ const submitNewSemester = (val) => {
     maxSemesterAdded.value = Math.max(maxSemesterAdded.value, parsedVal);
     localCurrentSemester.value = Math.max(localCurrentSemester.value, parsedVal);
     selectedSemester.value = parsedVal;
+    manuallyAddedSemesters.value.add(parsedVal);
     isAddSemesterModalOpen.value = false;
 
     // 2. Persist to backend (Academic Binder use settings for current_semester)
@@ -168,6 +173,7 @@ const deleteSpecificSemester = (sem) => {
             // 1. Optimistic UI update
             localAcademicRecords.value = localAcademicRecords.value.filter(r => r.semester !== parseInt(sem));
             localAcademicStats.value.semesters = localAcademicStats.value.semesters.filter(s => s.semester !== parseInt(sem));
+            manuallyAddedSemesters.value.delete(parseInt(sem));
             
             // Calculate new max semester from remaining data
             const remainingSems = localAcademicStats.value.semesters.map(s => s.semester);
