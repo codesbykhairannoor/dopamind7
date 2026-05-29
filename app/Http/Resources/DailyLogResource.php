@@ -11,6 +11,7 @@ class DailyLogResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'date' => $this->date ? $this->date->format('Y-m-d') : null,
             'notes' => (string) $this->notes,
             'water' => $this->water,       // 🔥 WAJIB ADA BIAR GAK HILANG PAS RELOAD
             'task_box' => $this->task_box,

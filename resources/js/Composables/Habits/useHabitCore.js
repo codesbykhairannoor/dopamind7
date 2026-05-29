@@ -10,19 +10,20 @@ export function useHabitCore(props) {
     // State Data (Optimistic UI)
     const localHabits = ref([]);
     
-    // Initialize with data if available, otherwise wait for prop change (Defer)
-    if (props.habits && props.habits.data) {
-        localHabits.value = JSON.parse(JSON.stringify(props.habits.data));
-    }
+    const getHabitsArray = (h) => {
+        if (Array.isArray(h)) return h;
+        if (h && typeof h === 'object' && Array.isArray(h.data)) return h.data;
+        return [];
+    };
+
+    localHabits.value = JSON.parse(JSON.stringify(getHabitsArray(props.habits)));
 
     watch(() => props.habits, (newVal) => {
-        if (newVal && newVal.data) {
-            localHabits.value = JSON.parse(JSON.stringify(newVal.data));
-            // Re-calc streaks on new data
-            localHabits.value.forEach(h => {
-                h.streak = calculateStreak(h);
-            });
-        }
+        localHabits.value = JSON.parse(JSON.stringify(getHabitsArray(newVal)));
+        // Re-calc streaks on new data
+        localHabits.value.forEach(h => {
+            h.streak = calculateStreak(h);
+        });
     }, { deep: true });
 
     const activeHabits = computed(() => {

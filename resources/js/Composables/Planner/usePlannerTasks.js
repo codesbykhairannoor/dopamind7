@@ -205,11 +205,11 @@ export function usePlannerTasks(props, activeDate) {
 
     const scheduledTasks = computed(() =>
         localTasks.value
-            .filter(t => t.start_time && t.date === activeDate.value) // 🔥 FIX: Filter by activeDate
+            .filter(t => t.start_time && t.date && t.date.startsWith(activeDate.value))
             .sort((a, b) => a.start_time.localeCompare(b.start_time))
     );
     const inboxTasks = computed(() =>
-        localTasks.value.filter(t => !t.start_time && t.date === activeDate.value) // 🔥 FIX: Filter by activeDate
+        localTasks.value.filter(t => !t.start_time && t.date && t.date.startsWith(activeDate.value))
     );
 
     const calculateStats = (tasks) => {

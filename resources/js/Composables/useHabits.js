@@ -14,8 +14,13 @@ export function useHabits(props) {
     });
 
     const habitProps = reactive({
-        ...props,
-        get monthQuery() { return currentMonthKey.value; }
+        get habits() { return props.habits; },
+        get currentMonth() { return props.currentMonth; },
+        get monthQuery() { return currentMonthKey.value; },
+        get hasPrevHabits() { return props.hasPrevHabits; },
+        get prevMonthQuery() { return props.prevMonthQuery; },
+        get savedMood() { return props.savedMood; },
+        get savedMoods() { return props.savedMoods; }
     });
 
     // 1. Ekstrak dari Core (Termasuk fungsi drag & select)

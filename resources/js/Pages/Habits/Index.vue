@@ -18,7 +18,8 @@ const props = defineProps({
     monthQuery: String, 
     hasPrevHabits: Boolean, 
     prevMonthQuery: String,
-    savedMood: String
+    savedMood: String,
+    savedMoods: Object
 });
 
 const neuralOs = ref(null);
@@ -42,7 +43,11 @@ const {
     showBatchModal, batchForm, openBatchModal, closeBatchModal, 
     addBatchRow, removeBatchRow, submitBatchHabit, switchToBatch, switchToSingle, handleMouseDown, handleMouseEnter, isCellSelected, 
     saveHabitOrder,
-    isExplorer, habitsCount
+    isExplorer, habitsCount,
+    
+    // Month / Year Picker
+    currentMonthKey,
+    currentMonthName
 } = useHabits(props);
 
 
