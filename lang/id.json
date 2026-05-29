@@ -3871,7 +3871,7 @@
     "portfolio_stat_extracted_by_ai": "diekstrak oleh AI",
     "portfolio_neural_summary_label": "Ringkasan Profil Neural",
     "portfolio_all_skill_tags_label": "Semua Tag Keahlian Terverifikasi dari Seluruh Mata Kuliah",
-    "portfolio_verified_competencies": "Kompetensi Terverifikasi",
+    "portfolio_verified_competencies": "Radar Kompetensi Terverifikasi",
     "portfolio_competency_subtitle": "Indeks kompetensi dipetakan secara dinamis dari berkas akademik asli",
     "portfolio_target_career_prefix": "Kecocokan Karir Target:",
     "portfolio_acquired_skills_label": "Keahlian yang Dimiliki Sesuai Target",
@@ -3906,7 +3906,7 @@
     "portfolio_card_reflective_header": "Konten Teks Reflektif",
     "portfolio_card_reflective_subtitle": "Dokumen Bukti Kerja Reflektif Mandiri",
     "portfolio_card_hidden_title": "Dokumen Mata Kuliah Disembunyikan",
-    "portfolio_card_hidden_desc": "Mahasiswa telah mengkonfigurasi pengaturan tampilan portofolio untuk menyembunyikan audit mata kuliah.",
+    "portfolio_card_hidden_desc": "Mahasiswa telah mengatur privasi portofolio untuk menyembunyikan audit tugas ini.",
     "portfolio_security_audit_label": "Status Audit Keamanan:",
     "portfolio_open_external_demo": "Buka Tautan Demo / Kodebase",
     "portfolio_reader_context_type": "Konteks silabus mata kuliah",
@@ -5744,5 +5744,11 @@
     "study_remove": "Hapus",
     "portfolio_material_type_artifact": "Artefak",
     "portfolio_evidence_vault_title": "Brankas Bukti Terverifikasi",
-    "portfolio_evidence_vault_subtitle": "Materi yang dapat diaudit dan diamankan melalui protokol IPoW"
+    "portfolio_evidence_vault_subtitle": "Materi yang dapat diaudit dan diamankan melalui protokol IPoW",
+    "portfolio_context_reference": "Referensi Konteks",
+    "portfolio_view_reference": "Lihat Tautan Referensi",
+    "portfolio_context_artifact": "Artefak Konteks",
+    "portfolio_external_artifact": "Artefak Eksternal",
+    "portfolio_view_deliverable": "Lihat Tautan Hasil",
+    "portfolio_verified_audit_pdf": "PDF Audit Terverifikasi"
 }

@@ -286,5 +286,15 @@
   "study_remove": "Remove",
   "portfolio_material_type_artifact": "Artifact",
   "portfolio_evidence_vault_title": "Verified Evidence Vault",
-  "portfolio_evidence_vault_subtitle": "Auditable materials secured via IPoW protocol"
+  "portfolio_evidence_vault_subtitle": "Auditable materials secured via IPoW protocol",
+  "portfolio_back_to_profile": "Back to Public Profile",
+  "portfolio_card_hidden_title": "Coursework Document Hidden",
+  "portfolio_card_hidden_desc": "The student has configured their portfolio display settings to hide coursework audits.",
+  "portfolio_verified_competencies": "Verified Competencies Radar",
+  "portfolio_context_reference": "Context Reference",
+  "portfolio_view_reference": "View Reference Link",
+  "portfolio_context_artifact": "Context Artifact",
+  "portfolio_external_artifact": "External Artifact",
+  "portfolio_view_deliverable": "View Deliverable Link",
+  "portfolio_verified_audit_pdf": "Verified Audit PDF"
 }

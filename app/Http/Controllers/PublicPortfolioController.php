@@ -150,8 +150,11 @@ class PublicPortfolioController extends Controller
         foreach ($materials as $m) {
             $ctx = is_string($m->context_data) ? json_decode($m->context_data, true) : ($m->context_data ?? []);
             $art = is_string($m->artifact_data) ? json_decode($m->artifact_data, true) : ($m->artifact_data ?? []);
-            foreach (array_merge((array)$ctx, (array)$art) as $item) {
-                if (isset($item['type']) && $item['type'] === 'file' && $item['path'] === $path) {
+            
+            $allFiles = array_merge($ctx['files'] ?? [], $art['files'] ?? []);
+            
+            foreach ($allFiles as $fileItem) {
+                if (isset($fileItem['path']) && $fileItem['path'] === $path) {
                     $found = true;
                     break 2;
                 }

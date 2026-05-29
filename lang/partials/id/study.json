@@ -286,5 +286,15 @@
   "study_remove": "Hapus",
   "portfolio_material_type_artifact": "Artefak",
   "portfolio_evidence_vault_title": "Brankas Bukti Terverifikasi",
-  "portfolio_evidence_vault_subtitle": "Materi yang dapat diaudit dan diamankan melalui protokol IPoW"
+  "portfolio_evidence_vault_subtitle": "Materi yang dapat diaudit dan diamankan melalui protokol IPoW",
+  "portfolio_back_to_profile": "Kembali ke Profil Publik",
+  "portfolio_card_hidden_title": "Dokumen Mata Kuliah Disembunyikan",
+  "portfolio_card_hidden_desc": "Mahasiswa telah mengatur privasi portofolio untuk menyembunyikan audit tugas ini.",
+  "portfolio_verified_competencies": "Radar Kompetensi Terverifikasi",
+  "portfolio_context_reference": "Referensi Konteks",
+  "portfolio_view_reference": "Lihat Tautan Referensi",
+  "portfolio_context_artifact": "Artefak Konteks",
+  "portfolio_external_artifact": "Artefak Eksternal",
+  "portfolio_view_deliverable": "Lihat Tautan Hasil",
+  "portfolio_verified_audit_pdf": "PDF Audit Terverifikasi"
 }

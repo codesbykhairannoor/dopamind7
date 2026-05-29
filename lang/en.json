@@ -3910,7 +3910,7 @@
     "portfolio_stat_extracted_by_ai": "extracted by AI",
     "portfolio_neural_summary_label": "Neural Profile Summary",
     "portfolio_all_skill_tags_label": "All Verified Skill Tags Across Coursework",
-    "portfolio_verified_competencies": "Verified Competencies",
+    "portfolio_verified_competencies": "Verified Competencies Radar",
     "portfolio_competency_subtitle": "Competency indices mapped dynamically from raw academic files",
     "portfolio_target_career_prefix": "Target Career Fit:",
     "portfolio_acquired_skills_label": "Acquired Skills Matching Goal",
@@ -5756,5 +5756,11 @@
     "study_remove": "Remove",
     "portfolio_material_type_artifact": "Artifact",
     "portfolio_evidence_vault_title": "Verified Evidence Vault",
-    "portfolio_evidence_vault_subtitle": "Auditable materials secured via IPoW protocol"
+    "portfolio_evidence_vault_subtitle": "Auditable materials secured via IPoW protocol",
+    "portfolio_context_reference": "Context Reference",
+    "portfolio_view_reference": "View Reference Link",
+    "portfolio_context_artifact": "Context Artifact",
+    "portfolio_external_artifact": "External Artifact",
+    "portfolio_view_deliverable": "View Deliverable Link",
+    "portfolio_verified_audit_pdf": "Verified Audit PDF"
 }
