@@ -118,7 +118,7 @@ const goCoach = () => {
             >
                 <Link
                     :href="route('dashboard')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -154,7 +154,7 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('habit')"
                     :href="route('habits.index')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -190,7 +190,7 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('planner')"
                     :href="route('planner.index')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -226,7 +226,7 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('finance')"
                     :href="route('finance.index')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -262,7 +262,7 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('study')"
                     :href="route('study.index')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -382,7 +382,7 @@ const goCoach = () => {
                     :is="canUse('journal') ? Link : 'button'"
                     v-if="showModule('journal')"
                     :href="canUse('journal') ? route('journal.index') : undefined"
-                    :prefetch="canUse('journal') ? 'hover' : undefined"
+                    :prefetch="canUse('journal') ? 'mount' : undefined"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -424,7 +424,7 @@ const goCoach = () => {
                     :is="canUse('calendar') ? Link : 'button'"
                     v-if="showModule('calendar')"
                     :href="canUse('calendar') ? route('calendar.index') : undefined"
-                    :prefetch="canUse('calendar') ? 'hover' : undefined"
+                    :prefetch="canUse('calendar') ? 'mount' : undefined"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -466,7 +466,7 @@ const goCoach = () => {
                     :is="canUse('job') ? Link : 'button'"
                     v-if="showModule('job')"
                     :href="canUse('job') ? route('jobs.index') : undefined"
-                    :prefetch="canUse('job') ? 'hover' : undefined"
+                    :prefetch="canUse('job') ? 'mount' : undefined"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -508,7 +508,7 @@ const goCoach = () => {
                     :is="canUse('goal') ? Link : 'button'"
                     v-if="showModule('goal')"
                     :href="canUse('goal') ? route('goals.index') : undefined"
-                    :prefetch="canUse('goal') ? 'hover' : undefined"
+                    :prefetch="canUse('goal') ? 'mount' : undefined"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -569,7 +569,7 @@ const goCoach = () => {
             <component
                 :is="canUse('ai_coach') ? Link : 'button'"
                 :href="canUse('ai_coach') ? route('coach.index') : undefined"
-                :prefetch="canUse('ai_coach') ? 'hover' : undefined"
+                :prefetch="canUse('ai_coach') ? 'mount' : undefined"
                 view-transition
                 class="nav-item group cursor-pointer relative overflow-hidden"
                 :class="[

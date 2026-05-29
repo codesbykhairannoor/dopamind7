@@ -338,9 +338,9 @@ class StudyController extends Controller
             'artifact_text' => $artifactData['text'] ?? null,
         ];
 
-        \App\Jobs\ProcessCoursework::dispatchSync($material->id, $filesData, $textData);
+        \App\Jobs\ProcessCoursework::dispatchAfterResponse($material->id, $filesData, $textData);
 
-        return response()->json(['success' => true, 'status' => $material->fresh()->status]);
+        return response()->json(['success' => true, 'status' => 'processing']);
     }
 
     public function storeAcademicRecord(Request $request)

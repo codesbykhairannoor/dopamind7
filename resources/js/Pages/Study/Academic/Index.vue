@@ -473,7 +473,7 @@ const deleteArchive = (id) => {
 
                 <div class="max-w-[1600px] w-full md:w-[95%] mx-auto px-4 sm:px-8 py-8">
                     <!-- Banner Portfolio -->
-                    <Link :href="route('study.portfolio')" class="group relative flex items-center justify-between px-6 py-4 bg-gradient-to-r from-slate-900 to-slate-800 overflow-hidden rounded-2xl border border-slate-800 transition-all hover:border-indigo-500/50 shadow-lg mb-8 hover:-translate-y-0.5">
+                    <Link :href="route('study.portfolio')" prefetch="mount" class="group relative flex items-center justify-between px-6 py-4 bg-gradient-to-r from-slate-900 to-slate-800 overflow-hidden rounded-2xl border border-slate-800 transition-all hover:border-indigo-500/50 shadow-lg mb-8 hover:-translate-y-0.5">
                         <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                         <div class="relative z-10 flex items-center gap-4">
                             <div class="h-10 w-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform border border-indigo-500/30">

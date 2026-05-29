@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { Head, router } from '@inertiajs/vue3';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import dayjs from 'dayjs';
@@ -18,6 +18,13 @@ const props = defineProps({
 
 const { isExplorer } = useGating();
 
+const localJournals = ref([...props.journals]);
+
+watch(() => props.journals, (newVal) => {
+    if (newVal) {
+        localJournals.value = [...newVal];
+    }
+}, { deep: true });
 
 const fireToast = (icon, message) => {
     Swal.fire({
@@ -50,9 +57,18 @@ const deleteJournal = (id) => {
         buttonsStyling: false
     }).then((result) => {
         if (result.isConfirmed) {
+            const originalJournals = [...localJournals.value];
+            localJournals.value = localJournals.value.filter(j => j.id !== id);
             fireToast('success', props.t?.('success_deleted') || 'Berhasil dihapus!');
+
             router.delete(route('journal.destroy', id), {
-                preserveScroll: true, preserveState: true, progress: false, 
+                preserveScroll: true,
+                preserveState: true,
+                progress: false,
+                onError: () => {
+                    localJournals.value = originalJournals;
+                    fireToast('error', 'Gagal menghapus jurnal!');
+                }
             });
         }
     });
@@ -82,7 +98,7 @@ const openPremiumPreview = () => router.visit(route('billing'));
                 <h3 class="text-xl font-black text-slate-800 dark:text-white transition-colors duration-500">{{ $t('journal_history', 'Story History') }}</h3>
             </div>
 
-            <div v-if="journals.length === 0" class="py-20 text-center bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-sm dark:shadow-none mt-4 transition-all duration-500">
+            <div v-if="localJournals.length === 0" class="py-20 text-center bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-sm dark:shadow-none mt-4 transition-all duration-500">
                 <div class="flex flex-col items-center gap-4">
                     <span class="text-5xl animate-bounce">📓</span>
                     <h4 class="text-lg font-black text-slate-800 dark:text-slate-100 transition-colors duration-500">{{ $t('journal_empty_title', 'Belum ada cerita.') }}</h4>
@@ -97,7 +113,7 @@ const openPremiumPreview = () => router.visit(route('billing'));
 
             <div v-else class="grid items-start grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                 <JournalCard 
-                    v-for="journal in journals" 
+                    v-for="journal in localJournals" 
                     :key="journal.id" 
                     :journal="journal"
                     :isExplorer="isExplorer"

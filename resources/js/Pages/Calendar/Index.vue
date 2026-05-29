@@ -83,12 +83,25 @@ const triggerDeleteEvent = (id) => {
     });
 };
 
-// Logic Ganti Bulan — hapus preserveState agar props benar-benar di-replace
+// Logic Ganti Bulan — preserveState dan reload hanya data yang dibutuhkan agar instan
 const changeMonth = (newMonthPayload) => {
     router.get(route('calendar.index'), { month: newMonthPayload }, { 
         preserveScroll: true,
+        preserveState: true,
+        only: ['currentMonth', 'data']
     });
 };
+
+// Prefetch adjacent months dynamically
+watch(() => props.currentMonth, (newMonth) => {
+    if (newMonth && typeof router.prefetch === 'function') {
+        const current = dayjs(newMonth + '-01');
+        const prevMonth = current.subtract(1, 'month').format('YYYY-MM');
+        const nextMonth = current.add(1, 'month').format('YYYY-MM');
+        router.prefetch(route('calendar.index'), { method: 'get', data: { month: prevMonth } }, { cacheFor: '1m' });
+        router.prefetch(route('calendar.index'), { method: 'get', data: { month: nextMonth } }, { cacheFor: '1m' });
+    }
+}, { immediate: true });
 </script>
 
 <template>

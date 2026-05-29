@@ -1,5 +1,5 @@
 import { router, usePage } from '@inertiajs/vue3';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watch } from 'vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
@@ -8,16 +8,16 @@ import localeData from 'dayjs/plugin/localeData';
 dayjs.extend(localeData);
 
 export function useHabitDates(props) {
-    onMounted(() => {
-        const current = props.monthQuery ? dayjs(props.monthQuery) : dayjs();
-        const prevMonth = current.subtract(1, 'month').format('YYYY-MM');
-        const nextMonth = current.add(1, 'month').format('YYYY-MM');
-        
+    watch(() => props.monthQuery, (newMonth) => {
         if (typeof router.prefetch === 'function') {
+            const current = newMonth ? dayjs(newMonth) : dayjs();
+            const prevMonth = current.subtract(1, 'month').format('YYYY-MM');
+            const nextMonth = current.add(1, 'month').format('YYYY-MM');
+            
             router.prefetch(route('habits.index'), { method: 'get', data: { month: prevMonth } }, { cacheFor: '1m' });
             router.prefetch(route('habits.index'), { method: 'get', data: { month: nextMonth } }, { cacheFor: '1m' });
         }
-    });
+    }, { immediate: true });
 
     const todayDate = computed(() => {
         const activeLang = usePage().props.locale || 'id';
@@ -64,7 +64,8 @@ export function useHabitDates(props) {
         }, {
             preserveState: true,
             preserveScroll: true,
-            replace: true
+            replace: true,
+            only: ['habits', 'currentMonth', 'monthQuery', 'hasPrevHabits', 'prevMonthQuery', 'savedMood']
         });
     };
 
