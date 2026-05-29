@@ -27,6 +27,7 @@ class HabitResource extends JsonResource
             'color' => (string) $this->color,
             'monthly_target' => (int) $this->monthly_target,
             'position' => (int) $this->position, // 🔥 FIX: Wajib disertakan agar drag-drop tidak tereset!
+            'period' => (string) $this->period,
 
             // Statistik
             'progress_count' => (int) $completedCount,

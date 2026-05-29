@@ -12,7 +12,10 @@ export function useHabitCore(props, currentMonthKey) {
     
     const getHabitsArray = (h) => {
         if (Array.isArray(h)) return h;
-        if (h && typeof h === 'object' && Array.isArray(h.data)) return h.data;
+        if (h && typeof h === 'object') {
+            if (Array.isArray(h.data)) return h.data;
+            return Object.values(h);
+        }
         return [];
     };
 

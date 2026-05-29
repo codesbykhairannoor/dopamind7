@@ -26,7 +26,13 @@ export function usePlanner(props, activeDate) {
     };
 
     const findDailyLogForDate = (dateStr) => {
-        const logs = props.dailyLogs?.data || props.dailyLogs || [];
+        let logs = props.dailyLogs?.data || props.dailyLogs || [];
+        if (logs && typeof logs === 'object' && !Array.isArray(logs)) {
+            logs = Object.values(logs);
+        }
+        if (!Array.isArray(logs)) {
+            logs = [];
+        }
         const found = logs.find(log => {
             const logDate = log.date || (log.data && log.data.date);
             return logDate && logDate.startsWith(dateStr);
