@@ -29,9 +29,16 @@ watch(() => props.data, (newVal) => {
     localData.value = Array.isArray(newVal) ? [...newVal] : JSON.parse(JSON.stringify(newVal || {}));
 }, { deep: true });
 
+const currentMonthKey = ref(props.currentMonth || dayjs().format('YYYY-MM'));
+
+watch(() => props.currentMonth, (newVal) => {
+    if (newVal) currentMonthKey.value = newVal;
+});
+
 // Jadikan Props palsu agar useCalendar hanya membaca punya lokal
 const calendarProps = reactive({
     ...props,
+    get currentMonth() { return currentMonthKey.value; },
     get data() { return localData.value; }
 });
 
@@ -83,17 +90,24 @@ const triggerDeleteEvent = (id) => {
     });
 };
 
-// Logic Ganti Bulan — preserveState dan reload hanya data yang dibutuhkan agar instan
+// Logic Ganti Bulan — 100% instan lokal dalam tahun yang sama.
 const changeMonth = (newMonthPayload) => {
-    router.get(route('calendar.index'), { month: newMonthPayload }, { 
-        preserveScroll: true,
-        preserveState: true,
-        only: ['currentMonth', 'data']
-    });
+    const oldYear = dayjs(currentMonthKey.value + '-01').format('YYYY');
+    const newYear = dayjs(newMonthPayload + '-01').format('YYYY');
+    
+    currentMonthKey.value = newMonthPayload;
+    
+    if (oldYear !== newYear) {
+        router.get(route('calendar.index'), { month: newMonthPayload }, { 
+            preserveScroll: true,
+            preserveState: true,
+            only: ['currentMonth', 'data']
+        });
+    }
 };
 
-// Prefetch adjacent months dynamically
-watch(() => props.currentMonth, (newMonth) => {
+// Prefetch adjacent months dynamically when crossing years
+watch(currentMonthKey, (newMonth) => {
     if (newMonth && typeof router.prefetch === 'function') {
         const current = dayjs(newMonth + '-01');
         const prevMonth = current.subtract(1, 'month').format('YYYY-MM');
@@ -110,7 +124,7 @@ watch(() => props.currentMonth, (newMonth) => {
     <div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950 pb-12 relative overflow-x-hidden transition-colors duration-500">
         
         <CalendarHeader 
-            :currentMonth="currentMonth"
+            :currentMonth="currentMonthKey"
             @change-month="changeMonth"
             @add-event="() => openEventModal()"
         />

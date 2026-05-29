@@ -25,10 +25,27 @@ export function usePlanner(props, activeDate) {
         return target[key] !== undefined ? target[key] : fallback;
     };
 
-    const localNotes = ref(getLogValue(props.dailyLog, 'notes', ''));
-    const localMeals = ref(getLogValue(props.dailyLog, 'meals', { breakfast: '', lunch: '', dinner: '' }));
-    const localWater = ref(getLogValue(props.dailyLog, 'water', 0));
-    const localTaskBox = ref(getLogValue(props.dailyLog, 'task_box', []));
+    const findDailyLogForDate = (dateStr) => {
+        const logs = props.dailyLogs?.data || props.dailyLogs || [];
+        const found = logs.find(log => {
+            const logDate = log.date || (log.data && log.data.date);
+            return logDate && logDate.startsWith(dateStr);
+        });
+        return found || null;
+    };
+
+    const localNotes = ref('');
+    const localMeals = ref({ breakfast: '', lunch: '', dinner: '' });
+    const localWater = ref(0);
+    const localTaskBox = ref([]);
+
+    const updateLocalLogFromDate = (dateStr) => {
+        const foundLog = findDailyLogForDate(dateStr);
+        localNotes.value = getLogValue(foundLog, 'notes', '');
+        localMeals.value = getLogValue(foundLog, 'meals', { breakfast: '', lunch: '', dinner: '' });
+        localWater.value = getLogValue(foundLog, 'water', 0);
+        localTaskBox.value = getLogValue(foundLog, 'task_box', []);
+    };
     
     const activeModalType = ref('full');
 
@@ -51,11 +68,12 @@ export function usePlanner(props, activeDate) {
     watch(localTaskBox, (val) => saveLogSilent({ task_box: val }), { deep: true });
 
     // 🔥 Kalau user pindah tanggal, UPDATE SEMUA STATE dari database secara instan
-    watch(() => props.dailyLog, (newLog) => {
-        localNotes.value = getLogValue(newLog, 'notes', '');
-        localMeals.value = getLogValue(newLog, 'meals', { breakfast: '', lunch: '', dinner: '' });
-        localWater.value = getLogValue(newLog, 'water', 0);
-        localTaskBox.value = getLogValue(newLog, 'task_box', []);
+    watch(activeDate, (newDate) => {
+        updateLocalLogFromDate(newDate);
+    }, { immediate: true });
+
+    watch(() => props.dailyLogs, () => {
+        updateLocalLogFromDate(activeDate.value);
     }, { deep: true });
 
     const timeSlots = Array.from({ length: 18 }, (_, i) => `${(i + 6).toString().padStart(2, '0')}:00`);

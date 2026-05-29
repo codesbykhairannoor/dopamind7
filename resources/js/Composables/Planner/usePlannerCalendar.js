@@ -40,14 +40,19 @@ export function usePlannerCalendar(initialDate) {
             return; // ⛔ Jangan pindah kalau lebih dari 10 hari
         }
         
+        const oldMonth = dayjs(currentDate.value).format('YYYY-MM');
+        const newMonth = dayjs(newDate).format('YYYY-MM');
+
         currentDate.value = newDate;
-        
-        router.get(route('planner.index'), { date: newDate }, { 
-            preserveState: true, 
-            preserveScroll: true,
-            replace: true, // Biar ga menuhin history back browser
-            only: ['tasks', 'dailyLog', 'currentDate'], // Cuma ambil ini aja
-        });
+
+        if (oldMonth !== newMonth) {
+            router.get(route('planner.index'), { date: newDate }, { 
+                preserveState: true, 
+                preserveScroll: true,
+                replace: true, // Biar ga menuhin history back browser
+                only: ['tasks', 'dailyLogs', 'currentDate'], // Cuma ambil ini aja
+            });
+        }
     };
 
     // Fungsi ekstra buat tombol panah Kiri/Kanan (H-1 / H+1)

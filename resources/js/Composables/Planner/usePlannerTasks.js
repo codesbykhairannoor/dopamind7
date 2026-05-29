@@ -230,7 +230,7 @@ export function usePlannerTasks(props, activeDate) {
         if (task) {
             isEditing.value = true;
             form.id = task.id;
-            form.date = task.date || props.currentDate;
+            form.date = task.date || activeDate.value;
             form.title = task.title;
             form.start_time = task.start_time;
             form.end_time = task.end_time;

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, reactive, onMounted, nextTick } from 'vue';
+import { ref, watch, reactive, onMounted, nextTick, computed } from 'vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import { Head, usePage } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
@@ -38,7 +38,7 @@ import { useGating } from '@/Composables/useGating';
 const { isExplorer, canUse } = useGating();
 
 const props = defineProps({
-    transactions: Array, budgets: Array, stats: Object, filters: Object, categories: Array, savings: Array
+    transactions: Array, budgets: Array, stats: Object, filters: Object, categories: Array, savings: Array, incomeTargets: Object
 });
 
 const page = usePage();
@@ -48,7 +48,11 @@ const localTransactions = ref([...(props.transactions || [])]);
 const localBudgets = ref([...(props.budgets || [])]);
 const localCategories = ref([...(props.categories || [])]);
 const localSavings = ref([...(props.savings || [])]);
-const localStats = ref(JSON.parse(JSON.stringify(props.stats || {}))); 
+const localIncomeTargets = ref(JSON.parse(JSON.stringify(props.incomeTargets || {})));
+
+watch(() => props.incomeTargets, (newVal) => {
+    if (newVal) localIncomeTargets.value = JSON.parse(JSON.stringify(newVal));
+}, { deep: true }); 
 
 const showSavingModal = ref(false);
 const activeSaving = ref(null);
@@ -182,18 +186,29 @@ const handleVaultTransaction = (data) => {
     const action = data.type;
     const numAmount = data.amount;
     const originalSavings = JSON.parse(JSON.stringify(localSavings.value));
-    const originalStats = JSON.parse(JSON.stringify(localStats.value));
     
     const idx = localSavings.value.findIndex(s => s.id === saving.id);
     if (idx !== -1) {
         if (action === 'deposit') {
             localSavings.value[idx].current_amount = Number(localSavings.value[idx].current_amount) + numAmount;
-            localStats.value.balance -= numAmount;
-            localStats.value.total_savings += numAmount;
+            localTransactions.value.unshift({
+                id: 'temp_vault_' + Date.now(),
+                title: `Deposit to: ${saving.title}`,
+                amount: numAmount,
+                type: 'expense',
+                category: 'saving',
+                date: data.date || dayjs().format('YYYY-MM-DD')
+            });
         } else {
             localSavings.value[idx].current_amount = Number(localSavings.value[idx].current_amount) - numAmount;
-            localStats.value.balance += numAmount;
-            localStats.value.total_savings -= numAmount;
+            localTransactions.value.unshift({
+                id: 'temp_vault_' + Date.now(),
+                title: `Withdraw from: ${saving.title}`,
+                amount: numAmount,
+                type: 'income',
+                category: 'saving',
+                date: data.date || dayjs().format('YYYY-MM-DD')
+            });
         }
     }
 
@@ -205,27 +220,78 @@ const handleVaultTransaction = (data) => {
     }, {
         onSuccess: (page) => {
             localSavings.value = [...(page.props.savings || [])];
-            localStats.value = JSON.parse(JSON.stringify(page.props.stats || {}));
             localStorage.setItem('dfm_local_savings', JSON.stringify(localSavings.value));
         },
         onFinish: () => { isProcessingVaultTx.value = false; },
         onError: () => {
             localSavings.value = originalSavings;
-            localStats.value = originalStats;
             isProcessingVaultTx.value = false;
             showVaultTxModal.value = true;
         }
     });
 };
 
+const { formattedMonth, changeMonth, currentMonthKey } = useFinanceCalendar(props.filters.date);
+
+const filteredTransactions = computed(() => {
+    const month = currentMonthKey.value;
+    return localTransactions.value.filter(t => t.date && t.date.startsWith(month));
+});
+
+const filteredBudgets = computed(() => {
+    const month = currentMonthKey.value;
+    return localBudgets.value.filter(b => b.month === month).map(budget => {
+        const spent = filteredTransactions.value
+            .filter(t => t.type === 'expense' && t.category === budget.category)
+            .reduce((sum, t) => sum + Number(t.amount), 0);
+        return {
+            ...budget,
+            spent: spent
+        };
+    });
+});
+
+const localStats = computed(() => {
+    const month = currentMonthKey.value;
+    const monthTrxs = filteredTransactions.value;
+    
+    const totalIncome = monthTrxs.filter(t => t.type === 'income').reduce((sum, t) => sum + Number(t.amount), 0);
+    const totalExpense = monthTrxs.filter(t => t.type === 'expense').reduce((sum, t) => sum + Number(t.amount), 0);
+    
+    const expenseByCategory = {};
+    monthTrxs.filter(t => t.type === 'expense').forEach(t => {
+        expenseByCategory[t.category] = (expenseByCategory[t.category] || 0) + Number(t.amount);
+    });
+    
+    const incomeByCategory = {};
+    monthTrxs.filter(t => t.type === 'income').forEach(t => {
+        incomeByCategory[t.category] = (incomeByCategory[t.category] || 0) + Number(t.amount);
+    });
+
+    const totalSavings = localSavings.value.reduce((sum, s) => sum + Number(s.current_amount || 0), 0);
+    const targetKey = month + '-01';
+    const incomeTarget = Number(localIncomeTargets.value?.[targetKey] || 0);
+    
+    const balance = (incomeTarget + totalIncome) - totalExpense;
+    
+    return {
+        total_income: totalIncome,
+        total_expense: totalExpense,
+        total_savings: totalSavings,
+        income_target: incomeTarget,
+        balance: balance,
+        expense_by_category: expenseByCategory,
+        income_by_category: incomeByCategory
+    };
+});
+
 const historyProps = reactive({
     ...props,
-    get transactions() { return localTransactions.value; },
-    get budgets() { return localBudgets.value; },
+    get transactions() { return filteredTransactions.value; },
+    get budgets() { return filteredBudgets.value; },
     get categories() { return localCategories.value; }
 });
 
-const { formattedMonth, changeMonth, currentMonthKey } = useFinanceCalendar(props.filters.date);
 const { 
     transactionForm, setEditTransaction, submitTransaction, deleteTransaction, 
     budgetForm, submitBudget, deleteBudget, 
@@ -250,7 +316,7 @@ const { formatMoney } = useFinanceFormat();
 
 const handleEdit = (trx) => { setEditTransaction(trx); showTransactionModal.value = true; };
 const handleUpdateTarget = (newAmount) => {
-    localStats.value.income_target = Number(newAmount);
+    localIncomeTargets.value[currentMonthKey.value + '-01'] = Number(newAmount);
     updateIncomeTarget(currentMonthKey.value, newAmount);
 };
 
@@ -417,7 +483,6 @@ watch(() => props.savings, (newSavings) => {
 watch(() => props.transactions, (newVal) => { if (newVal) localTransactions.value = [...newVal]; }, { deep: true });
 watch(() => props.budgets, (newVal) => { if (newVal) localBudgets.value = [...newVal]; }, { deep: true });
 watch(() => props.categories, (newVal) => { if (newVal) localCategories.value = [...newVal]; }, { deep: true });
-watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stringify(newStats || {})); }, { deep: true });
 </script>
 
 <template>
@@ -439,7 +504,7 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-start">
                 <div class="lg:col-span-2 w-full lg:sticky lg:top-24 h-fit space-y-8 lg:space-y-6 order-1 lg:order-2">
                     <BudgetSidebar
-                        :budgets="localBudgets"
+                        :budgets="filteredBudgets"
                         :categories="localCategories"
                         :expenseStats="localStats.expense_by_category"
                         :incomeStats="localStats.income_by_category"
@@ -461,7 +526,7 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                             <FinanceInsights
                                 :expense-stats="localStats.expense_by_category"
                                 :income-stats="localStats.income_by_category"
-                                :budgets="localBudgets"
+                                :budgets="filteredBudgets"
                                 @update-stats="handleOptimisticInvestment"
                             />
                         </div>
@@ -504,7 +569,7 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                             </div>
                         </div>
 
-                        <div v-if="localTransactions.length === 0" class="py-16 lg:py-20 text-center bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-sm dark:shadow-none mt-4 transition-colors duration-500">
+                        <div v-if="filteredTransactions.length === 0" class="py-16 lg:py-20 text-center bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-sm dark:shadow-none mt-4 transition-colors duration-500">
                                 <div class="flex flex-col items-center gap-4">
                                 <span class="text-4xl lg:text-5xl animate-bounce">💸</span>
                                 <p class="text-[10px] lg:text-sm font-bold text-slate-400 dark:text-slate-600 px-8">{{ $t('no_transaction', 'Belum ada transaksi di bulan ini') }}</p>
@@ -559,7 +624,7 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                                 <FinanceInsights
                                 :expense-stats="localStats.expense_by_category"
                                 :income-stats="localStats.income_by_category"
-                                :budgets="localBudgets"
+                                :budgets="filteredBudgets"
                                 @update-stats="handleOptimisticInvestment"
                             />
                         </div>
@@ -567,14 +632,14 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                         <!-- Trend Chart Section -->
                             <div class="relative">
                             <!-- Unlocked Section -->
-                                <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" @day-click="openDetail" />
+                                <DailyTrendChart v-if="filteredTransactions.length" :transactions="filteredTransactions" :currentDate="filters.date" @day-click="openDetail" />
                             </div>
                 </div>
             </div>
         </div>
 
-        <TransactionModal :show="showTransactionModal" :form="transactionForm" :budgets="localBudgets" :categories="categories" :close="() => showTransactionModal = false" :submit="submitNewTransaction" @switch-to-batch="switchToBatch" />
-        <FinanceBatchModal :show="isBatchModalOpen" :form="batchForm" :categories="categories" :budgets="localBudgets" :conflictError="globalConflictError" :close="closeBatchModal" :submit="triggerSubmitBatch" :addRow="addBatchRow" :removeRow="removeBatchRow" :switchToSingle="switchToSingle" />
+        <TransactionModal :show="showTransactionModal" :form="transactionForm" :budgets="filteredBudgets" :categories="categories" :close="() => showTransactionModal = false" :submit="submitNewTransaction" @switch-to-batch="switchToBatch" />
+        <FinanceBatchModal :show="isBatchModalOpen" :form="batchForm" :categories="categories" :budgets="filteredBudgets" :conflictError="globalConflictError" :close="closeBatchModal" :submit="triggerSubmitBatch" :addRow="addBatchRow" :removeRow="removeBatchRow" :switchToSingle="switchToSingle" />
         <BudgetModal :show="showBudgetModal" :form="budgetForm" :categories="categories" :close="() => showBudgetModal = false" :submit="submitNewBudget" />
         <CategoryModal :show="showCategoryModal" :form="categoryForm" :close="() => showCategoryModal = false" :submit="submitNewCategory" />
         <SavingModal :show="showSavingModal" :saving="activeSaving" :processing="isSavingVault" @close="showSavingModal = false" @save="(form) => form.id ? handleUpdateSaving(form) : handleStoreSaving(form)" />

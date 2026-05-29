@@ -44,17 +44,22 @@ export function useFinanceCalendar(initialDate) {
             newDate = dayjs(`${input}-01`);
         }
         
+        const oldYear = currentDate.value.format('YYYY');
+        const newYear = newDate.format('YYYY');
+        
         currentDate.value = newDate;
 
-        router.get(route('finance.index'), 
-            { date: newDate.format('YYYY-MM-DD') }, 
-            { 
-                preserveState: true, 
-                preserveScroll: true,
-                replace: true, 
-                only: ['transactions', 'budgets', 'stats', 'filters'],
-            }
-        );
+        if (oldYear !== newYear) {
+            router.get(route('finance.index'), 
+                { date: newDate.format('YYYY-MM-DD') }, 
+                { 
+                    preserveState: true, 
+                    preserveScroll: true,
+                    replace: true, 
+                    only: ['transactions', 'budgets', 'stats', 'filters'],
+                }
+            );
+        }
     };
 
     // Format Tampilan Bulan (Februari 2026)

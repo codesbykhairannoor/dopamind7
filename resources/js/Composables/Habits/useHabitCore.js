@@ -25,6 +25,27 @@ export function useHabitCore(props) {
         }
     }, { deep: true });
 
+    const activeHabits = computed(() => {
+        const month = props.monthQuery;
+        return localHabits.value.filter(h => h.period === month).map(h => {
+            const count = Object.keys(h.logs || {})
+                .filter(date => date.startsWith(month) && h.logs[date] === 'completed')
+                .length;
+            return {
+                ...h,
+                streak: calculateStreak(h),
+                progress_count: count,
+                progress_percent: h.monthly_target > 0 ? Math.min(100, Math.round((count / h.monthly_target) * 100)) : 0
+            };
+        });
+    });
+
+    const localSavedMoods = ref(JSON.parse(JSON.stringify(props.savedMoods || {})));
+
+    watch(() => props.savedMoods, (newVal) => {
+        if (newVal) localSavedMoods.value = JSON.parse(JSON.stringify(newVal));
+    }, { deep: true });
+
     // --- GREETING & STATS ---
     const greetingKey = computed(() => {
         const hour = dayjs().hour();
@@ -35,29 +56,29 @@ export function useHabitCore(props) {
     });
 
     const todayProgress = computed(() => {
-        if (!localHabits.value || localHabits.value.length === 0) return 0;
+        if (!activeHabits.value || activeHabits.value.length === 0) return 0;
         const todayStr = dayjs().format('YYYY-MM-DD');
         let completed = 0;
 
-        localHabits.value.forEach(h => {
+        activeHabits.value.forEach(h => {
             if (h.logs && h.logs[todayStr] === 'completed') {
                 completed++;
             }
         });
-        return Math.round((completed / localHabits.value.length) * 100);
+        return Math.round((completed / activeHabits.value.length) * 100);
     });
 
     const totalCompletions = computed(() => {
         let total = 0;
-        localHabits.value.forEach(h => total += (h.progress_count || 0));
+        activeHabits.value.forEach(h => total += (h.progress_count || 0));
         return total;
     });
 
     const overallPercentage = computed(() => {
-        if (!localHabits.value || localHabits.value.length === 0) return 0;
+        if (!activeHabits.value || activeHabits.value.length === 0) return 0;
         let totalPercent = 0;
-        localHabits.value.forEach(h => totalPercent += (h.progress_percent || 0));
-        return Math.round(totalPercent / localHabits.value.length);
+        activeHabits.value.forEach(h => totalPercent += (h.progress_percent || 0));
+        return Math.round(totalPercent / activeHabits.value.length);
     });
 
     const calculateStreak = (habit) => {
@@ -335,12 +356,14 @@ export function useHabitCore(props) {
     const showMoodDropdown = ref(false);
 
     const currentMoodData = computed(() => {
-        if (!props.savedMood) return moodOptions[0];
-        return moodOptions.find(m => m.code === props.savedMood) || moodOptions[0];
+        const activeMoodCode = localSavedMoods.value?.[props.monthQuery] || props.savedMood;
+        if (!activeMoodCode) return moodOptions[0];
+        return moodOptions.find(m => m.code === activeMoodCode) || moodOptions[0];
     });
 
     const selectMood = (code) => {
         showMoodDropdown.value = false;
+        localSavedMoods.value[props.monthQuery] = code;
         router.post(route('habits.mood'), {
             mood_code: code,
             period: props.monthQuery
@@ -368,7 +391,7 @@ export function useHabitCore(props) {
     };
 
     return {
-        user, localHabits, greetingKey,
+        user, localHabits, activeHabits, greetingKey,
         todayProgress, totalCompletions, overallPercentage,
         getStatus, toggleStatus, handleGridNav,
         isDragging, handleMouseDown, handleMouseEnter, isCellSelected, toggleSelectedCells,

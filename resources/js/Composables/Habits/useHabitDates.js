@@ -7,7 +7,7 @@ import localeData from 'dayjs/plugin/localeData';
 
 dayjs.extend(localeData);
 
-export function useHabitDates(props) {
+export function useHabitDates(props, currentMonthKey) {
     watch(() => props.monthQuery, (newMonth) => {
         if (typeof router.prefetch === 'function') {
             const current = newMonth ? dayjs(newMonth) : dayjs();
@@ -59,14 +59,23 @@ export function useHabitDates(props) {
             newMonth = payload;
         }
 
-        router.get(route('habits.index'), {
-            month: newMonth
-        }, {
-            preserveState: true,
-            preserveScroll: true,
-            replace: true,
-            only: ['habits', 'currentMonth', 'monthQuery', 'hasPrevHabits', 'prevMonthQuery', 'savedMood']
-        });
+        const oldYear = dayjs(props.monthQuery + '-01').format('YYYY');
+        const newYear = dayjs(newMonth + '-01').format('YYYY');
+
+        if (currentMonthKey) {
+            currentMonthKey.value = newMonth;
+        }
+
+        if (oldYear !== newYear) {
+            router.get(route('habits.index'), {
+                month: newMonth
+            }, {
+                preserveState: true,
+                preserveScroll: true,
+                replace: true,
+                only: ['habits', 'currentMonth', 'monthQuery', 'hasPrevHabits', 'prevMonthQuery', 'savedMood']
+            });
+        }
     };
 
     return { todayDate, monthDates, changeMonth };

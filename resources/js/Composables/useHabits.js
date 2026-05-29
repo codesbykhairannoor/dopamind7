@@ -1,31 +1,49 @@
-import { computed } from 'vue';
+import { ref, reactive, computed, watch } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import { useHabitCore } from './Habits/useHabitCore';
 import { useHabitDates } from './Habits/useHabitDates';
 import { useHabitModals } from './Habits/useHabitModals';
+import dayjs from 'dayjs';
 
 export function useHabits(props) {
+    const currentMonthKey = ref(props.monthQuery || dayjs().format('YYYY-MM'));
+
+    // Sync currentMonthKey with props when page loads or navigation occurs
+    watch(() => props.monthQuery, (newVal) => {
+        if (newVal) currentMonthKey.value = newVal;
+    });
+
+    const habitProps = reactive({
+        ...props,
+        get monthQuery() { return currentMonthKey.value; }
+    });
+
     // 1. Ekstrak dari Core (Termasuk fungsi drag & select)
-    const core = useHabitCore(props);
+    const core = useHabitCore(habitProps);
     
     // 2. Ekstrak dari Dates
-    const dates = useHabitDates(props);
+    const dates = useHabitDates(habitProps, currentMonthKey);
 
-    // 3. Ekstrak dari Modals (gabungkan dengan data yang dibutuhkan)
-    const modals = useHabitModals(props, core.localHabits);
+    // 3. Ekstrak dari Modals (gabungkan dengan data yang dihubungkan dengan activeHabits)
+    const modals = useHabitModals(habitProps, core.activeHabits);
 
     const page = usePage();
+
+    const activeLocale = computed(() => page.props.locale || 'id');
+    const currentMonthName = computed(() => {
+        return dayjs(currentMonthKey.value + '-01').locale(activeLocale.value).format('MMMM YYYY');
+    });
 
     const user = computed(() => page.props.auth.user);
     const planType = computed(() => user.value?.plan_type || 'explorer');
     const isExplorer = computed(() => planType.value === 'explorer');
-    const habitsCount = computed(() => props.habits?.data?.length || 0);
+    const habitsCount = computed(() => core.activeHabits.value?.length || 0);
 
     // Menggabungkan semua return dari 3 composable di atas
     return {
         // --- Dari Core ---
         user: core.user,
-        localHabits: core.localHabits,
+        localHabits: core.activeHabits, // Map activeHabits ke localHabits agar UI terfilter otomatis
         greetingKey: core.greetingKey,
         todayProgress: core.todayProgress,
         totalCompletions: core.totalCompletions,
@@ -52,6 +70,8 @@ export function useHabits(props) {
         todayDate: dates.todayDate,
         monthDates: dates.monthDates,
         changeMonth: dates.changeMonth,
+        currentMonthKey,
+        currentMonthName,
 
         // --- Dari Modals ---
         iconList: modals.iconList,

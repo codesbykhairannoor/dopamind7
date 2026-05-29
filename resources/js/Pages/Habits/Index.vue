@@ -76,8 +76,8 @@ const handleToggleProxy = async (habitId, date, forceStatus) => {
                 :user="user"
                 :greetingKey="greetingKey"
                 :todayDate="todayDate"
-                :currentMonth="props.currentMonth"
-                :currentMonthValue="props.monthQuery" 
+                :currentMonth="currentMonthName"
+                :currentMonthValue="currentMonthKey" 
                 :todayProgress="todayProgress"
                 :changeMonth="changeMonth"
                 :openCreateModal="openCreateModal"
@@ -112,7 +112,7 @@ const handleToggleProxy = async (habitId, date, forceStatus) => {
                 :totalCompletions="totalCompletions"
                 :currentMoodData="currentMoodData"
                 :moodOptions="moodOptions"
-                :savedMood="props.savedMood"
+                :savedMood="currentMoodData.code"
                 :selectMood="handleMoodSelect"
             />
 

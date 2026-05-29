@@ -37,13 +37,14 @@ class FinanceController extends Controller
         $data = $this->financeService->getDashboardData($user->id, $validDate, $timezone);
 
         return Inertia::render('Finance/Index', [
-            'transactions' => FinanceTransactionResource::collection($data['transactions'])->resolve(),
-            'budgets'      => FinanceBudgetResource::collection($data['budgets'])->resolve(),
-            'categories'   => $data['categories'],
-            'savings'      => $data['savings'],
-            'stats'        => $data['stats'],
-            'filters'      => $data['filters'],
-            'aiAudit'      => session('ai_audit'),
+            'transactions'  => FinanceTransactionResource::collection($data['transactions'])->resolve(),
+            'budgets'       => FinanceBudgetResource::collection($data['budgets'])->resolve(),
+            'categories'    => $data['categories'],
+            'savings'       => $data['savings'],
+            'incomeTargets' => $data['income_targets'] ?? (object) [],
+            'stats'         => $data['stats'],
+            'filters'       => $data['filters'],
+            'aiAudit'       => session('ai_audit'),
         ]);
     }
 

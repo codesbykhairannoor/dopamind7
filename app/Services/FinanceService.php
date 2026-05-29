@@ -33,56 +33,71 @@ class FinanceService
         $endOfMonth   = $carbonDate->copy()->endOfMonth()->format('Y-m-d');
         $monthKey     = $carbonDate->format('Y-m');
 
+        $startOfYear  = $carbonDate->copy()->startOfYear()->format('Y-m-d');
+        $endOfYear    = $carbonDate->copy()->endOfYear()->format('Y-m-d');
+        $yearKey      = $carbonDate->format('Y');
+
         // ── Jalankan semua query yang independen secara paralel (via eager collect) ──
 
-        // 1. Aggregation stats (1 query, ringan)
-        $transactionStats = FinanceTransaction::ofUser($userId)
-            ->whereBetween('date', [$startOfMonth, $endOfMonth])
-            ->select('type', 'category', DB::raw('SUM(amount) as total'))
-            ->groupBy('type', 'category')
-            ->get();
-
-        $totalIncome  = $transactionStats->where('type', 'income')->sum('total');
-        $totalExpense = $transactionStats->where('type', 'expense')->sum('total');
-        $expenseStats = $transactionStats->where('type', 'expense')->pluck('total', 'category');
-        $incomeStats  = $transactionStats->where('type', 'income')->pluck('total', 'category');
-
-        // 2. List transaksi — select hanya kolom yang dibutuhkan (lebih ringan)
+        // 1. List transaksi untuk seluruh tahun aktif
         $transactions = FinanceTransaction::ofUser($userId)
-            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->whereBetween('date', [$startOfYear, $endOfYear])
             ->select('id', 'user_id', 'title', 'amount', 'type', 'category', 'date', 'notes')
             ->orderBy('date', 'desc')
             ->get();
 
-        // 3. Budget — spent dihitung dari aggregation yang sudah ada (no extra query)
+        // Filter transaksi untuk bulan aktif demi stats inisial
+        $monthTransactions = $transactions->filter(function($t) use ($startOfMonth, $endOfMonth) {
+            return $t->date >= $startOfMonth && $t->date <= $endOfMonth;
+        });
+
+        $totalIncome  = $monthTransactions->where('type', 'income')->sum('amount');
+        $totalExpense = $monthTransactions->where('type', 'expense')->sum('amount');
+        
+        $expenseStats = $monthTransactions->where('type', 'expense')
+            ->groupBy('category')
+            ->map(fn($group) => $group->sum('amount'));
+
+        $incomeStats  = $monthTransactions->where('type', 'income')
+            ->groupBy('category')
+            ->map(fn($group) => $group->sum('amount'));
+
+        // 2. Budgets untuk seluruh tahun aktif
         $budgets = FinanceBudget::ofUser($userId)
-            ->where('month', $monthKey)
+            ->where('month', 'like', $yearKey . '%')
             ->select('id', 'user_id', 'category', 'limit_amount', 'month')
             ->get()
             ->map(function ($budget) use ($expenseStats) {
+                // spent dihitung untuk bulan budget bersangkutan dari database jika ada, 
+                // tapi untuk bulan aktif kita pakai $expenseStats
                 $budget->spent = (float) ($expenseStats[$budget->category] ?? 0);
                 return $budget;
             });
 
-        // 4. Kategori
+        // 3. Kategori
         $categories = FinanceCategory::ofUser($userId)
             ->select('id', 'user_id', 'name', 'slug', 'icon', 'type')
             ->get();
 
-        // 5. Target income (single value lookup — sangat cepat dengan index)
-        $incomeTarget = DailyLog::where('user_id', $userId)
-            ->whereDate('date', $startOfMonth)
-            ->value('income_target') ?? 0;
+        // 4. Target income untuk seluruh tahun aktif
+        $incomeTargets = DailyLog::where('user_id', $userId)
+            ->whereBetween('date', [$startOfYear, $endOfYear])
+            ->select('date', 'income_target')
+            ->get()
+            ->mapWithKeys(fn($item) => [Carbon::parse($item->date)->format('Y-m-d') => (float) $item->income_target]);
         
-        // 6. Savings
+        $incomeTarget = $incomeTargets->get($startOfMonth) ?? 0;
+        
+        // 5. Savings
         $savings      = FinanceSaving::where('user_id', $userId)->get();
         $totalSavings = $savings->sum('current_amount');
         
         return [
-            'transactions' => $transactions,
-            'budgets'      => $budgets,
-            'categories'   => $categories,
-            'savings'      => $savings,
+            'transactions'   => $transactions,
+            'budgets'        => $budgets,
+            'categories'     => $categories,
+            'savings'        => $savings,
+            'income_targets' => $incomeTargets,
             'stats'        => [
                 'total_income'        => (float) $totalIncome,
                 'total_expense'       => (float) $totalExpense,

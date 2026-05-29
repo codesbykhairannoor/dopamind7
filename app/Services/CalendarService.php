@@ -26,8 +26,8 @@ class CalendarService
             $activeDate = now()->timezone($timezone);
         }
 
-        $startDate = $activeDate->copy()->startOfMonth()->format('Y-m-d');
-        $endDate   = $activeDate->copy()->endOfMonth()->format('Y-m-d');
+        $startDate = $activeDate->copy()->startOfYear()->format('Y-m-d');
+        $endDate   = $activeDate->copy()->endOfYear()->format('Y-m-d');
 
         // Events
         $events = CalendarEvent::ofUser($userId)

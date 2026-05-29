@@ -25,34 +25,37 @@ class PlannerController extends Controller
     public function index(PlannerDateRequest $request)
     {
         $user = Auth::user();
-        
-        // 1. Ambil format tanggal yang sudah dibersihkan
         $date = $request->getValidDate($user->timezone);
 
-        // 2. Tarik task memakai Scopes
-        $tasks = PlannerTask::ofUser($user->id)->forDate($date)->ordered()->get();
+        $activeDate = \Carbon\Carbon::parse($date);
+        $startOfMonth = $activeDate->copy()->startOfMonth()->format('Y-m-d');
+        $endOfMonth = $activeDate->copy()->endOfMonth()->format('Y-m-d');
 
-        // 3. Ambil Log, buat virtual memory record (on-the-fly) jika hari ini kosong
-        $dailyLog = DailyLog::where('user_id', $user->id)->where('date', $date)->first() 
-            ?? new DailyLog([
-                'user_id'  => $user->id, 
-                'date'     => $date,
-                'meals'    => ['breakfast' => '', 'lunch' => '', 'dinner' => ''], 
-                'notes'    => '',
-                'water'    => 0,
-                'task_box' => []
-            ]);
+        // Fetch all tasks for the month
+        $tasks = PlannerTask::ofUser($user->id)
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->ordered()
+            ->get();
+
+        // Fetch all daily logs for the month
+        $dailyLogs = DailyLog::where('user_id', $user->id)
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->get();
 
         $tasksResource = PlannerTaskResource::collection($tasks);
-        $logResource = new DailyLogResource($dailyLog);
+        $logsResource = DailyLogResource::collection($dailyLogs);
 
         if ($request->wantsJson()) {
-            return response()->json(['tasks' => $tasksResource, 'dailyLog' => $logResource, 'currentDate' => $date]);
+            return response()->json([
+                'tasks' => $tasksResource,
+                'dailyLogs' => $logsResource,
+                'currentDate' => $date
+            ]);
         }
 
         return Inertia::render('Planner/Index', [
             'tasks'       => $tasksResource,
-            'dailyLog'    => $logResource,
+            'dailyLogs'    => $logsResource,
             'currentDate' => $date,
         ]);
     }

@@ -31,12 +31,15 @@ class HabitController extends Controller
         
         // 1. Ambil perhitungan tanggal yang sudah bersih dari Request Class
         $dates = $request->getMonthData($timezone);
+        $yearQuery = \Carbon\Carbon::parse($dates['query'] . '-01')->format('Y');
+        $startOfYear = \Carbon\Carbon::parse($dates['query'] . '-01')->startOfYear()->format('Y-m-d');
+        $endOfYear = \Carbon\Carbon::parse($dates['query'] . '-01')->endOfYear()->format('Y-m-d');
 
-        // 2. Tarik Data menggunakan Model Scopes (Sangat Terbaca / Human Readable)
+        // 2. Tarik Data menggunakan Model Scopes untuk Tahun Terkait
         $habits = Habit::ofUser($user->id)
-            ->forPeriod($dates['query'])
+            ->where('period', 'like', $yearQuery . '-%')
             ->ordered()
-            ->withLogStats($dates['start'], $dates['end'])
+            ->withLogStats($startOfYear, $endOfYear)
             ->get();
 
         $habitsResource = HabitResource::collection($habits);
@@ -45,13 +48,20 @@ class HabitController extends Controller
             return $habitsResource;
         }
 
+        $savedMoods = Mood::where('user_id', $user->id)
+            ->where('period', 'like', $yearQuery . '-%')
+            ->select('period', 'mood_code')
+            ->get()
+            ->pluck('mood_code', 'period');
+
         return Inertia::render('Habits/Index', [
             'habits' => $habitsResource,
             'currentMonth' => $dates['translated'],
             'monthQuery' => $dates['query'],
-            'hasPrevHabits' => Inertia::defer(fn () => Habit::ofUser($user->id)->forPeriod($dates['prev'])->exists()),
+            'hasPrevHabits' => Inertia::defer(fn () => Habit::ofUser($user->id)->where('period', 'like', ($yearQuery - 1) . '-%')->exists()),
             'prevMonthQuery' => $dates['prev'],
-            'savedMood' => Inertia::defer(fn () => Mood::where('user_id', $user->id)->where('period', $dates['query'])->value('mood_code')),
+            'savedMoods' => $savedMoods,
+            'savedMood' => $savedMoods->get($dates['query']) ?? null,
         ]);
     }
 
