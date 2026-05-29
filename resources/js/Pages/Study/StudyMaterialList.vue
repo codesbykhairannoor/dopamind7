@@ -19,28 +19,41 @@ const page = usePage();
 const processedIds = ref(new Set());
 
 const checkAndProcessMaterials = () => {
+    let hasProcessing = false;
+    
     props.materials.forEach(material => {
-        if (material.status === 'processing' && !processedIds.value.has(material.id)) {
-            processedIds.value.add(material.id);
-            axios.post(route('study.portfolio.process', material.id))
-                .then(res => {
-                    if (res.data.success) {
-                        router.reload({ only: ['materials', 'competency'] });
-                    }
-                })
-                .catch(err => {
-                    console.error('Processing failed', err);
-                    router.reload({ only: ['materials'] });
+        if (material.status === 'processing') {
+            hasProcessing = true;
+            if (!processedIds.value.has(material.id)) {
+                processedIds.value.add(material.id);
+                // Trigger the background processing, which now returns immediately
+                axios.post(route('study.portfolio.process', material.id)).catch(err => {
+                    console.error('Processing trigger failed', err);
                 });
+            }
         }
     });
+
+    // If there are materials still processing, poll the backend every 3 seconds
+    if (hasProcessing) {
+        setTimeout(() => {
+            router.reload({ 
+                only: ['materials', 'competency'], 
+                preserveScroll: true, 
+                onSuccess: () => {
+                    // Check again after reload
+                    checkAndProcessMaterials();
+                }
+            });
+        }, 3000);
+    }
 };
 
 onMounted(() => {
     checkAndProcessMaterials();
 });
 
-watch(() => props.materials, () => {
+watch(() => props.materials, (newMaterials, oldMaterials) => {
     checkAndProcessMaterials();
 }, { deep: true });
 
@@ -134,14 +147,8 @@ const currentMaterialId = ref(null);
 const isLoadingPdf = ref(false);
 
 const viewFile = (materialId, type, index, name) => {
-    isLoadingPdf.value = true;
-    currentPdfStreamUrl.value = route('study.file.download', { material: materialId, type: type, index: index, view: 1 });
-    currentViewerTitle.value = name;
-    currentMaterialId.value = materialId;
-    setTimeout(() => {
-        const viewerEl = document.getElementById('neural-audit-viewer-internal');
-        if (viewerEl) viewerEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 100);
+    const url = route('study.file.download', { material: materialId, type: type, index: index, view: 1 });
+    window.open(url, '_blank');
 };
 </script>
 
@@ -306,32 +313,6 @@ const viewFile = (materialId, type, index, name) => {
                             </div>
                         </div>
 
-                        <!-- Neural Audit Viewer -->
-                        <div v-if="currentPdfStreamUrl && currentMaterialId === material.id" id="neural-audit-viewer-internal" class="mt-8">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div class="h-8 w-8 rounded-xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center border border-indigo-100 dark:border-indigo-800/50">
-                                    <FileText class="h-4 w-4 text-indigo-500" />
-                                </div>
-                                <div>
-                                    <h3 class="text-sm font-black text-slate-800 dark:text-slate-200">{{ currentViewerTitle }}</h3>
-                                    <p class="text-[10px] font-bold text-slate-500 tracking-wider">SECURE INLINE STREAM</p>
-                                </div>
-                                <button @click="currentPdfStreamUrl = null; currentMaterialId = null" class="ml-auto p-2 text-slate-400 hover:text-red-500 transition-colors rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20">
-                                    <XCircle class="h-5 w-5" />
-                                </button>
-                            </div>
-                            <div class="relative w-full rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950" style="height: 600px;">
-                                <div v-if="isLoadingPdf" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-sm z-10">
-                                    <Loader2 class="h-8 w-8 text-indigo-500 animate-spin mb-3" />
-                                    <p class="text-xs font-bold text-slate-500 tracking-widest uppercase">Streaming Artifact...</p>
-                                </div>
-                                <iframe 
-                                    :src="currentPdfStreamUrl" 
-                                    class="w-full h-full border-none bg-white dark:bg-slate-900"
-                                    @load="isLoadingPdf = false"
-                                ></iframe>
-                            </div>
-                        </div>
 
                         <!-- Competencies tags -->
                         <div v-if="material.metadata?.competencies" class="flex flex-wrap gap-2 mt-6">

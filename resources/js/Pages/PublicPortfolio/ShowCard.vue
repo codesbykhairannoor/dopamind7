@@ -68,25 +68,13 @@ const currentPdfStreamUrl = ref(
 const currentViewerTitle = ref('Original Artifact Neural Audit');
 
 const viewFile = (path, name) => {
-    currentPdfStreamUrl.value = route('portfolio.file.download', { username: props.student.username, path: path, inline: 1 });
-    currentViewerTitle.value = name;
-    setTimeout(() => {
-        const viewerEl = document.getElementById('neural-audit-viewer');
-        if (viewerEl) {
-            viewerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }, 100);
+    const url = route('portfolio.file.download', { username: props.student.username, path: path, inline: 1 });
+    window.open(url, '_blank');
 };
 
 const viewOriginalFile = () => {
-    currentPdfStreamUrl.value = route('portfolio.file', { username: props.student.username, id: props.material.id });
-    currentViewerTitle.value = 'Original Artifact Neural Audit';
-    setTimeout(() => {
-        const viewerEl = document.getElementById('neural-audit-viewer');
-        if (viewerEl) {
-            viewerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }, 100);
+    const url = route('portfolio.file', { username: props.student.username, id: props.material.id });
+    window.open(url, '_blank');
 };
 
 // Radar Chart Config
@@ -502,43 +490,7 @@ const flatVerdict = computed(() => !isVerdictObject.value ? props.material.metad
                     </div>
                 </div>
 
-                <!-- 5. NEURAL AUDIT VIEWER -->
-                <div id="neural-audit-viewer" v-if="currentPdfStreamUrl" class="w-full bg-slate-900/95 p-2 rounded-[2.5rem] border border-slate-800 shadow-2xl overflow-hidden mt-8 min-h-[600px] flex flex-col relative group">
-                    <!-- Premium Header for Viewer -->
-                    <div class="p-6 flex items-center justify-between border-b border-white/5 relative z-10">
-                        <div class="flex items-center gap-3">
-                            <div class="h-8 w-8 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 border border-indigo-500/30">
-                                <FileText class="h-4 w-4" />
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-black text-white tracking-widest uppercase">{{ currentViewerTitle }}</h3>
-                                <p class="text-[10px] font-bold text-slate-500 tracking-wider">SECURE PROXY-STREAMED FROM IPoW REPOSITORY</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <button v-if="props.material.file_path && currentViewerTitle !== 'Original Artifact Neural Audit'" @click="viewOriginalFile" class="px-4 py-2 rounded-xl bg-indigo-500/20 hover:bg-indigo-500/40 text-indigo-300 text-[10px] font-black uppercase tracking-widest border border-indigo-500/30 transition flex items-center gap-2">
-                                <Eye class="h-3 w-3" />
-                                View Original Artifact
-                            </button>
-                            <a :href="currentPdfStreamUrl" target="_blank" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white text-[10px] font-black uppercase tracking-widest border border-white/10 transition flex items-center gap-2">
-                                <ExternalLink class="h-3 w-3" />
-                                Expand View
-                            </a>
-                        </div>
-                    </div>
 
-                    <!-- PDF Viewer -->
-                    <div class="flex-1 w-full relative z-10 bg-slate-950/50">
-                        <iframe 
-                            :src="currentPdfStreamUrl" 
-                            class="w-full h-[600px] border-none"
-                            title="Audit View"
-                        ></iframe>
-                    </div>
-
-                    <!-- Background Decor -->
-                    <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                </div>
 
             </div>
         </main>
