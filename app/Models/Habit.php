@@ -25,6 +25,18 @@ class Habit extends Model
         return $this->hasMany(HabitLog::class);
     }
 
+    protected static function booted()
+    {
+        static::saved(fn ($habit) => static::clearCache($habit->user_id));
+        static::deleted(fn ($habit) => static::clearCache($habit->user_id));
+    }
+
+    protected static function clearCache($userId)
+    {
+        \Illuminate\Support\Facades\Cache::forget("dash_synergy_{$userId}");
+        \Illuminate\Support\Facades\Cache::forget("dash_trend_{$userId}");
+    }
+
     // --- LOCAL SCOPES (Clean Query Helpers) ---
 
     public function scopeOfUser($query, $userId)

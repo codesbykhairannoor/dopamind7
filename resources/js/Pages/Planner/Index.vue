@@ -18,7 +18,7 @@ import { useGating } from '@/Composables/useGating';
 
 // 🔥 TERIMA currentDate DARI CONTROLLER
 const props = defineProps({ 
-    tasks: Array, 
+    tasks: [Array, Object], 
     dailyLogs: [Array, Object],
     currentDate: String 
 });

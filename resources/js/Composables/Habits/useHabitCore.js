@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import axios from 'axios';
 import confetti from 'canvas-confetti';
 
-export function useHabitCore(props) {
+export function useHabitCore(props, currentMonthKey) {
     const user = usePage().props.auth.user;
 
     // State Data (Optimistic UI)
@@ -27,7 +27,7 @@ export function useHabitCore(props) {
     }, { deep: true });
 
     const activeHabits = computed(() => {
-        const month = props.monthQuery;
+        const month = currentMonthKey.value;
         return localHabits.value.filter(h => h.period === month).map(h => {
             const count = Object.keys(h.logs || {})
                 .filter(date => date.startsWith(month) && h.logs[date] === 'completed')
@@ -357,17 +357,17 @@ export function useHabitCore(props) {
     const showMoodDropdown = ref(false);
 
     const currentMoodData = computed(() => {
-        const activeMoodCode = localSavedMoods.value?.[props.monthQuery] || props.savedMood;
+        const activeMoodCode = localSavedMoods.value?.[currentMonthKey.value] || props.savedMood;
         if (!activeMoodCode) return moodOptions[0];
         return moodOptions.find(m => m.code === activeMoodCode) || moodOptions[0];
     });
 
     const selectMood = (code) => {
         showMoodDropdown.value = false;
-        localSavedMoods.value[props.monthQuery] = code;
+        localSavedMoods.value[currentMonthKey.value] = code;
         router.post(route('habits.mood'), {
             mood_code: code,
-            period: props.monthQuery
+            period: currentMonthKey.value
         }, { preserveScroll: true });
     };
 

@@ -13,24 +13,16 @@ export function useHabits(props) {
         if (newVal) currentMonthKey.value = newVal;
     });
 
-    const habitProps = reactive({
-        get habits() { return props.habits; },
-        get currentMonth() { return props.currentMonth; },
-        get monthQuery() { return currentMonthKey.value; },
-        get hasPrevHabits() { return props.hasPrevHabits; },
-        get prevMonthQuery() { return props.prevMonthQuery; },
-        get savedMood() { return props.savedMood; },
-        get savedMoods() { return props.savedMoods; }
-    });
+
 
     // 1. Ekstrak dari Core (Termasuk fungsi drag & select)
-    const core = useHabitCore(habitProps);
+    const core = useHabitCore(props, currentMonthKey);
     
     // 2. Ekstrak dari Dates
-    const dates = useHabitDates(habitProps, currentMonthKey);
+    const dates = useHabitDates(props, currentMonthKey);
 
     // 3. Ekstrak dari Modals (gabungkan dengan data yang dihubungkan dengan activeHabits)
-    const modals = useHabitModals(habitProps, core.activeHabits);
+    const modals = useHabitModals(props, currentMonthKey, core.activeHabits);
 
     const page = usePage();
 

@@ -31,6 +31,18 @@ class DailyLog extends Model
         'income_target' => 'float',
     ];
 
+    protected static function booted()
+    {
+        static::saved(fn ($log) => static::clearCache($log->user_id));
+        static::deleted(fn ($log) => static::clearCache($log->user_id));
+    }
+
+    protected static function clearCache($userId)
+    {
+        \Illuminate\Support\Facades\Cache::forget("dash_synergy_{$userId}");
+        \Illuminate\Support\Facades\Cache::forget("dash_trend_{$userId}");
+    }
+
     /**
      * Relasi balik ke User
      */

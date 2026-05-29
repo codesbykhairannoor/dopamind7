@@ -20,6 +20,18 @@ class PlannerTask extends Model
         'date'         => 'date', 
     ];
 
+    protected static function booted()
+    {
+        static::saved(fn ($task) => static::clearCache($task->user_id));
+        static::deleted(fn ($task) => static::clearCache($task->user_id));
+    }
+
+    protected static function clearCache($userId)
+    {
+        \Illuminate\Support\Facades\Cache::forget("dash_synergy_{$userId}");
+        \Illuminate\Support\Facades\Cache::forget("dash_trend_{$userId}");
+    }
+
     public function getStartTimeAttribute($value) {
         return $value ? Carbon::parse($value)->format('H:i') : null;
     }

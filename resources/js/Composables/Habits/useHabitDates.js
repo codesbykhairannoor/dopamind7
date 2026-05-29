@@ -8,9 +8,9 @@ import localeData from 'dayjs/plugin/localeData';
 dayjs.extend(localeData);
 
 export function useHabitDates(props, currentMonthKey) {
-    watch(() => props.monthQuery, (newMonth) => {
+    watch(currentMonthKey, (newMonth) => {
         if (typeof router.prefetch === 'function') {
-            const current = newMonth ? dayjs(newMonth) : dayjs();
+            const current = newMonth ? dayjs(newMonth + '-01') : dayjs();
             const prevMonth = current.subtract(1, 'month').format('YYYY-MM');
             const nextMonth = current.add(1, 'month').format('YYYY-MM');
             
@@ -28,7 +28,7 @@ export function useHabitDates(props, currentMonthKey) {
         const activeLang = usePage().props.locale || 'id';
         dayjs.locale(activeLang);
 
-        const targetDate = props.monthQuery ? dayjs(props.monthQuery) : dayjs();
+        const targetDate = currentMonthKey.value ? dayjs(currentMonthKey.value + '-01') : dayjs();
         const daysInMonth = targetDate.daysInMonth();
         let days = [];
 
@@ -50,7 +50,7 @@ export function useHabitDates(props, currentMonthKey) {
 
         // Cek apakah payload dari tombol manual ('next'/'prev') atau dari Input Bulan ('YYYY-MM')
         if (payload === 'next' || payload === 'prev') {
-            const current = props.monthQuery ? dayjs(props.monthQuery) : dayjs();
+            const current = currentMonthKey.value ? dayjs(currentMonthKey.value + '-01') : dayjs();
             newMonth = payload === 'next'
                 ? current.add(1, 'month').format('YYYY-MM')
                 : current.subtract(1, 'month').format('YYYY-MM');
@@ -59,7 +59,7 @@ export function useHabitDates(props, currentMonthKey) {
             newMonth = payload;
         }
 
-        const oldYear = dayjs(props.monthQuery + '-01').format('YYYY');
+        const oldYear = dayjs(currentMonthKey.value + '-01').format('YYYY');
         const newYear = dayjs(newMonth + '-01').format('YYYY');
 
         if (currentMonthKey) {

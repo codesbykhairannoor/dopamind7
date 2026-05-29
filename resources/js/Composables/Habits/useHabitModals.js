@@ -3,8 +3,9 @@ import { useForm, router } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
 import { useGating } from '@/Composables/useGating';
+import dayjs from 'dayjs';
 
-export function useHabitModals(props, localHabits) {
+export function useHabitModals(props, currentMonthKey, localHabits) {
     const { tier, isExplorer } = useGating();
 
     // --- HELPER TRANSLASI ---
@@ -41,13 +42,13 @@ export function useHabitModals(props, localHabits) {
 
     const form = useForm({
         id: null, name: '', icon: '⚡', color: '#6366f1', monthly_target: 20,
-        period: props.monthQuery
+        period: currentMonthKey.value
     });
 
     // --- STATE BATCH MODE 🔥 ---
     const showBatchModal = ref(false);
     const batchForm = useForm({
-        period: props.monthQuery,
+        period: currentMonthKey.value,
         habits: [
             { name: '', icon: '⚡', color: '#6366f1', monthly_target: 20 }
         ]
@@ -113,7 +114,7 @@ export function useHabitModals(props, localHabits) {
         const newHabits = rawHabits.map((h, i) => ({
             ...h,
             id: 'temp_batch_' + Date.now() + '_' + i,
-            period: props.monthQuery,
+            period: currentMonthKey.value,
             logs: {},
             progress_count: 0,
             progress_percent: 0,
@@ -125,7 +126,7 @@ export function useHabitModals(props, localHabits) {
         fireToast('success', t('success_batch_saved', 'Berhasil menyimpan banyak habit!'));
 
         router.post(route('habits.batchStore'), {
-            period: props.monthQuery,
+            period: currentMonthKey.value,
             habits: rawHabits
         }, {
             preserveScroll: true,
@@ -183,7 +184,7 @@ export function useHabitModals(props, localHabits) {
 
     const submitHabit = () => {
         form.clearErrors();
-        const payload = { ...form.data(), period: props.monthQuery };
+        const payload = { ...form.data(), period: currentMonthKey.value };
 
         if (isEditing.value) {
             const index = localHabits.value.findIndex(h => h.id === form.id);
@@ -234,7 +235,8 @@ export function useHabitModals(props, localHabits) {
         fireToast('success', t('success_copy_habit', 'Berhasil menyalin dari bulan lalu!'));
 
         router.post(route('habits.copy'), {
-            current_period: props.monthQuery, prev_period: props.prevMonthQuery
+            current_period: currentMonthKey.value, 
+            prev_period: dayjs(currentMonthKey.value + '-01').subtract(1, 'month').format('YYYY-MM')
         }, {
             preserveScroll: true, progress: false,
             onError: (err) => fireToast('error', Object.values(err)[0] || t('error_copy_habit', 'Gagal menyalin habit.'))

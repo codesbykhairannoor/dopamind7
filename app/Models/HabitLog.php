@@ -23,4 +23,22 @@ class HabitLog extends Model
     {
         return $this->belongsTo(Habit::class);
     }
+
+    protected static function booted()
+    {
+        static::saved(function ($log) {
+            $habit = $log->habit;
+            if ($habit) {
+                \Illuminate\Support\Facades\Cache::forget("dash_synergy_{$habit->user_id}");
+                \Illuminate\Support\Facades\Cache::forget("dash_trend_{$habit->user_id}");
+            }
+        });
+        static::deleted(function ($log) {
+            $habit = $log->habit;
+            if ($habit) {
+                \Illuminate\Support\Facades\Cache::forget("dash_synergy_{$habit->user_id}");
+                \Illuminate\Support\Facades\Cache::forget("dash_trend_{$habit->user_id}");
+            }
+        });
+    }
 }
