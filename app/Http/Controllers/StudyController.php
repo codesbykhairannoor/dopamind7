@@ -710,6 +710,23 @@ class StudyController extends Controller
                 'artifact_text' => $request->artifact_text,
             ];
 
+            // Save structured data to model so frontend and processing job can access it
+            $material->context_data = [
+                'files' => $filesData['context_files'],
+                'link' => $request->context_link,
+                'link_name' => $request->context_link_name,
+                'text' => $request->context_text,
+            ];
+            
+            $material->artifact_data = [
+                'files' => $filesData['artifact_files'],
+                'link' => $request->artifact_link,
+                'link_name' => $request->artifact_link_name,
+                'text' => $request->artifact_text,
+            ];
+            
+            $material->save();
+
             // Background process will be triggered client-side via /process endpoint
 
             if ($request->has('show_radar')) {
