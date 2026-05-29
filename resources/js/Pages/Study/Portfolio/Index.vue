@@ -87,7 +87,7 @@ const closeUploadModal = () => {
         
         <header class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-2xl border-b border-slate-200/50 dark:border-slate-800/50 px-4 md:px-6 py-4 md:py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 sticky top-0 z-50">
             <div class="flex items-center gap-4 w-full md:w-auto">
-                <Link :href="route('study.index')" prefetch="mount" class="group p-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl transition-all text-slate-500 active:scale-90 border border-transparent hover:border-slate-200 dark:hover:border-slate-700 shrink-0">
+                <Link :href="route('study.index')" prefetch="mount" cache-for="5m" class="group p-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl transition-all text-slate-500 active:scale-90 border border-transparent hover:border-slate-200 dark:hover:border-slate-700 shrink-0">
                     <ArrowLeft class="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
                 </Link>
                 <div class="flex-1">

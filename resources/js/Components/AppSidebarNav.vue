@@ -119,6 +119,7 @@ const goCoach = () => {
                 <Link
                     :href="route('dashboard')"
                     prefetch="mount"
+                    cache-for="5m"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -155,6 +156,7 @@ const goCoach = () => {
                     v-if="showModule('habit')"
                     :href="route('habits.index')"
                     prefetch="mount"
+                    cache-for="5m"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -191,6 +193,7 @@ const goCoach = () => {
                     v-if="showModule('planner')"
                     :href="route('planner.index')"
                     prefetch="mount"
+                    cache-for="5m"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -227,6 +230,7 @@ const goCoach = () => {
                     v-if="showModule('finance')"
                     :href="route('finance.index')"
                     prefetch="mount"
+                    cache-for="5m"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -263,6 +267,7 @@ const goCoach = () => {
                     v-if="showModule('study')"
                     :href="route('study.index')"
                     prefetch="mount"
+                    cache-for="5m"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -383,6 +388,7 @@ const goCoach = () => {
                     v-if="showModule('journal')"
                     :href="canUse('journal') ? route('journal.index') : undefined"
                     :prefetch="canUse('journal') ? 'mount' : undefined"
+                    :cache-for="canUse('journal') ? '5m' : undefined"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -425,6 +431,7 @@ const goCoach = () => {
                     v-if="showModule('calendar')"
                     :href="canUse('calendar') ? route('calendar.index') : undefined"
                     :prefetch="canUse('calendar') ? 'mount' : undefined"
+                    :cache-for="canUse('calendar') ? '5m' : undefined"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -467,6 +474,7 @@ const goCoach = () => {
                     v-if="showModule('job')"
                     :href="canUse('job') ? route('jobs.index') : undefined"
                     :prefetch="canUse('job') ? 'mount' : undefined"
+                    :cache-for="canUse('job') ? '5m' : undefined"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -509,6 +517,7 @@ const goCoach = () => {
                     v-if="showModule('goal')"
                     :href="canUse('goal') ? route('goals.index') : undefined"
                     :prefetch="canUse('goal') ? 'mount' : undefined"
+                    :cache-for="canUse('goal') ? '5m' : undefined"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -570,6 +579,7 @@ const goCoach = () => {
                 :is="canUse('ai_coach') ? Link : 'button'"
                 :href="canUse('ai_coach') ? route('coach.index') : undefined"
                 :prefetch="canUse('ai_coach') ? 'mount' : undefined"
+                :cache-for="canUse('ai_coach') ? '5m' : undefined"
                 view-transition
                 class="nav-item group cursor-pointer relative overflow-hidden"
                 :class="[

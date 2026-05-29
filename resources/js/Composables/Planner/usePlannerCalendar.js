@@ -16,8 +16,8 @@ export function usePlannerCalendar(initialDate) {
             const prevDay = current.subtract(1, 'day').format('YYYY-MM-DD');
             const nextDay = current.add(1, 'day').format('YYYY-MM-DD');
             
-            router.prefetch(route('planner.index'), { method: 'get', data: { date: prevDay } }, { cacheFor: '1m' });
-            router.prefetch(route('planner.index'), { method: 'get', data: { date: nextDay } }, { cacheFor: '1m' });
+            router.prefetch(route('planner.index'), { method: 'get', data: { date: prevDay } }, { cacheFor: '5m' });
+            router.prefetch(route('planner.index'), { method: 'get', data: { date: nextDay } }, { cacheFor: '5m' });
         }
     }, { immediate: true });
 

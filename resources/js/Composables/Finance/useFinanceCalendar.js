@@ -18,8 +18,8 @@ export function useFinanceCalendar(initialDate) {
             const prevMonth = newDate.subtract(1, 'month').format('YYYY-MM-DD');
             const nextMonth = newDate.add(1, 'month').format('YYYY-MM-DD');
             
-            router.prefetch(route('finance.index'), { method: 'get', data: { date: prevMonth } }, { cacheFor: '1m' });
-            router.prefetch(route('finance.index'), { method: 'get', data: { date: nextMonth } }, { cacheFor: '1m' });
+            router.prefetch(route('finance.index'), { method: 'get', data: { date: prevMonth } }, { cacheFor: '5m' });
+            router.prefetch(route('finance.index'), { method: 'get', data: { date: nextMonth } }, { cacheFor: '5m' });
         }
     }, { immediate: true });
 

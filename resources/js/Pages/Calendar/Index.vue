@@ -98,8 +98,8 @@ watch(() => props.currentMonth, (newMonth) => {
         const current = dayjs(newMonth + '-01');
         const prevMonth = current.subtract(1, 'month').format('YYYY-MM');
         const nextMonth = current.add(1, 'month').format('YYYY-MM');
-        router.prefetch(route('calendar.index'), { method: 'get', data: { month: prevMonth } }, { cacheFor: '1m' });
-        router.prefetch(route('calendar.index'), { method: 'get', data: { month: nextMonth } }, { cacheFor: '1m' });
+        router.prefetch(route('calendar.index'), { method: 'get', data: { month: prevMonth } }, { cacheFor: '5m' });
+        router.prefetch(route('calendar.index'), { method: 'get', data: { month: nextMonth } }, { cacheFor: '5m' });
     }
 }, { immediate: true });
 </script>
