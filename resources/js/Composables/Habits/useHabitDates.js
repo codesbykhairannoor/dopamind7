@@ -76,6 +76,8 @@ export function useHabitDates(props, currentMonthKey) {
                 only: ['habits', 'currentMonth', 'monthQuery', 'hasPrevHabits', 'prevMonthQuery', 'savedMood'],
                 progress: false
             });
+        } else {
+            window.history.replaceState({}, '', route('habits.index', { month: newMonth }));
         }
     };
 

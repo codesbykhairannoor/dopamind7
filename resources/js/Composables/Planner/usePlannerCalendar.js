@@ -53,6 +53,9 @@ export function usePlannerCalendar(initialDate) {
                 only: ['tasks', 'dailyLogs', 'currentDate'], // Cuma ambil ini aja
                 progress: false
             });
+        } else {
+            // Update URL without hitting server since we already have the month's data
+            window.history.replaceState({}, '', route('planner.index', { date: newDate }));
         }
     };
 

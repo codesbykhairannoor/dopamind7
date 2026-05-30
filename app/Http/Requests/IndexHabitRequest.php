@@ -24,7 +24,10 @@ class IndexHabitRequest extends FormRequest
      */
     public function getMonthData(string $timezone): array
     {
-        $monthInput = $this->validated('month') ?: now()->timezone($timezone)->format('Y-m');
+        $monthInput = $this->query('month') ?? $this->input('month');
+        if (!$monthInput || !preg_match('/^\d{4}-\d{2}$/', $monthInput)) {
+            $monthInput = now()->timezone($timezone)->format('Y-m');
+        }
 
         try {
             $dateObj = Carbon::parse($monthInput . '-01')->timezone($timezone);

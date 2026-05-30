@@ -60,6 +60,8 @@ export function useFinanceCalendar(initialDate) {
                     progress: false
                 }
             );
+        } else {
+            window.history.replaceState({}, '', route('finance.index', { date: newDate.format('YYYY-MM-DD') }));
         }
     };
 

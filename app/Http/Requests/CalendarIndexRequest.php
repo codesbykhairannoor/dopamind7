@@ -17,6 +17,10 @@ class CalendarIndexRequest extends FormRequest
 
     public function getValidMonth(?string $timezone = 'Asia/Jakarta'): string
     {
-        return $this->validated('month') ?: now()->timezone($timezone)->format('Y-m');
+        $month = $this->query('month') ?? $this->input('month');
+        if ($month && preg_match('/^\d{4}-\d{2}$/', $month)) {
+            return $month;
+        }
+        return now()->timezone($timezone)->format('Y-m');
     }
 }
