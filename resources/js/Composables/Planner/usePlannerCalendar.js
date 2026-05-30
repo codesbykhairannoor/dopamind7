@@ -24,19 +24,12 @@ export function usePlannerCalendar(initialDate) {
 
     // Fungsi Utama buat Hit Backend
     const changeDate = (newDate) => {
-        const today = dayjs().format('YYYY-MM-DD');
-        const maxDate = dayjs().add(10, 'day').format('YYYY-MM-DD');
-
-        if (dayjs(newDate).isAfter(dayjs(maxDate))) {
-            return; // ⛔ Jangan pindah kalau lebih dari 10 hari
-        }
-        
-        const oldMonth = dayjs(currentDate.value).format('YYYY-MM');
-        const newMonth = dayjs(newDate).format('YYYY-MM');
+        const oldYear = dayjs(currentDate.value).format('YYYY');
+        const newYear = dayjs(newDate).format('YYYY');
 
         currentDate.value = newDate;
 
-        if (oldMonth !== newMonth) {
+        if (oldYear !== newYear) {
             router.get(route('planner.index'), { date: newDate }, { 
                 preserveState: true, 
                 preserveScroll: true,
@@ -45,7 +38,7 @@ export function usePlannerCalendar(initialDate) {
                 progress: false
             });
         } else {
-            // Update URL without hitting server since we already have the month's data
+            // Update URL without hitting server since we already have the year's data
             window.history.replaceState(window.history.state, '', route('planner.index', { date: newDate }));
         }
     };

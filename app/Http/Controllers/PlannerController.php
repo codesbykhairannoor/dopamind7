@@ -28,18 +28,18 @@ class PlannerController extends Controller
         $date = $request->getValidDate($user->timezone);
 
         $activeDate = \Carbon\Carbon::parse($date);
-        $startOfMonth = $activeDate->copy()->startOfMonth()->format('Y-m-d');
-        $endOfMonth = $activeDate->copy()->endOfMonth()->format('Y-m-d');
+        $startOfYear = $activeDate->copy()->startOfYear()->format('Y-m-d');
+        $endOfYear = $activeDate->copy()->endOfYear()->format('Y-m-d');
 
-        // Fetch all tasks for the month
+        // Fetch all tasks for the year to allow instant frontend navigation
         $tasks = PlannerTask::ofUser($user->id)
-            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->whereBetween('date', [$startOfYear, $endOfYear])
             ->ordered()
             ->get();
 
-        // Fetch all daily logs for the month
+        // Fetch all daily logs for the year
         $dailyLogs = DailyLog::where('user_id', $user->id)
-            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->whereBetween('date', [$startOfYear, $endOfYear])
             ->get();
 
         $tasksResource = PlannerTaskResource::collection($tasks)->resolve();
