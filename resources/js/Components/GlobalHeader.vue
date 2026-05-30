@@ -126,9 +126,20 @@ const showNotificationSettings = ref(false);
 const showCommandPalette = ref(false);
 const showHeaderDatePicker = ref(false);
 
+const headerDateValue = computed(() => {
+    // If we are on Planner page and it has a currentDate prop, use it. Otherwise use today.
+    return page.props.currentDate || dayjs().format('YYYY-MM-DD');
+});
+
 const onHeaderDateSelect = (date) => {
     showHeaderDatePicker.value = false;
-    router.get(route('planner.index', { date }));
+    
+    if (route().current('planner.index')) {
+        // Dispatch global event so Planner can handle it instantly!
+        window.dispatchEvent(new CustomEvent('global-planner-date-change', { detail: date }));
+    } else {
+        router.get(route('planner.index', { date }));
+    }
 };
 
 const handleGlobalShortcuts = (e) => {
@@ -216,7 +227,7 @@ onUnmounted(() => {
                         <div class="fixed inset-0 z-[-1]" @click="showHeaderDatePicker = false"></div>
                         <PlannerDatePicker
                             :show="showHeaderDatePicker"
-                            :modelValue="dayjs().format('YYYY-MM-DD')"
+                            :modelValue="headerDateValue"
                             @update:modelValue="onHeaderDateSelect"
                             @close="showHeaderDatePicker = false"
                         />
