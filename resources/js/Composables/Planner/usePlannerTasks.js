@@ -9,7 +9,9 @@ export function usePlannerTasks(props, activeDate) {
     const getTasksArray = (t) => {
         if (Array.isArray(t)) return t;
         if (t && typeof t === 'object') {
-            if (Array.isArray(t.data)) return t.data;
+            if (t.data !== undefined) {
+                return Array.isArray(t.data) ? t.data : Object.values(t.data);
+            }
             return Object.values(t);
         }
         return [];

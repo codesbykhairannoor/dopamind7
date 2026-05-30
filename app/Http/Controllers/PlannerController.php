@@ -42,8 +42,8 @@ class PlannerController extends Controller
             ->whereBetween('date', [$startOfMonth, $endOfMonth])
             ->get();
 
-        $tasksResource = PlannerTaskResource::collection($tasks);
-        $logsResource = DailyLogResource::collection($dailyLogs);
+        $tasksResource = PlannerTaskResource::collection($tasks)->resolve();
+        $logsResource = DailyLogResource::collection($dailyLogs)->resolve();
 
         if ($request->wantsJson()) {
             return response()->json([

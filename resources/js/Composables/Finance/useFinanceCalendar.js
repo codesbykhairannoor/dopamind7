@@ -57,6 +57,7 @@ export function useFinanceCalendar(initialDate) {
                     preserveScroll: true,
                     replace: true, 
                     only: ['transactions', 'budgets', 'stats', 'filters'],
+                    progress: false
                 }
             );
         }

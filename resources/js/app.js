@@ -103,14 +103,8 @@ createInertiaApp({
         vueApp.mount(el);
     },
 
-    // Inertia built-in progress — satu sistem, tidak ada konflik
-    // delay: 150 supaya navigasi cepat (<150ms) tidak tampilkan bar sama sekali
-    progress: {
-        color: '#4f46e5',
-        showSpinner: false,
-        delay: 150,
-        includeCSS: true,
-    },
+    // Inertia built-in progress dimatikan agar perpindahan halaman terasa instan (tidak ada loading bar)
+    progress: false,
 });
 
 /**

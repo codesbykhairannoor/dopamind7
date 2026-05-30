@@ -51,6 +51,7 @@ export function usePlannerCalendar(initialDate) {
                 preserveScroll: true,
                 replace: true, // Biar ga menuhin history back browser
                 only: ['tasks', 'dailyLogs', 'currentDate'], // Cuma ambil ini aja
+                progress: false
             });
         }
     };

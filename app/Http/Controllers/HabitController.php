@@ -42,10 +42,10 @@ class HabitController extends Controller
             ->withLogStats($startOfYear, $endOfYear)
             ->get();
 
-        $habitsResource = HabitResource::collection($habits);
+        $habitsResource = HabitResource::collection($habits)->resolve();
 
         if ($request->wantsJson()) {
-            return $habitsResource;
+            return response()->json($habitsResource);
         }
 
         $savedMoods = Mood::where('user_id', $user->id)

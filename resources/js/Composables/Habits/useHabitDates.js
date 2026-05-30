@@ -73,7 +73,8 @@ export function useHabitDates(props, currentMonthKey) {
                 preserveState: true,
                 preserveScroll: true,
                 replace: true,
-                only: ['habits', 'currentMonth', 'monthQuery', 'hasPrevHabits', 'prevMonthQuery', 'savedMood']
+                only: ['habits', 'currentMonth', 'monthQuery', 'hasPrevHabits', 'prevMonthQuery', 'savedMood'],
+                progress: false
             });
         }
     };
