@@ -92,7 +92,10 @@ export function usePlannerTasks(props, activeDate) {
 
         const hasConflict = localTasks.value.some(task => {
             if (isEditing.value && task.id === form.id) return false;
+            // 🔥 FIX: Hanya cek bentrok di tanggal yang sama karena localTasks berisi data 1 tahun
+            if (!task.date || !task.date.startsWith(form.date)) return false; 
             if (!task.start_time) return false;
+            
             const taskStart = timeToMin(task.start_time);
             let taskEnd = task.end_time ? timeToMin(task.end_time) : taskStart + 60;
             if (taskEnd < taskStart) taskEnd += 1440;

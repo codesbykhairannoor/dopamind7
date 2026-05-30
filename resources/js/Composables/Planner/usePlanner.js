@@ -25,15 +25,21 @@ export function usePlanner(props, activeDate) {
         return target[key] !== undefined ? target[key] : fallback;
     };
 
-    const findDailyLogForDate = (dateStr) => {
-        let logs = props.dailyLogs?.data || props.dailyLogs || [];
+    // Local mutable copy of daily logs to prevent data loss on client-side navigation
+    const localDailyLogs = ref([]);
+
+    watch(() => props.dailyLogs, (newLogs) => {
+        let logs = newLogs?.data || newLogs || [];
         if (logs && typeof logs === 'object' && !Array.isArray(logs)) {
             logs = Object.values(logs);
         }
-        if (!Array.isArray(logs)) {
-            logs = [];
+        if (Array.isArray(logs)) {
+            localDailyLogs.value = [...logs];
         }
-        const found = logs.find(log => {
+    }, { immediate: true, deep: true });
+
+    const findDailyLogForDate = (dateStr) => {
+        const found = localDailyLogs.value.find(log => {
             const logDate = log.date || (log.data && log.data.date);
             return logDate && logDate.startsWith(dateStr);
         });
@@ -58,10 +64,24 @@ export function usePlanner(props, activeDate) {
     // 🔥 AUTO-SAVE KE DATABASE (Mencakup Semua Komponen Sidebar)
     const saveLogSilent = debounce(async (data) => {
         try {
-            await axios.post(route('planner.updateLog'), {
+            const response = await axios.post(route('planner.updateLog'), {
                 ...data,
                 date: activeDate.value // 🔥 FIX: Gunakan activeDate agar instan saat pindah hari
             });
+            
+            // Update local state instantly so it's not lost when switching dates
+            const updatedLog = response.data?.data || response.data;
+            if (updatedLog) {
+                const index = localDailyLogs.value.findIndex(l => {
+                    const logDate = l.date || (l.data && l.data.date);
+                    return logDate && logDate.startsWith(updatedLog.date);
+                });
+                if (index !== -1) {
+                    localDailyLogs.value[index] = updatedLog;
+                } else {
+                    localDailyLogs.value.push(updatedLog);
+                }
+            }
         } catch (e) { 
             console.error("Auto-save failed:", e); 
         }
