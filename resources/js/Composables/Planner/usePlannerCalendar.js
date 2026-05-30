@@ -10,16 +10,7 @@ export function usePlannerCalendar(initialDate) {
     const page = usePage();
     const currentDate = ref(initialDate);
 
-    watch(currentDate, (newDate) => {
-        if (newDate && typeof router.prefetch === 'function') {
-            const current = dayjs(newDate);
-            const prevDay = current.subtract(1, 'day').format('YYYY-MM-DD');
-            const nextDay = current.add(1, 'day').format('YYYY-MM-DD');
-            
-            router.prefetch(route('planner.index'), { method: 'get', data: { date: prevDay } }, { cacheFor: '5m' });
-            router.prefetch(route('planner.index'), { method: 'get', data: { date: nextDay } }, { cacheFor: '5m' });
-        }
-    }, { immediate: true });
+    // Removed router.prefetch to prevent network clogging and delays when changing dates rapidly
 
     const localeCode = computed(() => {
         const locale = page.props.locale || 'id';
@@ -55,7 +46,7 @@ export function usePlannerCalendar(initialDate) {
             });
         } else {
             // Update URL without hitting server since we already have the month's data
-            window.history.replaceState({}, '', route('planner.index', { date: newDate }));
+            window.history.replaceState(window.history.state, '', route('planner.index', { date: newDate }));
         }
     };
 
