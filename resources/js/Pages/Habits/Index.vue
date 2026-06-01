@@ -86,6 +86,8 @@ const handleToggleProxy = async (habitId, date, forceStatus) => {
                 :todayProgress="todayProgress"
                 :changeMonth="changeMonth"
                 :openCreateModal="openCreateModal"
+                :openCopyModal="openCopyModal"
+                :hasPrevHabits="hasPrevHabits"
                 :isExplorer="isExplorer"
                 :habitsCount="habitsCount"
             />

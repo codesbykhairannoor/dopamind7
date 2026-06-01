@@ -13,6 +13,8 @@ const props = defineProps({
   todayProgress: [Number, String],
   changeMonth: Function,
   openCreateModal: Function,
+  openCopyModal: Function,
+  hasPrevHabits: Boolean,
   isExplorer: Boolean,
   habitsCount: Number,
 });
@@ -125,17 +127,27 @@ const changeYear = (offset) => {
             </div>
           </div>
 
-          <button 
-            @click="openCreateModal()" 
-            class="h-[46px] shrink-0 px-5 flex items-center gap-3 text-white rounded-xl font-bold hover:-translate-y-0.5 active:translate-y-0 shadow-lg transition-all duration-300 whitespace-nowrap bg-indigo-600 shadow-indigo-100 dark:shadow-indigo-900/40 hover:bg-indigo-700"
-          >
-            <div class="bg-white/20 rounded-lg p-0.5 flex items-center justify-center">
-              <OneForMindIcon name="plus" size="16" stroke-width="3" />
-            </div>
-            <span class="hidden md:inline text-xs capitalize tracking-wide font-black">
-                {{ $t('btn_add_habit') }}
-            </span>
-          </button>
+          <div class="flex items-center gap-2">
+            <button 
+              v-if="hasPrevHabits"
+              @click="openCopyModal()"
+              class="h-[46px] shrink-0 px-4 flex items-center gap-2 text-indigo-600 rounded-xl font-bold hover:-translate-y-0.5 active:translate-y-0 shadow-sm transition-all duration-300 whitespace-nowrap bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 dark:border-indigo-500/30 dark:bg-indigo-500/10 dark:text-indigo-400 dark:hover:bg-indigo-500/20"
+            >
+              📂 <span class="hidden md:inline text-xs capitalize tracking-wide font-black">{{ $t('habit_salin_btn', 'Salin Habit') }}</span>
+            </button>
+
+            <button 
+              @click="openCreateModal()" 
+              class="h-[46px] shrink-0 px-5 flex items-center gap-3 text-white rounded-xl font-bold hover:-translate-y-0.5 active:translate-y-0 shadow-lg transition-all duration-300 whitespace-nowrap bg-indigo-600 shadow-indigo-100 dark:shadow-indigo-900/40 hover:bg-indigo-700"
+            >
+              <div class="bg-white/20 rounded-lg p-0.5 flex items-center justify-center">
+                <OneForMindIcon name="plus" size="16" stroke-width="3" />
+              </div>
+              <span class="hidden md:inline text-xs capitalize tracking-wide font-black">
+                  {{ $t('btn_add_habit') }}
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 
