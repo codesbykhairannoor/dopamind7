@@ -129,7 +129,7 @@ const changeYear = (offset) => {
 
           <div class="flex items-center gap-2">
             <button 
-              v-if="hasPrevHabits"
+              v-if="hasPrevHabits && habitsCount === 0"
               @click="openCopyModal()"
               class="h-[46px] shrink-0 px-4 flex items-center gap-2 text-indigo-600 rounded-xl font-bold hover:-translate-y-0.5 active:translate-y-0 shadow-sm transition-all duration-300 whitespace-nowrap bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 dark:border-indigo-500/30 dark:bg-indigo-500/10 dark:text-indigo-400 dark:hover:bg-indigo-500/20"
             >
