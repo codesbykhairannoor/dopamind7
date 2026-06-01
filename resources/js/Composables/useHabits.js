@@ -21,8 +21,8 @@ export function useHabits(props) {
     // 2. Ekstrak dari Dates
     const dates = useHabitDates(props, currentMonthKey);
 
-    // 3. Ekstrak dari Modals (gabungkan dengan data yang dihubungkan dengan activeHabits)
-    const modals = useHabitModals(props, currentMonthKey, core.activeHabits);
+    // 3. Ekstrak dari Modals (gabungkan dengan data yang dihubungkan dengan localHabits)
+    const modals = useHabitModals(props, currentMonthKey, core.localHabits);
 
     const page = usePage();
 

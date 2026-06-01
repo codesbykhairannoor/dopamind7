@@ -376,7 +376,22 @@ export function useHabitCore(props, currentMonthKey) {
 
     // --- DRAG & DROP REORDER (VIA VUEDRAGGABLE) ---
     const saveHabitOrder = async (newHabitsList) => {
-        localHabits.value = newHabitsList;
+        // newHabitsList only contains the current month's habits, ordered.
+        // We need to update the position of these habits in localHabits without deleting other months.
+        
+        // Update positions based on the new array order
+        newHabitsList.forEach((habit, index) => {
+            const hIndex = localHabits.value.findIndex(h => h.id === habit.id);
+            if (hIndex !== -1) {
+                localHabits.value[hIndex].position = index;
+            }
+        });
+
+        // Sort localHabits by period and then by position so the drag order persists visually if they change back and forth
+        localHabits.value.sort((a, b) => {
+            if (a.period !== b.period) return a.period.localeCompare(b.period);
+            return (a.position || 0) - (b.position || 0);
+        });
 
         const orderedHabits = newHabitsList
             .filter(habit => !String(habit.id).startsWith('temp_')) // 🔥 FIX FILTER
