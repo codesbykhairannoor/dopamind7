@@ -36,6 +36,13 @@ export function useHabits(props) {
     const isExplorer = computed(() => planType.value === 'explorer');
     const habitsCount = computed(() => core.activeHabits.value?.length || 0);
 
+    const hasPrevHabits = computed(() => {
+        const prevMonthStr = dayjs(currentMonthKey.value + '-01').subtract(1, 'month').format('YYYY-MM');
+        // Because localHabits contains the entire year's data, we can just check it locally
+        // If it's a cross-year boundary, it will rely on the backend's props.hasPrevHabits
+        return core.localHabits.value.some(h => h.period === prevMonthStr) || props.hasPrevHabits;
+    });
+
     // Menggabungkan semua return dari 3 composable di atas
     return {
         // --- Dari Core ---
@@ -95,6 +102,7 @@ export function useHabits(props) {
         isExplorer,
         habitsCount,
         planType,
+        hasPrevHabits,
 
         // Batch Modal
         showBatchModal: modals.showBatchModal,

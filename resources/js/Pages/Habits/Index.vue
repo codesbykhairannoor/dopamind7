@@ -43,7 +43,7 @@ const {
     showBatchModal, batchForm, openBatchModal, closeBatchModal, 
     addBatchRow, removeBatchRow, submitBatchHabit, switchToBatch, switchToSingle, handleMouseDown, handleMouseEnter, isCellSelected, 
     saveHabitOrder,
-    isExplorer, habitsCount,
+    isExplorer, habitsCount, hasPrevHabits,
     
     // Month / Year Picker
     currentMonthKey,
