@@ -105,6 +105,7 @@ export function usePlannerBatch(currentDateRef, localTasksRef = null) {
             }
 
             const clashExternal = existingTasks.some(existing => {
+                if (!existing.date || !existing.date.startsWith(batchForm.date)) return false; // 🔥 FIX: Filter by date
                 if (!existing.start_time || !existing.end_time) return false;
                 const eStart = timeToMin(existing.start_time);
                 let eEnd = timeToMin(existing.end_time);

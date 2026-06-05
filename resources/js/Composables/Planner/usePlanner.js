@@ -7,10 +7,25 @@ import Swal from 'sweetalert2';
 
 const debounce = (fn, delay) => {
     let timeoutId;
-    return (...args) => {
+    let lastArgs;
+    const debounced = (...args) => {
+        lastArgs = args;
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => fn(...args), delay);
+        timeoutId = setTimeout(() => {
+            fn(...lastArgs);
+            lastArgs = null;
+            timeoutId = null;
+        }, delay);
     };
+    debounced.flush = () => {
+        if (timeoutId && lastArgs) {
+            clearTimeout(timeoutId);
+            fn(...lastArgs);
+            lastArgs = null;
+            timeoutId = null;
+        }
+    };
+    return debounced;
 };
 
 export function usePlanner(props, activeDate) {
@@ -62,12 +77,9 @@ export function usePlanner(props, activeDate) {
     const activeModalType = ref('full');
 
     // 🔥 AUTO-SAVE KE DATABASE (Mencakup Semua Komponen Sidebar)
-    const saveLogSilent = debounce(async (data) => {
+    const saveLogSilent = debounce(async (payload) => {
         try {
-            const response = await axios.post(route('planner.updateLog'), {
-                ...data,
-                date: activeDate.value // 🔥 FIX: Gunakan activeDate agar instan saat pindah hari
-            });
+            const response = await axios.post(route('planner.updateLog'), payload);
             
             // Update local state instantly so it's not lost when switching dates
             const updatedLog = response.data?.data || response.data;
@@ -87,19 +99,37 @@ export function usePlanner(props, activeDate) {
         }
     }, 500);
 
+    const queueSave = () => {
+        saveLogSilent({
+            date: activeDate.value,
+            notes: localNotes.value,
+            meals: localMeals.value,
+            water: localWater.value,
+            task_box: localTaskBox.value
+        });
+    };
+
+    let isUpdatingFromNavigation = false;
+
     // Pantau Perubahan untuk Auto Save
-    watch(localNotes, (val) => saveLogSilent({ notes: val }));
-    watch(localMeals, (val) => saveLogSilent({ meals: val }), { deep: true });
-    watch(localWater, (val) => saveLogSilent({ water: val }));
-    watch(localTaskBox, (val) => saveLogSilent({ task_box: val }), { deep: true });
+    watch(localNotes, () => { if (!isUpdatingFromNavigation) queueSave(); });
+    watch(localMeals, () => { if (!isUpdatingFromNavigation) queueSave(); }, { deep: true });
+    watch(localWater, () => { if (!isUpdatingFromNavigation) queueSave(); });
+    watch(localTaskBox, () => { if (!isUpdatingFromNavigation) queueSave(); }, { deep: true });
 
     // 🔥 Kalau user pindah tanggal, UPDATE SEMUA STATE dari database secara instan
-    watch(activeDate, (newDate) => {
+    watch(activeDate, (newDate, oldDate) => {
+        if (oldDate) saveLogSilent.flush(); // 🔥 FIX: Save pending data before changing date!
+        
+        isUpdatingFromNavigation = true;
         updateLocalLogFromDate(newDate);
+        setTimeout(() => { isUpdatingFromNavigation = false; }, 50);
     }, { immediate: true });
 
     watch(() => props.dailyLogs, () => {
+        isUpdatingFromNavigation = true;
         updateLocalLogFromDate(activeDate.value);
+        setTimeout(() => { isUpdatingFromNavigation = false; }, 50);
     }, { deep: true });
 
     const timeSlots = Array.from({ length: 18 }, (_, i) => `${(i + 6).toString().padStart(2, '0')}:00`);
