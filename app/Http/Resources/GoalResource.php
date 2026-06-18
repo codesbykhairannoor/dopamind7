@@ -56,6 +56,7 @@ class GoalResource extends JsonResource
             'type' => $this->type,
             'target_value' => $this->target_value,
             'current_value' => $this->current_value,
+            'color' => $this->color,
             'start_date' => $this->start_date ? $this->start_date->format('Y-m-d') : null,
             'end_date' => $this->end_date ? $this->end_date->format('Y-m-d') : null,
             'days_remaining' => $daysRemaining,
