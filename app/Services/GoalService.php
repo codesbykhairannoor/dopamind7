@@ -100,6 +100,9 @@ class GoalService
             $milestones = $data['milestones'] ?? [];
             unset($data['milestones']);
 
+            $data['target_value'] = $data['target_value'] ?? 0;
+            $data['current_value'] = $data['current_value'] ?? 0;
+
             $goal = Goal::create([
                 'user_id' => $userId,
                 ...$data
@@ -116,6 +119,13 @@ class GoalService
         return DB::transaction(function () use ($goal, $data) {
             $milestones = $data['milestones'] ?? null;
             unset($data['milestones']);
+
+            if (array_key_exists('target_value', $data) && $data['target_value'] === null) {
+                $data['target_value'] = 0;
+            }
+            if (array_key_exists('current_value', $data) && $data['current_value'] === null) {
+                $data['current_value'] = 0;
+            }
 
             $goal->update($data);
 

@@ -105,8 +105,9 @@ const handleCheckbox = () => {
         :class="milestone.is_saving ? 'opacity-70' : ''">
         
         <button 
-            @click="handleCheckbox"
-            class="flex-shrink-0 w-[18px] h-[18px] rounded-lg border-2 flex items-center justify-center transition-all duration-300 focus:outline-none"
+            @click="!milestone.is_saving && handleCheckbox()"
+            :disabled="milestone.is_saving"
+            class="flex-shrink-0 w-[18px] h-[18px] rounded-lg border-2 flex items-center justify-center transition-all duration-300 focus:outline-none disabled:cursor-not-allowed"
             :class="milestone.is_completed || milestone.completed
                 ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm shadow-indigo-200 dark:shadow-indigo-900/40' 
                 : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-indigo-400 dark:hover:border-indigo-500'"
@@ -121,8 +122,9 @@ const handleCheckbox = () => {
                 @keydown="handleKeydown"
                 @blur="() => { isInputFocused.value = false; handleSave(); }"
                 @focus="handleFocus"
+                :disabled="milestone.is_saving"
                 :placeholder="t('milestone_placeholder', 'Identify next step...')"
-                class="w-full bg-transparent border-none focus:ring-0 p-0 text-sm placeholder:text-slate-300 dark:placeholder:text-slate-600 transition-all font-bold"
+                class="w-full bg-transparent border-none focus:ring-0 p-0 text-sm placeholder:text-slate-300 dark:placeholder:text-slate-600 transition-all font-bold disabled:opacity-50 disabled:cursor-not-allowed"
                 :class="(milestone.is_completed || milestone.completed) ? 'text-slate-400 dark:text-slate-500 line-through font-medium' : 'text-slate-700 dark:text-slate-200 font-black'"
             />
             
@@ -130,8 +132,9 @@ const handleCheckbox = () => {
         </div>
 
         <button 
-            @click="emit('delete')"
-            class="opacity-100 md:opacity-0 md:group-hover/ms:opacity-100 p-1.5 text-slate-300 dark:text-slate-600 hover:text-rose-500 dark:hover:text-rose-400 transition-all rounded-xl hover:bg-rose-50 dark:hover:bg-rose-500/10 focus:outline-none shrink-0"
+            @click="!milestone.is_saving && emit('delete')"
+            :disabled="milestone.is_saving"
+            class="opacity-100 md:opacity-0 md:group-hover/ms:opacity-100 p-1.5 text-slate-300 dark:text-slate-600 hover:text-rose-500 dark:hover:text-rose-400 transition-all rounded-xl hover:bg-rose-50 dark:hover:bg-rose-500/10 focus:outline-none shrink-0 disabled:cursor-not-allowed"
         >
             <Trash2 :size="14" />
         </button>
