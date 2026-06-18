@@ -110,10 +110,14 @@ const meshGradient = computed(() => {
             </div>
 
             <div class="absolute top-4 right-4 flex gap-2 z-20">
-                <button @click="onEdit(goal)" class="w-8 h-8 rounded-full bg-white/20 dark:bg-black/40 border border-white/30 dark:border-white/20  text-white flex items-center justify-center hover:bg-white dark:hover:bg-indigo-600 hover:text-indigo-600 dark:hover:text-white transition-all shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 scale-100 md:scale-90 md:group-hover:scale-100 delay-75">
+                <button @click="!goal.is_saving && !String(goal.id).startsWith('temp_') && onEdit(goal)" 
+                        class="w-8 h-8 rounded-full border text-white flex items-center justify-center transition-all shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 scale-100 md:scale-90 md:group-hover:scale-100 delay-75"
+                        :class="goal.is_saving || String(goal.id).startsWith('temp_') ? 'bg-white/10 dark:bg-black/20 border-white/10 cursor-not-allowed opacity-50' : 'bg-white/20 dark:bg-black/40 border-white/30 dark:border-white/20 hover:bg-white dark:hover:bg-indigo-600 hover:text-indigo-600 dark:hover:text-white'">
                     <Edit3 :size="14" />
                 </button>
-                <button @click="onDelete(goal.id)" class="w-8 h-8 rounded-full bg-white/20 dark:bg-black/40 border border-white/30 dark:border-white/20  text-white flex items-center justify-center hover:bg-rose-500 hover:text-white transition-all shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 scale-100 md:scale-90 md:group-hover:scale-100 delay-150">
+                <button @click="!goal.is_saving && !String(goal.id).startsWith('temp_') && onDelete(goal.id)" 
+                        class="w-8 h-8 rounded-full border text-white flex items-center justify-center transition-all shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 scale-100 md:scale-90 md:group-hover:scale-100 delay-150"
+                        :class="goal.is_saving || String(goal.id).startsWith('temp_') ? 'bg-white/10 dark:bg-black/20 border-white/10 cursor-not-allowed opacity-50' : 'bg-white/20 dark:bg-black/40 border-white/30 dark:border-white/20 hover:bg-rose-500 hover:text-white'">
                     <Trash2 :size="14" />
                 </button>
             </div>

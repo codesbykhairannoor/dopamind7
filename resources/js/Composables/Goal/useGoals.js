@@ -202,7 +202,7 @@ export function useGoals(props) {
     const deleteMilestone = async (goal, mId) => {
         goal.milestones = goal.milestones.filter(m => m.id !== mId);
         recalculateProgress(goal);
-        if (!String(mId).startsWith('temp_')) {
+        if (!String(mId).startsWith('temp_') && !String(goal.id).startsWith('temp_')) {
             try { await axios.delete(route('goals.milestones.destroy', [goal.id, mId])); } catch (e) { }
         }
     };
@@ -230,6 +230,12 @@ export function useGoals(props) {
     };
 
     const saveGoal = async (data) => {
+        // 🔥 FIX: Prevent duplicate save/update if ID is still a temporary frontend ID
+        if (data.id && String(data.id).startsWith('temp_')) {
+            fireToast('warning', trans('goal_wait_save', 'Harap tunggu hingga data tersimpan'));
+            return;
+        }
+
         const isEditing = !!data.id;
         
         // --- GATING: 1 GOAL LIMIT FOR EXPLORER ---
