@@ -1,10 +1,13 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { Head, router, Link } from '@inertiajs/vue3';
-import { ChevronLeft, ChevronRight, CheckCircle2, Droplets, Inbox } from 'lucide-vue-next';
+import { ChevronLeft, ChevronRight, CheckCircle2, Droplets, Inbox, Maximize2 } from 'lucide-vue-next';
+import { trans } from 'laravel-vue-i18n';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
+
+import DayPreviewModal from './DayPreviewModal.vue';
 
 const props = defineProps({
     tasks: { type: Array, default: () => [] },
@@ -15,6 +18,10 @@ const props = defineProps({
 // Setup Initial State
 const activeDate = ref(dayjs(props.currentDate));
 const currentMonth = computed(() => activeDate.value.format('MMMM YYYY'));
+
+// Modal State
+const isPreviewOpen = ref(false);
+const selectedDayData = ref(null);
 
 const previousMonth = () => {
     activeDate.value = activeDate.value.subtract(1, 'month').startOf('month');
@@ -47,7 +54,7 @@ const calendarDays = computed(() => {
     // Previous Month padding
     for (let i = 0; i < adjustedStartDay; i++) {
         const d = startOfMonth.subtract(adjustedStartDay - i, 'day');
-        days.unshift(createDayObject(d, false)); // unshift because we are iterating backwards from startOfMonth
+        days.unshift(createDayObject(d, false));
     }
     
     // Current Month days
@@ -85,9 +92,9 @@ const createDayObject = (date, isCurrentMonth) => {
     }
     
     // Inbox / Taskbox
-    let inboxCount = 0;
+    let inboxItems = [];
     if (dayLog && dayLog.task_box) {
-        inboxCount = dayLog.task_box.length;
+        inboxItems = dayLog.task_box;
     }
 
     return {
@@ -96,30 +103,44 @@ const createDayObject = (date, isCurrentMonth) => {
         dayNumber: date.date(),
         isCurrentMonth,
         isToday,
-        tasks: { completed: completedTasks, total: totalTasks },
+        tasks: { completed: completedTasks, total: totalTasks, items: dayTasks },
         water: waterLevel,
-        inbox: inboxCount
+        inbox: { items: inboxItems }
     };
+};
+
+const openPreview = (dayData) => {
+    selectedDayData.value = dayData;
+    isPreviewOpen.value = true;
 };
 
 const goToDailyPlanner = (dateStr) => {
     router.visit(route('planner.index', { date: dateStr }));
 };
 
-const weekDays = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+const weekDays = [
+    trans('day_monday', 'Senin'), 
+    trans('day_tuesday', 'Selasa'), 
+    trans('day_wednesday', 'Rabu'), 
+    trans('day_thursday', 'Kamis'), 
+    trans('day_friday', 'Jumat'), 
+    trans('day_saturday', 'Sabtu'), 
+    trans('day_sunday', 'Minggu')
+];
 </script>
 
 <template>
-    <Head title="Planner Dashboard" />
+    <Head :title="trans('planner_dashboard', 'Planner Dashboard')" />
 
     <div class="min-h-screen bg-slate-50 dark:bg-slate-950 p-4 md:p-8">
-        <div class="max-w-6xl mx-auto space-y-8">
+        <!-- Menggunakan full width max-w-[1800px] -->
+        <div class="w-full max-w-[1800px] mx-auto space-y-8">
             
             <!-- Header -->
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 class="text-3xl font-black text-slate-800 dark:text-white">Planner Dashboard</h1>
-                    <p class="text-slate-500 dark:text-slate-400 mt-1 font-medium">Gambaran besar produktivitasmu bulan ini.</p>
+                    <h1 class="text-3xl font-black text-slate-800 dark:text-white">{{ trans('planner_dashboard', 'Planner Dashboard') }}</h1>
+                    <p class="text-slate-500 dark:text-slate-400 mt-1 font-medium">{{ trans('planner_dashboard_desc', 'Gambaran besar produktivitasmu bulan ini.') }}</p>
                 </div>
                 
                 <div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-2 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
@@ -148,14 +169,14 @@ const weekDays = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
                     <div 
                         v-for="day in calendarDays" 
                         :key="day.dateStr"
-                        @click="goToDailyPlanner(day.dateStr)"
-                        class="min-h-[120px] p-3 border-b border-r border-slate-100 dark:border-slate-800 relative group cursor-pointer transition-all duration-300 hover:bg-indigo-50/50 dark:hover:bg-indigo-500/10"
+                        @click="openPreview(day)"
+                        class="min-h-[150px] p-3 border-b border-r border-slate-100 dark:border-slate-800 relative group cursor-pointer transition-all duration-300 hover:bg-indigo-50/50 dark:hover:bg-indigo-500/10"
                         :class="[
                             !day.isCurrentMonth ? 'bg-slate-50/50 dark:bg-slate-950/30' : 'bg-white dark:bg-slate-900',
                             day.isToday ? 'ring-2 ring-inset ring-indigo-500' : ''
                         ]"
                     >
-                        <!-- Date Number -->
+                        <!-- Date Number & Quick Actions -->
                         <div class="flex items-center justify-between mb-3">
                             <span 
                                 class="w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm transition-colors"
@@ -166,42 +187,51 @@ const weekDays = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
                             >
                                 {{ day.dayNumber }}
                             </span>
+
+                            <!-- Quick Open Daily Planner Button -->
+                            <button 
+                                @click.stop="goToDailyPlanner(day.dateStr)"
+                                class="w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-white dark:bg-slate-800 text-indigo-500 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-500/20 shadow-sm border border-slate-100 dark:border-slate-700"
+                                :title="trans('planner_open_detail', 'Buka Daily Planner')"
+                            >
+                                <Maximize2 :size="14" />
+                            </button>
                         </div>
 
                         <!-- Data Summaries -->
                         <div class="space-y-1.5" :class="{ 'opacity-50': !day.isCurrentMonth }">
                             
                             <!-- Tasks -->
-                            <div v-if="day.tasks.total > 0" class="flex items-center justify-between px-2 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">
+                            <div v-if="day.tasks.total > 0" class="flex items-center justify-between px-2 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">
                                 <div class="flex items-center gap-1.5">
                                     <CheckCircle2 :size="12" />
-                                    <span class="hidden xl:inline">Tasks</span>
+                                    <span class="hidden xl:inline">{{ trans('planner_tasks', 'Tasks') }}</span>
                                 </div>
                                 <span>{{ day.tasks.completed }}/{{ day.tasks.total }}</span>
                             </div>
                             
                             <!-- Water -->
-                            <div v-if="day.water > 0" class="flex items-center justify-between px-2 py-1 rounded-lg bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-semibold">
+                            <div v-if="day.water > 0" class="flex items-center justify-between px-2 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-semibold">
                                 <div class="flex items-center gap-1.5">
                                     <Droplets :size="12" />
-                                    <span class="hidden xl:inline">Air</span>
+                                    <span class="hidden xl:inline">{{ trans('planner_water', 'Air') }}</span>
                                 </div>
                                 <span>{{ day.water }}/8</span>
                             </div>
                             
                             <!-- Inbox -->
-                            <div v-if="day.inbox > 0" class="flex items-center justify-between px-2 py-1 rounded-lg bg-orange-50 dark:bg-orange-500/10 text-orange-700 dark:text-orange-400 text-xs font-semibold">
+                            <div v-if="day.inbox?.items?.length > 0" class="flex items-center justify-between px-2 py-1.5 rounded-lg bg-orange-50 dark:bg-orange-500/10 text-orange-700 dark:text-orange-400 text-xs font-semibold">
                                 <div class="flex items-center gap-1.5">
                                     <Inbox :size="12" />
-                                    <span class="hidden xl:inline">Inbox</span>
+                                    <span class="hidden xl:inline">{{ trans('planner_inbox', 'Inbox') }}</span>
                                 </div>
-                                <span>{{ day.inbox }}</span>
+                                <span>{{ day.inbox.items.length }}</span>
                             </div>
 
                         </div>
                         
                         <!-- Hover Overlay Effect -->
-                        <div class="absolute inset-0 border-2 border-indigo-500 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity"></div>
+                        <div class="absolute inset-0 border-2 border-indigo-500 opacity-0 group-hover:opacity-100 rounded-[0.5rem] pointer-events-none transition-opacity"></div>
                     </div>
                 </div>
 
@@ -209,4 +239,12 @@ const weekDays = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
 
         </div>
     </div>
+
+    <!-- Modal Preview Harian -->
+    <DayPreviewModal 
+        :show="isPreviewOpen" 
+        :day="selectedDayData"
+        @close="isPreviewOpen = false"
+    />
+
 </template>
