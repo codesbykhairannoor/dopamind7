@@ -529,7 +529,8 @@ Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(
         ->prefix("planner")
         ->name("planner.")
         ->group(function () {
-            Route::get("/", [PlannerController::class, "index"])->name("index");
+            Route::get("/", [PlannerController::class, "dashboard"])->name("dashboard");
+            Route::get("/daily", [PlannerController::class, "index"])->name("index");
             Route::post("/", [PlannerController::class, "store"])->name(
                 "store",
             );

@@ -32,7 +32,7 @@ const filters = [
 const navigation = [
     { name: 'Dashboard', icon: 'dashboard', href: route('dashboard'), type: 'all' },
     { name: 'Habit Tracker', icon: 'habit', href: route('habits.index'), type: 'habit' },
-    { name: 'Daily Planner', icon: 'planner', href: route('planner.index'), type: 'task' },
+    { name: 'Daily Planner', icon: 'planner', href: route('planner.dashboard'), type: 'task' },
     { name: 'Finance Manager', icon: 'finance', href: route('finance.index'), type: 'all' },
 ];
 

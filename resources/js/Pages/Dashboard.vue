@@ -202,7 +202,7 @@ onMounted(() => {
             <div class="mb-8 overflow-x-auto scroll-smooth no-scrollbar">
                 <div class="flex w-max items-center gap-2">
                     <Link
-                        :href="route('planner.index')"
+                        :href="route('planner.dashboard')"
                         class="flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-xs font-semibold text-white shadow-md transition hover:bg-slate-800 active:scale-[0.98] dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100"
                     >
                         <Plus :size="14" stroke-width="2.5" />
@@ -249,7 +249,7 @@ onMounted(() => {
                                 </p>
                             </div>
                             <Link
-                                :href="route('planner.index')"
+                                :href="route('planner.dashboard')"
                                 class="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"
                             >
                                 {{ $t('dash_schedule') }}
@@ -290,7 +290,7 @@ onMounted(() => {
                                     {{ $t('dash_all_tasks_done') }}
                                 </p>
                                 <Link
-                                    :href="route('planner.index')"
+                                    :href="route('planner.dashboard')"
                                     class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400"
                                 >
                                     <Plus :size="14" />

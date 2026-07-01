@@ -94,7 +94,7 @@ const ctaConfig = computed(() => {
                     </div>
                     <div class="space-y-1">
                         <!-- Planner -->
-                        <Link :href="route('planner.index')" class="group flex items-center justify-between p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-white/5 cursor-pointer transition-all border border-transparent hover:border-slate-100 dark:hover:border-white/5">
+                        <Link :href="route('planner.dashboard')" class="group flex items-center justify-between p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-white/5 cursor-pointer transition-all border border-transparent hover:border-slate-100 dark:hover:border-white/5">
                             <div class="flex items-center gap-5">
                                 <div class="w-11 h-11 rounded-xl bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center shadow-sm">
                                     <Zap :size="20" stroke-width="2.5" />

@@ -60,24 +60,11 @@ const handleFullReset = () => {
 };
 
 const isMobile = ref(false);
-
-const handleGlobalDateChange = (e) => {
-    if (e.detail) changeDate(e.detail);
-};
-
 onMounted(() => {
     isMobile.value = window.innerWidth < 1024;
     window.addEventListener('resize', () => {
         isMobile.value = window.innerWidth < 1024;
     });
-
-    // Listen for date changes from the Global Header
-    window.addEventListener('global-planner-date-change', handleGlobalDateChange);
-});
-
-import { onUnmounted } from 'vue';
-onUnmounted(() => {
-    window.removeEventListener('global-planner-date-change', handleGlobalDateChange);
 });
 </script>
 

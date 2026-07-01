@@ -60,6 +60,43 @@ class PlannerController extends Controller
         ]);
     }
 
+    public function dashboard(PlannerDateRequest $request)
+    {
+        $user = Auth::user();
+        $date = $request->getValidDate($user->timezone);
+
+        $activeDate = \Carbon\Carbon::parse($date);
+        $startOfYear = $activeDate->copy()->startOfYear()->format('Y-m-d');
+        $endOfYear = $activeDate->copy()->endOfYear()->format('Y-m-d');
+
+        // Fetch all tasks for the year to allow instant frontend navigation
+        $tasks = PlannerTask::ofUser($user->id)
+            ->whereBetween('date', [$startOfYear, $endOfYear])
+            ->get();
+
+        // Fetch all daily logs for the year
+        $dailyLogs = DailyLog::where('user_id', $user->id)
+            ->whereBetween('date', [$startOfYear, $endOfYear])
+            ->get();
+
+        $tasksResource = PlannerTaskResource::collection($tasks)->resolve();
+        $logsResource = DailyLogResource::collection($dailyLogs)->resolve();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'tasks' => $tasksResource,
+                'dailyLogs' => $logsResource,
+                'currentDate' => $date
+            ]);
+        }
+
+        return Inertia::render('Planner/Dashboard', [
+            'tasks'       => $tasksResource,
+            'dailyLogs'    => $logsResource,
+            'currentDate' => $date,
+        ]);
+    }
+
     public function store(StoreTaskRequest $request)
     {
         $task = Auth::user()->plannerTasks()->create($request->validated());

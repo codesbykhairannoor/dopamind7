@@ -74,7 +74,7 @@ export function useBackgroundPrefetch(user) {
         if (modules.finance !== false)
             targets.push(() => route("finance.index"));
         if (modules.planner !== false)
-            targets.push(() => route("planner.index"));
+            targets.push(() => route("planner.dashboard"));
 
         // Architect+ only
         if (isArchitect) {
