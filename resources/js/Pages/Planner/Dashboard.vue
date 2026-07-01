@@ -103,6 +103,11 @@ const createDayObject = (date, isCurrentMonth) => {
         mealsData = dayLog.meals;
     }
 
+    let notesData = '';
+    if (dayLog && dayLog.notes) {
+        notesData = dayLog.notes;
+    }
+
     return {
         date: date,
         dateStr: dateStr,
@@ -112,7 +117,8 @@ const createDayObject = (date, isCurrentMonth) => {
         tasks: { completed: completedTasks, total: totalTasks, items: dayTasks },
         water: waterLevel,
         inbox: { items: inboxItems },
-        meals: mealsData
+        meals: mealsData,
+        notes: notesData
     };
 };
 
