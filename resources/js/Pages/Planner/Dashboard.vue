@@ -9,6 +9,12 @@ import 'dayjs/locale/en';
 
 import DayPreviewModal from './DayPreviewModal.vue';
 
+// Helper penerjemah lokal
+const t = (key, fallback) => {
+    const result = trans(key);
+    return result !== key ? result : fallback;
+};
+
 const props = defineProps({
     tasks: { type: Array, default: () => [] },
     dailyLogs: { type: Array, default: () => [] },
@@ -132,18 +138,18 @@ const goToDailyPlanner = (dateStr) => {
 };
 
 const weekDays = [
-    trans('day_monday', 'Senin'), 
-    trans('day_tuesday', 'Selasa'), 
-    trans('day_wednesday', 'Rabu'), 
-    trans('day_thursday', 'Kamis'), 
-    trans('day_friday', 'Jumat'), 
-    trans('day_saturday', 'Sabtu'), 
-    trans('day_sunday', 'Minggu')
+    t('day_monday', 'Senin'), 
+    t('day_tuesday', 'Selasa'), 
+    t('day_wednesday', 'Rabu'), 
+    t('day_thursday', 'Kamis'), 
+    t('day_friday', 'Jumat'), 
+    t('day_saturday', 'Sabtu'), 
+    t('day_sunday', 'Minggu')
 ];
 </script>
 
 <template>
-    <Head :title="trans('planner_dashboard', 'Planner Dashboard')" />
+    <Head :title="t('planner_dashboard', 'Planner Dashboard')" />
 
     <div class="min-h-screen bg-slate-50/50 dark:bg-slate-950 p-4 md:p-6 lg:p-10 relative overflow-hidden">
         
@@ -162,8 +168,8 @@ const weekDays = [
                         <Sparkles :size="32" stroke-width="2.5" />
                     </div>
                     <div>
-                        <h1 class="text-4xl font-black text-slate-900 dark:text-white tracking-tight">{{ trans('planner_dashboard', 'Planner Dashboard') }}</h1>
-                        <p class="text-slate-500 dark:text-slate-400 mt-1.5 font-medium text-lg">{{ trans('planner_dashboard_desc', 'Gambaran besar produktivitasmu bulan ini.') }}</p>
+                        <h1 class="text-4xl font-black text-slate-900 dark:text-white tracking-tight">{{ t('planner_dashboard', 'Planner Dashboard') }}</h1>
+                        <p class="text-slate-500 dark:text-slate-400 mt-1.5 font-medium text-lg">{{ t('planner_dashboard_desc', 'Gambaran besar produktivitasmu bulan ini.') }}</p>
                     </div>
                 </div>
                 
@@ -216,7 +222,7 @@ const weekDays = [
                             <button 
                                 @click.stop="goToDailyPlanner(day.dateStr)"
                                 class="w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white dark:bg-slate-800 text-indigo-500 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-500/20 shadow-md border border-slate-100 dark:border-slate-700 transform translate-x-2 group-hover:translate-x-0"
-                                :title="trans('planner_open_detail', 'Buka Daily Planner')"
+                                :title="t('planner_open_detail', 'Buka Daily Planner')"
                             >
                                 <Maximize2 :size="16" />
                             </button>
@@ -229,7 +235,7 @@ const weekDays = [
                             <div v-if="day.tasks.total > 0" class="flex items-center justify-between px-3 py-2 rounded-xl bg-emerald-50/80 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-bold transition-all hover:scale-[1.02]">
                                 <div class="flex items-center gap-2">
                                     <CheckCircle2 :size="14" />
-                                    <span class="hidden xl:inline">{{ trans('planner_tasks', 'Tasks') }}</span>
+                                    <span class="hidden xl:inline">{{ t('planner_tasks', 'Tasks') }}</span>
                                 </div>
                                 <span>{{ day.tasks.completed }}/{{ day.tasks.total }}</span>
                             </div>
@@ -238,7 +244,7 @@ const weekDays = [
                             <div v-if="day.water > 0" class="flex items-center justify-between px-3 py-2 rounded-xl bg-cyan-50/80 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 text-xs font-bold transition-all hover:scale-[1.02]">
                                 <div class="flex items-center gap-2">
                                     <Droplets :size="14" />
-                                    <span class="hidden xl:inline">{{ trans('planner_water', 'Air') }}</span>
+                                    <span class="hidden xl:inline">{{ t('planner_water', 'Air') }}</span>
                                 </div>
                                 <span>{{ day.water }}/8</span>
                             </div>
@@ -247,7 +253,7 @@ const weekDays = [
                             <div v-if="day.inbox?.items?.length > 0" class="flex items-center justify-between px-3 py-2 rounded-xl bg-orange-50/80 dark:bg-orange-500/10 text-orange-700 dark:text-orange-400 text-xs font-bold transition-all hover:scale-[1.02]">
                                 <div class="flex items-center gap-2">
                                     <Inbox :size="14" />
-                                    <span class="hidden xl:inline">{{ trans('planner_inbox', 'Inbox') }}</span>
+                                    <span class="hidden xl:inline">{{ t('planner_inbox', 'Inbox') }}</span>
                                 </div>
                                 <span>{{ day.inbox.items.length }}</span>
                             </div>
