@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, defineAsyncComponent } from 'vue';
 import { trans } from 'laravel-vue-i18n';
 import Swal from 'sweetalert2';
 import { Head, router, Link } from '@inertiajs/vue3';
@@ -8,13 +8,13 @@ import axios from 'axios';
 
 
 // Modular Child Components
-import AcademicSetup from './Components/AcademicSetup.vue';
-import SemesterModal from './Components/SemesterModal.vue';
+const AcademicSetup = defineAsyncComponent(() => import('./Components/AcademicSetup.vue'));
+const SemesterModal = defineAsyncComponent(() => import('./Components/SemesterModal.vue'));
 import AcademicHeader from './Components/AcademicHeader.vue';
 import CourseCard from './Components/CourseCard.vue';
-import CourseModal from './Components/CourseModal.vue';
-import ClassroomView from './Components/ClassroomView.vue';
-import ArchiveModal from './Components/ArchiveModal.vue';
+const CourseModal = defineAsyncComponent(() => import('./Components/CourseModal.vue'));
+const ClassroomView = defineAsyncComponent(() => import('./Components/ClassroomView.vue'));
+const ArchiveModal = defineAsyncComponent(() => import('./Components/ArchiveModal.vue'));
 
 const props = defineProps({
     academicRecords: { type: Array, default: () => [] },
