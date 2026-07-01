@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, defineAsyncComponent } from 'vue';
 import { Head, router, Link } from '@inertiajs/vue3';
 import { ChevronLeft, ChevronRight, CheckCircle2, Droplets, Inbox, Maximize2, Sparkles } from 'lucide-vue-next';
 import { trans } from 'laravel-vue-i18n';
@@ -7,7 +7,8 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
 
-import DayPreviewModal from './DayPreviewModal.vue';
+// Async Component Loading to reduce initial bundle size
+const DayPreviewModal = defineAsyncComponent(() => import('./DayPreviewModal.vue'));
 
 // Helper penerjemah lokal
 const t = (key, fallback) => {
@@ -199,6 +200,7 @@ const weekDays = [
                     <div 
                         v-for="day in calendarDays" 
                         :key="day.dateStr"
+                        v-memo="[day.dateStr, day.isToday, day.tasks.completed, day.tasks.total, day.water, day.inbox?.items?.length, day.meals]"
                         @click="openPreview(day)"
                         class="min-h-[160px] p-4 border-b border-r border-slate-100/80 dark:border-slate-800/80 relative group cursor-pointer transition-all duration-300"
                         :class="[

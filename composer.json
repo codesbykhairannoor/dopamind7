@@ -60,7 +60,10 @@
     "scripts": {
         "vercel": [
             "@php lang_sync.php",
-            "@php artisan ziggy:generate resources/js/ziggy.js"
+            "@php artisan ziggy:generate resources/js/ziggy.js",
+            "@php artisan config:cache",
+            "@php artisan route:cache",
+            "@php artisan view:cache"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

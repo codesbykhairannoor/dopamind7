@@ -1,20 +1,22 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, defineAsyncComponent } from 'vue';
 import { Head } from '@inertiajs/vue3';
 import { usePlanner } from '@/Composables/Planner/usePlanner';
 import { usePlannerBatch } from '@/Composables/Planner/usePlannerBatch';
 import { usePlannerCalendar } from '@/Composables/Planner/usePlannerCalendar'; 
 import EmptyState from '@/Components/EmptyState.vue';
 
-// Components
+// Normal Imports for above-the-fold components
 import PlannerHeader from './PlannerHeader.vue';
 import PlannerSidebar from './PlannerSidebar.vue';
 import PlannerTimeline from './PlannerTimeline.vue';
 import PlannerMobileTimeline from './PlannerMobileTimeline.vue';
-import PlannerModal from './PlannerModal.vue';
-import PlannerBatchModal from './PlannerBatchModal.vue';
-import NeuralBridge from '@/Components/NeuralBridge.vue';
 import { useGating } from '@/Composables/useGating';
+
+// Async Imports for components that are hidden on initial load
+const PlannerModal = defineAsyncComponent(() => import('./PlannerModal.vue'));
+const PlannerBatchModal = defineAsyncComponent(() => import('./PlannerBatchModal.vue'));
+const NeuralBridge = defineAsyncComponent(() => import('@/Components/NeuralBridge.vue'));
 
 // 🔥 TERIMA currentDate DARI CONTROLLER
 const props = defineProps({ 
