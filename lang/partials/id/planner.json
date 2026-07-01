@@ -112,5 +112,23 @@
     "planner_ai_promo_badge": "Integrasi Neural OS",
     "planner_ai_promo_title": "Loop Eksekusi Berbasis AI",
     "planner_ai_promo_desc": "Neural OS menganalisa beban kognitif Anda secara real-time dan secara dinamis menjadwalkan ulang tugas berdampak rendah untuk memastikan Anda selalu memiliki energi puncak untuk pekerjaan prioritas tinggi.",
-    "planner_ai_promo_btn": "Jelajahi Neural OS"
+    "planner_ai_promo_btn": "Jelajahi Neural OS",
+
+    "planner_dashboard": "Planner Dashboard",
+    "planner_dashboard_desc": "Gambaran besar produktivitasmu bulan ini.",
+    "planner_preview_title": "Preview Harian",
+    "planner_tasks": "Tugas",
+    "planner_no_tasks": "Belum ada tugas dijadwalkan",
+    "planner_inbox": "Kotak Masuk",
+    "planner_empty_inbox": "Inbox kosong",
+    "planner_water": "Air Minum",
+    "planner_meals": "Menu Makan",
+    "planner_open_detail": "Buka Daily Planner",
+    "day_monday": "Senin",
+    "day_tuesday": "Selasa",
+    "day_wednesday": "Rabu",
+    "day_thursday": "Kamis",
+    "day_friday": "Jumat",
+    "day_saturday": "Sabtu",
+    "day_sunday": "Minggu"
 }

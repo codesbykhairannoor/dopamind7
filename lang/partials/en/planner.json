@@ -124,5 +124,23 @@
     "planner_ai_promo_badge": "Neural OS Integration",
     "planner_ai_promo_title": "AI-Powered Execution Loops",
     "planner_ai_promo_desc": "Neural OS analyzes your cognitive load in real-time and dynamically reschedules low-impact tasks to ensure you always have peak energy for high-priority work.",
-    "planner_ai_promo_btn": "Explore Neural OS"
+    "planner_ai_promo_btn": "Explore Neural OS",
+
+    "planner_dashboard": "Planner Dashboard",
+    "planner_dashboard_desc": "A macro view of your productivity this month.",
+    "planner_preview_title": "Daily Preview",
+    "planner_tasks": "Tasks",
+    "planner_no_tasks": "No tasks scheduled yet",
+    "planner_inbox": "Inbox",
+    "planner_empty_inbox": "Inbox is empty",
+    "planner_water": "Hydration",
+    "planner_meals": "Meal Plan",
+    "planner_open_detail": "Open Daily Planner",
+    "day_monday": "Monday",
+    "day_tuesday": "Tuesday",
+    "day_wednesday": "Wednesday",
+    "day_thursday": "Thursday",
+    "day_friday": "Friday",
+    "day_saturday": "Saturday",
+    "day_sunday": "Sunday"
 }
