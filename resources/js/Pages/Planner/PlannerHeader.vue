@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { Link } from '@inertiajs/vue3';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import PlannerDatePicker from '@/Components/PlannerDatePicker.vue'; 
 
@@ -28,9 +29,10 @@ const closeDatePicker = () => {
             <div class="w-full min-w-0 flex flex-col md:flex-row md:items-center md:justify-between items-stretch gap-4">
                 
                 <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,24rem)]">
-                    <p class="shrink-0 text-[13px] font-black capitalize tracking-wide text-slate-700 dark:text-slate-300 mr-2 pr-4">
-                        {{ $t('header_title', 'Daily Planner') }}
-                    </p>
+                    <Link :href="route('planner.dashboard')" class="shrink-0 flex items-center gap-1.5 text-[13px] font-black capitalize tracking-wide text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors mr-2 pr-4 border-r border-slate-200 dark:border-slate-700">
+                        <OneForMindIcon name="arrow-left" size="14" stroke-width="2.5" />
+                        {{ $t('planner_dashboard', 'Dashboard') }}
+                    </Link>
                     
                     <div>
                         <div class="flex items-center relative">

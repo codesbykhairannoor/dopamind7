@@ -68,7 +68,7 @@ const meals = computed(() => {
 
         <!-- Modal Content -->
         <div 
-            class="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl shadow-indigo-500/10 overflow-hidden flex flex-col max-h-[90vh] transform transition-all border border-slate-100 dark:border-slate-800"
+            class="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl shadow-indigo-500/10 overflow-hidden flex flex-col h-auto max-h-[85vh] transform transition-all border border-slate-100 dark:border-slate-800"
             @click.stop
         >
             
@@ -155,10 +155,14 @@ const meals = computed(() => {
                                 <div 
                                     v-for="(item, index) in day.inbox.items" 
                                     :key="index"
-                                    class="p-4 rounded-2xl bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-100/50 dark:from-slate-800 dark:to-slate-900 dark:border-slate-800 shadow-sm relative overflow-hidden"
+                                    class="flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-100/50 dark:from-slate-800 dark:to-slate-900 dark:border-slate-800 shadow-sm relative overflow-hidden transition-all duration-300"
+                                    :class="item.is_completed ? 'opacity-60' : ''"
                                 >
-                                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-400 to-amber-500"></div>
-                                    <p class="text-sm font-medium text-slate-700 dark:text-slate-200 ml-2 line-clamp-2">{{ item.title }}</p>
+                                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b" :class="item.is_completed ? 'from-emerald-400 to-teal-500' : 'from-orange-400 to-amber-500'"></div>
+                                    <div class="shrink-0 ml-1">
+                                        <CheckCircle2 :size="18" :class="item.is_completed ? 'text-emerald-500' : 'text-slate-300 dark:text-slate-600'" />
+                                    </div>
+                                    <p class="text-sm font-medium line-clamp-2" :class="item.is_completed ? 'text-slate-500 line-through' : 'text-slate-700 dark:text-slate-200'">{{ item.title }}</p>
                                 </div>
                             </div>
                             <div v-else class="text-center py-5 bg-slate-50 dark:bg-slate-800/20 rounded-3xl border border-dashed border-slate-200 dark:border-slate-700">
