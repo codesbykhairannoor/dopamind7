@@ -21,6 +21,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \App\Http\Middleware\WaapProtection::class, // 🛡️ Zero Trust WAAP Protection
         // ❌ HAPUS DARI SINI (JANGAN TARUH HandleLocalization DISINI)
     ];
 
@@ -45,6 +46,8 @@ class Kernel extends HttpKernel
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
             \App\Http\Middleware\SecurityHeaders::class,
             \App\Http\Middleware\OptimizeInertiaResponse::class,
+            \App\Http\Middleware\PreventSensitiveCaching::class, // 🛡️ Prevent data leakage from cache
+            'throttle:global', // 🛡️ Global Web Rate Limiter
         ],
 
         'api' => [

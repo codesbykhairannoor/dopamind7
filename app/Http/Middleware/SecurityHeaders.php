@@ -59,7 +59,7 @@ class SecurityHeaders
         }
         else {
             // PRODUCTION: Ketat tapi tetap izinkan Midtrans
-            $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+            $response->headers->set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
             
             $csp = "default-src 'self'; ";
             $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page https://static.cloudflareinsights.com https://www.google.com https://www.gstatic.com $midtransUrls $duitkuUrls $metaUrls $paypalUrls $externalSources; ";
@@ -73,8 +73,8 @@ class SecurityHeaders
             $csp .= "upgrade-insecure-requests;";
         }
 
-        // 3. Permissions Policy (Matikan fitur hardware yang tidak dipakai)
-        $response->headers->set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(self)');
+        // 3. Permissions Policy (Matikan fitur hardware yang tidak dipakai secara eksplisit untuk Zero Trust)
+        $response->headers->set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(self), usb=(), bluetooth=(), vr=()');
 
         $cleanCsp = str_replace(["\r", "\n"], '', $csp);
         $response->headers->set('Content-Security-Policy', $cleanCsp);
