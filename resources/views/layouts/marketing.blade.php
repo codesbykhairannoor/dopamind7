@@ -271,6 +271,13 @@
          in the conditional block. Only json-ld gets its own separate slot. --}}
     @yield('json-ld')
 
+    @if(isset($seo_schema))
+    <script type="application/ld+json">
+    {!! $seo_schema !!}
+    </script>
+    @endif
+
+
 
 
     {{-- 🔥 2. DNS PREFETCH: Buka jalur tol lebih awal --}}

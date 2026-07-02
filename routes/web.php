@@ -19,6 +19,8 @@ use App\Http\Controllers\FinanceSavingController;
 use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\TrialController;
 use App\Http\Controllers\OnboardingController;
+use App\Http\Controllers\AiCrawlerController;
+use App\Http\Controllers\ProgrammaticSeoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
@@ -141,6 +143,18 @@ Route::get("/billing", function () {
 Route::get("/pricing-alias", function () {
     return redirect()->route("pricing.index");
 })->name("pricing");
+
+// ==========================================
+// 🤖 B2A: AI CRAWLER ENDPOINTS (llms.txt)
+// ==========================================
+Route::get("/llms.txt", [AiCrawlerController::class, 'generateStandard'])->name('llms.txt');
+Route::get("/en/llms.txt", function (Request $request) {
+    return app(AiCrawlerController::class)->generateStandard($request, 'en');
+});
+Route::get("/id/llms.txt", function (Request $request) {
+    return app(AiCrawlerController::class)->generateStandard($request, 'id');
+});
+Route::get("/llms-full.txt", [AiCrawlerController::class, 'generateFull'])->name('llms-full.txt');
 // ==========================================
 Route::get("/sitemap.xml", function () {
     $pages = [];
@@ -468,35 +482,10 @@ Route::get("/compare/five-apps", function () {
     return view("compare.five-apps");
 })->name("compare.five-apps");
 
-// Head-to-Head Compare Pages (Habits)
-Route::get('/compare/habitica-alternative', function () { return view('compare.habitica'); })->name('compare.habitica');
-Route::get('/compare/streaks-alternative', function () { return view('compare.streaks'); })->name('compare.streaks');
-Route::get('/compare/habitify-alternative', function () { return view('compare.habitify'); })->name('compare.habitify');
-
-// Head-to-Head Compare Pages (Finance)
-Route::get('/compare/ynab-alternative', function () { return view('compare.ynab'); })->name('compare.ynab');
-Route::get('/compare/wallet-alternative', function () { return view('compare.wallet'); })->name('compare.wallet');
-Route::get('/compare/spendee-alternative', function () { return view('compare.spendee'); })->name('compare.spendee');
-
-// Head-to-Head Compare Pages (Planner)
-Route::get('/compare/todoist-alternative', function () { return view('compare.todoist'); })->name('compare.todoist');
-Route::get('/compare/ticktick-alternative', function () { return view('compare.ticktick'); })->name('compare.ticktick');
-Route::get('/compare/clickup-alternative', function () { return view('compare.clickup'); })->name('compare.clickup');
-
-// Head-to-Head Compare Pages (Notes Apps)
-Route::get('/compare/evernote-alternative', function () { return view('compare.evernote'); })->name('compare.evernote');
-Route::get('/compare/apple-notes-alternative', function () { return view('compare.applenotes'); })->name('compare.applenotes');
-Route::get('/compare/onenote-alternative', function () { return view('compare.onenote'); })->name('compare.onenote');
-
-// Head-to-Head Compare Pages (Custom Apps)
-Route::get('/compare/spreadsheet-alternative', function () { return view('compare.spreadsheet'); })->name('compare.spreadsheet');
-Route::get('/compare/notion-alternative', function () { return view('compare.notion'); })->name('compare.notion');
-Route::get('/compare/obsidian-alternative', function () { return view('compare.obsidian'); })->name('compare.obsidian');
-
-// Head-to-Head Compare Pages (Management Tools)
-Route::get('/compare/monday-alternative', function () { return view('compare.monday'); })->name('compare.monday');
-Route::get('/compare/trello-alternative', function () { return view('compare.trello'); })->name('compare.trello');
-Route::get('/compare/asana-alternative', function () { return view('compare.asana'); })->name('compare.asana');
+// ==========================================
+// PROGRAMMATIC SEO (pSEO) HEAD-TO-HEAD COMPARE PAGES
+// ==========================================
+Route::get('/compare/{competitor}-alternative', [ProgrammaticSeoController::class, 'compare'])->name('compare.competitor');
 
 // --- GROUP 2: SOCIAL LOGIN ---
 Route::get("/auth/google", [SocialController::class, "redirect"])->name(

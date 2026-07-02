@@ -94,6 +94,9 @@ class HandleInertiaRequests extends Middleware
             'paypal_client_id'       => config('paypal.' . config('paypal.mode', 'live') . '.client_id'),
             'recaptcha_site_key'     => config('services.recaptcha.site_key'),
             'session_id'             => $request->session()->getId(),
+
+            // 5. SEO SCHEMA INJECTION
+            'seo_schema'             => fn () => $request->session()->get('seo_schema'),
         ]);
     }
 }
