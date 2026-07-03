@@ -10,6 +10,11 @@
 @endsection
 
 @section('json-ld')
+@if(isset($seo_schema))
+    <script type="application/ld+json">
+        {!! $seo_schema !!}
+    </script>
+@else
 <script type="application/ld+json">
 [{
   "@context": "https://schema.org",
@@ -43,6 +48,7 @@
   }]
 }]
 </script>
+@endif
 @endsection
 
 @section('content')

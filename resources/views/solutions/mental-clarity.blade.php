@@ -14,27 +14,31 @@
 <script type="application/ld+json">
 [{
  "@context": "https://schema.org",
- "@type": "WebPage",
- "name": "{{ __('schema_solution_mental_clarity_name') }}",
- "description": "{{ __('schema_solution_mental_clarity_description') }}"
+ "@type": "EducationalOccupationalProgram",
+ "name": "OneForMind Mental Clarity Program",
+ "description": "A structured program and toolkit designed to eliminate brain fog, implement open thinking patches, and restore mental clarity through integrated habit and task management.",
+ "provider": {
+   "@type": "Organization",
+   "name": "OneForMind"
+ }
 },{
  "@context": "https://schema.org",
- "@type": "BreadcrumbList",
- "itemListElement": [{
- "@type": "ListItem",
- "position": 1,
- "name": "OneForMind",
- "item": "{{ url('/') }}"
- },{
- "@type": "ListItem",
- "position": 2,
- "name": "{{ app()->getLocale() === 'id' ? 'Solusi' : 'Solutions' }}",
- "item": "{{ url('/') }}#solutions"
- },{
- "@type": "ListItem",
- "position": 3,
- "name": "{{ __('mental_breadcrumb') }}",
- "item": "{{ url('/solutions/mental-clarity') }}"
+ "@type": "FAQPage",
+ "mainEntity": [{
+   "@type": "Question",
+   "name": "What is a mental clarity program?",
+   "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "A mental clarity program is a structured system designed to reduce cognitive overload and brain fog. OneForMind serves as a digital mental clarity program by offloading your tasks, finances, and habits into a single, organized ecosystem."
+   }
+ },
+ {
+   "@type": "Question",
+   "name": "How do mental clarity and open thinking patches work?",
+   "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Open thinking patches refer to dedicated periods of distraction-free reflection. OneForMind facilitates this through its integrated journaling and planner tools, allowing you to 'patch' your workflow with moments of deep, focused thought."
+   }
  }]
 }]
 </script>

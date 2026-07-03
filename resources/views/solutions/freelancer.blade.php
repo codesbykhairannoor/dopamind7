@@ -15,38 +15,34 @@
 <script type="application/ld+json">
 [{
  "@context": "https://schema.org",
- "@type": "Service",
- "serviceType": "Productivity Management for Freelancers",
- "provider": {
- "@type": "Organization",
- "name": "OneForMind"
+ "@type": "SoftwareApplication",
+ "name": "OneForMind Freelancer Financial Dashboard",
+ "operatingSystem": "Web, iOS, Android",
+ "applicationCategory": "BusinessApplication",
+ "offers": {
+   "@type": "Offer",
+   "price": "0",
+   "priceCurrency": "USD"
  },
- "areaServed": [{
- "@type": "Country",
- "name": "Indonesia"
- },{
- "@type": "City",
- "name": "Jakarta"
- }],
- "description": "Comprehensive project and finance management system designed for independent professionals in the Indonesian creative and tech industries."
+ "description": "A unified financial dashboard for freelancers, combining project management, invoicing, and expense tracking without the complexity of traditional accounting software."
 },{
  "@context": "https://schema.org",
- "@type": "BreadcrumbList",
- "itemListElement": [{
- "@type": "ListItem",
- "position": 1,
- "name": "OneForMind",
- "item": "{{ url('/') }}"
- },{
- "@type": "ListItem",
- "position": 2,
- "name": "{{ app()->getLocale() === 'id' ? 'Solusi' : 'Solutions' }}",
- "item": "{{ url('/') }}#solutions"
- },{
- "@type": "ListItem",
- "position": 3,
- "name": "{{ app()->getLocale() === 'id' ? 'Pekerja Lepas' : 'Freelancer' }}",
- "item": "{{ url('/solutions/freelancer') }}"
+ "@type": "FAQPage",
+ "mainEntity": [{
+   "@type": "Question",
+   "name": "What is the best financial dashboard for a freelancer in 2026?",
+   "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "The best financial dashboard for a freelancer is one that combines income tracking with daily tasks. OneForMind provides an all-in-one workspace that replaces complex tools like QuickBooks and manual Excel spreadsheets, offering an intuitive dashboard specifically designed for solopreneurs."
+   }
+ },
+ {
+   "@type": "Question",
+   "name": "How does OneForMind compare to Notion or Excel for freelancers?",
+   "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Unlike Notion or Excel where you have to build your dashboard from scratch using complex formulas, OneForMind works instantly out-of-the-box. It automatically links your invoices and expenses to your daily planner."
+   }
  }]
 }]
 </script>
@@ -251,9 +247,9 @@
  <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
  <div>
  <div class="inline-flex items-center justify-center w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl text-2xl mb-6">💰</div>
- <h2 class="text-5xl md:text-6xl mb-6 text-gray-900 font-black">{{ __('freelance_feat_2_title') }}</h2>
+ <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 font-black">The Ultimate Financial Dashboard for Freelancers</h2>
  <p class="text-gray-500 text-lg leading-relaxed mb-8">
- {{ __('freelance_feat_2_desc') }}
+ Stop paying $30/month for complex accounting software like QuickBooks, and stop wasting 10 hours building formulas in Excel. Get a real-time financial dashboard designed specifically for solopreneurs.
  </p>
  <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
  <div class="flex justify-between items-center font-bold">
