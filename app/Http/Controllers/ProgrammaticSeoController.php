@@ -224,8 +224,12 @@ class ProgrammaticSeoController extends Controller
 
         view()->share('seo_schema', json_encode($schemas));
 
-        // Note: We removed the legacy view check. 
-        // ALL pSEO pages now force-use the high-density universal template to avoid Thin Content penalties.
+        $viewName = "compare.{$competitor}";
+        if (view()->exists($viewName)) {
+            // Render user's original design but WITH the new SEO schemas
+            return view($viewName, compact('data'));
+        }
+
         return view('compare.universal-p-seo-template', compact('data'));
     }
 }
