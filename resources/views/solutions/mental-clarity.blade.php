@@ -16,7 +16,7 @@
  "@context": "https://schema.org",
  "@type": "EducationalOccupationalProgram",
  "name": "OneForMind Mental Clarity Program",
- "description": "A structured program and toolkit designed to eliminate brain fog, implement open thinking patches, and restore mental clarity through integrated habit and task management.",
+ "description": "{{ __('seo_mental_course_desc') }}",
  "provider": {
    "@type": "Organization",
    "name": "OneForMind"
@@ -34,10 +34,10 @@
  },
  {
    "@type": "Question",
-   "name": "How do mental clarity and open thinking patches work?",
+   "name": "{{ __('seo_mental_faq_q_patches') }}",
    "acceptedAnswer": {
      "@type": "Answer",
-     "text": "Open thinking patches refer to dedicated periods of distraction-free reflection. OneForMind facilitates this through its integrated journaling and planner tools, allowing you to 'patch' your workflow with moments of deep, focused thought."
+     "text": "{{ __('seo_mental_faq_a_patches') }}"
    }
  }]
 }]

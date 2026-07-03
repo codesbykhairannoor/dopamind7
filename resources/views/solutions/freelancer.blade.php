@@ -30,10 +30,10 @@
  "@type": "FAQPage",
  "mainEntity": [{
    "@type": "Question",
-   "name": "What is the best financial dashboard for a freelancer in 2026?",
+   "name": "{{ __('seo_freelance_faq_q_dashboard') }}",
    "acceptedAnswer": {
      "@type": "Answer",
-     "text": "The best financial dashboard for a freelancer is one that combines income tracking with daily tasks. OneForMind provides an all-in-one workspace that replaces complex tools like QuickBooks and manual Excel spreadsheets, offering an intuitive dashboard specifically designed for solopreneurs."
+     "text": "{{ __('seo_freelance_faq_a_dashboard') }}"
    }
  },
  {

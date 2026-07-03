@@ -22,7 +22,7 @@
         "https://twitter.com/oneformind",
         "https://linkedin.com/company/oneformind"
       ],
-      "description": "OneForMind is the ultimate All-in-One Productivity OS and Productivity Hub. It integrates Habit Tracking, Finance, Planner, Jobs, Study, and Goals into a single connected ecosystem."
+      "description": "{{ __('seo_welcome_org_desc') }}"
     },
     {
       "@context": "https://schema.org",
@@ -31,7 +31,7 @@
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "url": "{{ url('/') }}",
-      "description": "An all-in-one productivity hub seamlessly interconnecting a habit tracker, finance manager, daily planner, job tracker, and goal setter.",
+      "description": "{{ __('seo_welcome_app_desc') }}",
       "hasPart": [
         {
           "@type": "SoftwareApplication",

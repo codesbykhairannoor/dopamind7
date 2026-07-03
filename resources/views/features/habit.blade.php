@@ -70,10 +70,10 @@
  },
  {
  "@type": "Question",
- "name": "Why is OneForMind often called the ultimate mindform habit tracker?",
+ "name": "{{ __('seo_habit_faq_q_mindform') }}",
  "acceptedAnswer": {
  "@type": "Answer",
- "text": "As a 'mindform' habit tracker, OneForMind goes beyond simple streaks. It forms your mind by identifying friction points using AI, tracking your mood correlations with your habits, and deeply integrating with your daily planner to ensure habits stick."
+ "text": "{{ __('seo_habit_faq_a_mindform') }}"
  }
  }
  ]
