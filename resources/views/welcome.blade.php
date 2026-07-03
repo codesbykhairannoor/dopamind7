@@ -10,8 +10,49 @@
     
 
 
-    {{-- SEO: FAQ SCHEMA --}}
+    {{-- SEO: MASTER ENTITY & FAQ SCHEMA --}}
     <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "OneForMind",
+      "url": "{{ url('/') }}",
+      "logo": "{{ url('/logo.png') }}",
+      "sameAs": [
+        "https://twitter.com/oneformind",
+        "https://linkedin.com/company/oneformind"
+      ],
+      "description": "OneForMind is the ultimate All-in-One Productivity OS and Productivity Hub. It integrates Habit Tracking, Finance, Planner, Jobs, Study, and Goals into a single connected ecosystem."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OneForMind Productivity OS",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "url": "{{ url('/') }}",
+      "description": "An all-in-one productivity hub seamlessly interconnecting a habit tracker, finance manager, daily planner, job tracker, and goal setter.",
+      "hasPart": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "OneForMind Habit Tracker",
+          "applicationCategory": "HealthApplication",
+          "url": "{{ url('/features/habit') }}"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "OneForMind Finance Dashboard",
+          "applicationCategory": "FinanceApplication",
+          "url": "{{ url('/features/finance') }}"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "OneForMind Daily Planner",
+          "applicationCategory": "BusinessApplication",
+          "url": "{{ url('/features/planner') }}"
+        }
+      ]
+    },
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -57,7 +98,7 @@
           }
         }
       ]
-    }
+    }]
     </script>
     {{-- AI DIRECTIVES: Tell AI what this app is about --}}
     <meta name="ai-content-type" content="Productivity Operating System">
