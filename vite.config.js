@@ -6,11 +6,13 @@ import fs from "fs";
 import path from "path";
 import viteCompression from "vite-plugin-compression";
 
+import { promises as fsp } from "fs";
+
 // ==========================================================
 // 🔥 MESIN AUTO-MERGE JSON TRANSLATIONS 🔥
 // ==========================================================
 function mergeTranslations() {
-    const mergeFiles = () => {
+    const mergeFiles = async () => {
         try {
             const rootDir = process.cwd();
             const partialsBaseDir = path.resolve(rootDir, "lang/partials");
@@ -18,26 +20,21 @@ function mergeTranslations() {
             if (!fs.existsSync(partialsBaseDir)) return;
 
             // Deteksi semua folder bahasa secara dinamis (id, en, dll)
-            const langs = fs
-                .readdirSync(partialsBaseDir)
-                .filter((f) =>
-                    fs.statSync(path.join(partialsBaseDir, f)).isDirectory(),
-                );
+            const entries = await fsp.readdir(partialsBaseDir, { withFileTypes: true });
+            const langs = entries.filter(dirent => dirent.isDirectory()).map(dirent => dirent.name);
 
-            langs.forEach((lang) => {
+            await Promise.all(langs.map(async (lang) => {
                 const partialsDir = path.join(partialsBaseDir, lang);
                 const outputFile = path.resolve(rootDir, `lang/${lang}.json`);
 
                 let mergedContent = {};
                 // Ambil semua file JSON, sortir biar urutan merge konsisten (abjad)
-                const files = fs
-                    .readdirSync(partialsDir)
-                    .filter((f) => f.endsWith(".json"))
-                    .sort();
+                const files = await fsp.readdir(partialsDir);
+                const jsonFiles = files.filter((f) => f.endsWith(".json")).sort();
 
-                files.forEach((file) => {
+                for (const file of jsonFiles) {
                     try {
-                        const content = fs.readFileSync(
+                        const content = await fsp.readFile(
                             path.join(partialsDir, file),
                             "utf-8",
                         );
@@ -49,14 +46,14 @@ function mergeTranslations() {
                             e,
                         );
                     }
-                });
+                }
 
                 // Tulis hasil merge ke file utama
-                fs.writeFileSync(
+                await fsp.writeFile(
                     outputFile,
                     JSON.stringify(mergedContent, null, 4),
                 );
-            });
+            }));
 
             console.log(
                 `[i18n] ✅ ${new Date().toLocaleTimeString()} - Merged partials for: ${langs.join(", ")}`,
@@ -73,14 +70,14 @@ function mergeTranslations() {
             server.watcher.add(path.resolve(process.cwd(), "lang/partials/**"));
         },
         // 2. Jalankan saat build atau dev start
-        buildStart() {
-            mergeFiles();
+        async buildStart() {
+            await mergeFiles();
         },
         // 3. Jalankan saat ada file di partials yang di-edit
-        handleHotUpdate({ file, server }) {
+        async handleHotUpdate({ file, server }) {
             const normalizedPath = file.replace(/\\/g, "/");
             if (normalizedPath.includes("lang/partials/")) {
-                mergeFiles();
+                await mergeFiles();
                 // Paksa reload browser agar i18n memuat ulang JSON terbaru
                 server.ws.send({ type: "full-reload" });
             }

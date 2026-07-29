@@ -34,7 +34,7 @@ const checkAndProcessMaterials = () => {
         }
     });
 
-    // If there are materials still processing, poll the backend every 3 seconds
+    // If there are materials still processing, poll the backend every 10 seconds instead of 3 to reduce DB load
     if (hasProcessing) {
         setTimeout(() => {
             router.reload({ 
@@ -45,7 +45,7 @@ const checkAndProcessMaterials = () => {
                     checkAndProcessMaterials();
                 }
             });
-        }, 3000);
+        }, 10000);
     }
 };
 

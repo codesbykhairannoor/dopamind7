@@ -140,8 +140,14 @@ const handleDeleteSaving = (saving) => {
             const originalStats = JSON.parse(JSON.stringify(localStats.value));
             
             if (saving.current_amount > 0) {
-                updateLocalStatsInstantly('income', 'saving', saving.current_amount, false);
-                localStats.value.total_savings -= Number(saving.current_amount);
+                localTransactions.value.unshift({
+                    id: 'temp_refund_' + Date.now(),
+                    title: `Vault Closed: ${saving.title}`,
+                    amount: saving.current_amount,
+                    type: 'income',
+                    category: 'saving',
+                    date: dayjs().format('YYYY-MM-DD')
+                });
             }
             localSavings.value = localSavings.value.filter(s => s.id !== saving.id);
             
@@ -334,26 +340,9 @@ const handleEditBudget = (budget) => {
 const handleEditCategory = (cat) => { categoryForm.id = cat.id; setEditCategory(cat); showCategoryModal.value = true; };
 const handleAddCategory = () => { categoryForm.reset(); categoryForm.id = null; showCategoryModal.value = true; };
 
-const updateLocalStatsInstantly = (type, categorySlug, amount, isSubtract = false) => {
-    const val = Number(amount) * (isSubtract ? -1 : 1);
-    if (type === 'income') {
-        localStats.value.total_income += val;
-        localStats.value.balance += val;
-        if (!localStats.value.income_by_category[categorySlug]) localStats.value.income_by_category[categorySlug] = 0;
-        localStats.value.income_by_category[categorySlug] += val;
-    } 
-    else if (type === 'expense') {
-        localStats.value.total_expense += val;
-        localStats.value.balance -= val;
-        if (!localStats.value.expense_by_category[categorySlug]) localStats.value.expense_by_category[categorySlug] = 0;
-        localStats.value.expense_by_category[categorySlug] += val;
-    }
-};
-
 const handleOptimisticInvestment = (data) => {
     const optData = { id: `temp_${Date.now()}`, ...data };
     localTransactions.value.unshift(optData);
-    updateLocalStatsInstantly(data.type, data.category, data.amount, false);
 };
 
 const submitNewTransaction = () => {
@@ -368,11 +357,8 @@ const submitNewTransaction = () => {
             if (isEditing) {
                 const idx = localTransactions.value.findIndex(t => t.id === data.id);
                 if (idx !== -1) Object.assign(localTransactions.value[idx], data);
-                if(oldType) updateLocalStatsInstantly(oldType, oldCategory, oldAmount, true);
-                updateLocalStatsInstantly(data.type, data.category, data.amount, false);
             } else {
                 localTransactions.value.unshift(data); 
-                updateLocalStatsInstantly(data.type, data.category, data.amount, false);
             }
         },
         onError: () => { showTransactionModal.value = true; }
@@ -384,7 +370,6 @@ const triggerDeleteTransaction = (id) => {
     const target = localTransactions.value.find(t => t.id === id);
     deleteTransaction(id, {
         onOptimistic: (targetId) => {
-            if(target) updateLocalStatsInstantly(target.type, target.category, target.amount, true);
             localTransactions.value = localTransactions.value.filter(t => t.id !== targetId);
         }
     });
@@ -394,7 +379,6 @@ const triggerSubmitBatch = () => {
     executeBatch({
         onOptimistic: (newTransactionsArray) => {
             localTransactions.value.unshift(...newTransactionsArray);
-            newTransactionsArray.forEach(data => updateLocalStatsInstantly(data.type, data.category, data.amount, false));
         },
         onError: (tempIdsArray) => {
             localTransactions.value = localTransactions.value.filter(t => !tempIdsArray.includes(t.id));

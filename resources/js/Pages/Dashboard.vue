@@ -241,7 +241,7 @@ onMounted(() => {
                     >
                         <div class="mb-5 flex flex-wrap items-end justify-between gap-3 border-b border-slate-100 pb-4 dark:border-white/5">
                             <div>
-                                <h2 class="text-lg font-bold text-slate-900 dark:text-white">
+                                <h2 v-once class="text-lg font-bold text-slate-900 dark:text-white">
                                     {{ $t('dash_today') }}
                                 </h2>
                                 <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
@@ -308,7 +308,7 @@ onMounted(() => {
                             </div>
                             <div v-else class="min-w-0 flex-1">
                                 <div class="mb-2 flex items-center justify-between gap-2">
-                                    <span class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-200">
+                                    <span v-once class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-200">
                                         <Zap class="text-indigo-500" :size="16" />
                                         {{ $t('dash_habit_title') }}
                                     </span>
@@ -461,7 +461,7 @@ onMounted(() => {
                         <div v-if="!trend?.length" class="mt-4 flex h-28 items-end justify-between gap-1">
                             <SkeletonLoader v-for="i in 7" :key="i" width="12px" :height="`${15 + (i * 10) % 60}px`" borderRadius="2px" />
                         </div>
-                        <div v-else-if="trend?.length" class="mt-4 flex flex-col gap-4">
+                        <div v-else-if="trend?.length" class="mt-4 flex flex-col gap-4" v-memo="[trend]">
                             <div class="flex h-24 items-end justify-between gap-1 mt-1">
                                 <div
                                     v-for="(day, idx) in trend"
