@@ -46,7 +46,7 @@ class GoalService
             ->where('goals.status', 'active')
             ->select(
                 DB::raw('count(goal_milestones.id) as total'),
-                DB::raw("sum(case when goal_milestones.completed = '1' or goal_milestones.completed = 1 or goal_milestones.completed = 'true' then 1 else 0 end) as completed")
+                DB::raw("sum(case when goal_milestones.completed = true then 1 else 0 end) as completed")
             )->first();
             
         $milestonesTotal = (int) ($milestoneStats->total ?? 0);
@@ -61,7 +61,7 @@ class GoalService
                 'goals.id',
                 'goals.title',
                 DB::raw('count(goal_milestones.id) as total_ms'),
-                DB::raw("sum(case when goal_milestones.completed = '1' or goal_milestones.completed = 1 or goal_milestones.completed = 'true' then 1 else 0 end) as completed_ms")
+                DB::raw("sum(case when goal_milestones.completed = true then 1 else 0 end) as completed_ms")
             )
             ->groupBy('goals.id', 'goals.title')
             ->get();
