@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed, defineAsyncComponent } from 'vue';
-import { Head, usePage, Deferred } from '@inertiajs/vue3';
+import { Head, usePage, Deferred, router } from '@inertiajs/vue3';
 import { useGoals } from '@/Composables/Goal/useGoals';
 import GoalStats from './GoalStats.vue';
 import GoalCard from './GoalCard.vue';
