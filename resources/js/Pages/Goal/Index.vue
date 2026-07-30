@@ -29,7 +29,7 @@ const props = defineProps({
 const {
     localGoals, localStats,
     isModalOpen, editingGoal, isSaving, errors,
-    openCreateModal, openEditModal, closeModal, saveGoal, completeGoal,
+    openCreateModal, openEditModal, closeModal, saveGoal, completeGoal, markAsActive,
     uploadCoverImage, deleteGoal,
     addMilestone, saveMilestone, toggleMilestone, deleteMilestone,
     isExplorer
@@ -75,6 +75,12 @@ onMounted(() => {
 
 const isPreviewOpen = ref(false);
 const openPremiumPreview = () => router.visit(route('billing'));
+
+const currentTab = computed(() => usePage().props.filters?.status || 'active');
+
+const setTab = (tab) => {
+    router.get(route('goals.index'), { status: tab }, { preserveState: true, preserveScroll: true, replace: true });
+};
 </script>
 
 <template>
@@ -85,6 +91,26 @@ const openPremiumPreview = () => router.visit(route('billing'));
 
         <div class="w-full max-w-[1600px] mx-auto p-4 md:p-6 lg:p-8 space-y-8 pb-24 min-w-0">
             <NeuralBridge module="Goal" />
+
+            <!-- 🗂️ TABS NAVIGATION -->
+            <div class="flex items-center gap-2 mb-6 bg-white dark:bg-slate-900 p-1.5 rounded-2xl w-fit shadow-sm border border-slate-100 dark:border-slate-800 relative z-10">
+                <button 
+                    @click="setTab('active')"
+                    :class="currentTab === 'active' || currentTab === 'all' ? 'bg-indigo-500 text-white shadow-md' : 'text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800'"
+                    class="px-5 py-2 rounded-xl text-xs font-black tracking-widest uppercase transition-all duration-300"
+                >
+                    {{ $t('goal_tab_progress', 'In Progress') }}
+                    <span v-if="currentTab === 'active' || currentTab === 'all'" class="ml-1 opacity-70">({{ localStats?.active || 0 }})</span>
+                </button>
+                <button 
+                    @click="setTab('completed')"
+                    :class="currentTab === 'completed' ? 'bg-emerald-500 text-white shadow-md' : 'text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800'"
+                    class="px-5 py-2 rounded-xl text-xs font-black tracking-widest uppercase transition-all duration-300"
+                >
+                    {{ $t('goal_tab_completed', 'Completed') }}
+                    <span v-if="currentTab === 'completed'" class="ml-1 opacity-70">({{ localStats?.completed || 0 }})</span>
+                </button>
+            </div>
 
             <!-- 🖥️ DESKTOP VIEW -->
             <template v-if="!isMobile">
@@ -117,6 +143,7 @@ const openPremiumPreview = () => router.visit(route('billing'));
                                     :onToggleMilestone="toggleMilestone"
                                     :onDeleteMilestone="deleteMilestone"
                                     :onCompleteGoal="completeGoal"
+                                    :onMarkAsActive="markAsActive"
                                     :isExplorer="isExplorer"
                                     @open-preview="openPremiumPreview"
                                 />
@@ -173,7 +200,7 @@ const openPremiumPreview = () => router.visit(route('billing'));
                                 <Edit3 :size="16" />
                             </button>
 
-                            <!-- Mobile Mark As Done -->
+                            <!-- Mobile Mark As Done / Active -->
                             <button 
                                 v-if="goal.status !== 'completed'"
                                 @click="!goal.is_saving && !String(goal.id).startsWith('temp_') && completeGoal(goal)"
@@ -181,7 +208,16 @@ const openPremiumPreview = () => router.visit(route('billing'));
                                 :class="goal.is_saving || String(goal.id).startsWith('temp_') ? 'opacity-50 cursor-not-allowed' : 'active:scale-95'"
                             >
                                 <CheckCircle2 :size="14" />
-                                {{ $t('goal_done', 'Done') }}
+                                {{ $t('goal_mark_done', 'Mark as Done') }}
+                            </button>
+                            <button 
+                                v-else
+                                @click="!goal.is_saving && !String(goal.id).startsWith('temp_') && markAsActive(goal)"
+                                class="absolute top-5 left-5 px-3 py-2 rounded-xl bg-slate-500/20 backdrop-blur-sm border border-slate-500/30 text-white text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5 shadow-xl transition-all"
+                                :class="goal.is_saving || String(goal.id).startsWith('temp_') ? 'opacity-50 cursor-not-allowed' : 'active:scale-95'"
+                            >
+                                <Zap :size="14" />
+                                {{ $t('goal_mark_active', 'Mark as Active') }}
                             </button>
                         </div>
 

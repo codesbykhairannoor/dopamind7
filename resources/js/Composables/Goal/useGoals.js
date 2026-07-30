@@ -240,6 +240,37 @@ export function useGoals(props) {
         }
     };
 
+    const markAsActive = async (goal) => {
+        if (String(goal.id).startsWith('temp_') || goal.is_saving) return;
+
+        // Optimistic UI
+        goal.is_saving = true;
+        const originalStatus = goal.status;
+        goal.status = 'active';
+        
+        fireToast('success', trans('goal_success_active', 'Goal reactivated!'));
+
+        // Automatically hide from 'completed' view after a short delay
+        setTimeout(() => {
+            const currentStatus = page.props.filters?.status || 'all';
+            if (currentStatus === 'completed') {
+                localGoals.value = localGoals.value.filter(g => g.id !== goal.id);
+            }
+        }, 1500);
+
+        try {
+            await axios.patch(route('goals.update', goal.id), {
+                status: 'active'
+            });
+        } catch (e) {
+            console.error('[Persistence Error] Mark active failed:', e);
+            goal.status = originalStatus;
+            fireToast('error', trans('goal_error_save', 'Failed to save!'));
+        } finally {
+            goal.is_saving = false;
+        }
+    };
+
     // Modal & Goal Management
     const isModalOpen = ref(false);
     const editingGoal = ref(null);
@@ -408,7 +439,7 @@ export function useGoals(props) {
 
     return {
         localGoals, localStats, isModalOpen, editingGoal, isSaving, errors,
-        openCreateModal, openEditModal, closeModal, saveGoal, deleteGoal, completeGoal,
+        openCreateModal, openEditModal, closeModal, saveGoal, deleteGoal, completeGoal, markAsActive,
         uploadCoverImage, addMilestone, saveMilestone, toggleMilestone, deleteMilestone,
         isExplorer
     };

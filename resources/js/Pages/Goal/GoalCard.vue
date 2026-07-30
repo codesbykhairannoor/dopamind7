@@ -24,6 +24,7 @@ const props = defineProps({
     onSaveMilestone: Function,
     onDeleteMilestone: Function,
     onCompleteGoal: Function,
+    onMarkAsActive: Function,
     isExplorer: Boolean
 });
 
@@ -133,7 +134,7 @@ const meshGradient = computed(() => {
                 </div>
                 
                 <div class="flex items-center gap-2">
-                    <!-- Mark as Done Button -->
+                    <!-- Mark as Done / Active Button -->
                     <button 
                         v-if="goal.status !== 'completed'"
                         @click="!goal.is_saving && !String(goal.id).startsWith('temp_') && onCompleteGoal(goal)"
@@ -143,6 +144,16 @@ const meshGradient = computed(() => {
                         <CheckCircle2 :size="12" stroke-width="3" />
                         <span class="hidden sm:inline">{{ t('goal_mark_done', 'Mark as Done') }}</span>
                         <span class="sm:hidden">{{ t('goal_done', 'Done') }}</span>
+                    </button>
+                    <button 
+                        v-else
+                        @click="!goal.is_saving && !String(goal.id).startsWith('temp_') && onMarkAsActive(goal)"
+                        class="px-3 py-1.5 rounded-xl border border-slate-500/20 bg-slate-50 dark:bg-slate-500/10 hover:bg-slate-500 hover:text-white text-slate-600 dark:text-slate-400 text-[10px] font-black uppercase tracking-widest transition-all disabled:opacity-50 flex items-center gap-1.5 shadow-sm"
+                        :disabled="goal.is_saving || String(goal.id).startsWith('temp_')"
+                    >
+                        <Zap :size="12" stroke-width="3" />
+                        <span class="hidden sm:inline">{{ t('goal_mark_active', 'Mark as Active') }}</span>
+                        <span class="sm:hidden">{{ t('goal_status_active', 'Active') }}</span>
                     </button>
 
                     <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center relative">

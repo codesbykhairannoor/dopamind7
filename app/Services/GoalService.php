@@ -39,27 +39,26 @@ class GoalService
 
         $total = $statsRaw->sum();
         
-        // 2. Optimized Milestone Aggregations (Single query for all milestone-related stats)
-        // We calculate both the total/completed counts AND the average progress in one go
-        $milestoneStats = DB::table('goal_milestones')
-            ->join('goals', 'goal_milestones.goal_id', '=', 'goals.id')
-            ->where('goals.user_id', $userId)
-            ->where('goals.status', 'active')
-            ->select(
-                DB::raw('count(*) as total'),
-                DB::raw("sum(case when completed = 'true' then 1 else 0 end) as completed"),
-                DB::raw("AVG(case when 1=1 then (SELECT count(*) from goal_milestones m2 where m2.goal_id = goals.id AND m2.completed = 'true') * 100.0 / NULLIF((SELECT count(*) from goal_milestones m3 where m3.goal_id = goals.id), 0) else 0 end) as avg_p")
-            )->first();
+        // 2. Optimized Milestone Aggregations using Eloquent for DB-agnostic boolean handling
+        $activeGoals = Goal::ofUser($userId)->byStatus('active')->with('milestones')->get();
+        
+        $allMilestones = $activeGoals->pluck('milestones')->flatten();
+        $milestonesTotal = $allMilestones->count();
+        $milestonesCompleted = $allMilestones->where('completed', true)->count();
+        
+        $avgProgress = $activeGoals->count() > 0 ? $activeGoals->avg(function ($g) {
+            $total = $g->milestones->count();
+            return $total > 0 ? ($g->milestones->where('completed', true)->count() / $total) * 100 : 0;
+        }) : 0;
             
-        // 3. Specific Goals (Top & Urgent) - Use eager loading wisely
-        $topGoal = Goal::ofUser($userId)->byStatus('active')
-            ->withCount(['milestones as total_ms', 'milestones as completed_ms' => fn($q) => $q->where('completed', 'true')])
-            ->get()
-            ->sortByDesc(fn($g) => $g->total_ms > 0 ? $g->completed_ms / $g->total_ms : 0)
-            ->first();
+        // 3. Specific Goals (Top & Urgent)
+        $topGoal = $activeGoals->sortByDesc(function ($g) {
+            $total = $g->milestones->count();
+            return $total > 0 ? $g->milestones->where('completed', true)->count() / $total : 0;
+        })->first();
 
-        $topGoalProgress = ($topGoal && $topGoal->total_ms > 0) 
-            ? (int) round(($topGoal->completed_ms / $topGoal->total_ms) * 100) 
+        $topGoalProgress = ($topGoal && $topGoal->milestones->count() > 0) 
+            ? (int) round(($topGoal->milestones->where('completed', true)->count() / $topGoal->milestones->count()) * 100) 
             : 0;
 
         $urgentGoal = Goal::ofUser($userId)->byStatus('active')
@@ -83,9 +82,9 @@ class GoalService
             'completed' => (int) $statsRaw->get('completed', 0),
             'paused' => (int) $statsRaw->get('paused', 0),
             'cancelled' => (int) $statsRaw->get('cancelled', 0),
-            'avg_progress' => (int) round($milestoneStats->avg_p ?? 0),
-            'milestones_total' => (int) ($milestoneStats->total ?? 0),
-            'milestones_completed' => (int) ($milestoneStats->completed ?? 0),
+            'avg_progress' => (int) round($avgProgress),
+            'milestones_total' => $milestonesTotal,
+            'milestones_completed' => $milestonesCompleted,
             'top_goal_title' => $topGoal ? $topGoal->title : null,
             'top_goal_progress' => $topGoalProgress,
             'urgent_goal_title' => $urgentGoal ? $urgentGoal->title : null,

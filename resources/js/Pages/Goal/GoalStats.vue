@@ -103,8 +103,14 @@ const strokeDashoffset = computed(() => circumference - (masterProgress.value / 
                         <h4 class="text-xs font-black text-slate-800 dark:text-white line-clamp-1 opacity-80">
                             {{ stat.value || $t('goal_stats_calm') }}
                         </h4>
-                        <p class="text-xl font-black" :class="stat.daysLeft !== null && stat.daysLeft <= 3 ? 'text-rose-500 animate-pulse' : 'text-slate-800 dark:text-white'">
-                            {{ typeof stat.daysLeft === 'number' ? $t('goal_stats_day_left', { days: stat.daysLeft }) : $t('goal_stats_calm') }}
+                        <p class="text-xl font-black" :class="(stat.daysLeft !== null && stat.daysLeft <= 3) || stat.daysLeft < 0 ? 'text-rose-500 animate-pulse' : 'text-slate-800 dark:text-white'">
+                            {{ 
+                                stat.daysLeft === null 
+                                    ? $t('goal_stats_calm') 
+                                    : (stat.daysLeft < 0 
+                                        ? $t('goal_stats_overdue', { days: Math.abs(stat.daysLeft) }) 
+                                        : $t('goal_stats_day_left', { days: stat.daysLeft })) 
+                            }}
                         </p>
                     </div>
 
