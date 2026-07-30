@@ -23,7 +23,7 @@ class GoalController extends Controller
         $search = $request->input('search');
         $status = $request->input('status', 'all');
         $type = $request->input('type', 'all');
-        $perPage = $request->input('per_page', 50);
+        $perPage = $request->input('per_page', 100);
 
         $goals = $this->goalService->getGoalsWithFilters(
             Auth::id(),

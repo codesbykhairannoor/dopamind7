@@ -39,27 +39,39 @@ class GoalService
 
         $total = $statsRaw->sum();
         
-        // 2. Optimized Milestone Aggregations using Eloquent for DB-agnostic boolean handling
-        $activeGoals = Goal::ofUser($userId)->byStatus('active')->with('milestones')->get();
-        
-        $allMilestones = $activeGoals->pluck('milestones')->flatten();
-        $milestonesTotal = $allMilestones->count();
-        $milestonesCompleted = $allMilestones->where('completed', true)->count();
-        
-        $avgProgress = $activeGoals->count() > 0 ? $activeGoals->avg(function ($g) {
-            $total = $g->milestones->count();
-            return $total > 0 ? ($g->milestones->where('completed', true)->count() / $total) * 100 : 0;
-        }) : 0;
+        // 2. High-performance DB Aggregations for Milestones
+        $milestoneStats = DB::table('goal_milestones')
+            ->join('goals', 'goal_milestones.goal_id', '=', 'goals.id')
+            ->where('goals.user_id', $userId)
+            ->where('goals.status', 'active')
+            ->select(
+                DB::raw('count(goal_milestones.id) as total'),
+                DB::raw("sum(case when goal_milestones.completed = '1' or goal_milestones.completed = 1 or goal_milestones.completed = 'true' then 1 else 0 end) as completed")
+            )->first();
             
-        // 3. Specific Goals (Top & Urgent)
-        $topGoal = $activeGoals->sortByDesc(function ($g) {
-            $total = $g->milestones->count();
-            return $total > 0 ? $g->milestones->where('completed', true)->count() / $total : 0;
-        })->first();
-
-        $topGoalProgress = ($topGoal && $topGoal->milestones->count() > 0) 
-            ? (int) round(($topGoal->milestones->where('completed', true)->count() / $topGoal->milestones->count()) * 100) 
+        $milestonesTotal = (int) ($milestoneStats->total ?? 0);
+        $milestonesCompleted = (int) ($milestoneStats->completed ?? 0);
+        
+        // 3. Avg progress and Top Goal via efficient SQL Grouping (0 Eloquent Hydration)
+        $goalProgress = DB::table('goals')
+            ->where('user_id', $userId)
+            ->where('status', 'active')
+            ->leftJoin('goal_milestones', 'goals.id', '=', 'goal_milestones.goal_id')
+            ->select(
+                'goals.id',
+                'goals.title',
+                DB::raw('count(goal_milestones.id) as total_ms'),
+                DB::raw("sum(case when goal_milestones.completed = '1' or goal_milestones.completed = 1 or goal_milestones.completed = 'true' then 1 else 0 end) as completed_ms")
+            )
+            ->groupBy('goals.id', 'goals.title')
+            ->get();
+        
+        $avgProgress = $goalProgress->count() > 0 
+            ? $goalProgress->avg(fn($g) => $g->total_ms > 0 ? ($g->completed_ms / $g->total_ms) * 100 : 0) 
             : 0;
+            
+        $topGoal = $goalProgress->sortByDesc(fn($g) => $g->total_ms > 0 ? $g->completed_ms / $g->total_ms : 0)->first();
+        $topGoalProgress = ($topGoal && $topGoal->total_ms > 0) ? (int) round(($topGoal->completed_ms / $topGoal->total_ms) * 100) : 0;
 
         $urgentGoal = Goal::ofUser($userId)->byStatus('active')
             ->whereNotNull('end_date')

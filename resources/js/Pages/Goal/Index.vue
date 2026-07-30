@@ -76,11 +76,17 @@ onMounted(() => {
 const isPreviewOpen = ref(false);
 const openPremiumPreview = () => router.visit(route('billing'));
 
-const currentTab = computed(() => usePage().props.filters?.status || 'active');
+const currentTab = ref(usePage().props.filters?.status || 'active');
 
 const setTab = (tab) => {
-    router.get(route('goals.index'), { status: tab }, { preserveState: true, preserveScroll: true, replace: true });
+    currentTab.value = tab;
+    window.history.replaceState({}, '', route('goals.index', { status: tab }));
 };
+
+const displayedGoals = computed(() => {
+    if (currentTab.value === 'all') return localGoals.value;
+    return localGoals.value.filter(g => g.status === currentTab.value);
+});
 </script>
 
 <template>
@@ -131,9 +137,9 @@ const setTab = (tab) => {
                             <div v-for="i in 3" :key="i" class="h-64 bg-slate-100 dark:bg-slate-800 rounded-[3rem]"></div>
                         </div>
                     </template>
-                    <template v-if="localGoals.length > 0">
+                    <template v-if="displayedGoals.length > 0">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                            <div v-for="goal in localGoals" :key="goal._key">
+                            <div v-for="goal in displayedGoals" :key="goal._key">
                                 <GoalCard
                                     :goal="goal"
                                     :onEdit="openEditModal"
@@ -171,8 +177,8 @@ const setTab = (tab) => {
 
             <!-- 📱 MOBILE VIEW: PREMIUM VISION ROADMAP -->
             <template v-else>
-                <div v-if="localGoals.length > 0" class="space-y-12 pb-32">
-                    <div v-for="goal in localGoals" :key="goal.id" :id="'mobile-goal-card-' + goal.id"
+                <div v-if="displayedGoals.length > 0" class="space-y-12 pb-32">
+                    <div v-for="goal in displayedGoals" :key="goal.id" :id="'mobile-goal-card-' + goal.id"
                         class="bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-xl overflow-hidden group active:scale-[0.98] transition-all duration-500 w-full max-w-full"
                     >
                         <!-- Premium Mobile Goal Header (Visual First) -->
