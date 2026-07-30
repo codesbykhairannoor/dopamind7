@@ -101,32 +101,35 @@ export function useGoals(props) {
 
     const silentSaveMilestone = async (goal, milestone) => {
         const isNew = String(milestone.id).startsWith('temp_');
-        milestone.is_saving = true;
+        // Retrieve the reactive proxy instead of the raw object
+        const mProxy = goal.milestones.find(m => m.id === milestone.id) || milestone;
+        
+        mProxy.is_saving = true;
 
         try {
             // 🛡️ GUARD: Jika Goal masih temp_ (belum disave ke DB), jangan save milestone dulu!
             if (String(goal.id).startsWith('temp_')) {
                 console.warn('[Persistence] Deferring milestone save: Goal is still temporary.');
-                milestone.is_saving = false;
+                mProxy.is_saving = false;
                 return;
             }
 
             const url = isNew
                 ? route('goals.milestones.store', goal.id)
-                : route('goals.milestones.update', [goal.id, milestone.id]);
+                : route('goals.milestones.update', [goal.id, mProxy.id]);
 
             const response = await axios.post(url, {
-                ...milestone,
+                ...mProxy,
                 _method: isNew ? 'POST' : 'PATCH'
             });
 
             if (response.data.data) {
-                Object.assign(milestone, normalizeMilestones([response.data.data])[0], { is_saving: false });
+                Object.assign(mProxy, normalizeMilestones([response.data.data])[0], { is_saving: false });
                 recalculateProgress(goal);
             }
         } catch (error) {
             console.error('[Persistence Error] Milestone save failed:', error);
-            milestone.is_saving = false;
+            mProxy.is_saving = false;
         }
     };
 
@@ -184,7 +187,7 @@ export function useGoals(props) {
         
         const newMs = { 
             id: `temp_${Date.now()}`, 
-            title: trans('goal_untitled_step', 'Untitled Step'), 
+            title: '', 
             is_completed: false, 
             completed: false,
             order: newMilestones.length, 
@@ -194,9 +197,8 @@ export function useGoals(props) {
         newMilestones.push(newMs);
         targetGoal.milestones = newMilestones;
         recalculateProgress(targetGoal);
-
-        // 🔥 CRITICAL: Save immediately to server so it doesn't disappear on refresh
-        silentSaveMilestone(targetGoal, newMs);
+        
+        // Removed immediate silentSaveMilestone. Saving happens when user blurs/saves title.
     };
 
     const deleteMilestone = async (goal, mId) => {
@@ -204,6 +206,37 @@ export function useGoals(props) {
         recalculateProgress(goal);
         if (!String(mId).startsWith('temp_') && !String(goal.id).startsWith('temp_')) {
             try { await axios.delete(route('goals.milestones.destroy', [goal.id, mId])); } catch (e) { }
+        }
+    };
+
+    const completeGoal = async (goal) => {
+        if (String(goal.id).startsWith('temp_') || goal.is_saving) return;
+
+        // Optimistic UI
+        goal.is_saving = true;
+        const originalStatus = goal.status;
+        goal.status = 'completed';
+        
+        fireToast('success', trans('goal_success_complete', 'Goal marked as completed!'));
+
+        // Automatically hide from 'active' view after a short delay
+        setTimeout(() => {
+            const currentStatus = page.props.filters?.status || 'all';
+            if (currentStatus !== 'completed' && currentStatus !== 'all') {
+                localGoals.value = localGoals.value.filter(g => g.id !== goal.id);
+            }
+        }, 1500);
+
+        try {
+            await axios.patch(route('goals.update', goal.id), {
+                status: 'completed'
+            });
+        } catch (e) {
+            console.error('[Persistence Error] Complete goal failed:', e);
+            goal.status = originalStatus;
+            fireToast('error', trans('goal_error_complete', 'Failed to complete goal.'));
+        } finally {
+            goal.is_saving = false;
         }
     };
 
@@ -375,7 +408,7 @@ export function useGoals(props) {
 
     return {
         localGoals, localStats, isModalOpen, editingGoal, isSaving, errors,
-        openCreateModal, openEditModal, closeModal, saveGoal, deleteGoal,
+        openCreateModal, openEditModal, closeModal, saveGoal, deleteGoal, completeGoal,
         uploadCoverImage, addMilestone, saveMilestone, toggleMilestone, deleteMilestone,
         isExplorer
     };

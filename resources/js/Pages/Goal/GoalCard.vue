@@ -23,6 +23,7 @@ const props = defineProps({
     onAddMilestone: Function,
     onSaveMilestone: Function,
     onDeleteMilestone: Function,
+    onCompleteGoal: Function,
     isExplorer: Boolean
 });
 
@@ -130,10 +131,25 @@ const meshGradient = computed(() => {
                     <span class="text-[9px] font-black text-slate-300 dark:text-slate-600 uppercase tracking-widest mb-0.5">{{ t('goal_manifestation', 'Manifestation') }}</span>
                     <span class="text-xs font-black text-slate-800 dark:text-white tabular-nums">{{ trans('goal_completed_pct', { count: progress }) }}</span>
                 </div>
-                <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center relative">
-                    <Zap :size="14" :class="progress === 100 ? 'text-amber-400 animate-pulse' : 'text-slate-300 dark:text-slate-600'" />
-                    <div v-if="goal.is_saving" class="absolute -top-1 -right-1 w-3 h-3 bg-indigo-500 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center">
-                        <div class="w-1.5 h-1.5 border border-white dark:border-slate-200 border-t-transparent rounded-full animate-spin"></div>
+                
+                <div class="flex items-center gap-2">
+                    <!-- Mark as Done Button -->
+                    <button 
+                        v-if="goal.status !== 'completed'"
+                        @click="!goal.is_saving && !String(goal.id).startsWith('temp_') && onCompleteGoal(goal)"
+                        class="px-3 py-1.5 rounded-xl border border-emerald-500/20 bg-emerald-50 dark:bg-emerald-500/10 hover:bg-emerald-500 hover:text-white text-emerald-600 dark:text-emerald-400 text-[10px] font-black uppercase tracking-widest transition-all disabled:opacity-50 flex items-center gap-1.5 shadow-sm"
+                        :disabled="goal.is_saving || String(goal.id).startsWith('temp_')"
+                    >
+                        <CheckCircle2 :size="12" stroke-width="3" />
+                        <span class="hidden sm:inline">{{ t('goal_mark_done', 'Mark as Done') }}</span>
+                        <span class="sm:hidden">{{ t('goal_done', 'Done') }}</span>
+                    </button>
+
+                    <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center relative">
+                        <Zap :size="14" :class="progress === 100 ? 'text-amber-400 animate-pulse' : 'text-slate-300 dark:text-slate-600'" />
+                        <div v-if="goal.is_saving" class="absolute -top-1 -right-1 w-3 h-3 bg-indigo-500 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center">
+                            <div class="w-1.5 h-1.5 border border-white dark:border-slate-200 border-t-transparent rounded-full animate-spin"></div>
+                        </div>
                     </div>
                 </div>
             </div>

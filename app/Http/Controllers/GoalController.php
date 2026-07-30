@@ -54,9 +54,10 @@ class GoalController extends Controller
 
     public function store(StoreGoalRequest $request)
     {
-        // Paksakan data milestones masuk dari form request!
         $data = $request->validated();
-        $data['milestones'] = $request->input('milestones', []);
+        if ($request->has('milestones')) {
+            $data['milestones'] = $request->input('milestones');
+        }
 
         $goal = $this->goalService->createGoal(Auth::id(), $data);
 
@@ -74,9 +75,10 @@ class GoalController extends Controller
     {
         $this->authorize('update', $goal);
 
-        // Paksakan data milestones masuk dari form request!
         $data = $request->validated();
-        $data['milestones'] = $request->input('milestones', []);
+        if ($request->has('milestones')) {
+            $data['milestones'] = $request->input('milestones');
+        }
 
         $goal = $this->goalService->updateGoal($goal, $data);
 

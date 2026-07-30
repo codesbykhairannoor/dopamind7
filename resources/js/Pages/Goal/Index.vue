@@ -29,7 +29,7 @@ const props = defineProps({
 const {
     localGoals, localStats,
     isModalOpen, editingGoal, isSaving, errors,
-    openCreateModal, openEditModal, closeModal, saveGoal,
+    openCreateModal, openEditModal, closeModal, saveGoal, completeGoal,
     uploadCoverImage, deleteGoal,
     addMilestone, saveMilestone, toggleMilestone, deleteMilestone,
     isExplorer
@@ -116,6 +116,7 @@ const openPremiumPreview = () => router.visit(route('billing'));
                                     :onAddMilestone="addMilestone"
                                     :onToggleMilestone="toggleMilestone"
                                     :onDeleteMilestone="deleteMilestone"
+                                    :onCompleteGoal="completeGoal"
                                     :isExplorer="isExplorer"
                                     @open-preview="openPremiumPreview"
                                 />
@@ -170,6 +171,17 @@ const openPremiumPreview = () => router.visit(route('billing'));
 
                             <button @click="openEditModal(goal)" class="absolute top-5 right-5 w-10 h-10 rounded-2xl bg-white/10  border border-white/20 flex items-center justify-center text-white shadow-xl">
                                 <Edit3 :size="16" />
+                            </button>
+
+                            <!-- Mobile Mark As Done -->
+                            <button 
+                                v-if="goal.status !== 'completed'"
+                                @click="!goal.is_saving && !String(goal.id).startsWith('temp_') && completeGoal(goal)"
+                                class="absolute top-5 left-5 px-3 py-2 rounded-xl bg-emerald-500/20 backdrop-blur-sm border border-emerald-500/30 text-white text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5 shadow-xl transition-all"
+                                :class="goal.is_saving || String(goal.id).startsWith('temp_') ? 'opacity-50 cursor-not-allowed' : 'active:scale-95'"
+                            >
+                                <CheckCircle2 :size="14" />
+                                {{ $t('goal_done', 'Done') }}
                             </button>
                         </div>
 
