@@ -1,4 +1,7 @@
 {
+    "edit_transaction": "Edit Transaksi",
+    "record_transaction": "Catat Transaksi",
+    "batch_mode_title": "Catat Kolektif",
     "confirm_delete_title": "Yakin hapus?",
     "confirm_delete_text": "Data tidak bisa dikembalikan!",
     "btn_yes_delete": "Ya, Hapus!",

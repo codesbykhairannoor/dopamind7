@@ -1,4 +1,7 @@
 {
+    "edit_transaction": "Edit Transaction",
+    "record_transaction": "Record Transaction",
+    "batch_mode_title": "Collective record",
        "____ SECTION_7 ____": "=== FINANCE FLOW ===",
         "record_transaction": "Record Transaction",
         "expense": "Expense",
