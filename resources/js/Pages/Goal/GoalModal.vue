@@ -321,6 +321,7 @@ const t = (key, fallback) => {
                                 :key="m.id || idx" 
                                 :milestone="m"
                                 @save="(data) => Object.assign(m, data)"
+                                @update:title="(newTitle) => m.title = newTitle"
                                 @toggle="m.completed = !m.completed"
                                 @delete="form.milestones.splice(idx, 1)"
                             />

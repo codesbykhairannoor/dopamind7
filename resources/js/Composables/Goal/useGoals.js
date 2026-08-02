@@ -124,7 +124,7 @@ export function useGoals(props) {
             });
 
             if (response.data.data) {
-                Object.assign(mProxy, normalizeMilestones([response.data.data])[0], { is_saving: false });
+                Object.assign(mProxy, response.data.data, { is_saving: false });
                 recalculateProgress(goal);
             }
         } catch (error) {

@@ -8,7 +8,7 @@ import 'dayjs/locale/id';
 import GoalDatePicker from './GoalDatePicker.vue';
 
 const props = defineProps({ milestone: Object });
-const emit = defineEmits(['toggle', 'delete', 'save']);
+const emit = defineEmits(['toggle', 'delete', 'save', 'update:title']);
 
 const page = usePage();
 const t = (key, fallback) => {
@@ -43,7 +43,7 @@ const startEdit = () => {
 };
 
 const handleTitleInput = () => {
-    // We no longer debounce save on every keystroke to prevent "jumping" UI
+    emit('update:title', editTitle.value);
 };
 
 const handleSave = () => {

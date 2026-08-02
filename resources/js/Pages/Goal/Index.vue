@@ -259,6 +259,7 @@ const displayedGoals = computed(() => {
                                     v-for="m in goal.milestones" 
                                     :key="m.id" 
                                     :milestone="m"
+                                    @update:title="(newTitle) => m.title = newTitle"
                                     @toggle="toggleMilestone(goal, m)"
                                     @save="(data) => saveMilestone(goal, data)"
                                     @delete="deleteMilestone(goal, m.id)"
